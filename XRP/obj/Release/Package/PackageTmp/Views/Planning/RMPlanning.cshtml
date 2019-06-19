@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <!-- META SECTION -->
+    <title>SSM-RMPlanning</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="~/ProjectImages/elogo.ico" type="image/x-icon" />
+    <!-- END META SECTION -->
+    <!-- CSS INCLUDE -->
+    <link rel="stylesheet" type="text/css" id="theme" href="~/NewCssAndTheme/css/theme-default.css" />
+
+</head>
+
+@model XRP.Models.Paged_RMPlanningModel
+@{
+    ViewBag.Title = "RMPlanning";
+    ViewBag.Active = "Planning";
+    //Layout = "~/Views/Shared/_NewLayout.cshtml";
+    Layout = null;
+}
+
+@*@using (Html.BeginForm("RMAllocation", "Planning", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)*@
+<fieldset>
+
+    <!-- PAGE TITLE -->
+   
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START DEFAULT DATATABLE -->
+            <div class="panel panel-default">
+                <div class="panel-heading">                  
+                   <strong> Available RM</strong>
+                 </div>
+
+                <div class="panel-body panel-body-table">
+                    <div class="table-responsive">
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th style="display:none">Workorder No</th>
+                                    <th>Grade Of Material </th>
+                                    <th>HeatCode </th>
+                                    <th>Section </th>
+                                    <th>Qty</th>
+                                   
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody1">
+                                @foreach (var data in Model.RMPlanningModel)
+                                {
+                                    <tr>
+                                        <td style="display:none">@data.WorkorderNo</td>
+                                        <td>@data.GradeOfMaterial</td>
+                                        <td>@data.HeatCode</td>
+                                        <td>@data.Section</td>
+                                        <td>@data.Qty</td>                                       
+                                        <td><input id="txt_RmAllocate" type="text" class = "form-control NoStar" style="width:150px" /></td>
+                                        <td><input type="submit" name="Save" value="Allocate" class="btn btn-success btn-sm" id="Save" title="Allocate" /></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/Validations/JqueryUi.js"></script>
+<link href="~/NewCssAndTheme/FancyBox/jquery.fancybox.css" rel="stylesheet" />
+<script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
+
+<script>
+    var $j = jQuery.noConflict(true);
+</script>
+<script type="text/javascript">
+    $(document).on("click", "#Save", function () {
+        var currentRow = $(this).closest("tr");
+        var wono = currentRow.find("td:eq(0)").text();
+        var gradeOfMaterial = currentRow.find("td:eq(1)").text();
+        var heatcode = currentRow.find("td:eq(2)").text();
+        var section = currentRow.find("td:eq(3)").text();
+        var avaliableQunatity = currentRow.find("td:eq(4)").text();
+        var Actqnty = currentRow.find("#txt_RmAllocate").val();
+
+        if (Actqnty == "" || !$.isNumeric(Actqnty) || (+avaliableQunatity < +Actqnty)) {
+            currentRow.find("#txt_RmAllocate").focus();
+            currentRow.find("#txt_RmAllocate").css('border-color', 'indianred');
+            alert("Please enter a numeric value less than available RM qunatity.");
+            return false;
+        }
+
+        $.ajax({
+            url: "../Planning/RMAllocation",
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({ quntity: Actqnty, heatcode: heatcode, gradeOfMaterial: gradeOfMaterial, section: section, wono: wono }),
+            success: function (data) {
+                alert('RM Allocated Successfully');
+                window.close();
+                // parent.$.fancybox.close();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Status: " + textStatus);
+                alert("Error: " + errorThrown);
+            }
+        })
+    });
+
+</script>
+@*}*@

@@ -1,0 +1,243 @@
+﻿@model XRP.Models.DieDescription
+@using XRP.Global;
+@{
+    ViewBag.Title = "AddDie";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (Html.BeginForm("AddDie", "DieDescription", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                @*<div class="row p-t-b-10 ">
+                    <div class="col">*@
+                <h4>
+                    <i class="icon-database"></i>
+                    Die
+                </h4>
+
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllDieDescription", "DieDescription")'><i class="icon icon-home2"></i> Die List</a>
+                            @*<a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>All Inquiry</a>*@
+                        </li>
+
+                        <li class="float-right">
+                            <a class="nav-link active" href='#'><i class="icon icon-plus-circle"></i> Add New Die</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+
+
+
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="animated fadeInUpShort">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <form action="#">
+                            <div class="card no-b  no-r">
+                                <div class="card-body">
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Die No", new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.DieNo, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.DieNo, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Customer Name", new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.CustomerName, null, new { @class = "form-control r-0 light s-12 ", @id = "customerName", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.CustomerName, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Part Name", new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.PartName, new { @class = "form-control r-0 light s-12", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.PartName, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Cut-Weight", new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.InternalCutWeight, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.InternalCutWeight, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="card-body" align="right">
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="icon-save mr-2"></i>Save</button>
+                                    <button type="reset" class="btn btn-success btn-sm"><i class="icon-refresh mr-2"></i>Reset</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-1"></div>
+
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="col-md-5 control-label">
+                                    @Html.LabelFor(model => model.InquiryNo, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(model => model.InquiryNo, null, new { @class = "form-control NoStar", maxlength = 40, @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.InquiryNo, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5 control-label">
+                                    @Html.LabelFor(model => model.customerName, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(model => model.customerName, null, new { @class = "form-control NoStar", @id = "customerName" })
+                                    @Html.ValidationMessageFor(model => model.customerName, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5 control-label">
+                                    @Html.LabelFor(model => model.InquiryDate, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(model => model.InquiryDate, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker" })
+                                    @Html.ValidationMessageFor(model => model.InquiryDate, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5 control-label">
+                                    @Html.LabelFor(model => model.PartName, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(model => model.PartName, null, new { @class = "form-control NoStar" })
+                                    @Html.ValidationMessageFor(model => model.PartName, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5 control-label">
+                                    @Html.LabelFor(model => model.PartNo, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(model => model.PartNo, null, new { @class = "form-control NoStar" })
+                                    @Html.ValidationMessageFor(model => model.PartNo, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5 control-label">
+                                    @Html.LabelFor(model => model.CustomerDrgNo, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(model => model.CustomerDrgNo, null, new { @class = "form-control NoStar" })
+                                    @Html.ValidationMessageFor(model => model.CustomerDrgNo, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5 control-label">
+                                    @Html.LabelFor(model => model.Qty, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(model => model.Qty, null, new { @class = "form-control NoStar" })
+                                    @Html.ValidationMessageFor(model => model.Qty, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5 control-label">
+                                    @Html.LabelFor(model => model.FrequencyRepearOrder, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.DropDownListFor(model => model.FrequencyRepearOrder, ViewData["FreqRepeatOrder"] as IEnumerable<SelectListItem>,
+            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control" })
+                                    @Html.ValidationMessageFor(model => model.FrequencyRepearOrder, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3"></div>
+                    </div>
+                </div>
+
+                &nbsp;
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" style="text-align:center">
+                            <input type="submit" name="Save" value="Save" class="btn btn-success btn-default" id="Save" />
+                            <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewInquiry", "Inquiry")    '" />
+
+                        </div>
+                    </div>
+                </div>*@
+
+    </fieldset>
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(function () {
+                $('.date-time-picker').datetimepicker({
+                    format: 'd/m/Y',
+                    timepicker:false
+                });
+            });
+            $j("#customerName").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $.ajax({
+                        url: "../Inquiry/getCustomername",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                change: function (event, ui) {
+                    $(this).val((ui.item ? ui.item.label : ""));
+                }
+            });
+
+        });
+
+    </script>
+
+}
+
+

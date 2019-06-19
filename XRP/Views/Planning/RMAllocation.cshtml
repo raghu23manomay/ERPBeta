@@ -1,0 +1,333 @@
+﻿@model XRP.Models.Paged_RMAllocationModel
+@using XRP.Global;
+@{
+    ViewBag.Title = "AllWorkorder";
+    ViewBag.Active = "Planning";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+@using (Html.BeginForm("RMAllocation", "Planning", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            <i class="icon-database"></i>
+                            Workorder 
+                        </h4>
+                    </div>
+                </div>
+             
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link active" href='#first-tab' role="tab" data-toggle="tab"><i class="icon icon-rotate_90_degrees_ccw"></i>Planning</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href='#second-tab' role="tab" data-toggle="tab"><i class="icon icon-asterisk"></i>Active</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href='#third-tab' role="tab" data-toggle="tab"><i class="icon icon-cancel"></i>Cancel</a>
+                        </li>
+                        <li class="float-right">
+                            <a class="nav-link" href='#fourth-tab' role="tab" data-toggle="tab"><i class="icon icon-check"></i>Completed</a>
+                        </li>
+                        <li class="float-right">
+                            <a class="nav-link" href='@Url.Action("NewWorkorder", "Workorder")'><i class="icon icon-plus-circle"></i> Add New Workorder</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <!-- PAGE TITLE -->
+        @*<div class="page-title">
+            <ul class ="panel-controls">
+                <a class="nav-link" href='@Url.Action("NewWorkorder", "Workorder")'><i class="icon icon-plus-circle"></i> Add New Workorder</a>
+                </ul>
+               
+</div>*@
+        <div class="page-content-wrap">
+            <div class="container-fluid animatedParent animateOnce">
+                <div class="tab-content my-3" id="v-pills-tabContent">
+                    <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                        <div class="row my-3">
+                            <div class="col-md-12">
+                                <div class="card r-0 shadow">
+                                    <div class="table-responsive">
+                                        @*<div class="row">
+                                            <div class="col-md-12">*@
+                                                <div class="panel panel-default tabs" id="tabs">
+
+                                                    <!-- Nav tabs -->
+                                                    @*<ul class="nav nav-tabs" role="tablist">
+                                                        <li class="active"><a aria-controls="first" role="tab" data-toggle="tab" href="#first-tab">Planning</a></li>
+                                                        <li><a href="#second-tab" aria-controls="second" role="tab" data-toggle="tab">Active</a></li>
+                                                        <li><a href="#third-tab" aria-controls="third" role="tab" data-toggle="tab">Cancel</a></li>
+                                                        <li><a href="#fourth-tab" aria-controls="fourth" role="tab" data-toggle="tab">Completed</a></li>
+                                                    </ul>*@
+                                                    <div class="panel-body tab-content">
+                                                        <div role="tabpanel" class="tab-pane active" id="first-tab">
+                                                            <div class="panel-body panel-body-table">
+                                                                <div class="table-responsive">
+                                                                    <table class="table datatable" id="tbl_rmalloc">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Workorder No</th>
+                                                                                <th>Grade Of Material </th>
+                                                                                <th>HeatCode </th>
+                                                                                <th>Section </th>
+                                                                                <th align="center">Qty</th>
+                                                                                <th>Planning</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            @foreach (var data in Model.RMAllocationModel)
+                                                {
+                                                                                <tr>
+                                                                                    <td>@data.WorkorderNo</td>
+                                                                                    <td>@data.GradeOfMaterial</td>
+                                                                                    <td>@data.HeatCode</td>
+                                                                                    <td>@data.Section</td>
+                                                                                    <td align="center">@data.Qty</td>
+                                                                                    @*<td><input type="button" name="Save" value="Planning" class="btn btn-success btn-sm" id="Save" /></td>*@
+                                                                                    @*<td><a class="editVaccin  btn btn-default" href="/Customer/GetLicenseDetails?Id=@data.ID" title="View Customer Details"><span class="fa fa-eye"></span> </a></td>*@
+                                                                                    <td><a class="planning" href="../Workorder/WorkorderPlanning?wono=@data.WorkorderNo &gof=@data.GradeOfMaterial &ht=@data.HeatCode &section=@data.Section" title="Planning"><span class="icon icon-rotate_90_degrees_ccw "></span></a></td>
+                                                                                </tr>
+                                                }
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="second-tab">
+
+                                                            <div class="panel-body panel-body-table">
+                                                                <div class="table-responsive">
+                                                                    <table class="table datatable" id="tbl_rmalloca">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Workorder No</th>
+                                                                                <th>Grade Of Material </th>
+                                                                                <th>HeatCode </th>
+                                                                                <th>Section </th>
+                                                                                <th align="center">Qty</th>
+                                                                                @*<th>Unit </th>*@
+                                                                                <th>Cutting Slip</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            @foreach (var data in Model.RMAllocationModel)
+                                                {
+                                                                                <tr>
+                                                                                    <td>@data.WorkorderNo</td>
+                                                                                    <td>@data.GradeOfMaterial</td>
+                                                                                    <td>@data.HeatCode</td>
+                                                                                    <td>@data.Section</td>
+                                                                                    <td align="center">@data.Qty</td>
+                                                                                    @*<td>@data.Unit</td>*@
+                                                                                    @*<td><input type="button" name="Save" value="Cutting Slip" class="btn btn-success btn-default" id="Save_CuttingSlip" /></td>*@
+                                                                                    <td>
+                                                                                        <a class="planning" href="../Workorder/CuttingInstructionIssue?wono=@data.WorkorderNo" title="Cutting Slip">
+                                                                                            <i class="icon-share-square-o text-success"></i>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    @*<td><a class="save_CuttingSlip  btn btn-default btn-rounded" href="/Workorder/CuttingInstructionIssue?wono=@data.WorkorderNo" title="Cutting Slip"><span class="fa fa-edit"></span></a></td>*@
+
+                                                                                </tr>
+                                                }
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="third-tab">
+                                                            <div class="panel-body panel-body-table">
+
+                                                                <div class="table-responsive">
+                                                                    <table class="table datatable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Workorder No</th>
+                                                                                <th>Grade Of Material </th>
+                                                                                <th>HeatCode </th>
+                                                                                <th>Section </th>
+                                                                                <th align="center">Qty</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            @foreach (var data in Model.RMAllocationModel)
+                                                {
+                                                                                <tr>
+                                                                                    <td>@data.WorkorderNo</td>
+                                                                                    <td>@data.GradeOfMaterial</td>
+                                                                                    <td>@data.HeatCode</td>
+                                                                                    <td>@data.Section</td>
+                                                                                    <td align="center">@data.Qty</td>
+
+                                                                                </tr>
+                                                }
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="fourth-tab">
+                                                            <div class="panel-body panel-body-table">
+
+                                                                <div class="table-responsive">
+                                                                    <table class="table datatable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Workorder No</th>
+                                                                                <th>Grade Of Material </th>
+                                                                                <th>HeatCode </th>
+                                                                                <th>Section </th>
+                                                                                <th align="center">Qty</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            @foreach (var data in Model.RMAllocationModel)
+                                                {
+                                                                                <tr>
+                                                                                    <td>@data.WorkorderNo</td>
+                                                                                    <td>@data.GradeOfMaterial</td>
+                                                                                    <td>@data.HeatCode</td>
+                                                                                    <td>@data.Section</td>
+                                                                                    <td align="center">@data.Qty</td>
+
+                                                                                </tr>
+                                                }
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            @*</div>
+                                        </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</fieldset>
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+      <link href="~/NewCssAndTheme/FancyBox/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
+
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+     <script type="text/javascript"> 
+       $j('a.planning').fancybox({
+            'width': '100%',
+            'height': '100%',
+            'autoScale': false,
+            'transitionIn': 'none',
+            'transitionOut': 'none',
+            'type': 'iframe',
+            'overflow': 'auto',
+        afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
+            parent.location.reload(true);
+        }
+        });
+    </script>
+    <script type="text/javascript"> 
+     
+        $j('a.save_CuttingSlip').fancybox({
+            'width': '70%',
+            'height': '70%',
+            //'autoScale': false,
+            'transitionIn': 'none',
+            'transitionOut': 'none',
+            'type': 'iframe',
+            'overflow': 'auto',
+            'scrolling': 'visible',
+           afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
+               parent.location.reload(true);
+           }
+           //'modal': true
+           //'href': '/Common/Lead/GetEnquiry?Id=' + id()
+       });
+   
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var sts = getUrlVars()["status"];
+            if (sts == 601) {
+                $('.nav-tabs li:eq(0) a').tab('show')               
+            } else if (sts == 602) {
+                $('.nav-tabs li:eq(1) a').tab('show')
+            } else if (sts == 603) {
+                $('.nav-tabs li:eq(2) a').tab('show')
+            } else if (sts == 604) {
+                $('.nav-tabs li:eq(3) a').tab('show')
+            } else { }
+           
+            $("#tbl_rmalloc").on('click', '#Save', function () {
+                var currentRow = $(this).closest("tr");
+                var wono = currentRow.find("td:eq(0)").text();
+                var gof = currentRow.find("td:eq(1)").text();
+                var ht = currentRow.find("td:eq(2)").text();
+                var section = currentRow.find("td:eq(3)").text();
+                window.open("../Workorder/WorkorderPlanning?wono=" + wono + "&gof=" + gof + "&ht=" + ht + "&section=" + section, "WindowPopup", "width=850,height=450,autoOpen=false,position=center,toolbar=no,menubar=no,scrollbars=no");
+            });
+
+            $("#tbl_rmalloca").on('click', '#Save_CuttingSlip', function () {
+                var currentRow = $(this).closest("tr");
+                var wono = currentRow.find("td:eq(0)").text();
+                window.open("../Workorder/CuttingInstructionIssue?wono=" + wono, "WindowPopup", "width=850,height=450,autoOpen=false,position=center,toolbar=no,menubar=no,scrollbars=no");
+        
+            });
+
+            $('#tabs').on("click", "li", function (event) {
+                var activeTab = $(this).find('a').attr('href').split('-')[0].split('#')[1];
+
+                if (activeTab == 'first') {                   
+                    location.href = "@Url.Action("RMAllocation", "Planning")?status=" + 601;
+                } else if (activeTab == 'second') {
+
+                    location.href = "@Url.Action("RMAllocation", "Planning")?status=" + 602;
+                } else if (activeTab == 'third') {
+
+                    location.href = "@Url.Action("RMAllocation", "Planning")?status=" + 603;
+                } else if (activeTab == 'fourth') {
+
+                    location.href = "@Url.Action("RMAllocation", "Planning")?status=" + 604;
+
+                } else { }
+            });
+            function getUrlVars() {
+                var vars = {};
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                    vars[key] = value;
+                });
+                return vars;
+            }
+
+        });
+    </script>
+}
+
+

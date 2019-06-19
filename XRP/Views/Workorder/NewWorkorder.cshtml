@@ -1,0 +1,336 @@
+﻿@model XRP.Models.ssmtbl_WorkorderModel
+@{
+    ViewBag.Title = "New Workorder";
+    ViewBag.Active = "Marketing";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+<style>
+    .Label, .NoStar, .btn {
+        font-weight: normal;
+        font-size: medium;
+        text-align: left;
+    }
+</style>
+
+
+@using (Html.BeginForm("NewWorkorder", "Workorder", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+
+        <!-- PAGE TITLE -->
+        <div class="page-title">
+            <h2><span class="fa fa-arrow-circle-o-left"></span>NEW WORKORDER</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="col-md-10"></div>
+                <div class="col-md-2">
+                    <div class="form-group" style="text-align:center">
+                        <input type="button" class="btn btn-info" value="All Workorder" onclick='location.href ="@Url.Action("RMAllocation", "Planning")?status=601"' />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <div class="col-md-6 control-label" style="text-align:left; ">
+                            @Html.LabelFor(model => model.WorkorderNo, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.WorkorderNo, null, new { @class = "form-control NoStar", maxlength = 40, @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.WorkorderNo, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 control-label" style="text-align:left">
+                            @Html.LabelFor(model => model.CustomerName, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.CustomerName, null, new { @class = "form-control NoStar", @id = "customerName" })
+                            @Html.ValidationMessageFor(model => model.CustomerName, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 control-label" style="text-align:left">
+                            @Html.LabelFor(model => model.PoNo, new { @class = "Label" })
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(model => model.PoNo, new List<SelectListItem> { },
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control NoStar", @id = "poNo", onchange = "getdatabyPO()" })
+                            @Html.ValidationMessageFor(model => model.PoNo, null, new { @class = "alert-danger" })
+                        </div>
+                        @*<div class="col-md-3 control-label" style="text-align:left">
+                            @Html.LabelFor(model => model.RawMaterial, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.RawMaterial, null, new { @class = "form-control NoStar", @id = "txt_raw" })
+                            @Html.ValidationMessageFor(model => model.RawMaterial, null, new { @class = "alert-danger" })
+
+                            </div>*@
+
+                    </div>
+                    @*<div class="form-group">
+                        <div class="col-md-3 control-label" style="text-align:left">
+                        @Html.LabelFor(model => model.HeatCode, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.HeatCode, null, new { @class = "form-control NoStar", @id="txt_heatcode" })
+                        @Html.ValidationMessageFor(model => model.HeatCode, null, new { @class = "alert-danger" })
+                        </div>
+                        <div class="col-md-3 control-label" style="text-align:left">
+                        @Html.LabelFor(model => model.Section, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.Section, null, new { @class = "form-control NoStar", @id = "txt_section" })
+                        @Html.ValidationMessageFor(model => model.Section, null, new { @class = "alert-danger" })
+                        </div>
+                        </div>*@
+                    <div class="form-group">
+                        <div class="col-md-6 control-label" style="text-align:left">
+                            @Html.LabelFor(model => model.PoRM, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.PoRM, null, new { @class = "form-control NoStar", @readonly = "readonly", @id = "txt_PORM" })
+                            @Html.ValidationMessageFor(model => model.PoRM, null, new { @class = "alert-danger" })
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/green.jpg" alt="Green" title="Green" id="Green" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/BlackOrange.jpg" alt="BlackOrange" title="BlackOrange" id="BlackOrange" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/Bluee.jpg" alt="Blue" title="Blue" id="Blue" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/Brown.jpg" alt="Brown" title="Brown" id="Brown" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/Purpal.jpg" alt="Purple" title="Purple" id="Purpal" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/WhiteGreen.jpg" alt="White+Green" title="White+Green" id="White+Green" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/white.jpg" alt="White" title="White" id="White" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/WhiteOrange.jpg" alt="White+Orange" title="White+Orange" id="White+Orange" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/yellow.jpg" alt="Yellow" title="Yellow" id="Yellow" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/Pink.jpg" alt="Pink" title="Pink" id="Pink" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/BlackGreen.jpg" alt="Black+Green" title="Black + Green" id="Black+Green" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/BlackBrown.jpg" alt="Black+Brown" title="Black + Brown" id="Black+Brown" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/Bllack.jpg" alt="Black" title="Black" id="Black" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/BlackWhite.jpg" alt="Black+White" title="Black + White" id="Black+White" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/BlackPink.jpg" alt="Black+Pink" title="Black + Pink" id="Black+Pink" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/orange.jpg" alt="Orange" title="Orange" id="Orange" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/VellowBlack.png" alt="Vellow+Black" title="Yellow + Black" id="Vellow+Black" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/WhiteBlue.jpg" alt="White+Blue" title="White+Blue" id="White+Blue" />
+
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/WhiteBrown.png" alt="White+Brown" title="White+Brown" id="White+Brown" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/WhitePink.jpg" alt="White+Pink" title="White+Pink" id="White+Pink" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/WhitePurple.png" alt="White+Purple" title="White+Purple" id="White+Purple" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/WhiteYellow.jpg" alt="White+Yellow" title="White+Yellow" id="White+Yellow" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/white.jpg" alt="White" title="White" id="White" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/WhiteBlack.jpg" alt="White+Black" title="White+Black" id="White+Black" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/YellowGreen.jpg" alt="Yellow+Green" title="Yellow+Green" id="Yellow+Green" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/YellowBlue.jpg" alt="Yellow+Blue" title="Yellow+Blue" id="Yellow+Blue" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/YellowBrown.jpg" alt="Yellow+Brown" title="Yellow+Brown" id="Yellow+Brown" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/YellowOrange.jpg" alt="Yellow+Orange" title="Yellow+Orange" id="Yellow+Orange" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/YellowPink.png" alt="Yellow+Pink" title="Yello+Pink" id="Yello+Pink" />
+                            <img style="width:20px; height:15px; display:none" src="~/NewCssAndTheme/img/YellowPurple.jpg" alt="Yellow+Purple" title="Yellow+Purple" id="Yellow+Purple" />
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 control-label" style="text-align:left">
+                            @Html.LabelFor(model => model.PoSection, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.PoSection, null, new { @class = "form-control NoStar", @readonly = "readonly", @id = "txt_PoSection" })
+                            @Html.ValidationMessageFor(model => model.PoSection, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        <div class="col-md-6 control-label" style="text-align:left">
+                            @Html.LabelFor(model => model.DateOfIssue, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.DateOfIssue, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker" })
+                            @Html.ValidationMessageFor(model => model.DateOfIssue, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>*@
+                    <div class="form-group">
+                        <div class="col-md-6 control-label" style="text-align:left; display:none;">
+                            @Html.LabelFor(model => model.ColorCode, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-6" style="display:none;">
+                            @Html.TextBoxFor(model => model.ColorCode, null, new { @class = "form-control NoStar", @id = "txt_colorcode" })
+                            @Html.ValidationMessageFor(model => model.ColorCode, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 control-label" style="text-align:left">
+                            @Html.LabelFor(model => model.TargetDate, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.TargetDate, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker" })
+                            @Html.ValidationMessageFor(model => model.TargetDate, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 control-label" style="text-align:left">
+                            @Html.LabelFor(model => model.CutWeight, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => model.CutWeight, null, new { @class = "form-control NoStar", @id = "txt_CutWeight" })
+                            @Html.ValidationMessageFor(model => model.CutWeight, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>                   
+                </div>
+
+                <div class="col-md-3"></div>
+            </div>
+
+
+            &nbsp;
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="form-group" style="text-align:center">
+                        <input type="submit" name="Save" value="Save" class="btn btn-success btn-default" id="Save" />
+                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewWorkorder", "Workorder")'" />
+
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div> &nbsp; &nbsp;
+        </div>
+    </fieldset>
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $j("#customerName").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $.ajax({
+                        url: "../Inquiry/getCustomername",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                change: function (event, ui) {
+                    $(this).val((ui.item ? ui.item.label : ""));
+                }
+            });
+
+            $("#customerName").focusout(function () {
+                var cstnme = $("#customerName").val();
+                $.ajax({
+                    type: "POST",
+                    url: "../Workorder/BindPOByCustomerName",
+                    data: JSON.stringify({ cstnme: '' + cstnme + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#poNo').empty();
+                        var newOption = $('<option>---Please Select---</option>');
+                        $('#poNo').append(newOption);
+                        $('#poNo').trigger("chosen:updated");
+                        $.each(data, function (i, data) {                            
+                            $('<option>',
+                               {
+                                   value: data.Value,
+                                   text: data.Text
+                               }).html(data.BindType).appendTo("#poNo");
+                        });
+
+                    }
+                });
+            });
+        });
+        function getdatabyPO() {
+            var pono = $("#poNo").val();
+            $.ajax({
+                type: "POST",
+                url: "../Workorder/GetWoDataByPONo",
+                data: JSON.stringify({ pono: '' + pono + '' }),
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (i, data) {
+                        var ctwt = data.CutWeight;
+                        var htcode = data.HeatCode;
+                        var clrcode = data.ColorCode;
+                        var RawMaterial = data.RawMaterial;
+                        var section = data.Section;
+                        var porm = data.PoRM;
+                        var posection = data.PoSection;
+                        $("#txt_heatcode").val(htcode);
+                        $("#txt_CutWeight").val(ctwt);
+                        $("#txt_colorcode").val(clrcode);
+                        $("#txt_raw").val(RawMaterial);
+                        $("#txt_section").val(section);
+                        $("#txt_PORM").val(porm);
+                        $("#txt_PoSection").val(posection = posection == null ? "NA" : posection);
+
+                        if (clrcode == "Yellow") { $("#Yellow").css("display", ""); }
+                        else if (clrcode == "Black + Orange") { $("#Black+Orange").css("display", ""); }
+                        else if (clrcode == "Blue") { $("#Blue").css("display", ""); }
+                        else if (clrcode == "Brown") { $("#Brown").css("display", ""); }
+                        else if (clrcode == "Purpal") { $("#Purpal").css("display", ""); }
+                        else if (clrcode == "White + Green") { $("#White+Green").css("display", ""); }
+                        else if (clrcode == "White" || clrcode == "white") { $("#White").css("display", ""); }
+                        else if (clrcode == "White + Orange") { $("#White+Orange").css("display", ""); }
+                        else if (clrcode == "Pink") { $("#Pink").css("display", ""); }
+                        else if (clrcode == "Green") { $("#Green").css("display", ""); }
+                        else if (clrcode == "Orange") { $("#Orange").css("display", ""); }
+                        else if (clrcode == "Black") { $("#Black").css("display", ""); }
+                        else if (clrcode == "White + Black") { $("#Black+Orange").css("display", ""); }
+                        else if (clrcode == "White + Blue") { $("#White+Blue").css("display", ""); }
+                        else if (clrcode == "White + Pink") { $("#White+Pink").css("display", ""); }
+                        else if (clrcode == "White + Brown") { $("#White+Brown").css("display", ""); }
+                        else if (clrcode == "White + Yellow") { $("#White+Green").css("display", ""); }
+                        else if (clrcode == "White + Purple") { $("#White+Purple").css("display", ""); }
+                        else if (clrcode == "Yellow + Blue") { $("#Yellow+Blue").css("display", ""); }
+                        else if (clrcode == "Yellow  + Green") { $("#Yellow+Green").css("display", ""); }
+                        else if (clrcode == "Yellow + Pink") { $("#Yellow+Pink").css("display", ""); }
+                        else if (clrcode == "Vellow  + Black") { $("#Vellow+Black").css("display", ""); }
+                        else if (clrcode == "Yellow + Brown") { $("#Yellow+Brown").css("display", ""); }
+                        else if (clrcode == "Yellow + Purple") { $("#Yellow+Purple").css("display", ""); }
+                        else if (clrcode == "Yellow + Orange") { $("#Yellow+Orange").css("display", ""); }
+                        else if (clrcode == "Black + Green") { $("#Black+Green").css("display", ""); }
+                        else if (clrcode == "Black + Brown") { $("#Black+Brown").css("display", ""); }
+                        else if (clrcode == "Black + Pink") { $("#Black+Pink").css("display", ""); }
+                        else { }
+                    });
+                }
+            })
+        }
+
+    </script>
+
+}
+
+

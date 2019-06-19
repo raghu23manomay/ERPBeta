@@ -1,0 +1,61 @@
+﻿@model XRP.Models.Paged_ssmtbl_DeliveryChallanModel
+@using XRP.Global;
+@*<div class="row">
+    <div class="col-md-12">*@
+        <!-- START DEFAULT DATATABLE -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="col-md-4">
+                    <a class="nav-link" href='@Url.Action("NewDCOutsourcing", "DeliveryChallan")'><i class="icon icon-plus-circle"></i> New Delivery Challan</a>
+                    @*<input type="button" class="btn btn-info" value="New Delivery Challan" onclick="location.href = '@Url.Action("NewDCOutsourcing", "DeliveryChallan")    '" />*@
+                </div>
+            </div>
+            <div class="panel-body panel-body-table">
+                <div class="table-responsive">
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th>DISPATCH No</th>
+                                <th>VENDOR NAME</th>
+                                <th>VENDOR PO No</th>
+                                <th>EXPECTED DATE</th>
+                                <th>DATE</th>
+                                <th>STATUS</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
+                            {
+                                <tr>
+                                    <td>@data.dispatch_no</td>
+                                    <td>@data.vendor_name</td>
+                                    <td>@data.vendor_po_no</td>
+                                    <td>@data.expected_date.Date.ToString("dd-MMM-yyyy")</td>
+                                    <td>@data.CreatedOn.Date.ToString("dd-MMM-yyyy")</td>
+                                    @if (data.status == true)
+                                    {
+                                        <td>@DeliveryChallanStatus.Received</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@DeliveryChallanStatus.NotReceived</td>
+                                    }
+                                    @if (data.status == true)
+                                    {
+                                        <td><a href="@Url.Action("EditDCOutsourcing", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="View Delivery Challan"><span class="icon-eye mr-3"></span></a></td>
+                                    }
+                                    else
+                                    {
+                                        <td><a href="@Url.Action("EditDCOutsourcing", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="Edit Delivery Challan"><span class="icon-pencil"></span></a></td>
+                                    }
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    @*</div>
+</div>*@

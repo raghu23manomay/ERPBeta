@@ -1,0 +1,239 @@
+﻿@model IEnumerable<XRP.Models.ssmtbl_PurchaseOrderModel>
+
+@{
+    ViewBag.Title = "All Purchase Order";
+    ViewBag.Active = "My Approval";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+@using (Html.BeginForm("PurchaseOrderList", "PurchaseOrderApproval", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <style>
+        .mosurhandsymbol {
+            cursor: pointer;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+            max-height: 600px;
+            overflow-y: auto;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+    </style>
+
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            <i class="icon-database"></i>
+                            Purchase Order
+                        </h4>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            
+                            <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>Purchase Order List For Approval</a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <!-- PAGE TITLE -->
+        <input type="hidden" id="po_id "/>
+        <input type="hidden" id="InquiryNo"/>
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="tab-content my-3" id="v-pills-tabContent">
+                <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                    <div class="row my-3">
+                        <div class="col-md-12">
+                            <div class="card r-0 shadow">
+                                <div class="">
+                                    <form action="">
+                                    
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!-- START DEFAULT DATATABLE -->
+                                                <div class="panel panel-default">
+                                                    
+                                                    <div class="panel-body panel-body-table">
+                                                        <div class="">
+                                                            <br />
+                                                            <table class="table table-striped table-hover" style="width:100%" id="tbl_AllEditCustomer" cellspacing="0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="display:none;">PO ID</th>
+                                                                        <th>ENQUIRY No</th>
+                                                                        <th>CUSTOMER NAME</th>
+                                                                        <th>QUOTATION No</th>
+                                                                        <th>CUSTOMER PO NO</th>
+                                                                        <th></th>
+                                                                        @*<th>SUBMITTED ON</th>*@
+                                                                        @*<th>VIEW</th>*@
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                    @foreach (var data in Model)
+                                                                    {
+                                                                        @*<tr class="editVaccin" href="../PurchaseOrderApproval/PurchaseOrderForApproval?PO_Id=@data.po_id &QuotationId=@data.QuotationId">*@
+                                                                        <tr class="mosurhandsymbol">
+                                                                            <td style="display:none;"  onclick="poapprovalredirect(@data.po_id,@data.QuotationId);">@data.po_id</td>
+                                                                            <td  onclick="poapprovalredirect(@data.po_id,@data.QuotationId);">@data.InquiryNo</td>
+                                                                            <td  onclick="poapprovalredirect(@data.po_id,@data.QuotationId);" style="width:50%">@data.customerName</td>
+                                                                            <td  onclick="poapprovalredirect(@data.po_id,@data.QuotationId);">@data.QuotationNo</td>
+                                                                            <td  onclick="poapprovalredirect(@data.po_id,@data.QuotationId);">@data.CustomerPONo</td>
+                                                                            <td>
+           
+                                                                                <a href="@data.Filepath" class="" title=" View Customer PO" target="_blank"><i class="icon-eye"></i></a>
+                                                                                    &nbsp;&nbsp;&nbsp;
+                                                                                    <a aria-expanded="false" aria-haspopup="true" href="#" data-toggle="dropdown">
+                                                                                        <i class="icon-more_vert p-0"></i>
+                                                                                        
+                                                                                    </a>
+                                                                                    <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(169px, 98px, 0px);">
+                                                                                        <a class="dropdown-item" href="#" onclick="poapprove(@data.po_id,@data.InquiryNo)">
+                                                                                            Accept
+
+                                                                                        </a>
+                                                                                        <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#CommentForApproval" onclick="poreject(@data.po_id,@data.InquiryNo)">Reject</a>
+
+
+
+                                                                                    </div>
+                                                     
+                                                                            </td>
+                                                                            @*<td>@data.createdby</td>
+                                                                            <td>@data.createddate.Date.ToString("dd-MMM-yyyy")</td>*@
+                                                                            @*<td><button onclick="getDialog();" class=" btn btn-default btn-rounded" title="View Quotation"><span class="fa fa-edit"></span></button></td>*@
+                                                                            @*<td><a class="editVaccin" href="../PurchaseOrderApproval/PurchaseOrderForApproval?PO_Id=@data.po_id &QuotationId=@data.QuotationId" title="View Quotation"><span class="icon-eye mr-3"></span></a></td>*@
+
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="CommentForApproval" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Comment</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.TextArea("Comment", null, new { @class = "form-control r-0 light s-12", @id = "Comment", @cols = "3", @rows = "5" })
+                    </div>
+                    <div class="modal-footer">
+                        @*<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>*@
+                        <button type="button" class="btn btn-primary btn-sm" id="ConditionalApprove" onclick="comment()">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </fieldset>
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <link href="~/NewCssAndTheme/FancyBox/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+        $(document).ready(function () {
+            
+            $('#tbl_AllEditCustomer').DataTable({
+
+                "ordering": false,
+                "info": false
+            });
+        });
+    </script>
+
+    <script>
+     
+            //$j('tr.editVaccin').fancybox({
+            //    'width': '80%',
+            //    'height': '350',
+            //    'autoScale': false,
+            //    'transitionIn': 'none',
+            //    'transitionOut': 'none',
+            //    'type': 'iframe',
+            //    'overflow': 'auto',
+            //    afterClose: function () { 
+            //        parent.location.reload(true);
+            //    }
+             
+            //});
+            function poapprovalredirect(poid,qid)
+            {
+                location.href = "../PurchaseOrderApproval/POApprovalView?PO_Id=" + poid + "&QuotationId=" + qid + "";
+            }
+            function poapprove(poid,inqno)
+            {
+                // Save it!
+                var CommentFor = "-";
+                var POId = poid;
+                var InqNo = inqno;
+                $j.ajax({
+                    url: "../PurchaseOrderApproval/ApprovePurchaseOrder",
+                    type: "POST",
+                    dataType: "json",
+                    data: { PO_Id: POId, InquiryNo: InqNo, Comment: CommentFor },
+                    success: function (data) {
+                        location.href="@Url.Action("PurchaseOrderList", "PurchaseOrderApproval")";
+                    }
+                });
+            }
+        function poreject(poid,inqno)
+        {
+            $j('#po_id').val(poid);
+            $j('#InquiryNo').val(inqno);
+        }
+        function comment()
+        {
+            // Save it!
+            var CommentFor = $j('#Comment').val();
+            var POId = $j('#po_id').val();
+            var InqNo = $j('#InquiryNo').val();
+              
+            if (CommentFor=="") {
+                alert('Please Enter Commnent');
+                return false;
+            }
+              
+            $j.ajax({
+                url: "../PurchaseOrderApproval/RejectPurchaseOrder",
+                type: "POST",
+                dataType: "json",
+                data: { PO_Id: POId, InquiryNo: InqNo, Comment: CommentFor },
+                success: function (data) {
+                    location.href="@Url.Action("PurchaseOrderList", "PurchaseOrderApproval")" ;
+                }
+            });
+        }
+    </script>
+}

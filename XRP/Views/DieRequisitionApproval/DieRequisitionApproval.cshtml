@@ -1,0 +1,299 @@
+﻿@model XRP.Models.ssmtbl_WorkorderModel
+@{
+    ViewBag.Title = "Die Requisition Approval";
+    ViewBag.Active = "My Approval";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+<style>
+    #footer {
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+    }
+</style>
+
+<fieldset>
+    <header class="blue accent-3 relative" id="header">
+        <div class="container-fluid text-white">
+            @*<div class="row p-t-b-10 ">
+                <div class="col">
+                    <h4>
+                        <i class="icon-database"></i>
+                        Die
+                    </h4>
+                </div>
+            </div>*@
+            <div class="row justify-content-between">
+                <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                    <li>
+                        <a class="nav-link" href='@Url.Action("DieRequisitionList", "DieRequisitionApproval")'><i class="icon icon-home2"></i> Die List For Approval</a>
+                    </li>
+                  
+                    <li class="float-right">
+                        <a class="nav-link  active"><i class="icon icon-eye"></i>View</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="page" id="printpdf">
+
+        <div class="container">
+            <div class="invoice white shadow">
+
+                <div class="p-5">
+                    <div id="printpdf1">
+                        <!-- title row -->
+                        <div class="row">
+                            <div class="col-12">
+
+                                <div class="float-right">
+                                    <div>
+                                        <h4>Die #<label id="lblDieNumber"></label></h4>
+                                        <small>Workorder: <label id="lblWONumber"></label> | Date:<label id="lblReqDate"></label></small>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-12 table-responsive">
+                                <strong> Details</strong>
+                                <table class="table">
+                                    <tbody>
+
+                                        <tr>
+                                            <td>
+                                                Description:&nbsp; &nbsp;<label id="lblDescription" class="Label"></label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Remark:&nbsp; &nbsp;<label id="lblRemark" class="Label"></label>
+                                            </td>
+                                        </tr>
+                                        @*<tr>
+                                            <td>
+                                                Raw Material:&nbsp; <label id="lblRawMaterial"></label> &nbsp;
+                                                | Section:&nbsp;<label id="lblSection"></label> &nbsp;
+                                                | Quantity:&nbsp;<label id="lblQuantity"></label>
+                                                &nbsp; | Amount:&nbsp;<label id="lblAmount"></label>
+
+                                                &nbsp; | Rate:&nbsp; <label id="lblRate"></label>
+                                                &nbsp;
+                                            </td>
+
+
+                                        </tr>*@
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+
+                        @*<div class="row">
+
+                                <div class="col-12 table-responsive">
+                                    <strong>Raw Material Cost Details</strong>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="60%">Particulars</th>
+                                                <th width="20%">Basic Rate (Rs/kg)</th>
+                                                <th width="20%">Amount (Rs)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Steel Cost</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Transportation</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>*@
+
+
+
+
+
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="CommentForReject" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Comment</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.TextArea("Comment", null, new { @class = "form-control r-0 light s-12", @id = "Comment", @cols = "3", @rows = "5" })
+                                </div>
+                                <div class="modal-footer">
+                                    @*<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>*@
+                                    <button type="button" class="btn btn-primary btn-sm" id="Reject">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="footer">
+                        <div class="col-12">
+
+                            <div class="dropdown" align="right">
+
+                                <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Approve
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:lightgrey;">
+                                    <a class="dropdown-item" href="#" id="Approve">Approve</a>
+                                    @*<a class="dropdown-item" href="#" id="Reject">Reject</a>*@
+                                    <a class="dropdown-item" href="#" id="" data-toggle="modal" data-target="#CommentForReject">Reject</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/jspdf.debug.js"></script>
+<script src="~/Content/jspdf.min.js"></script>
+<link href="~/NewCssAndTheme/FancyBox/jquery.fancybox.css" rel="stylesheet" />
+<script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
+<script src="~/Content/html2canvas.js"></script>
+
+<script>
+    var $j = jQuery.noConflict(true);
+</script>
+
+
+<script type="text/javascript">
+       function getUrlVars() {
+           var vars = {};
+           var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+               vars[key] = value;
+           });
+           return vars;
+       }
+</script>
+
+<script>
+    $j(document).ready(function () {
+        document.body.style.overflow = 'hidden';
+        var id = getUrlVars()["DieReqId"];
+        $j.ajax({
+            url: "../DieRequisitionApproval/GetOneDieRequisitionApproval",
+            type: "POST",
+            dataType: "json",
+            data: { DieReqId: id },
+            success: function (data) {
+                $("#lblDieNumber").text((data[0].DieNumber));
+                $("#lblWONumber").text(data[0].WorkorderNumber);
+                $("#lblReqDate").text(jsondateformatconvert(data[0].ReqDate));
+                $("#lblDescription").text((data[0].Description));
+                $("#lblRemark").text((data[0].Remark));
+            }
+        });
+    });
+</script>
+
+<script>
+
+    $j("#Approve").click(function () {
+
+        //if (confirm('Are you sure you want to Approve this Raw Material?')) {
+
+        //} else {
+
+        //}
+        // Save it!
+        var id = getUrlVars()["DieReqId"];
+
+        $j.ajax({
+            url: "../DieRequisitionApproval/ApproveDie",
+            type: "POST",
+            dataType: "json",
+            data: { DieReqId: id },
+            success: function (data) {
+                alert(data);
+                location.href = '@Url.Action("DieRequisitionList", "DieRequisitionApproval")';
+            }
+        });
+    });
+
+
+    $j("#Reject").click(function () {
+        //if (confirm('Are you sure you want to Reject this Raw Material?')) {
+
+        //} else {
+
+        //}
+        // Save it!
+        $j('#CommentForApproval').hide();
+        var CommentFor = $j('#Comment').val();
+        var id = getUrlVars()["DieReqId"];
+        $j.ajax({
+            url: "../DieRequisitionApproval/RejectDie",
+            type: "POST",
+            dataType: "json",
+            data: { DieReqId: id, Comment: CommentFor },
+            success: function (data) {
+                alert(data);
+                location.href = '@Url.Action("DieRequisitionList", "DieRequisitionApproval")';
+            }
+        });
+    });
+</script>
+
+<script>
+        function jsondateformatconvert(jsondate) {
+            var MyDate_String_Value = jsondate;
+            var value = new Date
+            (
+            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+            );
+            var date = value.getDate();
+            if (date < 10) {
+                date = "0" + date;
+            } else {
+                date = date;
+            }
+            var month = value.getMonth() + 1;
+            if (month < 10) {
+                month = "0" + month;
+            } else {
+                month = month;
+            }
+            var year = value.getFullYear();
+            var dat = date + "-" + month + "-" + year;
+            return dat;
+        }
+</script>

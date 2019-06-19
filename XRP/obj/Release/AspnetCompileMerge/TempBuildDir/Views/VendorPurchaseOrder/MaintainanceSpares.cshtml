@@ -1,0 +1,686 @@
+﻿@model XRP.Models.ssmtbl_VendorPurchaseOrderModel
+@{
+    ViewBag.Title = "Maintainance Spares";
+    ViewBag.Active = "Purchase";
+    ViewBag.Active1 = "Vendor Purchase Order";
+    ViewBag.Active2 = "MaintainanceSpares";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (Html.BeginForm("MaintainanceSpares", "VendorPurchaseOrder", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            <i class="icon-database"></i>
+                            Vendor Purchase Order
+                        </h4>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllVendorPurchaseOrder","VendorPurchaseOrder")'><i class="icon icon-home2"></i>All Vendor Purchase Order</a>
+
+                        </li>
+                        @*<li>
+                                <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
+                            </li>*@
+                        <li class="float-right">
+                            <a class="nav-link active" href='#'><i class="icon icon-plus-circle"></i> New Maintainance Spares Vendor Purchase Order</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        @Html.HiddenFor(model => model.po_char, new { @id = "po_char" })
+        @Html.HiddenFor(model => model.po_id, new { @id = "po_id" })
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="animated fadeInUpShort">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <form action="#">
+                            <div class="card no-b  no-r">
+                                <div class="card-body">
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.po_no, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.po_no, null, new { @class = "form-control r-0 light s-12 ", id = "po_no" })
+                                            @Html.ValidationMessageFor(model => model.po_no, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.quotation_ref_no, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.quotation_ref_no, null, new { @class = "form-control r-0 light s-12 ", id = "quotation_ref_no" })
+                                            @Html.ValidationMessageFor(model => model.quotation_ref_no, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.quotation_ref_date, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.quotation_ref_date, "{0:dd-MMM-yyyy}", new { @class = "form-control r-0 light s-12 datepicker", id = "quotation_ref_date" })
+                                            @Html.ValidationMessageFor(model => model.quotation_ref_date, null, new { @class = "alert-danger" })
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.po_date, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.po_date, "{0:dd-MMM-yyyy}", new { @class = "form-control r-0 light s-12 datepicker", id = "po_date" })
+                                            @Html.ValidationMessageFor(model => model.po_date, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.valid_date, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.valid_date, "{0:dd-MMM-yyyy}", new { @class = "form-control r-0 light s-12 datepicke", id = "valid_date" })
+                                            @Html.ValidationMessageFor(model => model.valid_date, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.file_path, new { @class = "Label" })
+                                            <input type="file" id="myfile" name="myfile" />
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.vendor_name, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.vendor_name, null, new { @class = "form-control r-0 light s-12 ", id = "vendor_name", onchange = "clearvendordetails();", onkeyup = "this.onchange();", onpaste = "this.onchange();", oninput = "this.onchange();" })
+                                            @Html.Hidden("vendor_id", new { @id = "vendor_id" })
+                                            @Html.ValidationMessageFor(model => model.vendor_name, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.vendor_email, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.vendor_email, null, new { @class = "form-control r-0 light s-12 r", id = "vendor_email" })
+                                            @Html.ValidationMessageFor(model => model.vendor_email, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.vendor_mobile, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.vendor_mobile, null, new { @class = "form-control r-0 light s-12 ", id = "vendor_mobile" })
+                                            @Html.ValidationMessageFor(model => model.vendor_mobile, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.GSTIN, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.GSTIN, null, new { @class = "form-control r-0 light s-12 ", id = "GSTIN" })
+                                            @Html.ValidationMessageFor(model => model.GSTIN, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.PAN, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.PAN, null, new { @class = "form-control r-0 light s-12 ", id = "PAN" })
+                                            @Html.ValidationMessageFor(model => model.PAN, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.contact_person, new { @class = "Label" })
+                                            @Html.HiddenFor(model => model.contact_person_id, new { @id = "contact_person_id" })
+                                            @Html.DropDownListFor(model => model.contact_person, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control r-0 light s-12 ", id = "contact_person" })
+                                            @Html.ValidationMessageFor(model => model.contact_person, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.contact_person_email, new { @class = "Label" })
+                                            @Html.DropDownListFor(model => model.contact_person_email, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control r-0 light s-12 r", id = "contact_person_email" })
+                                            @Html.ValidationMessageFor(model => model.contact_person_email, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.contact_person_mobile, new { @class = "Label" })
+                                            @Html.DropDownListFor(model => model.contact_person_mobile, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control r-0 light s-12 ", id = "contact_person_mobile" })
+                                            @Html.ValidationMessageFor(model => model.contact_person_mobile, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Code</th>
+                                            <th>Description</th>
+                                            <th>Qty</th>
+                                            <th>Rate/Per</th>
+                                            <th>Rate</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="text" name="ItemCodeM" class="form-control r-0 light s-12" id="ItemCodeM" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="ItemDescriptionM" class="form-control r-0 light s-12" id="ItemDescriptionM" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="QtyM" class="form-control r-0 light s-12" id="QtyM" />
+                                            </td>
+                                            <td>
+                                                @Html.DropDownList("RatePerM", @ViewBag.RatePer as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", id = "RatePerM" })
+                                            </td>
+                                            <td>
+                                                <input type="text" name="RateM" class="form-control r-0 light s-12" id="RateM" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="AmountM" class="form-control r-0 light s-12" id="AmountM" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <button type="button" id="btnAdd" class="btn-sm btn-primary classAdd"><i class="icon-add"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-hover" id="maintable">
+
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                                <div class="card-body">
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-2 m-0">
+                                            @Html.LabelFor(model => model.cgst_perc, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.cgst_perc, null, new { @class = "form-control r-0 light s-12 ", id = "cgst_perc" })
+                                            @Html.ValidationMessageFor(model => model.cgst_perc, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-2 m-0">
+                                            @Html.Label("T", new { @class = "Label", @style = "color:white" })
+                                            @Html.TextBoxFor(model => model.cgst_amt, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", id = "cgst_amt" })
+                                            @Html.ValidationMessageFor(model => model.cgst_amt, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-2 m-0">
+                                            @Html.LabelFor(model => model.sgst_perc, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.sgst_perc, null, new { @class = "form-control r-0 light s-12 ", id = "sgst_perc" })
+                                            @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-2 m-0">
+                                            @Html.Label("Total", new { @class = "Label", @style = "color:white" })
+                                            @Html.TextBoxFor(model => model.sgst_amt, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", id = "sgst_amt" })
+                                            @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-2 m-0">
+                                            @Html.LabelFor(model => model.igst_perc, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.igst_perc, null, new { @class = "form-control r-0 light s-12 ", id = "igst_perc" })
+                                            @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-2 m-0">
+                                            @Html.Label("Total", new { @class = "Label", @style = "color:white" })
+                                            @Html.TextBoxFor(model => model.igst_amt, null, new { @class = "form-control r-0 light s-12 r", @readonly = "readonly", id = "igst_amt" })
+                                            @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.total, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.total, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", id = "total" })
+                                            @Html.ValidationMessageFor(model => model.total, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.grand_total, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.grand_total, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly", id = "grand_total" })
+                                            @Html.ValidationMessageFor(model => model.grand_total, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body" align="right">
+
+                                    @*<a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-sm "><i class="icon-amused-face mr-2"></i>Terms & Condition</a>*@
+                                    <button type="submit" name="Save" value="Save" class="btn btn-primary btn-default btn-sm" id="Save"><i class="icon-save mr-2"></i>Save</button>
+                                    <button type="reset" name="Save" value="Reset" class="btn btn-success btn-default btn-sm">
+                                        <i class="icon-refresh mr-2"></i>Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            &nbsp;
+
+            <!-- MODAL TERMS AND CONDITION-->
+        
+            <div id="divwarn" class="warning">
+                <label id="lbl_validation"></label>
+            </div>
+        </div>
+
+    </fieldset>
+
+    
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+    var $j = jQuery.noConflict(true);
+
+    $j(document).ready(function () {
+        $j(document).on("click", ".classAdd", function () { //
+
+            var ItemCodeM = $j('#ItemCodeM').val();
+            var ItemDescriptionM = $j('#ItemDescriptionM').val();
+            var QtyM = $j('#QtyM').val();
+            var RatePerM = $j('#RatePerM').val();
+            var RateM = $j('#RateM').val();
+            var AmountM = $j('#AmountM').val();
+
+            //alert(store_id);
+
+            var rowCount = $j('.data-contact-person').length + 1;
+            //var contactdiv = $('.data-contact-person');
+            var contactdiv = '<tr class="data-contact-person">' +
+                '<td><input type="text" name="i_code' + rowCount + '" class="form-control r-0 light s-12  i_code01" value="' + ItemCodeM + '" readonly="readonly"/></td>' +
+                '<td><input type="text" name="i_desc' + rowCount + '" class="form-control r-0 light s-12  i_desc01" value="' + ItemDescriptionM + '" readonly="readonly"/></td>' +
+                '<td><input type="text" name="qty' + rowCount + '" class="form-control r-0 light s-12  qty01" value="' + QtyM + '" readonly="readonly"/></td>' +
+                '<td><input type="text" name="rate_per' + rowCount + '" class="form-control r-0 light s-12  rate_per01" value="' + RatePerM + '" readonly="readonly"/></td>' +
+                '<td><input type="text" name="rate' + rowCount + '" class="form-control r-0 light s-12  rate01" value="' + RateM + '" readonly="readonly"/></td>' +
+                '<td><input type="text" name="amount' + rowCount + '" class="form-control r-0 light s-12  amount01" value="' + AmountM + '" readonly="readonly"/></td>' +
+                //'<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add More</button>' +
+                '<td><button type="button" id="btnDelete" class="deleteContact btn-danger btn-sm" onclick="Remove(this);"><i class="icon-remove"></i></button></td>' +
+                '</tr>';
+            //alert(contactdiv);
+            $j('#maintable').append(contactdiv); // Adding these controls to Main table class
+            // Clear Main Text Boxes And Combo Box
+            $j('#ItemCodeM').val("");
+            $j('#ItemDescriptionM').val("");
+            $j('#QtyM').val("");
+            $j('#RatePerM').val("");
+            $j('#RateM').val("");
+            $j('#AmountM').val("");
+            $j('#ItemCodeM').focus();
+            getSubTotal();
+            getNetTotal();
+        });
+
+
+
+        $j("#ItemCodeM").autocomplete({
+            source: function (request, response) {
+                var customer = new Array();
+                $j.ajax({
+                    url: "../VendorPurchaseOrder/getItemSearch",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+                        response($j.map(data, function (item) {
+                            return {
+                                label: item.Text,
+                                Id: item.Value
+                            }
+                        }));
+                    }
+                });
+            },
+            minLength: 1,
+            select: function (event, ui) {
+                $(this).val(ui.item.Id);
+                $j.ajax({
+                    url: "../VendorPurchaseOrder/getItemDetails",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: ui.item.label },
+                    success: function (data) {
+                        //console.log(data);
+                        $j('#ItemCodeM').val(data.code);
+                        $j('#ItemDescriptionM').val(data.desc);
+                        $j('#RateM').val(data.rate);
+                        $j('#QtyM').val('1');
+                        getSubTotal();
+                        getNetTotal();
+                        $j('#QtyM').focus();
+                    }
+                });
+            }
+        });
+
+
+
+        $j("#vendor_name").autocomplete({
+            source: function (request, response) {
+                var customer = new Array();
+                $j.ajax({
+                    url: "../VendorPurchaseOrder/getVendorName",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+                        response($j.map(data, function (item) {
+                            return {
+                                label: item.Text,
+                                Id: item.Value
+                            }
+                        }));
+                    }
+                });
+            },
+            minLength: 1,
+            select: function (event, ui) {
+                $(this).val(ui.item.label);
+
+                $j.ajax({
+                    url: "../VendorPurchaseOrder/getVendorDetails",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Id: ui.item.Id },
+                    success: function (data) {
+                        console.log(data);
+                        $('#vendor_name').val(data.Name);
+                        $('#vendor_email').val(data.Email_ID);
+                        $('#vendor_mobile').val(data.Mobile_No);
+                        $('#vendor_id').val(data.Id);
+                        $('#GSTIN').val(data.GSTIN);
+                        $('#PAN').val(data.PAN);
+                    }
+                });
+
+                $j.ajax({
+                    url: "../VendorPurchaseOrder/getVendorContactPerson",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: ui.item.Id },
+                    success: function (data) {
+                        console.log(data);
+
+                        var select = document.getElementById("contact_person_email");
+                        var length = select.options.length;
+                        for (i = 0; i < length; i++) {
+                            select.options[i] = null;
+                        }
+
+                        var selectmob = document.getElementById("contact_person_mobile");
+                        var length = selectmob.options.length;
+                        for (i = 0; i < length; i++) {
+                            selectmob.options[i] = null;
+                        }
+
+                        var selectcp = document.getElementById("contact_person");
+                        var length = selectcp.options.length;
+                        for (i = 0; i < length; i++) {
+                            selectcp.options[i] = null;
+                        }
+
+
+                        for (var i = 0; i < data.length; i++) {
+                            //var optemail = new Option(data[i].Value, data[i].Value);
+                            //$('#email').append(optemail);.
+
+                            var optcp = new Option(data[i].contactpersonname, data[i].contactpersonname);
+                            $('#contact_person').append(optcp);
+
+                            var optcp = new Option(data[i].email, data[i].email);
+                            $('#contact_person_email').append(optcp);
+
+                            var optcp = new Option(data[i].mob, data[i].mob);
+                            $('#contact_person_mobile').append(optcp);
+                        }
+                    }
+                });
+            }
+        });
+
+
+        $j("#contact_person").change(function () {
+            var contPers = new $j("#contact_person").val();
+            var venId = new $j("#vendor_id").val();
+            $j.ajax({
+                url: "../VendorPurchaseOrder/getVendorContactPersonDetails",
+                type: "POST",
+                dataType: "json",
+                data: { Prefix: venId, contactPName: contPers },
+                success: function (data) {
+                    console.log(data);
+
+                    var select = document.getElementById("contact_person_email");
+                    var length = select.options.length;
+                    for (i = 0; i < length; i++) {
+                        select.options[i] = null;
+                    }
+
+                    var selectmob = document.getElementById("contact_person_mobile");
+                    var length = selectmob.options.length;
+                    for (i = 0; i < length; i++) {
+                        selectmob.options[i] = null;
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        //var optemail = new Option(data[i].Value, data[i].Value);
+                        //$('#email').append(optemail);.
+
+                        var optcp = new Option(data[i].email, data[i].email);
+                        $('#contact_person_email').append(optcp);
+
+                        var optcp = new Option(data[i].mob, data[i].mob);
+                        $('#contact_person_mobile').append(optcp);
+                    }
+                }
+            });
+        });
+
+    });
+
+
+    function getSubTotal() {
+        var quty = $('#QtyM').val();
+        var cost = $('#RateM').val();
+        var stot = parseFloat(quty) * parseFloat(cost);
+        $('#AmountM').val(stot);
+    }
+
+    $j('#QtyM').focusout(function () {
+        getSubTotal();
+        getNetTotal();
+    });
+
+    $j('#RateM').focusout(function () {
+        getSubTotal();
+        getNetTotal();
+    });
+
+    $j('#cgst_perc').focusout(function () {
+        getSubTotal();
+        getNetTotal();
+    });
+
+    $j('#sgst_perc').focusout(function () {
+        getSubTotal();
+        getNetTotal();
+    });
+
+    $j('#igst_perc').focusout(function () {
+        getSubTotal();
+        getNetTotal();
+    });
+
+
+
+    function getNetTotal() {
+        var data = [];
+        var net_tot = "0";
+        $j('tr.data-contact-person').each(function () {
+            //alert('m');
+            var quty = $j(this).find('.qty01').val();//Bind to the uantity with class qty01
+            var cost = $j(this).find('.rate01').val();//Bind to the cost price with class rate01
+            var sub_tot = $j(this).find('.amount01').val();//Bind to the sub total with class amount01
+            var stot = parseFloat(quty) * parseFloat(cost);
+            $j(this).find('.amount01').val(parseFloat(stot));
+            var net_t = $j(this).find('.amount01').val();;
+            net_tot = parseFloat(net_tot) + parseFloat(net_t);
+        });
+        $j('#total').val(parseFloat(net_tot));
+        $j('#grand_total').val(parseFloat(net_tot));
+
+        var cgst_perc1 = $j('#cgst_perc').val();
+        if (cgst_perc1 != '') {
+            var cgst_amt1 = (parseFloat($j('#total').val()) * parseFloat(cgst_perc1)) / 100;
+            $j('#cgst_amt').val(parseFloat(cgst_amt1));
+
+
+            net_tot = parseFloat(net_tot) + parseFloat(cgst_amt1);
+            $j('#grand_total').val(net_tot);
+        }
+
+        var sgst_perc1 = $j('#sgst_perc').val();
+        if (sgst_perc1 != '') {
+            var sgst_amt1 = (parseFloat($j('#total').val()) * parseFloat(sgst_perc1)) / 100;
+            $j('#sgst_amt').val(parseFloat(sgst_amt1));
+
+            net_tot = parseFloat(net_tot) + parseFloat(sgst_amt1);
+            $j('#grand_total').val(net_tot);
+        }
+
+        var igst_perc1 = $j('#igst_perc').val();
+        if (igst_perc1 != '') {
+            var igst_amt1 = (parseFloat($j('#total').val()) * parseFloat(igst_perc1)) / 100;
+            $j('#igst_amt').val(parseFloat(igst_amt1));
+
+            net_tot = parseFloat(net_tot) + parseFloat(igst_amt1);
+            $j('#grand_total').val(net_tot);
+        }
+
+    }
+
+
+    function Remove(button) {
+        //Determine the reference of the Row using the Button.
+        var row = $(button).closest("tr");
+        var name = $("td", row).eq(0).html();
+        if (confirm("Do you want to delete: " + name)) {
+
+            //Get the reference of the Table.
+            var table = $("#maintable")[0];
+
+            //Delete the Table row using it's Index.
+            table.deleteRow(row[0].rowIndex);
+
+            getNetTotal();
+        }
+    };
+
+
+    function getAllVendorPODetailsData() {
+        var data = [];
+        $j('tr.data-contact-person').each(function () {
+            //alert('m');
+            var i_code = $j(this).find('.i_code01').val();//Bind to the item code with class i_code01
+            var i_desc = $j(this).find('.i_desc01').val();//Bind to the item description with class i_desc01
+            var qty = $j(this).find('.qty01').val();//Bind to the quantity with class qty01
+            var rateper = $j(this).find('.rate_per01').val();//Bind to the rate with class rate_per01
+            var rate = $j(this).find('.rate01').val();//Bind to the rate with class rate01
+            var amount = $j(this).find('.amount01').val();//Bind to the amount with class amount01
+            var alldata = {
+                'item_code': i_code, //item_code as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                'item_description': i_desc, //item_description as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                'qty': qty, //qty as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                'rate': rate, //rate as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                'rate_per': rateper, //rate_per as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                'amount': amount //amount as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+            }
+            data.push(alldata);
+        });
+        console.log(data);//
+        return data;
+    }
+
+
+    function getAllVendorPOData() {
+        var data = [];
+        var store_id = $j('#store_id').val();
+        var vendor_id = $('#vendor_id').val();
+        var po_char = $('#po_char').val();
+        var po_no = $('#po_no').val();
+        var po_details = $('#po_details').val();
+        var po_date = $('#po_date').val();
+        var tax_percentage = $('#tax_percentage').val();
+        var tax_amount = $('#tax_amount').val();
+        var net_total = $('#net_total').val();
+        var advance_amount = $('#advance_amount').val();
+        var balance_amount = $('#balance_amount').val();
+        var remarks = $('#remarks').val();
+        //alert(dateFormat(po_date, "mm/dd/yyyy HH:MM:ss"));
+
+        var alldata = {
+            'po_no': $j('#po_no').val(),
+            'quotation_ref_no': $j('#quotation_ref_no').val(),
+            'quotation_ref_date': $j('#quotation_ref_date').val(),
+            'vendor_name': $j('#vendor_name').val(),
+            'vendor_email': $j('#vendor_email').val(),
+            'vendor_mobile': $j('#vendor_mobile').val(),
+            'po_date': $j('#po_date').val(),
+            'valid_date': $j('#valid_date').val(),
+            'contact_person': $j('#contact_person').val(),
+            'contact_person_email': $j('#contact_person_email').val(),
+            'contact_person_mobile': $j('#contact_person_mobile').val(),
+            'total': $j('#total').val(),
+
+            'cgst_perc': $j('#cgst_perc').val(),
+            'cgst_amt': $j('#cgst_amt').val(),
+            'sgst_perc': $j('#sgst_perc').val(),
+            'sgst_amt': $j('#sgst_amt').val(),
+            'igst_perc': $j('#igst_perc').val(),
+            'igst_amt': $j('#igst_amt').val(),
+            'grand_total': $j('#grand_total').val()
+
+        }
+        //data.push(alldata);
+        //console.log(data);//
+        return alldata;
+    }
+
+
+
+
+
+
+
+
+    $("#btnSubmit").click(function (e) {
+
+        //$('#message-box-success').modal('toggle');
+
+        e.preventDefault(); // <------------------ stop default behaviour of button
+        var element = this;
+
+        var data = JSON.stringify(getAllVendorPOData());
+        var detailsdata = JSON.stringify(getAllVendorPODetailsData());
+
+        //$('#btnDiv').html('<p><center>Processing, please wait...<img src="../../NewCssAndTheme/img/loading.gif" style="height: 70px; width: 70px; "/></center></p>');
+        console.log(data);
+
+        $.ajax({
+            url: '@Url.Action("Consumables", "VendorPurchaseOrder")',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({ 'vpodata': data, 'vpodetailsdata': detailsdata }),
+                success: function (sdata) {
+                    console.log(sdata);
+                    $(element).closest("form").submit();
+                    //$('#btnDiv').hide();
+                    //$('#message-box-success').modal('toggle');
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                    //$('#btnDiv').hide();
+                    //$('#message-box-danger').modal('toggle');
+                }
+            });
+    });
+
+
+    </script>
+
+}
+

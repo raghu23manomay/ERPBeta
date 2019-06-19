@@ -1,0 +1,451 @@
+﻿@model XRP.Models.ssmtbl_QuotationModel
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+@using (Html.BeginForm("QuotationViewForDownload", "Quotation", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+<div style="border-width: 2px; border-style: solid; border-color: black; overflow:auto;height:100%; width:100%;" id="printpdfdiv">
+
+    <div id="printpdf">
+
+        @Html.HiddenFor(m => m.QuotationNo)
+        @Html.HiddenFor(m => m.VersionNo)
+        @Html.HiddenFor(m => m.new_Version_No)
+        
+        @Html.HiddenFor(m => m.InquiryNo)
+        @Html.HiddenFor(m => m.CreatedOn, new { @id="CreatedOn"})
+
+
+        <table align="center">
+            <tr>
+
+                <td><img src="~/NewCssAndTheme/img/ssmlogo.jpg" height="42" width="42" alt="" /><b>SHREE SIDDHESHWARI METAL FORGING PRIVATE LIMITED</b> </td>
+            </tr>
+            <tr>
+                <td align="center">J-489/490,M.I.D.C BHOSARI, PUNE-26</td>
+            </tr>
+            <tr>
+                <td>Email - admin@ssmforge.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tel: 020-27130120</td>
+
+
+            </tr>
+        </table>
+        <hr />
+        <br />
+        <center>QUOTATION</center>
+        <hr />
+        <hr />
+        <table style="width:100%;">
+            <tr>
+                <td align="left">
+                    Quotation Number:- @Html.DisplayFor(m => m.QuotationNo)
+                </td>
+                @*<td align="right">Rivision Number:-@Html.DisplayFor(m => m.VersionNo)</td>*@
+                <td align="right">Rivision Number:-@Html.DisplayFor(m => m.new_Version_No)</td>
+            </tr>
+            <tr>
+                <td align="left">
+                    File Status:- @Html.DisplayFor(m => m.FileStatus)
+                </td>
+                <td align="right">
+                    Date:- @(Model.CreatedOn == null ? "" : ((DateTime)Model.CreatedOn).ToString("dd/MMM/yyyy"))
+                </td>
+            </tr>
+        </table>
+
+        <table border="1" style="width:100%">
+            <tr>
+                <td width="25px">
+                    <b>I</b>
+                </td>
+                <td>
+                    Part Description: @Html.DisplayFor(m => m.PartDescription)<br />
+                    Material: @Html.DisplayFor(m => m.Material)<br />
+                    Customer: @Html.DisplayFor(m => m.CustomerName)
+                </td>
+                <td>
+                    Part No: @Html.DisplayFor(m => m.PartNo)<br />
+                    Heat Treatment: @Html.DisplayFor(m => m.HeatTreatmentText)<br />
+                    @*Ref No:<span id='refno_pdf'></span>*@
+                </td>
+            </tr>
+        </table>
+        <table border="1" style="width:100%">
+            <tr>
+                <td width="25px">
+                    <b>II</b>
+                </td>
+                <td>
+                    <u>Component Weight Deatils</u><br />
+                    @*Section*@<span id='section_pdf1' style="display:none;"></span>     <br />
+                    Gross Weight(kg) @Html.DisplayFor(m => m.GrossWeight)     <br />
+                    Cut Weight(kg)  @Html.DisplayFor(m => m.CutWeight) <br />
+                    Forged Net Weight(kg) @Html.DisplayFor(m => m.NetWeight)
+
+                </td>
+
+            </tr>
+
+        </table>
+        <table border="1" style="width:100%">
+            <tr>
+                <td rowspan="6" width="25px"><b>III</b></td>
+
+
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <u>Raw Material Cost Details</u><br />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Particulars</b></td>
+                <td><b>Basic Rate(Rs/kg)</b></td>
+                @*<td><b>Calculated On</b></td>*@
+
+                <td><b>NetCost(Rs)</b></td>
+
+            </tr>
+            <tr>
+                <td>SteelCost</td>
+                <td>@Html.DisplayFor(m => m.SteelCost)</td>
+                <td rowspan="2"></td>
+                @*<td rowspan="2"></td>*@
+            </tr>
+            <tr>
+                <td>Transpotation</td>
+                <td>@Html.DisplayFor(m => m.Transportation)</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td>@Html.DisplayFor(m => m.Total)</td>
+                @*<td>Gross Weight</td>*@
+                <td>@Html.DisplayFor(m => m.TotalRowMaterialCost)</td>
+            </tr>
+
+        </table>
+        <br />
+        <hr />
+        <table border="1" style="width:100%">
+            <tr>
+                <td rowspan="14" width="25px"><b>IV</b></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <u>Conversion Rate Details</u><br />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Particulars</b></td>
+                <td><b>Basic Rate(Rs/kg)</b></td>
+                @*<td><b>Calculated On</b></td>*@
+                <td><b>NetCost(Rs)</b></td>
+
+
+            </tr>
+            <tr id="qpdf1_1" name="qpdf1_1" style="display:none;">
+                <td>Cutting</td>
+                <td>@Html.DisplayFor(m => m.CuttingSquare1)</td>
+                @*<td></td>*@
+                <td>@Html.DisplayFor(m => m.CuttingSquare2)</td>
+            </tr>
+            <tr id="qpdf1_2" name="qpdf1_2" style="display:none;">
+                <td>Forging</td>
+                <td>@Html.DisplayFor(m => m.Forging1)</td>
+                @*<td></td>*@
+                <td>@Html.DisplayFor(m => m.Forging1)</td>
+            </tr>
+            <tr id="qpdf1_3" name="qpdf1_3" style="display:none;">
+                <td>Heat Treatment</td>
+                <td>@Html.DisplayFor(m => m.HeatTreatment1)</td>
+                @*<td></td>*@
+                <td>@Html.DisplayFor(m => m.HeatTreatment1)</td>
+            </tr>
+            <tr id="qpdf1_4" name="qpdf1_4" style="display:none;">
+                <td>Shot Blasting</td>
+                <td>@Html.DisplayFor(m => m.ShotBlasting1)</td>
+                @*<td></td>*@
+                <td>@Html.DisplayFor(m => m.ShotBlasting2)</td>
+            </tr>
+            <tr id="qpdf1_5" name="qpdf1_5" style="display:none;">
+                <td>MPI</td>
+                <td>@Html.DisplayFor(m => m.MPI1)</td>
+                @*<td></td>*@
+                <td>
+                    @Html.DisplayFor(m => m.MPI2)
+                </td>
+            </tr>
+            <tr id="qpdf1_13" name="qpdf1_13" style="display:none;">
+                <td>Grinding(Per Piece)</td>
+                <td>@Html.DisplayFor(m => m.Grinding1)</td>
+                @*<td></td>*@
+                <td>
+                    @Html.DisplayFor(m => m.Grinding2)
+                </td>
+            </tr>
+            <tr id="qpdf1_14" name="qpdf1_14" style="display:none;">
+                <td>ColdCoining(Per Piece)</td>
+                <td>@Html.DisplayFor(m => m.ColdCoining1)</td>
+                @*<td></td>*@
+                <td>
+                    @Html.DisplayFor(m => m.ColdCoining2)
+                </td>
+            </tr>
+            <tr id="qpdf1_15" name="qpdf1_15" style="display:none;">
+                <td>Machaining(Per Piece)</td>
+                <td>@Html.DisplayFor(m => m.Machining1)</td>
+                @*<td></td>*@
+                <td>
+                    @Html.DisplayFor(m => m.Machining2)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Die Maintaince Cost(Per Piece):</td>
+                <td>@Html.DisplayFor(m => m.DieMaintenance1)</td>
+                <td>@Html.DisplayFor(m => m.DieMaintenance2)</td>
+            </tr>
+
+            <tr id="qpdf1_diecostinclude" name="qpdf1_diecostinclude" style="display:none">
+                <td><span id="spn_dcincludepdf1" style="display:none;">Initial Die Cost:</span><span id="spn_dmcincludepdf1" style="display:none;">Initial Die Cost:</span></td>
+                <td></td>
+                @*<td></td>*@
+                <td><span id='dienetcost_pdf1'></span></td>
+            </tr>
+            <tr>
+                <td colspan="2">Total Coversion Cost</td>
+                <td>@Html.DisplayFor(m => m.TotalConverstionCost)</td>
+            </tr>
+        </table>
+        <br />
+        <hr />
+        <table border="1" style="width:100%">
+            <tr>
+                <td width="25px"><b>V</b></td>
+                <td>Total Component Cost(III+IV)</td>
+                <td>@Html.DisplayFor(m => m.TotalComponentCost)</td>
+            </tr>
+        </table>
+        <br />
+        <hr />
+        <table border="1" style="width:100%">
+
+            @*<tr id="trinitialdiecost" style="display:none;">
+                    <td width="25px"><b>VI</b></td>
+                    <td>Initial Die Cost:</td>
+
+                    <td><span id="spn_initialdiecost_pdftr"></span></td>
+
+
+                </tr>*@
+            <tr>
+                <td width="25px"><b>VI</b></td>
+                <td>Initial Die Cost:</td>
+                <td>@Html.DisplayFor(m => m.InitialDieCost)</td>
+            </tr>
+
+        </table>
+        <br />
+        <hr />
+        Terms And Conditions:<br />
+        <div id="divtcnotes1">
+            @if (Model.ssmtbl_TermsNCondtionModel != null)
+            {
+                foreach (var data in Model.ssmtbl_TermsNCondtionModel)
+                {
+            <p>@data.TermsNConditionContent</p>
+                }
+            }
+        </div>
+        <hr />
+        <table border="1" style="width:100%">
+            <tr>
+                <td align="left">Prepared By: @Html.DisplayFor(m => m.Createdby)</td>
+                <td align="right">Approved By: @Html.DisplayFor(m => m.ApprovedBy)</td>
+            </tr>
+            <tr>
+                <td align="left">Prepared Date: @(Model.CreatedOn == null ? "" : ((DateTime)Model.CreatedOn).ToString("dd/MMM/yyyy"))</td>
+                <td align="right">Approved Date: @(Model.ApprovalDate == null ? "" : ((DateTime)Model.ApprovalDate).ToString("dd/MMM/yyyy"))</td>
+            </tr>
+        </table>
+        <p align="right"><b>MK/FM-04</b></p>
+        <p align="right"><b>This document is autogenerated</b></p>
+
+
+
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-md-4">
+                    @Html.Label("Comment")
+                </div>
+                <div class="col-md-8">
+                    @Html.TextArea("Comment", null, new { @class = "form-control", @id = "Comment" })
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    @Html.HiddenFor(m => m.id, new { @id = "id" })
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group" style="text-align:center">
+                <a href="@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" })" class="btn btn-default btn-info">Generate PDF</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+}
+
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+@*  <script src="~/Content/jspdf.debug.js"></script>
+    <script src="~/Content/jspdf.min.js"></script>
+
+    <script src="~/Content/html2canvas.js"></script>*@
+
+<script>
+    var $j = jQuery.noConflict(true);
+</script>
+
+<script type="text/javascript">
+
+
+    function Download() {
+
+        var download = $j('#id').val();
+
+        $j.ajax({
+            url: "../Quotation/QuotationPDF",
+            type: "POST",
+            dataType: "json",
+            data: { QuotationId: download },
+            success: function (data) {
+                alert(data);
+                parent.$j.fancybox.close();
+            }
+        });
+    };
+
+    $j(document).ready(function () {
+
+        $j("#Download").click(function () {
+            
+            // Save it!
+            var quotid = $j('#id').val();
+          //  alert(quotid);
+            $j.ajax({
+                url: "../Quotation/QuotationPDF?QuotationId="+quotid,
+                type: "GET",
+                success: function (data) {
+                    alert(data);
+                    parent.$j.fancybox.close();
+                }
+            });
+
+        });
+
+
+
+
+
+        //Download();
+
+        //function Download() {
+
+        //    var filename = $j('#CreatedOn').val();
+
+        //    html2canvas(document.getElementById("printpdf"), {
+        //        onrendered: function (canvas) {
+
+        //            var imgData = canvas.toDataURL('image/png');
+        //            console.log('Report Image URL: ' + imgData);
+        //            var doc = new jsPDF('p', 'mm'); //210mm wide and 297mm high
+
+        //            doc.addImage(imgData, 'PNG', 10, 10);
+
+        //            doc.save(filename + ".pdf");
+
+        //        }
+        //    });
+
+        //};
+
+
+
+
+
+
+
+        //function Download() {
+
+        //    var download = $j('#id').val();
+
+        //        //pdf download start
+        //    var div = document.getElementById("printpdfdiv");
+        //        //alert(div);
+        //        div.style.display = "block";
+        //        var doc = new jsPDF('p', 'mm');
+        //        doc.addHTML($j('#printpdf')[0], 0,0, {
+        //            'background': '#fff',
+        //        }, function () {
+        //            doc.save(filename + '.pdf');
+        //        });
+
+        //        //div.style.display = "none";
+        //        //pdf download complete
+
+        //};
+
+
+
+
+
+
+        //$j("#Download").click(function () {
+        //    ////pdf download start
+        //    //var div = document.getElementById("printpdf");
+        //    ////alert(div);
+        //    //div.style.display = "block";
+        //    //var doc = new jsPDF('p', 'mm', [600, 500]);
+        //    //doc.addHTML($j('#printpdf')[0], 10, 10, {
+        //    //    'background': '#fff',
+        //    //}, function () {
+        //    //    doc.save('Quotation.pdf');
+        //    //});
+
+        //    ////div.style.display = "none";
+        //    ////pdf download complete
+        //    var filename = $j('#CreatedOn').val();
+
+        //    html2canvas(document.getElementById("printpdf"), {
+        //        onrendered: function (canvas) {
+
+        //            var imgData = canvas.toDataURL('image/png');
+        //            console.log('Report Image URL: ' + imgData);
+        //            var doc = new jsPDF('p', 'mm', [400, 210]); //210mm wide and 297mm high
+
+        //            doc.addImage(imgData, 'PNG', 10, 10);
+
+        //            doc.save(filename + ".pdf");
+
+        //        }
+        //    });
+
+        //});
+
+    });
+
+</script>
+
+

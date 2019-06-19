@@ -1,0 +1,186 @@
+﻿@{
+    ViewBag.Title = "AllDailyConsumptions";
+    ViewBag.Active = "Stock";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+<style>
+    .tdwidth {
+        width: 50px;
+        padding-left: 2px;
+        text-align: right;
+    }
+</style>
+
+@using (Html.BeginForm("AllDailyConsumptions", "DailyConsumptions", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <h4>
+                    <i class="icon-database"></i>
+                    Daily Consumptions
+                </h4>
+
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>All Daily Consumptions</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <!-- PAGE TITLE -->
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="tab-content my-3" id="v-pills-tabContent">
+                <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                    @*<div class="row my-3">*@
+                    <div class="col-md-12">
+                        <div class="card r-0 shadow">
+                            @*<div class="table-responsive">*@
+                            <form action="">
+                                <!-- START DEFAULT DATATABLE -->
+                                <div class="panel panel-default">
+
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card mb-3 shadow no-b r-0">
+                                                    <div class="card-body">
+                                                        <div class="form-row">
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+                                                                <label class="Label" for="txtElectricity">Electricity</label>
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+
+                                                                <input class="form-control r-0 light s-12" id="txtElectricity"  type="text" placeholder="Enter Reading..">
+                                                             
+                                                            </div>
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+                                                                <label class="Label" for="txtWater">Water</label>
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+
+                                                                <input class="form-control r-0 light s-12" id="txtWater"  type="text" placeholder="Enter Reading..">
+                                                               
+                                                            </div>
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+                                                                <label class="Label" for="txtGas">Gas</label>
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+
+                                                                <input class="form-control r-0 light s-12" data-val="true" id="txtGas"  type="text" placeholder="Enter Reading..">
+                                                          
+                                                            </div>
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                               
+                                            </div>
+                                        </div>
+
+                                        <center>
+                                            
+
+                                            <div class="alert alert-warning" id="divwarn" style="display:none">
+                                                <strong>Warning!</strong> <label id="lbl_validation"></label>
+                                            </div>
+                                            <center>
+                                                <input type="button" name="Save" value="Save" class="btn btn-primary btn-sm" id="btn_Save" onclick="save();" />
+                                            </center>
+                                            <br />
+                                        </center>
+                                    </div>
+                                </div>
+                               
+                            </form>
+                           
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script src="~/Scripts/date.format.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+           
+        });
+       
+       
+
+
+      
+        function save() {
+            var userid=@Session["userid"];
+            var electricity = $("#txtElectricity").val();
+            var water = $("#txtWater").val();
+            var gas = $("#txtGas").val();
+            if (electricity== "") {
+                alert("Please Enter electricity details");
+                return false;
+            }
+            if (water=="" ) {
+                alert("Please Enter water details");
+                return false;
+            }
+            if (gas=="") {
+                alert("Please Enter gas details");
+                return false;
+            }
+           
+            $.ajax({
+                type: "POST",
+                url: "../DailyConsumptions/SaveDailyConsumptions",
+                data: JSON.stringify({ userid, electricity, water, gas}),
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (status) {
+                  
+                        alert("Data Saved Successfully");
+                        location.href = "@Url.Action("AllInquiry", "Inquiry")";
+                },
+                error: function (err) {
+
+                    alert('Error occured');
+                }
+            });
+        }
+    </script>
+}
+@*<script type='text/javascript' src="~/NewCssAndTheme/js/plugins/bootstrap/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/NewCssAndTheme/js/plugins/daterangepicker/daterangepicker.js"></script>*@

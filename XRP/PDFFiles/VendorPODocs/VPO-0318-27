@@ -1,0 +1,113 @@
+remove green border for Feasibility Operation Involved and Raw Materials
+Shift raw material on right side of 
+feasibility icon for Inquiry All
+On hover on button write Feasibility(Inquiry All)
+shift all button to right side in All Inquiry
+Add CutLength in Feasibility after CutWeight Not Mandatory
+Create one class for Status of Inquiry.
+In Inquiry Update there is close Inquiry button and having a comment box for closing inquiry/ Here put one alert also before closing
+Inquiry List Sort on Inquiry Date with Latest One
+
+approval Staus on top, ApprovalDate and ApprovedBy in bottom of View Part. for PO and Quotation both
+Comment should display in Main View Part for PO and Quotation both
+In po add CGST,IGST and SGST
+
+
+
+Forging Cost is based on selection of Net wt. Gross Wt and Cut Wt. (Multiply with weight and Forging cost)
+MPI is based on Net Wt or Per Piece (Net Weight * Amt if Net weight selected ) and (Per Piece Means Qty from Inquiry * Amt if selected Per Piece)
+
+Cutting = for dia (Pie/4)*(dia*dia)/25.4*25.4
+for rcs: (dia*dia)/25.4*25.4
+
+Total Raw Material Cost= (Steel Cost * Gross Weight) + Transportation
+Total component Cost= Total Raw Material Cost + Total conversion Cost
+
+
+manish.kumar@estarsoftware.com
+9163168846
+
+
+After PO Approval : Disable All controls
+After PO Rejection: User can edit all
+In Po Add Document Upload button
+In PO User can view after PO Approved
+
+
+In Quotation Main View At bottom Add /Approved By/ Rejected By / Filestatus(At top Beside Inquiry)
+
+
+
+
+-------------------
+
+Done 1. Add Approval / Rejection comment on Main Page.(Quotation)
+Done 2. Download Button on Quotation Approval View All Version.
+Done 3. Updation of Quotation: If click on checkbox (Create New Version) then Insert otherwise Update the existing data.
+Done 4. Add on emore column for Quotation Version No (i.e, Sequence of Inetger)(Display that number in header along with status)
+Done 5. There will be two comment for Quotation, Approval /Rejection Comment and Comment for creating new Version.
+Done 6. In PO: Add Button instead of check box for Same As Quotation, For that if your clicks ask with an alert to reset.
+Done Need To Discuss: 7. Add SSM_YYMM_InquiryNo instead of QuotationNo As (Q-1).
+show Version No in Quotation Main View.
+Done 8. Download of quotation will be like SSM_YYMM_CustomerName_InquiryNo_VersionNo.
+Done 9. In All Inquiry Remove Quotation Download Button, Add Download link in QuotationNo itself.
+Done 10. Do same as 9 for PO also.
+Done 11. In PO screen, we have to give a check for POQty Open or Closed. If Open Qty can be blank and closed Qty is mandatory.
+Done 12. Also can we have status text in inquiry list with some colors to identify different status. like red for rejection and green for approval. 
+You can decide the best.
+
+
+-------
+In PO no: VPO-MMYY-Number
+Give file upload control: not mandatory
+On selection of Vendor Name: Contact person will be populated. 
+On selection of contact person, email will be populated.
+Write a class file for the Rate/MT. Use only MT don't use Rate
+Item code will come from Stock-Consumables: 
+Master: Grade Materials
+Master: Section
+Outsourcing : Processes: will come from feasibility operations involved
+Add icon instead of Add and Remove in Consumables grid
+Add GSTN and PAN in CustomerVendorMaster_Tb
+Display both in 
+
+
+
+
+----- 
+In Goods Inward: No of bars
+
+
+DC-> Outsourcing-> GST No from Vendor Name selection populate VPONo: From there show GST CGST,IGST,SGST
+
+Update The WO Balance Qty In Job Dispatch
+
+
+GI -> Raw Material: Move PONo from bottom to Upper Side (Both Customer / Supplier)
+(Insert Qty to RM_Inventory Table Also)
+
+
+DC-> Lab Testing:  Open a popup from RM_Inventory With All Data, User will select one data or multiple it will fill up in the following table,
+user will enter quantity 
+(heat code, material grade, section (Type of section in popup only))
+
+
+
+Vendor Purchase Order: 
+Consumables: Insert/ Approval- Rejection Done. (PDF format pending)
+Raw Material: Insert/ Approval- Rejection Done. (PDF format pending)
+Outsourcing: Insert/ Approval- Rejection Done. (PDF format pending)
+Maintanance Spares: Pending
+
+Goods Inward:
+Consumables: Insert Done (Download/View Pending)
+Raw Material: Insert Done (Download/View Pending)
+Outsourcing:  Pending
+Repair: Pending
+Maintanance Spares: Pending
+
+Delivery Challan:
+Job Dispatch: Done.
+Outsourcing: Pending
+Lab Testing: Pending
+Repair: Pending

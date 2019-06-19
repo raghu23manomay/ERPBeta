@@ -1,0 +1,114 @@
+﻿@model XRP.Models.Paged_ssmtbl_VendorPurchaseOrderModel
+@using XRP.Global;
+@{
+    ViewBag.Title = "All Vendor Purchase Order";
+    ViewBag.Active = "Purchase";
+    ViewBag.Active1 = "Vendor Purchase Order";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+@using (Html.BeginForm("AllVendorPurchaseOrder", "VendorPurchaseOrder", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+
+   
+
+       <fieldset>
+
+        <!-- PAGE TITLE -->
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            <i class="icon-database"></i>
+                            Vendor Purchase Order
+                        </h4>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='#tab-first' role="tab" data-toggle="tab"><i class="icon icon-list"></i>Consumables</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href='#tab-second' role="tab" data-toggle="tab"><i class="icon icon-account_circle"></i> Raw Material</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href='#tab-third' role="tab" data-toggle="tab"><i class="icon icon--cloud-sun-fog2"></i>Outsourcing</a>
+                        </li>
+                        <li class="float-right">
+                            <a class="nav-link" href='#tab-fourth' role="tab" data-toggle="tab"><i class="icon icon-map-pin"></i>Maintanance Spares</a>
+                        </li>
+                      
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+           <div class="panel-body tab-content">
+               <div class="tab-pane active" id="tab-first">
+                   @Html.Action("AllVPOConsumables")
+               </div>
+               <div class="tab-pane" id="tab-second">
+                   @Html.Action("AllVPORawMaterial")
+               </div>
+               <div class="tab-pane" id="tab-third">
+                   @Html.Action("AllVPOOutsourcing")
+               </div>
+               <div class="tab-pane" id="tab-fourth">
+                   @Html.Action("AllVPOMaintananceSpares")
+               </div>
+           </div>
+
+
+                   
+
+    </fieldset>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+
+        function redirect(dropDownValue)
+        {
+            window.location.href = '/VendorPurchaseOrder/AllVendorPurchaseOrder/?_vendorPO_type=' + dropDownValue;
+        }
+
+        function OpenNewVPO() {
+            //Determine the reference of the Row using the Button.
+            var vpo_type_data = $j('#vendor_po_type').val();
+           
+            if (vpo_type_data == "Consumables") {
+                var conumables = '@Url.Action("Consumables", "VendorPurchaseOrder")';
+                window.location.href = conumables;
+            }
+            else if (vpo_type_data == "Raw Material") {
+                var rawMaterial = '@Url.Action("RawMaterial", "VendorPurchaseOrder")';
+                window.location.href = rawMaterial;
+            }
+            else if (vpo_type_data == "Maintainance Spares") {
+                var maintainanceSpares = '@Url.Action("MaintainanceSpares", "VendorPurchaseOrder")';
+                window.location.href = maintainanceSpares;
+            }
+            else if (vpo_type_data == "Outsourcing") {
+                var outsourcing = '@Url.Action("Outsourcing", "VendorPurchaseOrder")';
+                window.location.href = Outsourcing;
+            }
+        };
+        $(document).ready(function () {
+            window.scrollTo(x - coord, y - coord);
+        });
+       
+        $(".nav-link").click(function () {
+            window.scrollBy(0, 50);//for scroll top
+            window.scrollBy(0,-50);//for scroll down
+           
+        });
+    </script>
+}

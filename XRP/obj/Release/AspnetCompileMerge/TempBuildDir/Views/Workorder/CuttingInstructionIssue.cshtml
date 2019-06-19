@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- META SECTION -->
+    <title>SSM-CuttingInstructionIssue</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="~/ProjectImages/elogo.ico" type="image/x-icon" />
+    <!-- END META SECTION -->
+    <!-- CSS INCLUDE -->
+    <link rel="stylesheet" type="text/css" id="theme" href="~/NewCssAndTheme/css/theme-default.css" />
+    <link rel="stylesheet" type="text/css" href="~/NewCssAndTheme/css/datatables.min.css" />
+    <style>
+        .mytable {
+            border: 1px black;
+            border-spacing: 15px;
+        }
+
+            .mytable tr td {
+                padding-bottom: 0.5em;
+                padding-left: 0.5em;
+            }
+              .Label{
+            color: black;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+@model XRP.Models.ssmtbl_CuttingInstructionIssueModel
+@using XRP.Global;
+@{
+    ViewBag.Title = "CuttingInstructionIssue";
+    Layout = null;
+}
+@using (Html.BeginForm("CuttingInstructionIssue", "Workorder", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+
+        <!-- PAGE TITLE -->
+        @*<div class="page-title">
+            <h2><span class="fa fa-arrow-circle-o-left"></span>CuttingInstructionIssue</h2>
+        </div>*@
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="container" id="formdiv1" style="">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Cutting Instruction Issue</div>
+                        <div class="panel-body">
+                            <center>
+                                <input id="hdn_id" type="hidden" />
+                                <br />
+                                <table class="table table-bordered table-condensed">
+
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.WorkorderNo, new { @class = "Label" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.WorkorderNo, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly"})
+                                        </td>
+                                        <td>@Html.LabelFor(model => model.CutFrom, new { @class = "Label" })</td>
+                                        <td>@Html.TextBoxFor(model => model.CutFrom, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_cutfromcut" })</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.CutTo, new { @class = "Label" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.CutTo, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_cuttocut" })
+                                        </td>
+                                        <td>@Html.LabelFor(model => model.CutDate, new { @class = "Label" })</td>
+                                        <td>@Html.TextBoxFor(model => model.CutDate, "{0:dd-MMM-yyyy}", new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_cutdatecut" })</td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.PartName, new { @class = "Label" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.PartName, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_partnamecut" })
+                                        </td>
+                                        <td>@Html.LabelFor(model => model.MaterialSpecification, new { @class = "Label" })</td>
+                                        <td>@Html.TextBoxFor(model => model.MaterialSpecification, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_materialspecificationcut" })</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.DieNo, new { @class = "Label" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.DieNo, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_dienocut" })
+                                        </td>
+                                        <td>@Html.LabelFor(model => model.Heatcode, new { @class = "Label" })</td>
+                                        <td>@Html.TextBoxFor(model => model.Heatcode, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_heatcodecut" })</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.Section, new { @class = "Label" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.Section, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_sectioncut" })
+                                        </td>
+                                        <td>@Html.LabelFor(model => model.Colorcode, new { @class = "Label" })</td>
+                                        <td>@Html.TextBoxFor(model => model.Colorcode, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_colorcodecut" })</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.CutWeight, new { @class = "Label" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.CutWeight, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_cutweightcut" })
+                                        </td>
+                                        <td>@Html.LabelFor(model => model.CutLength, new { @class = "Label" })</td>
+                                        <td>@Html.TextBoxFor(model => model.CutLength, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_cutlengthcut" })</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.PlanQty, new { @class = "Label" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.PlanQty, null, new { @class = "form-control r-0 light s-12 r", @readonly = "readonly", @id = "txt_planqtycut" })
+                                        </td>
+                                        <td>@Html.LabelFor(model => model.ActualQty, new { @class = "Label" })</td>
+                                        <td>@Html.TextBoxFor(model => model.ActualQty, null, new { @class = "form-control r-0 light s-12 r", @readonly = "readonly", @id = "txt_actualqtycut" })</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.PreparedBy, new { @class = "Label" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.PreparedBy, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_preparedbycut" })
+                                        </td>
+                                        <td>@Html.LabelFor(model => model.ApprovedBy, new { @class = "Label" })</td>
+                                        <td>@Html.TextBoxFor(model => model.ApprovedBy, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_aprovedbycut" })</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.LabelFor(model => model.RMRequiredQty, new { @class = "Label" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(model => model.RMRequiredQty, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", @id = "txt_rmrequired" })
+                                        </td>
+                                       
+                                        <td colspan="2" align="left">
+                                            <button type="button" id="btn_print" class="btn btn-success btn-default btn-sm" value="printslip" onclick="return print();">
+                                                <span class="ui-button-icon-primary ui-icon ui-icon-print"></span><span class="ui-button-text">Print</span>
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                                <br />
+                                <center>
+                                  
+
+                                </center>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="row" id="div_print">
+                    <div class="col-sm-12">
+                        <table align="center" border="1" width="760" id="tbl_print" style="display:none;font-size:medium;">
+                            <tr>
+                                <td colspan="3"> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"> </td>
+                            </tr>
+                            <tr>
+                                <td><img src="~/NewCssAndTheme/img/ssmlogo.jpg" height="42" width="42" alt=""></td>
+                                <td>
+                                    <center>
+                                        <b><font size="3">SHREE SIDDHESHWARI METAL FORGING PRIVATE LIMITED</font></b><br />
+                                    </center>
+                                    <center>J-489/490,M.I.D.C BHOSARI, PUNE-26</center> <br />
+                                    <center><b><font size="3">CUTTING INSTRUCTION SLIP ISSUE</font></b></center>
+                                </td>
+                                <td align="center">
+                                    Date:&nbsp;<span id="spn_date"></span><br /><hr style="border-color:black;border-width:0.5px;" />
+                                    No:&nbsp;
+                                    <span id="spn_no"></span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <table border="1" width="750">
+                                        <tr>
+                                            <td width="350"> To,<span id="spn_to"></span></td>
+                                            <td> From:<span id="spn_from"></span></td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    Part Name:&nbsp;<span id="spn_partname"></span>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <table border="1" width="750">
+                                        <tr>
+                                            <td width="350">Die No:<span id="spn_dieno"></span></td>
+                                            <td>Material Specification:<span id="spn_ms"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="350">
+                                                Heat Code:<span id="spn_hc"></span>
+
+                                            </td>
+                                            <td>Section:<span id="spn_sec"></span></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td width="350">
+                                                Color Code:<span id="spn_cc"></span>
+
+                                            </td>
+                                            <td>Cut Weight:<span id="spn_cutwt"></span></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td width="350">
+                                                Cut Length:<span id="spn_cl"></span>
+
+                                            </td>
+                                            <td>@*RM Required:<span id="spn_rmr"></span>*@</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td width="350">
+                                                Plan Qty:<span id="spn_pq"></span>
+
+                                            </td>
+                                            <td>Actual Qty:<span id="spn_aq"></span></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td width="350" align="left">
+                                                Prepared By:<span id="spn_pb"></span>
+
+                                            </td>
+                                            <td align="left"> Approved By:<span id="spn_ab"></span></td>
+
+                                        </tr>
+                                    </table>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    PD/FM-09
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+    <script type="text/javascript">
+        function print() {
+
+            $("#spn_date").text($('#txt_cutdatecut').val());
+            $("#spn_to").text($('#txt_cuttocut').val());
+            $("#spn_from").text($('#txt_cutfromcut').val());
+            $("#spn_partname").text($('#txt_partnamecut').val());
+            $("#spn_ms").text($('#txt_materialspecificationcut').val());
+            $("#spn_dieno").text($('#txt_dienocut').val());
+            $("#spn_hc").text($('#txt_heatcodecut').val());
+            $("#spn_sec").text($('#txt_sectioncut').val());
+            $("#spn_cc").text($('#txt_colorcodecut').val());
+            $("#spn_cutwt").text($('#txt_cutweightcut').val());
+            $("#spn_cl").text($('#txt_cutlengthcut').val());
+            $("#spn_pq").text($('#txt_planqtycut').val());
+            $("#spn_aq").text($('#txt_actualqtycut').val());
+            $("#spn_rmr").text($('#txt_rmrequired').val());
+            $("#spn_pb").text($('#txt_preparedbycut').val());
+            $("#spn_ab").text($('#txt_aprovedbycut').val());
+            $("#spn_partname").text($('#txt_partnamecut').val());
+            var print = document.getElementById("tbl_print");
+            print.style.display = "block";
+
+
+            var divContents = $("#div_print").html();
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title></title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+            print.style.display = "none";
+
+
+        }
+    </script>
+}

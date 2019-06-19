@@ -1,0 +1,133 @@
+﻿@model XRP.Models.Paged_ssmtbl_VendorPurchaseOrderModel
+<div class="container-fluid animatedParent animateOnce">
+    <div class="tab-content my-3" id="v-pills-tabContent">
+        <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+            <div class="row my-3">
+                <div class="col-md-12">
+                    <div class="card r-0 shadow">
+                        <div class="table-responsive">
+                            @*<div class="row">
+                                <div class="col-md-12">*@
+                                    <!-- START DEFAULT DATATABLE -->
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="col-md-4">
+                                                <a class="nav-link" href='@Url.Action("Consumables", "VendorPurchaseOrder")'><i class="icon icon-plus-circle"></i> New Vendor Purchase Order</a>
+                                                @*<input type="button" class="btn btn-info" value="New Vendor Purchase Order" onclick="location.href = '@Url.Action("Consumables", "VendorPurchaseOrder")    '" />*@
+                                            </div>
+                                        </div>
+                                        <div class="panel-body panel-body-table">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-hover r-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>VENDOR PONo</th>
+                                                            <th>QUOTATION <br />REF NO</th>
+                                                            <th>VENDOR NAME</th>
+                                                            @*<th>EMAIL</th>
+                                                            <th>MOBILE</th>
+                                                            <th>CONTACT PERSON</th>*@
+                                                            <th>VALID DATE</th>
+                                                            <th>STATUS</th>
+                                                            @*<th>COMMENT</th>*@
+                                                            <th>TYPE</th>
+                                                           
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var data in Model.ssmtbl_VendorPurchaseOrderModelList)
+                                                        {
+                                                            <tr class="mosurhandsymbol">
+                                                                <td>@data.po_no</td>
+                                                                <td>@data.quotation_ref_no</td>
+                                                                <td>@data.vendor_name</td>
+                                                                @*<td>@data.email</td>
+                                                                <td>@data.vendor_mobile</td>
+                                                                <td>@data.contact_person</td>*@
+                                                                <td>@data.valid_date.Date.ToString("dd-MMM-yyyy")</td>
+                                                                <td>@data.vendor_po_status</td>
+                                                                @*<td>@data.Comment</td>*@
+                                                                <td>@data.vendor_po_type</td>
+                                                                @*<td><a href="@Url.Action("EditConsumables", "VendorPurchaseOrder")?id=@data.po_no" class="" title="Edit VPO Consumables"><span class="icon-pencil"></span></a></td>*@
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+
+
+
+                                                @*<table class="table datatable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>VENDOR PO No</th>
+                                                                <th>QUOTATION REF NO</th>
+                                                                <th>VENDOR NAME</th>
+                                                                <th>EMAIL</th>
+                                                                <th>MOBILE</th>
+                                                                <th>CONTACT PERSON</th>
+                                                                <th>VALID DATE</th>
+                                                                <th>STATUS</th>
+                                                                <th>COMMENT</th>
+                                                                <th>TYPE</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var data in Model.ssmtbl_VendorPurchaseOrderModelList)
+                                                            {
+                                                                <tr>
+                                                                    <td>@data.po_no</td>
+                                                                    <td>@data.quotation_ref_no</td>
+                                                                    <td>@data.vendor_name</td>
+                                                                    <td>@data.email</td>
+                                                                    <td>@data.vendor_mobile</td>
+                                                                    <td>@data.contact_person</td>
+                                                                    <td>@data.valid_date.Date.ToString("dd-MMM-yyyy")</td>
+                                                                    <td>@data.vendor_po_status</td>
+                                                                    <td>@data.Comment</td>
+                                                                    <td>@data.vendor_po_type</td>
+                                                                    <td><a href="@Url.Action("EditConsumables", "VendorPurchaseOrder")?id=@data.po_no" class=" btn btn-default btn-md btn-rounded" title="Edit VPO Consumables"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>*@
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                @*</div>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .mosurhandsymbol {
+        cursor: pointer;
+    }
+</style>
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+<script src="~/Content/Validations/JqueryUi.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('tr').click(function () {
+                var currentRow = $(this).closest("tr");
+                var id = currentRow.find("td:eq(0)").text();
+                id = id.trim();
+                location.href = "../VendorPurchaseOrder/EditConsumables?id=" + id;
+
+            });
+
+        });
+</script>

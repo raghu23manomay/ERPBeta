@@ -1,0 +1,687 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SSM - @ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+
+
+    <!-- CSS -->
+    <link href="../assets/css/app.css" rel="stylesheet" />
+    <link href="~/NewCssAndTheme/css/BackToTop/BackToTop.css" rel="stylesheet" />
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        table {
+            color: black;
+            font-size: 12px;
+        }
+
+        .Label {
+            color: black;
+            font-size: 12px;
+        }
+
+        h5 {
+            font-family: Roboto;
+        }
+
+        h3 {
+            font-family: Roboto;
+        }
+    </style>
+
+</head>
+
+<body class="light">
+    <input type="hidden"  id="hdnUserID" data-value="@Request.RequestContext.HttpContext.Session["userid"]"/>
+    <!-- Pre loader -->
+    <div id="loader" class="loader">
+        <div class="plane-container">
+            <div class="preloader-wrapper small active">
+                <div class="spinner-layer spinner-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-green">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="app">
+        <aside class="main-sidebar fixed offcanvas shadow">
+            <section class="sidebar">
+                <div class="w-80px mt-3 mb-3 ml-3">
+                    @*<img src="../assets/img/basic/logo.png" alt="">*@
+                    <img src="~/NewCssAndTheme/img/ssmlogo.jpg" alt="SSM Logo"/>
+                </div>
+                <div class="relative">
+                    @*<a data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+                           aria-controls="multiCollapseExample1" class="btn-fab btn-fab-sm fab-right fab-top btn-primary shadow1 ">
+                            <i class="icon icon-cogs"></i>
+                        </a>*@
+                    <p>
+                        <div class="user-panel p-3 light mb-2">
+                            <div class="clearfix">
+                                <div class="float-left image">
+                                   
+                                    <h1>  <i class="user_avatar icon icon-user-circle text-light-blue"></i></h1>
+                                </div>
+                                <div class="float-left info">
+                                 
+                                    <h6 class="font-weight-light mt-2 mb-1">@Session["username"]</h6>
+                                    <small class="font-weight-light mt-2 mb-1">@Session["deptname"]</small>
+                                    @*<a href=""><i class="text-primary"></i> </a>*@
+                                </div>
+                            </div>
+                            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                <div class="p-3">
+
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <ul class="sidebar-menu" id="menu">
+                    </ul>
+                    <ul class="sidebar-menu" id="ul_mainstartmenu">
+
+                        <li class="treeview">
+                            <a href="#">
+                                @*<a href="@Url.Action("Dashboard", "Dashboard")">*@
+                                <i class="icon icon icon-dashboard light-blue-text s-18"></i> <span>Dashboard</span>
+
+                            </a>
+
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="icon icon icon-document-graph blue-text s-18"></i>
+                                Marketing<i class="icon icon-angle-left s-18 pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="@Url.Action("AllInquiry", "Inquiry")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Enquiry</a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="icon icon icon-accessibility light-blue-text s-18"></i>Master<i class="icon icon-angle-left s-18 pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="@Url.Action("AllVendor", "Vendor")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Vendor</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("AllCustomer", "Customer")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Customer</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("AllGradeOfMaterial", "GradeOfMaterial")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Grade Of Material</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("AllSection", "Section")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Section</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("AllDieDescription", "DieDescription")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Die List</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                &nbsp;
+                                <i class="icon icon icon-rupee light-blue-text s-18"></i>Purchase<i class="icon icon-angle-left s-18 pull-right"></i>
+                            </a>
+
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="@Url.Action("NewPurchaseOrder", "PurchaseOrderController")?QuotationId=0"><i class="icon icon-circle-o light-blue-text sm-12"></i>Purchase Order</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("PORequisitionList", "PORequisition")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Purchase Requisition</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("AllVPOList", "VendorPurchaseOrder")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Vendor Purchase Order</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("VendorResponse", "PORequisition")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Vendor Response</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="icon icon-creativity blue-text s-18"></i> <span>Planning</span><i class="icon icon-angle-left s-18 pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+
+                                <li><a href="@Url.Action("AllPO","Workorder")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Work Order</a></li>
+                                <li><a href="@Url.Action("ActiveWorkorder","Workorder")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Acive Work Order</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="icon icon-gears blue-text s-18"></i> <span>Production</span><i class="icon icon-angle-left s-18 pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+
+                                <li><a href="@Url.Action("AllCutting","Cutting")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Cutting</a></li>
+                                <li><a href="@Url.Action("FogingList","Forging")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Forging</a></li>
+                                <li><a href="@Url.Action("HeatTreatmentList", "HeatTreatment")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Heat Treatment</a></li>
+
+                            </ul>
+
+
+
+
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="icon icon-database light-blue-text s-18"></i>Stock<i class="icon icon-angle-left s-18 pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="@Url.Action("AllGoodsInward", "GoodsInward")?_inward_type=AllGI"><i class="icon icon-circle-o light-blue-text sm-12"></i>Goods Inwards</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("AllGoodsIssued", "GoodsIssued")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Goods Issued</a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("AllDeliveryChallan", "DeliveryChallan")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Delivery Challan</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("GinDetails", "DCForRMTest")"><i class="icon icon-circle-o light-blue-text sm-12"></i>DC For RM Test </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="icon icon-account_box blue-text s-18"></i>Users<i class="icon icon-angle-left s-18 pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="@Url.Action("UserPermission","Auth")"><i class="icon icon-circle-o light-blue-text sm-12"></i>User Roll Permission</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="icon icon-list3 blue-text s-18"></i>My Approval<i class="icon icon-angle-left s-18 pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li>
+                                    <a href="@Url.Action("QuotationList", "QuotationApproval")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Quotations@*<span class="badge badge-warning r-20 pull-right" id="countQuotation">0</span>*@</a>
+
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("PurchaseOrderList", "PurchaseOrderApproval")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Customer Purchase Orders@*<span class="badge badge-warning r-20 pull-right" id="countCustPO">0</span>*@</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("VendorPurchaseOrderList", "VendorPurchaseOrderApproval")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Vendor Purchase Orders @*<span class="badge badge-warning r-20 pull-right" id="countVPO">0</span>*@</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("RMRequisitionList", "RMRequisitionApproval")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Raw Material Requisition@*<span class="badge badge-warning r-20 pull-right" id="countRM">0</span>*@</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("DieRequisitionList", "DieRequisitionApproval")"><i class="icon icon-circle-o light-blue-text sm-12"></i>Die Requisition@*<span class="badge badge-warning r-20 pull-right" id="countDie">0</span>*@</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="icon icon-clipboard2 blue-text s-18"></i>Reports<i class="icon icon-angle-left s-18 pull-right"></i>
+                            </a>
+                            </li>
+                          </ul>
+
+
+
+
+</section>
+        </aside>
+    
+        <div class="has-sidebar-left">
+            <div class="pos-f-t">
+                <div class="collapse" id="navbarToggleExternalContent">
+                    <div class="bg-dark pt-2 pb-2 pl-4 pr-2">
+                        <div class="search-bar">
+                            <input class="transparent s-24 text-white b-0 font-weight-lighter w-128 height-50" type="text"
+                                   placeholder="start typing...">
+                        </div>
+                        <a href="#" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-expanded="false"
+                           aria-label="Toggle navigation" class="paper-nav-toggle paper-nav-white active "><i></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="sticky">
+                <div class="navbar navbar-expand navbar-dark d-flex justify-content-between bd-navbar blue accent-3">
+                    <div class="relative">
+                        <a href="#" data-toggle="offcanvas" class="paper-nav-toggle pp-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                    <!--Top Menu Start -->
+                    <div class="navbar-custom-menu p-t-10">
+                            <ul class="nav navbar-nav">
+                                <!-- Messages-->
+                                @*<li class="dropdown custom-dropdown messages-menu">
+                                    <a href="#" class="nav-link" data-toggle="dropdown">
+                                        <i class="icon-message "></i>
+                                        <span class="badge badge-success badge-mini rounded-circle">4</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <!-- inner menu: contains the actual data -->
+                                            <ul class="menu pl-2 pr-2">
+                                                <!-- start message -->
+                                                <li>
+                                                    <a href="#">
+                                                        <div class="avatar float-left">
+                                                            <img src="../assets/img/dummy/u4.png" alt="">
+                                                            <span class="avatar-badge busy"></span>
+                                                        </div>
+                                                        <h4>
+                                                            Support Team
+                                                            <small><i class="icon icon-clock-o"></i> 5 mins</small>
+                                                        </h4>
+                                                        <p>Why not buy a new awesome theme?</p>
+                                                    </a>
+                                                </li>
+                                                <!-- end message -->
+                                                <!-- start message -->
+                                                <li>
+                                                    <a href="#">
+                                                        <div class="avatar float-left">
+                                                            <img src="../assets/img/dummy/u1.png" alt="">
+                                                            <span class="avatar-badge online"></span>
+                                                        </div>
+                                                        <h4>
+                                                            Support Team
+                                                            <small><i class="icon icon-clock-o"></i> 5 mins</small>
+                                                        </h4>
+                                                        <p>Why not buy a new awesome theme?</p>
+                                                    </a>
+                                                </li>
+                                                <!-- end message -->
+                                                <!-- start message -->
+                                                <li>
+                                                    <a href="#">
+                                                        <div class="avatar float-left">
+                                                            <img src="../assets/img/dummy/u2.png" alt="">
+                                                            <span class="avatar-badge idle"></span>
+                                                        </div>
+                                                        <h4>
+                                                            Support Team
+                                                            <small><i class="icon icon-clock-o"></i> 5 mins</small>
+                                                        </h4>
+                                                        <p>Why not buy a new awesome theme?</p>
+                                                    </a>
+                                                </li>
+                                                <!-- end message -->
+                                                <!-- start message -->
+                                                <li>
+                                                    <a href="#">
+                                                        <div class="avatar float-left">
+                                                            <img src="../assets/img/dummy/u3.png" alt="">
+                                                            <span class="avatar-badge busy"></span>
+                                                        </div>
+                                                        <h4>
+                                                            Support Team
+                                                            <small><i class="icon icon-clock-o"></i> 5 mins</small>
+                                                        </h4>
+                                                        <p>Why not buy a new awesome theme?</p>
+                                                    </a>
+                                                </li>
+                                                <!-- end message -->
+                                            </ul>
+                                        </li>
+                                        <li class="footer s-12 p-2 text-center"><a href="#">See All Messages</a></li>
+                                    </ul>
+                                </li>*@
+                                <!-- Notifications -->
+                                <li class="dropdown custom-dropdown notifications-menu">
+                                    <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false" title="Notification">
+                                        <i class="icon-notifications "></i>
+                                        <span class="badge badge-danger badge-mini rounded-circle" id="spn_notificationcount"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="header">You have <span id="spn_totalnotification"></span> notifications</li>
+                                        <li>
+                                            <!-- inner menu: contains the actual data -->
+                                            <ul class="menu" style="height: 200px; overflow: auto" id="ulnotificationbind">
+                                               
+                                             
+                                            </ul>
+                                        </li>
+                                     
+                                    </ul>
+                                </li>
+                              
+                                <li class="dropdown custom-dropdown user user-menu">
+                                    <a href="#" class="nav-link" data-toggle="dropdown">
+                                        @*<img src="../assets/img/dummy/u2.png" class="user-image" alt="User Image">*@
+                                     
+                                         <i class="icon icon-user-circle"></i> 
+                                      
+                                    </a>
+                                    @*<div class="multi-collapse collapse" id="userSettingsCollapse" style="">
+                                        <div class="list-group mt-3 shadow">
+                                            <a href="index.html" class="list-group-item list-group-item-action ">
+                                                <i class="mr-2 icon-umbrella text-blue"></i>Profile
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action"><i class="mr-2 icon-cogs text-yellow"></i>Settings</a>
+                                            <a href="#" class="list-group-item list-group-item-action"><i class="mr-2 icon-security text-purple"></i>Change Password</a>
+                                        </div>
+                                    </div>*@
+                                    <ul class="dropdown-menu" style="width:30px;">
+                                     
+                                        <li>
+                                            <!-- inner menu: contains the actual data -->
+                                            <ul class="menu">
+                                                <li style="padding:10px 10px 5px 10px">
+                                                    <a href="#" class="" >
+                                                        &nbsp;&nbsp;<i class="mr-2 icon icon-user-circle text-blue"></i>&nbsp;&nbsp;Profile
+                                                        
+                                                    </a>
+                                                   
+                                                </li>
+                                                <li style="padding:10px 10px 0px 10px">
+                                                    <a href="#" class="mr-2">
+                                                        &nbsp;&nbsp;<i class="mr-2 icon icon-cogs text-yellow"></i>&nbsp;&nbsp;Settings
+
+                                                    </a>
+                                                   
+                                                </li>
+                                                <hr />
+                                                <li style="padding-left:10px">
+                                                    <a href="../Auth/LogOut" class="">
+                                                        &nbsp;&nbsp;<i class="mr-2 icon icon-sign-out text-purple"></i>&nbsp;&nbsp;Logout
+
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+
+                                 
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page  has-sidebar-left height-full">
+            <div>
+
+                @RenderBody()
+                <a href="javascript:" id="return-to-top" title="Back To Top" class=""><i class="icon icon-chevron-up"></i></a>
+                @*<a href="#modalCreateMessage"  class="btn-fab btn-fab-md fab-right fab-right-bottom-fixed shadow btn-primary"><i class="icon-add"></i></a>*@
+            </div>
+
+            <!--Add New Message Fab Button-->
+            @*<a href="panel-page-users-create.html" class="btn-fab btn-fab-md fab-right fab-right-bottom-fixed shadow btn-primary">
+                    <i class="icon-add"></i>
+                </a>*@
+        </div>
+        <!-- Right Sidebar -->
+        <!-- /.right-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+                 immediately after the control sidebar -->
+        <div class="control-sidebar-bg shadow white fixed"></div>
+    </div>
+    <!--/#app -->
+
+    <script src="../assets/js/app.js"></script>
+    <script src="~/NewCssAndTheme/js/BackToTop.js"></script>
+    <script src="~/assets/js/UserAccess.js"></script>
+    <script>
+        $(document).ready(function ()
+        {
+           // var userID1 = '@Request.RequestContext.HttpContext.Session["userid"]';
+            var userID1=$("#hdnUserID").val();
+
+            if (userID1== " " ||userID1== null) {
+                window.location = "../Auth/Login";
+            }else {
+                var userid=userID1;
+
+            setaccesscontrol(userid,"@ViewBag.Feature","1","@ViewBag.FeatureAdd");
+            if ("@Session["username"]" == "" || "@Session["username"]" == null)
+            {
+                @*location.href="@Url.Action("Auth", "Login")";*@
+                window.location = "../Auth/Login";
+            }
+            else {
+                var id = 0;
+                NotificationBind(id);
+                MenuBind();
+            }
+            }
+
+            //getQuotationApprovalCount();
+            //getCustPOCount();
+            //getVPOCount();
+            //getRMCount();
+            //getDieCount();
+        });
+
+    </script>
+   
+    <script>
+        function MenuBind()
+        {
+            $("#ul_mainstartmenu").empty();
+            var userid = '@Request.RequestContext.HttpContext.Session["userid"]';
+            $.ajax({
+                type: "POST",
+                url: "../Auth/MenuBind",
+                data: JSON.stringify({ UserID: ' ' + userid + '' }),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+              
+                    var items = [];
+                    for (var i = 0; i < data.length; i++) {
+
+                        items.push('<li class="treeview"><a href="#"><i class="'+data[i].MenuIconClass+'"></i>'+data[i].MenuName+'</a><ul class="treeview-menu" id="'+data[i].MenuId+'"></ul></li>');
+
+                    }
+       
+                    var uniqueNames = [];
+                    $.each(items, function(i, el){
+                        if($.inArray(el, uniqueNames) === -1)
+                        {
+                            uniqueNames.push(el);
+                        }
+
+                    });
+                    $('#ul_mainstartmenu').append(uniqueNames.join(''));
+                    $('#ul_mainstartmenu li').each(function(i)
+                    {
+                        var text=$(this).text();
+                        for (var j = 0; j < data.length; j++) {
+                            if (text==data[j].MenuName) {
+                            
+                                $("#"+data[j].MenuId).append('<li><a href="../' + data[j].Controller + '/' + data[j].Action + '"><i class="icon icon-circle-o light-blue-text sm-12"></i>'+data[j].SubmenuName+'</a></li>');
+                            }
+                        }
+                       
+                        
+                       
+                    });
+
+                    }
+
+            });
+        }
+        function NotificationBind(id) {
+            $.ajax({
+                type: "POST",
+                url: "../Auth/NotificationBind",
+                // data: params,
+                data: JSON.stringify({ id: ' ' + id + '' }),
+                contentType: "application/json;charset=utf-8",
+                // dataType: "json",
+                success: function (data) {
+
+                    var items = [];
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].IsRead==1) {
+                            items.push('<li onclick="setUnread(' + data[i].NotificationID + ')"><a href=' + data[i].ActionLink + '><i class="icon icon-data_usage text-success"></i>' + data[i].Description + '</a></li>');
+                        }
+                        else {
+                            items.push('<li onclick="setUnread(' + data[i].NotificationID + ')"><a href=' + data[i].ActionLink + '><i class="icon icon-data_usage text-danger"></i>' + data[i].Description + '</a></li>');
+                        }
+
+
+                        $("#spn_notificationcount").text(data[i].Cnt);
+                        $("#spn_totalnotification").text(data[i].Cnt);
+
+                    }
+                    $('#ulnotificationbind').append(items.join(''));
+                },
+                error: function (err) {
+                    //alert('Error occured');
+
+                }
+            });
+        }
+        function setUnread(NotificationID)
+        {
+            $.ajax({
+                type: "POST",
+                url: "../Auth/setUnreadMsg",
+                // data: params,
+                data: JSON.stringify({ NotificationID: ' ' + NotificationID + '' }),
+                contentType: "application/json;charset=utf-8",
+                // dataType: "json",
+                success: function (data) {
+
+                },
+                error: function (err) {
+                    alert('Error occured');
+
+                }
+            });
+        }
+        function getQuotationApprovalCount() {
+            $.ajax({
+                type: "GET",
+                url: "../Quotation/GetApprovalCount",
+                success: function (data) {
+                    if (data == "") {
+
+                        $("#countQuotation").text("0");
+                    } else {
+                        $("#countQuotation").text(data[0].Total);
+                    }
+                }
+
+
+
+            });
+        }
+    </script>
+    <script>
+        function getCustPOCount() {
+            $.ajax({
+                type: "GET",
+                url: "../PurchaseOrder/GetApprovalCount",
+                success: function (data) {
+                    $("#countCustPO").text(data);
+                }
+            });
+        }
+    </script>
+    <script>
+        function getVPOCount() {
+            $.ajax({
+                type: "GET",
+                url: "../VendorPurchaseOrderApproval/GetApprovalCount",
+                success: function (data) {
+                    
+                    $("#countVPO").text(data);
+                }
+            });
+        }
+    </script>
+    <script>
+        function getRMCount() {
+            $.ajax({
+                type: "GET",
+                url: "../RMRequisitionApproval/GetApprovalCount",
+                success: function (data) {
+                    $("#countRM").text(data);
+                }
+            });
+        }
+    </script>
+    <script>
+        function getDieCount() {
+            $.ajax({
+                type: "GET",
+                url: "../DieRequisitionApproval/GetApprovalCount",
+                success: function (data) {
+                    $("#countDie").text(data);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

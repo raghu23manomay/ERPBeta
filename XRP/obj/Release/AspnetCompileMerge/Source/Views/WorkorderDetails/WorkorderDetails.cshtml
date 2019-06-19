@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- META SECTION -->
+    <title>SSM-WorkOrderDetails</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="~/ProjectImages/elogo.ico" type="image/x-icon" />
+    <!-- END META SECTION -->
+    <!-- CSS INCLUDE -->
+    <link rel="stylesheet" type="text/css" id="theme" href="~/NewCssAndTheme/css/theme-default.css" />
+
+</head>
+<body>
+</body>
+</html>
+@model XRP.Models.ssmtbl_WorkorderDetailsModelNew
+@{
+    ViewBag.Title = "Workorder Details";
+    ViewBag.Active = "Marketing";
+    // Layout = "~/Views/Shared/_NewLayout.cshtml";
+    Layout = null;
+}
+
+
+<fieldset>
+
+    <div class="page-title">
+        <h2><span class="fa fa-arrow-circle-o-left"></span>Workorder Details</h2>
+    </div>
+    <div class="row">
+        <div class="container">
+            <table class="table table-bordered table-condensed table-responsive">
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.WorkorderNo, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.WorkorderNo, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+                    </td>
+                    <td>@Html.LabelFor(model => model.RMQty, new { @class = "Label" })</td>
+                    <td>@Html.TextBoxFor(model => model.RMQty, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.CustomerName, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.CustomerName, null, new { @class = "form-control NoStar", @id = "customerName", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.Status, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Status, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.DateOfIssue, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.DateOfIssue, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", @readonly = "readonly", @style = "border: 0px; color:Black" })
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.AllocatedRM, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.AllocatedRM, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.TargetDate, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.TargetDate, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.AllocatedSection, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.AllocatedSection, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.HeatCode, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.HeatCode, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.PoRM, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.PoRM, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+
+                    </td>
+                </tr>
+                <tr>
+                    @*<td>
+                        @Html.LabelFor(model => model.Section, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Section, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>*@
+                    <td>
+                        @Html.LabelFor(model => model.PoSection, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.PoSection, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.CutWeight, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.CutWeight, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.ProductionUnit, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.ProductionUnit, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.ColorCode, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.ColorCode, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.statusname, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.statusname, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.PoNo, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.PoNo, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.partname, new { @class = "Label" })
+
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.partname, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                </tr>
+                @*<tr>
+                    <td>
+                        @Html.LabelFor(model => model.RawMaterial, new { @class = "Label" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.RawMaterial, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:Black" })
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>*@
+            </table>
+
+        </div>
+    </div>
+
+
+</fieldset>
+
+

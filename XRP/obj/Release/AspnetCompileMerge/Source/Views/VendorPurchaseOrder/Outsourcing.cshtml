@@ -1,0 +1,1196 @@
+﻿@model XRP.Models.ssmtbl_VendorPurchaseOrderNew
+@using XRP.Models;
+@{
+    ViewBag.Title = "Vendor Purchase Order || Outsourcing";
+    ViewBag.Active = "Purchase";
+    ViewBag.Active1 = "Vendor Purchase Order";
+    ViewBag.Active2 = "Outsourcing";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+
+
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (@Html.BeginForm("Outsourcing", "VendorPurchaseOrder", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            <i class="icon-database"></i>
+                            Vendor Purchase Order
+                        </h4>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllVendorPurchaseOrder","VendorPurchaseOrder")'><i class="icon icon-home2"></i>All Vendor Purchase Order</a>
+
+                        </li>
+                        @*<li>
+                                <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
+                            </li>*@
+                        <li class="float-right">
+                            <a class="nav-link active" href='#'><i class="icon icon-plus-circle"></i> New Outsourcing Vendor Purchase Order</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        @Html.HiddenFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_char, new { @id = "po_char" })
+        @Html.HiddenFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_id, new { @id = "po_id" })
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="animated fadeInUpShort">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <form action="#">
+                            <div class="card no-b  no-r">
+                                <div class="card-body">
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_no, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_no, null, new { @class = "form-control r-0 light s-12 ", id = "po_no", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_no, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_no, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_no, null, new { @class = "form-control r-0 light s-12 ", id = "quotation_ref_no" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_no, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_date, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_date, "{0:dd-MMM-yyyy}", new { @class = "form-control r-0 light s-12 datepicker", id = "quotation_ref_date" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_date, null, new { @class = "alert-danger" })
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_date, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_date, "{0:dd-MMM-yyyy}", new { @class = "form-control r-0 light s-12 datepicker", id = "po_date" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_date, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.valid_date, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.valid_date, "{0:dd-MMM-yyyy}", new { @class = "form-control r-0 light s-12 datepicke", id = "valid_date" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.valid_date, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.file_path, new { @class = "Label" })
+                                            <input type="file" id="myfile" name="myfile" />
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.dia_no, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.dia_no, null, new { @class = "form-control r-0 light s-12", id = "dia_no" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.dia_no, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.Label("--", new { @class = "Label",@style="color:white"})  
+                                            <label class="btn btn-default" style="width:100%; text-align:left">
+                                                <input class="btn btn-default for_all_dia" data-val="true" data-val-required="The FOR ALL DIA field is required." id="for_all_dia" name="ssmtbl_VendorPurchaseOrderModel.for_all_dia" type="checkbox" value="true">
+                                                <input name="ssmtbl_VendorPurchaseOrderModel.for_all_dia" type="hidden" value="false">
+                                                <label class="Label" for="ssmtbl_VendorPurchaseOrderModel_for_all_dia">FOR ALL DIA</label>
+                                            </label>                                      
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_name, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_name, null, new { @class = "form-control r-0 light s-12 ", id = "vendor_name", onchange = "clearvendordetails();", onkeyup = "this.onchange();", onpaste = "this.onchange();", oninput = "this.onchange();" })
+                                            @Html.Hidden("vendor_id", new { @id = "vendor_id" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_name, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_email, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_email, null, new { @class = "form-control r-0 light s-12 r", id = "vendor_email" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_email, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_mobile, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_mobile, null, new { @class = "form-control r-0 light s-12 ", id = "vendor_mobile" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_mobile, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.GSTIN, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.GSTIN, null, new { @class = "form-control r-0 light s-12 ", id = "GSTIN" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.GSTIN, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.PAN, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.PAN, null, new { @class = "form-control r-0 light s-12 ", id = "PAN" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.PAN, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person, new { @class = "Label" })
+                                            @Html.HiddenFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_id, new { @id = "contact_person_id" })
+                                            @Html.DropDownListFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control r-0 light s-12 ", id = "contact_person" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_email, new { @class = "Label" })
+                                            @Html.DropDownListFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_email, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control r-0 light s-12 r", id = "contact_person_email" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_email, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_mobile, new { @class = "Label" })
+                                            @Html.DropDownListFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_mobile, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control r-0 light s-12 ", id = "contact_person_mobile" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_mobile, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Process</th>
+                                            <th>Rate</th>
+                                            <th>Rate/Per</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="text" name="ProcessM" class="form-control r-0 light s-12" id="ProcessM" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="RateM" class="form-control r-0 light s-12 " id="RateM" value="0" />
+                                            </td>
+                                            <td>
+                                                @Html.DropDownList("RatePerM", @ViewBag.RatePer as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12 ", id = "RatePerM" })
+                                            </td>
+                                            <td>
+                                                <button type="button" id="btnAdd" class="btn-sm btn-primary classAdd"><i class="icon-add"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-hover" id="maintable">
+
+                                    <tbody>
+                                        <tr></tr>
+                                    </tbody>
+                                </table>
+                                <div class="card-body">
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.cgst_perc, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.cgst_perc, null, new { @class = "form-control r-0 light s-12 ", id = "cgst_perc" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.cgst_perc, null, new { @class = "alert-danger" })
+                                        </div>
+                                       
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.sgst_perc, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.sgst_perc, null, new { @class = "form-control r-0 light s-12 ", id = "sgst_perc" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.sgst_perc, null, new { @class = "alert-danger" })
+                                        </div>
+                                      
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.igst_perc, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.igst_perc, null, new { @class = "form-control r-0 light s-12 ", id = "igst_perc" })
+                                            @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.igst_perc, null, new { @class = "alert-danger" })
+                                        </div>
+                                       
+                                       
+                                    </div>
+                                </div>
+                                <div class="card-body" align="right">
+
+                                    <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-sm "><i class="icon-amused-face mr-2"></i>Terms & Condition</a>
+                                    <button type="submit" name="Save" value="Save" class="btn btn-primary btn-default btn-sm" id="Save"><i class="icon-save mr-2"></i>Save</button>
+                                    <button type="reset" name="Save" value="Reset" class="btn btn-success btn-default btn-sm">
+                                        <i class="icon-refresh mr-2"></i>Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            &nbsp;
+
+            <!-- MODAL TERMS AND CONDITION-->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- MODAL TERMS AND CONDITION CONTENT-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">TERMS AND CONDTION</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                        </div>
+                        <div class="modal-body table-responsive ">
+                            <table class="table table-hover" id="tblCustomers">
+
+                                @*<tbody>
+                                    @{
+
+                                       @Html.Hidden("TotalTermsNcondition", (ViewData["VendorPOTermsAndCondition"] as List<ssmtbl_LKP_TermsAndConditionModel>).Count());
+                                    }
+                                  @foreach (var item in ViewData["VendorPOTermsAndCondition"] as List<ssmtbl_LKP_TermsAndConditionModel>)
+                                  {
+                                      //<tr class="tandc-data">
+                                        <tr>
+
+                                            <td class=""><input type="hidden" name="chkitemID" class="chkitemID" value="@item.id" /></td>
+                                            <td class=""><input type="checkbox" name="chkitem" class="chkitem" /></td>
+                                            <td class=""><input type="text" value="@item.description" name="txtbox" class="txtbox form-control" /></td>
+                                        </tr>
+                                    }
+
+                                </tbody>*@
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="divwarn" class="warning">
+                <label id="lbl_validation"></label>
+            </div>
+        </div>
+
+    </fieldset>
+
+
+    @*<fieldset>
+
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+
+        <!-- PAGE TITLE -->
+        <div class="page-title">
+            <h2><span class="fa fa-arrow-circle-o-left"></span>OUTSOURCING</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <div class="form-group" style="text-align:center">
+                        <input type="button" class="btn btn-info" value="All Vendor Purchase Order" onclick="location.href = '@Url.Action("AllVendorPurchaseOrder", "VendorPurchaseOrder")'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_char, new { @id = "po_char" })
+        @Html.HiddenFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_id, new { @id = "po_id" })
+
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Purchase Order Details</h2></div>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_no, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_no, null, new { @class = "form-control NoStar", id = "po_no", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_no, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_no, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_no, null, new { @class = "form-control NoStar", id = "quotation_ref_no" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_no, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_date, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_date, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", id = "quotation_ref_date" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.quotation_ref_date, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.dia_no, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.dia_no, null, new { @class = "form-control NoStar ", id = "dia_no" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.dia_no, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_date, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_date, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", id = "po_date" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.po_date, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.valid_date, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.valid_date, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", id = "valid_date" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.valid_date, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.file_path, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                <input type="file" id="myfile" name="myfile" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                            </div>
+                            <div class="col-md-8">
+                                <label class="btn btn-default" style="width:100%; text-align:left">
+                                    @Html.CheckBoxFor(m => Model.ssmtbl_VendorPurchaseOrderModel.for_all_dia, new { @class = "btn btn-default for_all_dia", @id="for_all_dia" })
+                                    @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.for_all_dia, new { @class = "Label" })
+                                </label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Vendor Details</h2></div>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_name, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_name, null, new { @class = "form-control NoStar", id = "vendor_name", onchange = "clearvendordetails();", onkeyup = "this.onchange();", onpaste = "this.onchange();", oninput = "this.onchange();" })
+                                @Html.Hidden("vendor_id", new { @id = "vendor_id", @class = "vendor_id" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_name, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_email, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_email, null, new { @class = "form-control NoStar", id = "vendor_email" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_email, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_mobile, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_mobile, null, new { @class = "form-control NoStar", id = "vendor_mobile" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.vendor_mobile, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.GSTIN, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.GSTIN, null, new { @class = "form-control NoStar", id = "GSTIN" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.GSTIN, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.PAN, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.PAN, null, new { @class = "form-control NoStar", id = "PAN" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.PAN, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person, new { @class = "Label" })
+                                @Html.HiddenFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_id, new { @id = "contact_person_id" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control NoStar", id = "contact_person" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_email, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_email, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control NoStar", id = "contact_person_email" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_email, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_mobile, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_mobile, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control NoStar", id = "contact_person_mobile" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.contact_person_mobile, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Item Details</h2></div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Process</th>
+                                        <th>Rate</th>
+                                        <th>Rate/Per</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="text" name="ProcessM" class="form-control " id="ProcessM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="RateM" class="form-control " id="RateM" value="0" />
+                                        </td>
+                                        <td>
+                                            @Html.DropDownList("RatePerM", @ViewBag.RatePer as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control ", id = "RatePerM" })
+                                        </td>
+                                        <td>
+                                            <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd"><span class="fa fa-arrows"></span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row" style="max-height:150px; overflow:scroll;" id="processing">
+                        <div class="col-md-12">
+
+                            <table class="table" id="maintable">
+
+                                <tbody>
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Item Details Tax (%)</h2></div>
+                <div class="panel-body">
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.cgst_perc, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.cgst_perc, null, new { @class = "form-control NoStar", id = "cgst_perc" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.cgst_amt, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.sgst_perc, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.sgst_perc, null, new { @class = "form-control NoStar", id = "sgst_perc" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.sgst_perc, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_VendorPurchaseOrderModel.igst_perc, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.ssmtbl_VendorPurchaseOrderModel.igst_perc, null, new { @class = "form-control NoStar", id = "igst_perc" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_VendorPurchaseOrderModel.igst_perc, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        
+
+        &nbsp;
+        <div class="row" id="btnDiv">
+            <div class="col-md-12">
+                
+                <div class="form-group" style="text-align:center">
+                    <div class="col-md-4 ">
+                        <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-primary "> Terms & Condition</a>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="col-md-6" id="submitDiv">
+                            <input type="button" name="Save" value="Save" class="btn btn-success btn-default" id="btnSubmit" />
+                        </div>
+                        <div class="col-md-6" id="loaderDiv" style="display:none;">
+                            <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 ">
+                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("Outsourcing", "VendorPurchaseOrder")    '" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        &nbsp;
+
+
+        <!-- MODAL TERMS AND CONDITION-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- MODAL TERMS AND CONDITION CONTENT-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title">TERMS AND CONDTIION</h3>
+                    </div>
+                    <div class="modal-body table-responsive ">
+                        <table class="table table-hover" id="tblCustomers">
+
+                            <tbody>
+                                @{
+
+                                    @Html.Hidden("TotalTermsNcondition", (ViewData["VendorPOTermsAndCondition"] as List<ssmtbl_LKP_TermsAndConditionModel>).Count());
+                                }
+                                @foreach (var item in ViewData["VendorPOTermsAndCondition"] as List<ssmtbl_LKP_TermsAndConditionModel>)
+                                {
+                                    //<tr class="tandc-data">
+                                <tr>
+                                    
+                                    <td class=""><input type="hidden" name="chkitemID" class="chkitemID" value="@item.id" /></td>
+                                    <td class=""><input type="checkbox" name="chkitem" class="chkitem" /></td>
+                                    <td class=""><input type="text" value="@item.description" name="txtbox" class="txtbox form-control" /></td>
+                                </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </fieldset>*@
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+
+        $j(document).ready(function () {
+            $j(document).on("click", ".classAdd", function () { //
+
+                if ($j('#ProcessM').val()) {
+                    if ($j('#RatePerM').val()) {
+                        var tbRate = parseInt($j('#RateM').val());
+                        if (!isNaN(tbRate) && tbRate > 0) {
+
+                            var ProcessM = $j('#ProcessM').val();
+                            var RateM = $j('#RateM').val();
+                            var RatePerM = $j('#RatePerM').val();
+
+                            //alert(store_id);
+
+                            var rowCount = $j('.data-contact-person').length + 1;
+                            //var contactdiv = $('.data-contact-person');
+                            var contactdiv = '<tr class="data-contact-person">' +
+                                '<td><input type="text" name="process' + rowCount + '" class="form-control r-0 light s-12 process01" value="' + ProcessM + '" readonly="readonly"/></td>' +
+                                '<td><input type="text" name="rate' + rowCount + '" class="form-control r-0 light s-12 rate01" value="' + RateM + '" readonly="readonly"/></td>' +
+                                '<td><input type="text" name="rateper' + rowCount + '" class="form-control r-0 light s-12 rateper01" value="' + RatePerM + '" readonly="readonly"/></td>' +
+                                
+                                '<td><button type="button" id="btnDelete" class="deleteContact   btn-danger btn-sm" onclick="Remove(this);"><i class="icon-remove"></i></button></td>' +
+                                '</tr>';
+                            //alert(contactdiv);
+                            $j('#maintable').append(contactdiv); // Adding these controls to Main table class
+                            // Clear Main Text Boxes And Combo Box
+                            $j('#ProcessM').val("");
+                            $j('#RateM').val("0");
+                            $j('#RatePerM').val("");
+                            $j('#ProcessM').focus();
+
+                        }
+                        else {
+                            alert('Please enter valid Rate!')
+                        }
+                    }
+                    else {
+                        alert('Please enter Rate/Per!')
+                    }
+                }
+                else {
+                    alert('Please enter Process!')
+                }
+
+            });
+
+
+
+            $j("#ProcessM").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $j.ajax({
+                        url: "../VendorPurchaseOrder/getOutsourcingProcessSearch",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($j.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    $j(this).val(ui.item.Id);
+                }
+
+            });
+
+
+
+
+
+
+            $j("#vendor_name").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $j.ajax({
+                        url: "../VendorPurchaseOrder/getVendorName",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($j.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    $(this).val(ui.item.label);
+
+                    $j.ajax({
+                        url: "../VendorPurchaseOrder/getVendorDetails",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Id: ui.item.Id },
+                        success: function (data) {
+                            //console.log(data);
+                            $('#vendor_name').val(data.Name);
+                            $('#vendor_email').val(data.Email_ID);
+                            $('#vendor_mobile').val(data.Mobile_No);
+                            $('#vendor_id').val(data.Id);
+                            $('#GSTIN').val(data.GSTIN);
+                            $('#PAN').val(data.PAN);
+                        }
+                    });
+
+                    $j.ajax({
+                        url: "../VendorPurchaseOrder/getVendorContactPerson",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: ui.item.Id },
+                        success: function (data) {
+                            // console.log(data);
+
+                            var select = document.getElementById("contact_person_email");
+                            var length = select.options.length;
+                            for (i = 0; i < length; i++) {
+                                select.options[i] = null;
+                            }
+
+                            var selectmob = document.getElementById("contact_person_mobile");
+                            var length = selectmob.options.length;
+                            for (i = 0; i < length; i++) {
+                                selectmob.options[i] = null;
+                            }
+
+                            var selectcp = document.getElementById("contact_person");
+                            var length = selectcp.options.length;
+                            for (i = 0; i < length; i++) {
+                                selectcp.options[i] = null;
+                            }
+
+
+                            for (var i = 0; i < data.length; i++) {
+
+                                var optcp = new Option(data[i].contactpersonname, data[i].contactpersonname);
+                                $('#contact_person').append(optcp);
+
+                                var optcp = new Option(data[i].email, data[i].email);
+                                $('#contact_person_email').append(optcp);
+
+                                var optcp = new Option(data[i].mob, data[i].mob);
+                                $('#contact_person_mobile').append(optcp);
+                            }
+                        }
+                    });
+                }
+            });
+
+
+            $j("#contact_person").change(function () {
+                var contPers = new $j("#contact_person").val();
+                var venId = new $j("#vendor_id").val();
+                $j.ajax({
+                    url: "../VendorPurchaseOrder/getVendorContactPersonDetails",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: venId, contactPName: contPers },
+                    success: function (data) {
+                        console.log(data);
+
+                        $("#contact_person_email option").remove();
+
+                        $("#contact_person_mobile option").remove();
+
+
+                        $j('#contact_person_id').val(data.srno)
+
+                        var optcp = new Option(data.email, data.email);
+                        $j('#contact_person_email').append(optcp);
+
+                        var optcp = new Option(data.mob, data.mob);
+                        $j('#contact_person_mobile').append(optcp);
+
+
+                    }
+                });
+            });
+
+        });
+
+
+
+        $j('#RateM').focusout(function () {
+            var tbcRate = parseInt($j('#RateM').val());
+            if (!isNaN(tbcRate) && tbcRate > 0) {
+            }
+            else {
+                $j('#RateM').val('0');
+            }
+        });
+
+        $j('#cgst_perc').focusout(function () {
+            var tbcgst_perc = parseInt($j('#cgst_perc').val());
+            if (!isNaN(tbcgst_perc) && tbcgst_perc > 0) {
+            }
+            else {
+                $j('#cgst_perc').val('0');
+            }
+        });
+
+        $j('#sgst_perc').focusout(function () {
+            var tbsgst_perc = parseInt($j('#sgst_perc').val());
+            if (!isNaN(tbsgst_perc) && tbsgst_perc > 0) {
+            }
+            else {
+                $j('#sgst_perc').val('0');
+            }
+        });
+
+        $j('#igst_perc').focusout(function () {
+            var tbigst_perc = parseInt($j('#igst_perc').val());
+            if (!isNaN(tbigst_perc) && tbigst_perc > 0) {
+            }
+            else {
+                $j('#igst_perc').val('0');
+            }
+        });
+
+
+
+        function Remove(button) {
+            //Determine the reference of the Row using the Button.
+            var row = $(button).closest("tr");
+            var name = $("td", row).eq(0).html();
+            if (confirm("Do you want to delete: ")) {
+
+                //Get the reference of the Table.
+                var table = $("#maintable")[0];
+
+                //Delete the Table row using it's Index.
+                table.deleteRow(row[0].rowIndex);
+
+                getNetTotal();
+            }
+        };
+
+
+        function getAllVendorPODetailsData() {
+            var data = [];
+            $j('tr.data-contact-person').each(function () {
+                //alert('m');
+                var process = $j(this).find('.process01').val();//Bind to the item code with class i_code01
+                var rate = $j(this).find('.rate01').val();//Bind to the item description with class i_desc01
+                var rateper = $j(this).find('.rateper01').val();//Bind to the quantity with class qty01
+                var alldata = {
+                    'process': process, //item_code as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                    'rate': rate, //item_description as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                    'rate_per': rateper, //qty as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                }
+                data.push(alldata);
+            });
+            return data;
+        }
+
+        function alertInnerHTML(e) {
+            e = e || window.event;//IE
+            alert(this.innerHTML);
+        }
+
+        function getAllVendorPOTAndCData() {
+            var data = [];
+            var customers = new Array();
+
+
+            $j("#tblCustomers tr").each(function () {
+
+                if ($j('td input[name="chkitem"]', this).is(':checked')) {
+                    console.log('man');
+
+                    var content_tnc = $j('td input[name="txtbox"]', this).val();
+                    console.log(content_tnc);
+
+                    var chk_id = $j('td input[name="chkitemID"]', this).val();
+                    console.log(chk_id);
+
+                    var alldata =
+                        {
+                            'id': 0,
+                            'po_no': '',
+                            'TermsNConditionID': chk_id,
+                            'TermsNConditionContent': content_tnc
+                        }
+                    data.push(alldata);
+                }
+
+            });
+
+            return data;
+        }
+
+
+
+        function getAllVendorPOData() {
+            var data = [];
+
+            var po_id = $('#po_id').val();
+            var po_char = $('#po_char').val();
+            var vendor_id = $('#vendor_id').val();
+            var po_char = $('#po_char').val();
+            var po_no = $('#po_no').val();
+            var po_details = $('#po_details').val();
+            var po_date = $('#po_date').val();
+            var tax_percentage = $('#tax_percentage').val();
+            var tax_amount = $('#tax_amount').val();
+            var net_total = $('#net_total').val();
+            var advance_amount = $('#advance_amount').val();
+            var balance_amount = $('#balance_amount').val();
+            var remarks = $('#remarks').val();
+
+            var for_all_dia = false;
+            if ($j('#for_all_dia').prop("checked") == true) {
+                for_all_dia = true;
+            }
+
+            var alldata = {
+                'po_id': $j('#po_id').val(),
+                'po_char': $j('#po_char').val(),
+                'po_no': $j('#po_no').val(),
+                'quotation_ref_no': $j('#quotation_ref_no').val(),
+                'quotation_ref_date': $j('#quotation_ref_date').val(),
+                'vendor_name': $j('#vendor_name').val(),
+                'vendor_email': $j('#vendor_email').val(),
+                'vendor_id': $j('#vendor_id').val(),
+                'vendor_mobile': $j('#vendor_mobile').val(),
+                'po_date': $j('#po_date').val(),
+                'valid_date': $j('#valid_date').val(),
+                'contact_person_id': $j('#contact_person_id').val(),
+                'contact_person': $j('#contact_person').val(),
+                'contact_person_email': $j('#contact_person_email').val(),
+                'contact_person_mobile': $j('#contact_person_mobile').val(),
+                'total': $j('#total').val(),
+                'dia_no': $j('#dia_no').val(),
+
+                'cgst_perc': $j('#cgst_perc').val(),
+                'cgst_amt': $j('#cgst_amt').val(),
+                'sgst_perc': $j('#sgst_perc').val(),
+                'sgst_amt': $j('#sgst_amt').val(),
+                'igst_perc': $j('#igst_perc').val(),
+                'igst_amt': $j('#igst_amt').val(),
+                'grand_total': $j('#grand_total').val(),
+                'for_all_dia': for_all_dia
+
+            }
+            //data.push(alldata);
+            console.log(alldata);//
+            return alldata;
+        }
+
+
+
+
+
+
+
+
+        $("#btnSubmit").click(function (e) {
+
+            if ($j('#po_no').val()) {
+
+                if ($j('#quotation_ref_no').val()) {
+
+                    if ($j('#quotation_ref_date').val()) {
+
+                        if ($j('#po_date').val()) {
+
+                            if ($j('#valid_date').val()) {
+
+                                if ($j("#myfile").val()) {
+
+                                    if ($j('#vendor_name').val()) {
+
+                                        var tncdata = JSON.stringify(getAllVendorPOTAndCData());
+                                        console.log(tncdata);
+
+                                        var formData = new FormData();
+                                        var file = document.getElementById("myfile").files[0];
+
+                                        var datas = JSON.stringify(getAllVendorPOData());
+                                        var detailsdata = JSON.stringify(getAllVendorPODetailsData());
+
+                                        formData.append("file", file);
+                                        formData.append("po_no", $('po_no').val());
+                                        $j('#submitDiv').hide();
+                                        $j('#loaderDiv').show();
+
+                                        $.ajax({
+                                            url: '@Url.Action("Outsourcing", "VendorPurchaseOrder")',
+                                            type: 'POST',
+                                            data: JSON.stringify({ 'vpodata': datas, 'vpodetailsdata': detailsdata, 'vpotandc': tncdata }),
+                                            dataType: 'json',
+                                            contentType: 'application/json; charset=utf-8',
+                                            success: function (sdata) {
+                                                if (sdata.result == "Select Terms And Condition!") {
+                                                    alert('Please Select Terms and Condition!');
+                                                    $j('#submitDiv').show();
+                                                    $j('#loaderDiv').hide();
+                                                }
+                                                else if (sdata.result == "Select Item Details!") {
+                                                    alert('Please Select Item Details!');
+                                                    $j('#submitDiv').show();
+                                                    $j('#loaderDiv').hide();
+                                                }
+                                                else if (sdata.result == "Vendor Purchase Order Created Successfully!") {
+                                                    UploadFile();
+                                                }
+                                                else {
+                                                    alert(sdata.result);
+                                                    $j('#submitDiv').show();
+                                                    $j('#loaderDiv').hide();
+                                                }
+                                            },
+                                            error: function () {
+                                                alert("Error while inserting data");
+                                                $j('#submitDiv').show();
+                                                $j('#loaderDiv').hide();
+                                            }
+                                        });
+                                    }
+                                    else {
+                                        alert('Please enter Vendor Name!')
+                                    }
+                                }
+                                else {
+                                    alert('Please select a file to upload!')
+                                }
+                            } else {
+                                alert('Please enter valid date!')
+                            }
+                        }
+                        else {
+                            alert('Please enter PO Date!')
+                        }
+                    }
+                    else {
+                        alert('Please enter Quotation Ref. Date!')
+                    }
+                }
+                else {
+                    alert('Please enter Quotation Ref. No.!')
+                }
+            }
+            else {
+                alert('Please enter PO No.!')
+            }
+        });
+
+
+        function UploadFile() {
+            var formData = new FormData();
+            var file = document.getElementById("myfile").files[0];
+
+            formData.append("file", file);
+            formData.append("po_no", $('#po_no').val());
+
+            var newPONo = $j('#po_no').val();
+            var newUrl = '@Url.Action("EditOutsourcing", "VendorPurchaseOrder")?id=' + newPONo + '&successmsg=success';
+
+            $.ajax({
+                url: '@Url.Action("OutsourcingFileUpload", "VendorPurchaseOrder")',
+                type: 'POST',
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: formData,
+                success: function (sdata) {
+                    if (sdata.result == "Data Saved!") {
+                        window.location.href = newUrl;
+                    }
+                    else {
+                        alert(sdata.result);
+                        $j('#submitDiv').show();
+                        $j('#loaderDiv').hide();
+                    }
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                    $j('#submitDiv').show();
+                    $j('#loaderDiv').hide();
+                }
+            });
+        }
+
+
+
+        function clearvendordetails() {
+            if ($j("#vendor_name").val()) {
+            }
+            else {
+                $j('#vendor_email').val("");
+                $j('#vendor_mobile').val("");
+                $j('#vendor_id').val(0);
+                $j('#GSTIN').val("");
+                $j('#PAN').val("");
+
+                $j("#contact_person_mobile").empty();
+                $j("#contact_person_email").empty();
+                $j("#contact_person").empty();
+
+            }
+        }
+
+    </script>
+
+}
+

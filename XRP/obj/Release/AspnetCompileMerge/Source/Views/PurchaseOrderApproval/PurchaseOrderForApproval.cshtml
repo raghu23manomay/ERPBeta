@@ -1,0 +1,737 @@
+﻿@model XRP.Models.ssmtbl_Quotation_PoModel
+@using XRP.Models;
+@{
+    Layout = null;
+}
+
+<link href="~/NewCssAndTheme/css/theme-default.css" rel="stylesheet" />
+
+
+@using (Html.BeginForm("PurchaseOrderForApproval", "PurchaseOrder", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset style="height:70%;">
+
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+
+        <!-- PAGE TITLE -->
+        <div class="page-title">
+            <h2><span class="fa fa-arrow-circle-o-left"></span>PURCHASE ORDER FOR APPROVAL</h2>
+        </div>
+        @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.POQty_Open, new { @id = "hdn_POQty_Open" })
+        @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.sameasquotation, new { @id = "hdn_sameasquotation" })
+        @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.po_id, new { @id="po_id"})
+        
+        @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.InquiryNo, new { @id = "InquiryNo" })
+        @Html.HiddenFor(model => model.ssmtbl_QuotationModel.QuotationNo)
+        @Html.HiddenFor(model => model.ssmtbl_QuotationModel.id)
+        @Html.HiddenFor(model => model.ssmtbl_QuotationModel.CustomerName)
+        <input id="hdn_NatureOfWork" type="hidden" />
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Purchase Order Basic Details</h4></div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4 ">
+                                    @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.CustomerPONo)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CustomerPONo, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.CustomerPONo, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @*<div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, null, new { @class = "alert-danger" })
+                                </div>*@
+                            </div>
+
+                            <div class="form-group">
+                                @*<div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.POValidity)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.POValidity, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.POValidity, null, new { @class = "alert-danger" })
+                                </div>*@
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.Label("PO Qty Open") @Html.CheckBoxFor(model => model.ssmtbl_PurchaseOrderModel.POQty_Open, new { @class = "", @readonly = "readonly", @disabled = "disabled", @id = "POQty_Open" })
+                                </div>
+                                <div class="col-md-8">
+                                    
+                                   
+                                 
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @*<div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.SGST)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.SGST, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.SGST, null, new { @class = "alert-danger" })
+                                </div>*@
+                            </div>
+
+                            <div class="form-group">
+                                @*<div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.IGST)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.IGST, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.IGST, null, new { @class = "alert-danger" })
+                                </div>*@
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="col-md-12" id="div_quotationRawMaterial">
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Raw Material Cost Details</h4></div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_QuotationModel.SteelCost)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.SteelCost, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_QuotationModel.SteelCost, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_QuotationModel.Transportation)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Transportation, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_QuotationModel.Transportation, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*<div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_QuotationModel.Total)
+                            </div>*@
+                            <div class="col-md-8">
+                                @*@Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Total, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_QuotationModel.Total, null, new { @class = "alert-danger" })*@
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_QuotationModel.TotalRowMaterialCost)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.TotalRowMaterialCost, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_QuotationModel.TotalRowMaterialCost, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Raw Material Cost Details</h4></div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.Transportation)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Transportation, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.Transportation, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @*@Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.Total)*@
+                            </div>
+                            <div class="col-md-8">
+                                @*@Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Total, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.Total, null, new { @class = "alert-danger" })*@
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost, null, new { @class = "form-control NoStar", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-md-12">
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Conversion Rate Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    SameAsQuotation&nbsp;&nbsp;<input type="checkbox" class="" id="SameAsQuotation" readonly disabled /></h4></div>
+                    <div class="panel-body">
+
+                        @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
+                        {
+
+
+                            if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Cutting(Sq In)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.CuttingSquare1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.CuttingSquare2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Forging</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Forging1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Forging2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Heat Treatment Cost(Net Wt):</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.HeatTreatment1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.HeatTreatment2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Shot Blasting(Net Wt)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ShotBlasting1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ShotBlasting2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>MPI</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.MPI1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.MPI2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 6 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Grinding(Per Piece)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Grinding1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Grinding2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 7 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Cold Coining(Per Piece)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ColdCoining1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ColdCoining2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 8 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Machaining(Per Piece)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Machining1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Machining2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+
+                        }
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label>Die Maintaince Cost(Per Piece):	</label>
+                            </div>
+                            <div class="col-md-4">
+
+                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.DieMaintenance1, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.DieMaintenance2, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                <label>Total Conversion Cost</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.TotalConverstionCost, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                <label>Total Component Cost</label>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.TotalComponentCost, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                <label>Initial Die Cost	</label>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.InitialDieCost, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Conversion Rate Details</h4></div>
+                    <div class="panel-body">
+
+                        @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
+                        {
+
+
+                            if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Cutting(Sq In)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Forging</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Forging1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Forging2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Heat Treatment Cost(Net Wt):</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Shot Blasting(Net Wt)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>MPI</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.MPI1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.MPI2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 6 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Grinding(Per Piece)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Grinding1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Grinding2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 7 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Cold Coining(Per Piece)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+                            if (item.Operations_Involved == 8 && item.Operations_Involved_Select)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-4 control-label">
+                                        <label>Machaining(Per Piece)</label>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Machining1, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Machining2, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+
+                                </div>
+                            }
+
+                        }
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label>Die Maintaince Cost(Per Piece):	</label>
+                            </div>
+                            <div class="col-md-4">
+
+                                @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance1, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance2, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                <label>Total Conversion Cost</label>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalConverstionCost, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                <label>Total Component Cost</label>
+                            </div>
+                           
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalComponentCost, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 control-label">
+                                <label>Initial Die Cost	</label>
+                            </div>
+                           
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.InitialDieCost, new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-2">
+                        @Html.Label("Comment")
+                    </div>
+                    <div class="col-md-10">
+                        @Html.TextArea("Comment", null, new { @class = "form-control", @id = "Comment" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        &nbsp;
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" style="text-align:center">
+                    <input type="button" name="Save" value="Accept" class="btn btn-success btn-default" id="Approve" />
+                    <input type="button" name="Save" value="Reject" class="btn btn-danger btn-default" id="Reject" />
+                    
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Content/jspdf.debug.js"></script>
+    <script src="~/Content/jspdf.min.js"></script>
+
+    <script src="~/Content/html2canvas.js"></script>
+
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+
+    <script type="text/javascript">
+
+        $j(document).ready(function () {
+            
+            $j("#hdn_NatureOfWork").val(@ViewData["NatureOfWork"]);
+
+            if ($j("#hdn_NatureOfWork").val() != "201") {
+                $j("#div_quotationRawMaterial ").show();
+                $j("#div_poRawMaterial").show();
+            } else {
+                $j("#div_quotationRawMaterial").hide();
+                $j("#div_poRawMaterial").hide();
+            }
+           
+            var poq = $j("#hdn_POQty_Open").val();
+           
+            if (poq == "True") {
+                $j("#POQty_Open").prop('checked', true);
+            }
+            else {
+                $j("#POQty_Open").prop('checked', false);
+            }
+            var saq = $j("#hdn_sameasquotation").val();
+            
+            if (saq == "True") {
+
+                $j("#SameAsQuotation").prop('checked', true);
+            }
+            else {
+                $j("#SameAsQuotation").prop('checked', false);
+            }
+            
+            $j("#Reject").click(function () {
+                // Save it!
+                var CommentFor = $j('#Comment').val();
+                var POId = $j('#po_id').val();
+                var InqNo = $j('#InquiryNo').val();
+                $j.ajax({
+                    url: "../PurchaseOrderApproval/RejectPurchaseOrder",
+                    type: "POST",
+                    dataType: "json",
+                    data: { PO_Id: POId, InquiryNo: InqNo, Comment: CommentFor },
+                    success: function (data) {
+                        alert(data);
+                        parent.$j.fancybox.close();
+                    }
+                });
+            });
+
+            $j("#Approve").click(function () {
+                // Save it!
+                var CommentFor = $j('#Comment').val();
+                var POId = $j('#po_id').val();
+                var InqNo = $j('#InquiryNo').val();
+                $j.ajax({
+                    url: "../PurchaseOrderApproval/ApprovePurchaseOrder",
+                    type: "POST",
+                    dataType: "json",
+                    data: { PO_Id: POId, InquiryNo: InqNo, Comment: CommentFor },
+                    success: function (data) {
+                        alert(data);
+                        parent.$j.fancybox.close();
+                    }
+                });
+            });
+
+
+            $j("#Download").click(function () {
+                //pdf download start
+                var div = document.getElementById("printpdf");
+                //alert(div);
+                div.style.display = "block";
+                var doc = new jsPDF('p', 'mm', [600, 500]);
+                doc.addHTML($j('#printpdf')[0], 10, 10, {
+                    'background': '#fff',
+                }, function () {
+                    doc.save('Quotation.pdf');
+                });
+
+                //div.style.display = "none";
+                //pdf download complete
+            });
+
+
+        });
+
+    </script>
+
+}
+

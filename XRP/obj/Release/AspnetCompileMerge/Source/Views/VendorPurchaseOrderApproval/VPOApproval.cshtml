@@ -1,0 +1,538 @@
+﻿
+@{
+    ViewBag.Title = "VPOApproval";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+<fieldset>
+    @*<header class="blue accent-3 relative">
+        <div class="container-fluid text-white">
+            <div class="row p-t-b-10 ">
+                <div class="col">
+                    
+                            <i class="icon icon-home2"></i>
+                        Vendor Purchase Order Approval
+                       
+                </div>
+            </div>
+           
+        </div>
+
+    </header>*@
+    <header class="blue accent-3 relative">
+        <div class="container-fluid text-white">
+            <div class="row p-t-b-10 ">
+                <div class="col">
+                    <h4>
+                        <i class="icon-database"></i>
+                        Vendor Purchase Order
+                    </h4>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                    <li>
+                        <a class="nav-link" href="/VendorPurchaseOrderApproval/VendorPurchaseOrderList"><i class="icon icon-home2"></i>Vendor Purchase Order List For Approval</a>
+                         
+                    </li>
+                    <li>
+                            <a class="nav-link active" id="v-pills-buyers-tab" data-toggle="pill" href="" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-document"></i>Vendor Purchase Order</a>
+                        </li>
+                      
+                </ul>
+            </div>
+        </div>
+
+    </header>
+    <div class="container-fluid">
+        <div class="card my-3 shadow b-0">
+            <div class="row no-gutters">
+                
+                <div class="col-md-12 col-sm-12 white" id="divvendorformat">
+
+                    <div class=" slimScroll" data-height="600">
+                        <div class="w-body w-scroll ">
+                            <ul class="list-unstyled">
+                                @*Details display Here*@
+
+
+                                <br />
+
+
+                                <div class="tab-pane fade show" id="w4-tab2" role="tabpanel" aria-labelledby="w4-tab2">
+
+                                    <center>
+                                        <div class="col-sm-11" style="" align="center" id="divprint">
+                                            <center><img src="~/NewCssAndTheme/img/SSMlogoNew.png" height="50" width="60" alt=""> <font size="4"><b>Shree Siddheshwari Metal Forging Pvt. Ltd.</b></font><hr></center>
+                                            <center>
+                                                <font size="2px">
+                                                    PLOT NO. 489 &amp; 490, 'J' BLOCK M.I.D.C. BHOSARI, PUNE-411026<br>
+                                                    PHONE NO. : (020) 27130120 EMAIL: scm@ssmforge.com
+                                                </font>
+                                                <br><br>
+                                                <u><b><font size="4"> Purchase Order</font></b></u><br>
+                                                <small>(Note - Please quote this P.O. No on all Bills, Challans, Correspondence, Document etc.)</small>
+                                            </center>
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>&nbsp; P.O. NO. :<span id="vpono"></span></td>
+
+                                                        <td>&nbsp; DATE :<span id="date1"></span></td>
+
+                                                        <td>&nbsp; Valid Date :<span id="datev"></span></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp; Ven. Ref.:<span id="venref"></span></td>
+
+                                                        <td>&nbsp; DATE :<span id="date2"></span></td>
+
+                                                        <td></td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <table class="table border-bottom" style="width:100%">
+                                                <tbody>
+                                                    <tr>
+                                                        <td valign="top" style="width:50%">
+                                                            &nbsp;To,<br>
+                                                            &nbsp;<span id="name"></span><br>
+                                                            &nbsp;<span id="address"></span>
+                                                        </td>
+                                                        <td style="width:50%">
+                                                            &nbsp;CONTACT PERSON:&nbsp;<span id="contactperson"></span><br>
+
+                                                            &nbsp;Contact No. :<span id="contactno"></span><br>
+                                                            &nbsp;Email:<span id="email"></span>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <small> With Reference to above, Please Supply the following material as per term &amp; condition mentioned below:</small>
+                                            <table class="table" style="width:100%" id="tblpdfvpodetails">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Sr.No.</td>
+                                                        <td>Description</td>
+                                                        <td>QTY</td>
+                                                        <td>Rate</td>
+                                                        <td>Rate Per </td>
+                                                        <td>Amount</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody_tblpdfvpodetails" class="table"></tbody>
+                                            </table>
+
+                                            <table id="tbl_tnc" align="left" class="border-bottom" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <td> <b><u>TERMS &amp; CONDITIONS:</u></b></td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody_tbl_tnc"></tbody>
+                                            </table>
+                                            <table id="tbl_notes" align="left" class="border-bottom" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <td> <b><u>Notes:</u></b></td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody_tbl_notes"></tbody>
+                                            </table>
+                                            <table width="100%">
+
+                                                <tr>
+                                                    <td align="left">
+
+                                                        GSTIN:27AARCS5238G1ZX<br />
+                                                        PAN NO.: AARCS5238G.<br /><br />
+                                                        Thanking You.<br />
+                                                        Purchase<br />
+                                                        PO/WO Received, Reviewed &amp; Accepted by:
+                                                    </td>
+                                                    <td align="right">
+                                                        <b>For Shree Siddheshwari Metal Forging Pvt. Ltd.</b><br />
+                                                        Authorised Signatory<br /><br />
+                                                        <b>MT/FM-08</b><br />
+                                                        <b>This document is autogenerated</b>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+
+                                        </div>
+                                    </center>
+                                    <br />
+                                 
+                                    <table style="width:100%" align="left">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                  
+                                                </td>
+                                                
+                                                <td>
+                                                   @* <button class="btn btn-primary btn-sm" type="button" href="#" data-toggle="modal" data-target="#filelist"><i class="icon-print">&nbsp;View</i></button>*@
+                                                </td>
+                                                @*<td></td>*@
+                                                <td align="left">
+                                                    <div class="dropdown" align="right">
+
+                                                        <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Approve
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:lightgrey;">
+                                                            <a class="dropdown-item mosurhandsymbol"  id="Approve" onclick="poapprove();">Accept</a>
+                                                            <a class="dropdown-item mosurhandsymbol"  data-toggle="modal" data-target="#CommentForApproval">Reject</a>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                @*<td align="left">
+                                                <button class="btn btn-primary btn-sm" type="button" onclick="printDiv('divprint')"><i class="icon-print">&nbsp;Print</i></button>
+                                                 </td>*@
+                                               <td></td>
+                                                <td>&nbsp;</td>
+                                        </tbody>
+                                    </table>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                </div>
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="CommentForApproval" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Comment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.TextArea("Comment", null, new { @class = "form-control r-0 light s-12", @id = "Comment", @cols = "3", @rows = "5" })
+                </div>
+                <div class="modal-footer">
+                    @*<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>*@
+                    <button type="button" class="btn btn-primary btn-sm" id="ConditionalApprove" onclick="poreject()">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="modal fade" id="filelist" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered slimScroll" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">PO List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="tblfilelist" class="table border-bottom">
+                        <tbody id="tbodytblfilelist">
+
+                        </tbody>
+                    </table>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</fieldset>
+<style>
+    .mosurhandsymbol {
+        cursor: pointer;
+    }
+</style>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/Validations/JqueryUi.js"></script>
+<script type="text/javascript">
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+
+    $(document).ready(function () {
+
+        var id = getUrlVars()["PO_No"];
+
+        id = id.replace('%20', ' ');
+        var splits =id.split("-");
+        var tcid = (splits[1].trim());
+
+        $.ajax
+                               ({
+                                   type: "POST",
+                                   url: "../VendorPurchaseOrderApproval/fetchVPODataforApproval",
+                                   data: JSON.stringify({
+                                       id: '' + id + ''
+                                   }),
+                                   contentType: "application/json;charset=utf-8",
+                                   //dataType: "json",
+                                   success: function (status) {
+                                       $("#vpono").text(status[0].po_no);
+                                       $("#venref").text(status[0].quotation_ref_no);
+                                       $("#date1").text(jsondateformatconvert(status[0].quotation_ref_date));
+                                       $("#date2").text(jsondateformatconvert(status[0].po_date));
+                                       $("#datev").text(jsondateformatconvert(status[0].valid_date));
+                                       $("#name").text(status[0].Name);
+
+                                       $("#contactperson").text(status[0].ContactPersonName);
+                                       $("#contactno").text(status[0].Email);
+                                       $("#email").text(status[0].Mob);
+                                       $("#address").text(status[0].Address);
+                                       //code for multi data disply from vendor po details
+                                      fetchvpodetails(id);
+
+                                       fetchnotes(status[0].po_no);
+                                       fetchtnc(id);
+
+                                       displayfilelist(status[0].po_no);
+
+                                   },
+                                   error: function (err) {
+                                       // alert('Error occured');
+                                   }
+                               });
+    });
+    function jsondateformatconvert(jsondate) {
+        var MyDate_String_Value = jsondate;
+        var value = new Date
+        (
+        parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+        );
+        var date = value.getDate();
+        if (date < 10) {
+            date = "0" + date;
+        } else {
+            date = date;
+        }
+        var month = parseInt(value.getMonth()) + 1;
+
+        if (month < 10) {
+            month = "0" + month;
+        } else {
+            month = month;
+        }
+        var year = value.getFullYear();
+        var dat = date + "-" + month + "-" + year;
+        return dat;
+    }
+    function poapprove()
+    {
+
+        var id = getUrlVars()["PO_No"];
+
+        id = id.replace('%20', ' ');
+        var splits = id.split("-");
+        var tcid = (splits[1].trim());
+
+        var CommentFor = "-";
+        
+        $.ajax({
+            url: "../VendorPurchaseOrderApproval/ApproveResponsePurchaseOrder",
+            type: "POST",
+            dataType: "json",
+            data: { id: id},
+            success: function (data) {
+                location.href="@Url.Action("VendorPurchaseOrderList", "VendorPurchaseOrderApproval")" ;
+            }
+        });
+    }
+    function poreject()
+    {
+
+        var id = getUrlVars()["PO_No"];
+
+        id = id.replace('%20', ' ');
+      
+        var splits = id.split("-");
+        var tcid = (splits[1].trim());
+        // Save it!
+        var CommentFor = $('#Comment').val();
+     
+        if (CommentFor=="") {
+            alert('Please Enter Commnent');
+            return false;
+        }
+
+        $.ajax({
+            url: "../VendorPurchaseOrderApproval/RejectResponsePurchaseOrder",
+            type: "POST",
+            dataType: "json",
+            data: { id: id, Comment: CommentFor },
+            success: function (data) {
+                location.href="@Url.Action("VendorPurchaseOrderList", "VendorPurchaseOrderApproval")" ;
+            }
+        });
+    }
+    function displayfilelist(pono)
+    {
+        $.ajax
+                  ({
+                      type: "POST",
+                      url: "../VendorPurchaseOrderApproval/displayfilelist",
+                      data: JSON.stringify({
+                          pono: '' + pono + ''
+                      }),
+                      contentType: "application/json;charset=utf-8",
+                      //dataType: "json",
+                      success: function (status) {
+
+                          if (status != "") {
+                              $("#tbodytblfilelist").empty();
+                              //Append each row to html table
+                              for (var i = 0; i < status.length; i++) {
+                                  tr = $('<tr />');
+
+                                  tr.append('<td><a  href="' + status[i].FilePath + '" target="_blank">' + status[i].Name + '</a></td>');
+                                  $('#tblfilelist').append(tr);
+
+                              }
+                          }
+
+                      },
+                      error: function (err) {
+                          // alert('Error occured');
+                      }
+                  });
+    }
+    function fetchtnc(rfqid) {
+        $.ajax
+                     ({
+                         type: "POST",
+                         url: "../VendorPurchaseOrder/fetchtnc",
+                         data: JSON.stringify({
+                             rfqid: '' + rfqid + ''
+                         }),
+                         contentType: "application/json;charset=utf-8",
+                         //dataType: "json",
+                         success: function (status) {
+
+                             if (status != "") {
+                                 $("#tbody_tbl_tnc").empty();
+                                 //Append each row to html table
+                                 for (var i = 0; i < status.length; i++) {
+                                     tr = $('<tr />');
+                                     tr.append("<td>" + (i + 1) + "." + status[i].Termandcondition + "</td>");
+                                     // tr.append("<td>" + status[i].TermsNConditionContent + "</td>");
+                                     $('#tbl_tnc').append(tr);
+
+                                 }
+                             }
+
+                         },
+                         error: function (err) {
+                             // alert('Error occured');
+                         }
+                     });
+    }
+    function fetchnotes(pono) {
+        $.ajax
+                     ({
+                         type: "POST",
+                         url: "../VendorPurchaseOrder/fetchtnotes",
+                         data: JSON.stringify({
+                             pono: '' + pono + ''
+                         }),
+                         contentType: "application/json;charset=utf-8",
+                         //dataType: "json",
+                         success: function (status) {
+
+                             if (status != "") {
+                                 $("#tbody_tbl_notes").empty();
+                                 //Append each row to html table
+                                 for (var i = 0; i < status.length; i++) {
+                                     tr = $('<tr />');
+                                     tr.append("<td>" + (i + 1) + "." + status[i].description + "</td>");
+                                     // tr.append("<td>" + status[i].TermsNConditionContent + "</td>");
+                                     $('#tbl_notes').append(tr);
+
+                                 }
+                             }
+
+                         },
+                         error: function (err) {
+                             // alert('Error occured');
+                         }
+                     });
+    }
+    function fetchvpodetails(id) {
+        $.ajax
+                       ({
+                           type: "POST",
+                           url: "../VendorPurchaseOrder/fetchVPODetails",
+                           data: JSON.stringify({
+                               id: '' + id + ''
+                           }),
+                           contentType: "application/json;charset=utf-8",
+                           //dataType: "json",
+                           success: function (status) {
+
+                               if (status != "") {
+                                   $("#tbody_tblpdfvpodetails").empty();
+                                   //Append each row to html table
+                                   for (var i = 0; i < status.length; i++) {
+                                       tr = $('<tr />');
+                                       tr.append("<td>" + (i + 1) + "</td>");
+                                       //tr.append("<td>'" + status[i].item_code+ "'</td>");
+                                       tr.append("<td>" + status[i].item_description + "</td>");
+                                       tr.append("<td align='center'>" + status[i].qty + "</td>");
+                                       tr.append("<td  align='center'>" + status[i].rate + "</td>");
+                                       tr.append("<td>" + status[i].rate_per + "</td>");
+                                       tr.append("<td  align='center'>" + status[i].amount + "</td>");
+
+                                       $('#tblpdfvpodetails').append(tr);
+                                   }
+
+                               }
+
+                           },
+                           error: function (err) {
+                               // alert('Error occured');
+                           }
+                       });
+
+    }
+    function printDiv(divprint) {
+        var printContents = document.getElementById(divprint).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+        window.location.reload();
+
+    }
+
+</script>
+
+
+

@@ -1,0 +1,41 @@
+﻿@model XRP.Models.Paged_ssmtbl_DeliveryChallanModel
+@*<div class="row">
+    <div class="col-md-12">*@
+        <!-- START DEFAULT DATATABLE -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="col-md-4">
+                    <a class="nav-link" href='@Url.Action("NewDCLabTesting", "DeliveryChallan")'><i class="icon icon-plus-circle"></i> New Delivery Challan</a>
+                    @*<input type="button" class="btn btn-info" value="New Delivery Challan" onclick="location.href = '@Url.Action("NewDCLabTesting", "DeliveryChallan")    '" />*@
+                </div>
+            </div>
+            <div class="panel-body panel-body-table">
+                <div class="table-responsive">
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th>DISPATCH No</th>
+                                <th>VENDOR NAME</th>
+                                <th>EXPECTED REPORT DATE</th>
+                                <th>DATE</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
+                            {
+                                <tr>
+                                    <td>@data.dispatch_no</td>
+                                    <td>@data.vendor_name</td>
+                                    <td>@data.expected_report_date.Date.ToString("dd-MMM-yyyy")</td>
+                                    <td>@data.CreatedOn.Date.ToString("dd-MMM-yyyy")</td>
+                                    <td><a href="@Url.Action("EditDCLabTesting", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="Edit Inquiry"><span class="icon-pencil"></span></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    @*</div>
+</div>*@

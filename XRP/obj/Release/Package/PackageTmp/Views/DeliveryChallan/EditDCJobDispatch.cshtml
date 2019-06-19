@@ -1,0 +1,1184 @@
+﻿@model XRP.Models.ssmtbl_DeliveryChallanModel
+@using XRP.Models;
+@{
+    ViewBag.Title = "Edit Job Dispatch";
+    ViewBag.Active = "Stock";
+    ViewBag.Active1 = "Delivery Challan";
+    ViewBag.Active2 = "Job Dispatch";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+
+
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (@Html.BeginForm("EditDCJobDispatch", "DeliveryChallan", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                @*<div class="row p-t-b-10 ">
+                    <div class="col">*@
+                        <h4>
+                            <i class="icon-database"></i>
+                            Job Dispatch
+                        </h4>
+                    @*</div>
+                </div>*@
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllDeliveryChallan", "DeliveryChallan")'><i class="icon icon-home2"></i>All Delivery Challan</a>
+
+                        </li>
+                        <li class="float-right">
+                            <a class="nav-link active" href='#'><i class="icon icon-pencil"></i> Edit Delivery Challan</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div id="NotifDiv" style="display:none;">
+            <button id="NotifData" type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">×</span>
+                <span class="sr-only">Close</span>
+            </button>
+        </div>
+
+
+        <div class="@ViewBag.HideClass" style="text-align:center; background-color:#0094ff; color:white">
+            @ViewBag.Message
+        </div>
+
+        <!-- PAGE TITLE -->
+        @*<div class="page-title">
+            <h2><span class="fa fa-arrow-circle-o-left"></span>EDIT JOB DISPATCH</h2>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <div class="form-group" style="text-align:center">
+                        <input type="button" class="btn btn-info" value="All Delivery Challan" onclick="location.href = '@Url.Action("AllDeliveryChallan", "DeliveryChallan")'" />
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        @Html.HiddenFor(model => model.dispatch_char, new { @id = "dispatch_char" })
+        @Html.HiddenFor(model => model.dispatch_id, new { @id = "dispatch_id" })
+
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="animated fadeInUpShort">
+                <form action="#">
+                    <div class="card no-b  no-r">
+                        <div class="card-body">
+                            <div class="form-row mt-1">
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.dispatch_no, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.dispatch_no, null, new { @class = "form-control r-0 light s-12 NoStar", id = "dispatch_no", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.dispatch_no, null, new { @class = "alert-danger" })
+
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.customer_name, new { @class = "Label" })
+                                    @Html.HiddenFor(model => model.customer_id, new { @class = "customer_id" })
+
+                                    @Html.TextBoxFor(model => model.customer_name, null, new { @class = "form-control r-0 light s-12 NoStar", id = "customer_name" })
+                                    @Html.ValidationMessageFor(model => model.customer_name, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.CustomerPONo, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.CustomerPONo, null, new { @class = "form-control r-0 light s-12 NoStar ", id = "CustomerPONo" })
+                                    @Html.ValidationMessageFor(model => model.CustomerPONo, null, new { @class = "alert-danger" })
+
+                                </div>
+                            </div>
+                            <div class="form-row mt-1">
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.po_qty, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.po_qty, null, new { @class = "form-control r-0 light s-12 NoStar ", id = "po_qty", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.po_qty, null, new { @class = "alert-danger" })
+
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.HSNCode, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.HSNCode, null, new { @class = "form-control r-0 light s-12 NoStar ", id = "HSNCode", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.HSNCode, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.Customer_part_no, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.Customer_part_no, null, new { @class = "form-control r-0 light s-12 NoStar ", id = "Customer_part_no", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.Customer_part_no, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            @*<div class="form-row mt-1">
+                <div class="form-group col-12 m-0">
+                    @Html.Label("WO Details", new { @class = "Label" })
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>WO</th>
+                                <th>Material Grade</th>
+                                <th>Section</th>
+                                <th>Cut Weight</th>
+                                <th>Hardness</th>
+                                <th>Finish Weight</th>
+
+                                <th>Heat Code</th>
+                                <th>WO Balance</th>
+                                <th>Description</th>
+                                <th>HSN/SAC Code</th>
+                                <th>Qty</th>
+                                <th>Unit</th>
+                                <th>Taxable Value</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" name="WOM" class="form-control r-0 light s-12 " id="WOM" />
+                                </td>
+                                <td>
+                                    <input type="text" name="MaterialGradeM" class="form-control r-0 light s-12 " id="MaterialGradeM" />
+                                </td>
+                                <td>
+                                    <input type="text" name="SectionM" class="form-control r-0 light s-12 " id="SectionM" />
+                                </td>
+                                <td>
+                                    <input type="text" name="CutWeightM" class="form-control r-0 light s-12 " id="CutWeightM" />
+                                </td>
+                                <td>
+                                    <input type="text" name="HardnessM" class="form-control r-0 light s-12 " id="HardnessM" />
+                                </td>
+                                <td>
+                                    <input type="text" name="FinishWeightM" class="form-control r-0 light s-12 " id="FinishWeightM" />
+                                </td>
+                                <td>
+                                    <input type="text" name="HeatCodeM" class="form-control r-0 light s-12 " id="HeatCodeM" />
+                                </td>
+                                <td>
+                                    <input type="text" name="WOBalanceM" class="form-control r-0 light s-12 " id="WOBalanceM" value="0" />
+                                </td>
+                                <td>
+                                    <input type="text" name="DescriptionM" class="form-control r-0 light s-12 " id="DescriptionM" />
+                                </td>
+                                <td>
+                                    <input type="text" name="HSNSACCodeM" class="form-control r-0 light s-12 " id="HSNSACCodeM" />
+                                </td>
+                                <td>
+                                    <input type="text" name="QtyM" class="form-control r-0 light s-12 " id="QtyM" value="0" />
+                                </td>
+                                <td>
+                                    @Html.DropDownList("RatePerM", @ViewBag.RatePer as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12 ", id = "RatePerM" })
+                                </td>
+                                <td>
+                                    <input type="text" name="TaxableValueM" class="form-control r-0 light s-12 " id="TaxableValueM" value="0" />
+                                </td>
+                                <td>
+                                    <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd"><span class="fa fa-arrows">+</span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>*@
+
+
+                            <div class="form-row mt-1">
+                                <div class="form-group col-12 m-0">
+                                    @Html.Label("WO Details", new { @class = "Label" })
+                                    <table class="table table-bordered" id="maintable">
+                                        <thead>
+                                            <tr>
+                                                <th>WO</th>
+                                                <th>Material Grade</th>
+                                                <th>Section</th>
+                                                <th>Cut Weight</th>
+                                                <th>Hardness</th>
+                                                <th>Finish Weight</th>
+
+                                                <th>Heat Code</th>
+                                                <th>WO Balance</th>
+                                                <th>Description</th>
+                                                <th>HSN/SAC Code</th>
+                                                <th>Qty</th>
+                                                <th>Unit</th>
+                                                <th>Taxable Value</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var data in Model.ssmtbl_DeliveryChallan_DetailsModelList)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" name="WOM" class="form-control r-0 light s-12 " id="WOM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="MaterialGradeM" class="form-control r-0 light s-12 " id="MaterialGradeM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="SectionM" class="form-control r-0 light s-12 " id="SectionM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="CutWeightM" class="form-control r-0 light s-12 " id="CutWeightM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="HardnessM" class="form-control r-0 light s-12 " id="HardnessM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="FinishWeightM" class="form-control r-0 light s-12 " id="FinishWeightM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="HeatCodeM" class="form-control r-0 light s-12 " id="HeatCodeM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="WOBalanceM" class="form-control r-0 light s-12 " id="WOBalanceM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="DescriptionM" class="form-control r-0 light s-12 " id="DescriptionM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="HSNSACCodeM" class="form-control r-0 light s-12 " id="HSNSACCodeM" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="QtyM" class="form-control r-0 light s-12 " id="QtyM" />
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("RatePerM", @ViewBag.RatePer as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12 ", id = "RatePerM" })
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="TaxableValueM" class="form-control r-0 light s-12 " id="TaxableValueM" />
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd"><span class="icon icon-plus"></span></button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                            <div class="row" style="max-height:150px; overflow:scroll;" id="processing">
+                                <div class="col-md-12">
+
+                                    <table class="table" id="maintable">
+
+                                        <tbody>
+                                            @foreach (var data in Model.ssmtbl_DeliveryChallan_DetailsModelList)
+                                            {
+                                                <tr class="data-contact-person">
+                                                    <td>
+                                                        <input type="text" name="WOM" class="form-control r-0 light s-12 WOM01" id="WOM" value="@data.wo" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="MaterialGradeM" class="form-control r-0 light s-12 MaterialGradeM01" id="MaterialGradeM" value="@data.material_grade" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="SectionM" class="form-control r-0 light s-12 SectionM01" id="SectionM" value="@data.section" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="CutWeightM" class="form-control r-0 light s-12 CutWeightM01" id="CutWeightM" value="@data.cut_weight" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="HardnessM" class="form-control r-0 light s-12 HardnessM01" id="HardnessM" value="@data.hardness" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="FinishWeightM" class="form-control r-0 light s-12 FinishWeightM01" id="FinishWeightM" value="@data.finish_weight" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="HeatCodeM" class="form-control r-0 light s-12 HeatCodeM01" id="HeatCodeM" value="@data.heat_code" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="WOBalanceM" class="form-control r-0 light s-12 WOBalanceM01" id="WOBalanceM" value="@data.wo_balance" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="DescriptionM" class="form-control r-0 light s-12 DescriptionM01" id="DescriptionM" value="@data.description" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="HSNSACCodeM" class="form-control r-0 light s-12 HSNSACCodeM01" id="HSNSACCodeM" value="@data.hsn_sac_code" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="QtyM" class="form-control r-0 light s-12 QtyM01" id="QtyM" value="@data.qty" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="RatePerM" class="form-control r-0 light s-12 RatePerM01" id="RatePerM" value="@data.units" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="TaxableValueM" class="form-control r-0 light s-12 TaxableValueM01" id="TaxableValueM" value="@data.taxable_value" readonly="readonly" />
+                                                    </td>
+                                                    <td>
+
+                                                        <button type="button" id="btnDelete" class="deleteContact btn btn-danger btn-xs" onclick="Remove(this);"><i class="icon icon-remove"></i></button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-row mt-1">
+                                <div class="form-group col-2 m-0">
+                                    @Html.LabelFor(model => model.cgst_perc, new { @class = "Label" })
+                                    <div class="custom-control-inline">
+                                        @Html.TextBoxFor(model => model.cgst_perc, null, new { @class = "form-control r-0 light s-12 NoStar", id = "cgst_perc" })
+                                        @Html.ValidationMessageFor(model => model.cgst_perc, null, new { @class = "alert-danger" })
+
+                                        @*@Html.TextBoxFor(model => model.cgst_amt, null, new { @class = "form-control r-0 light s-12 NoStar", @readonly = "readonly", id = "cgst_amt" })
+                        @Html.ValidationMessageFor(model => model.cgst_amt, null, new { @class = "alert-danger" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group col-2 m-0">
+                                    @Html.Label("Amount", new { @class = "Label" })
+                                    <div class="custom-control-inline">
+                                        @*@Html.TextBoxFor(model => model.cgst_perc, null, new { @class = "form-control r-0 light s-12 NoStar", id = "cgst_perc" })
+                        @Html.ValidationMessageFor(model => model.cgst_perc, null, new { @class = "alert-danger" })*@
+
+                                        @Html.TextBoxFor(model => model.cgst_amt, null, new { @class = "form-control r-0 light s-12 NoStar", @readonly = "readonly", id = "cgst_amt" })
+                                        @Html.ValidationMessageFor(model => model.cgst_amt, null, new { @class = "alert-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-2 m-0">
+                                    @Html.LabelFor(model => model.sgst_perc, new { @class = "Label" })
+                                    <div class="custom-control-inline">
+                                        @Html.TextBoxFor(model => model.sgst_perc, null, new { @class = "form-control r-0 light s-12 NoStar", id = "sgst_perc" })
+                                        @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
+
+                                        @*@Html.TextBoxFor(model => model.sgst_amt, null, new { @class = "form-control r-0 light s-12 NoStar", @readonly = "readonly", id = "sgst_amt" })
+                        @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group col-2 m-0">
+                                    @Html.Label("Amount", new { @class = "Label" })
+                                    <div class="custom-control-inline">
+                                        @*@Html.TextBoxFor(model => model.sgst_perc, null, new { @class = "form-control r-0 light s-12 NoStar", id = "sgst_perc" })
+                        @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })*@
+
+                                        @Html.TextBoxFor(model => model.sgst_amt, null, new { @class = "form-control r-0 light s-12 NoStar", @readonly = "readonly", id = "sgst_amt" })
+                                        @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-2 m-0">
+
+                                    @Html.LabelFor(model => model.igst_perc, new { @class = "Label" })
+                                    <div class="custom-control-inline">
+                                        @Html.TextBoxFor(model => model.igst_perc, null, new { @class = "form-control r-0 light s-12 NoStar", id = "igst_perc" })
+                                        @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
+
+                                        @*@Html.TextBoxFor(model => model.igst_amt, null, new { @class = "form-control r-0 light s-12 NoStar", @readonly = "readonly", id = "igst_amt" })
+                        @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group col-2 m-0">
+
+                                    @Html.Label("Amount", new { @class = "Label" })
+                                    <div class="custom-control-inline">
+                                        @*@Html.TextBoxFor(model => model.igst_perc, null, new { @class = "form-control r-0 light s-12 NoStar", id = "igst_perc" })
+                        @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })*@
+
+                                        @Html.TextBoxFor(model => model.igst_amt, null, new { @class = "form-control r-0 light s-12 NoStar", @readonly = "readonly", id = "igst_amt" })
+                                        @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row mt-1">
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.total, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.total, null, new { @class = "form-control r-0 light s-12 NoStar", @readonly = "readonly", id = "total" })
+                                    @Html.ValidationMessageFor(model => model.total, null, new { @class = "alert-danger" })
+
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.grand_total, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.grand_total, null, new { @class = "form-control r-0 light s-12 NoStar", @readonly = "readonly", id = "grand_total" })
+                                    @Html.ValidationMessageFor(model => model.grand_total, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-4 m-0">
+
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="row" id="btnDiv">
+                            <div class="col-md-12">
+
+
+                                <div class="form-group" style="text-align:center">
+                                    <div class="col-md-4" id="Download">
+                                        <a href="@Url.Action("DCJobDispatchPDF", "DeliveryChallan", new { DispatchNo = Model.dispatch_no, _target = "blank" })" class="btn btn-default btn-info">Download</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="col-md-6" id="submitDiv">
+                                            <input type="button" name="Save" value="Update" class="btn btn-success btn-default" id="btnSubmit" />
+                                        </div>
+                                        <div class="col-md-6" id="loaderDiv" style="display:none;">
+                                            <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 ">
+                                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewDCJobDispatch", "DeliveryChallan")    '" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>*@
+                        <div class="card-body" id="btnDiv">
+
+                            <div class="form-row mt-1">
+                                <div class="col-md-2" id="Download">
+                                    @*<a href="@Url.Action("DCJobDispatchPDF", "DeliveryChallan", new { DispatchNo = Model.dispatch_no, _target = "blank" })" class="btn btn-secondary"><i class="icon-download mr-2"></i>Download</a>*@
+                                    <a href="@Url.Action("DCJobDispatchPDF", "DeliveryChallan", new { DispatchNo = Model.dispatch_no, _target = "blank" })" class="btn btn-secondary btn-sm" id="btnDownload" value="Update"><i class="icon icon-arrow-circle-down mr-2"></i>Download</a>
+                                    @*<button type="button" class="btn btn-secondary btn-sm"  onclick='location.href = "@Url.Action("DCJobDispatchPDF", "DeliveryChallan", new { DispatchNo = Model.dispatch_no, _target = "blank" })"' id="btnSubmit" value="Update"><i class="icon icon-arrow-circle-down mr-2"></i>Download</button>*@
+                                </div>
+                                <div class="form-group col-8 m-0">
+
+                                </div>
+
+                                <div class="form-group col-2 m-0 custom-control-inline">
+                                    <div id="submitDiv" align="right">
+                                        <button type="button" class="btn btn-primary btn-sm" id="btnSubmit" value="Update"><i class="icon-save mr-2"></i>Update</button>
+                                    </div>&nbsp;&nbsp;
+                                    <div id="loaderDiv" style="display:none;">
+                                        <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                                    </div>
+
+                                    @*<button type="reset" class="btn btn-success btn-sm" id="Reset"><i class="icon-refresh mr-2"></i>Reset</button>*@
+
+                                </div>
+                            </div>
+                            @*<div class="col-md-3">
+                                <div class="col-md-6" id="submitDiv">
+                                    <input type="button" name="Save" value="Save" class="btn btn-success btn-default" id="btnSubmit" />
+                                </div>
+                                <div class="col-md-6" id="loaderDiv" style="display:none;">
+                                    <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewDCJobDispatch", "DeliveryChallan")    '" />
+                            </div>*@
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        @*<div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Delivery Challan Details</h2></div>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.dispatch_no, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.dispatch_no, null, new { @class = "form-control NoStar", id = "dispatch_no", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.dispatch_no, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.customer_name, new { @class = "Label" })
+                                @Html.HiddenFor(model => model.customer_id, new { @class = "customer_id" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.customer_name, null, new { @class = "form-control NoStar", id = "customer_name" })
+                                @Html.ValidationMessageFor(model => model.customer_name, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.CustomerPONo, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.CustomerPONo, null, new { @class = "form-control NoStar ", id = "CustomerPONo" })
+                                @Html.ValidationMessageFor(model => model.CustomerPONo, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.po_qty, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.po_qty, null, new { @class = "form-control NoStar ", id = "po_qty", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.po_qty, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.HSNCode, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.HSNCode, null, new { @class = "form-control NoStar ", id = "HSNCode", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.HSNCode, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.Customer_part_no, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.Customer_part_no, null, new { @class = "form-control NoStar ", id = "Customer_part_no", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Customer_part_no, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+
+        @*<div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>WO Details</h2></div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>WO</th>
+                                        <th>Material Grade</th>
+                                        <th>Section</th>
+                                        <th>Cut Weight</th>
+                                        <th>Hardness</th>
+                                        <th>Finish Weight</th>
+
+                                        <th>Heat Code</th>
+                                        <th>WO Balance</th>
+                                        <th>Description</th>
+                                        <th>HSN/SAC Code</th>
+                                        <th>Qty</th>
+                                        <th>Units</th>
+                                        <th>Taxable Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @*<tr>
+                                        <td>
+                                            <input type="text" name="WOM" class="form-control " id="WOM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="MaterialGradeM" class="form-control " id="MaterialGradeM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="SectionM" class="form-control " id="SectionM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="CutWeightM" class="form-control " id="CutWeightM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="HardnessM" class="form-control " id="HardnessM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="FinishWeightM" class="form-control " id="FinishWeightM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="HeatCodeM" class="form-control " id="HeatCodeM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="WOBalanceM" class="form-control " id="WOBalanceM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="DescriptionM" class="form-control " id="DescriptionM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="HSNSACCodeM" class="form-control " id="HSNSACCodeM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="QtyM" class="form-control " id="QtyM" />
+                                        </td>
+                                        <td>
+                                            @Html.DropDownList("RatePerM", @ViewBag.RatePer as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control ", id = "RatePerM" })
+                                        </td>
+                                        <td>
+                                            <input type="text" name="TaxableValueM" class="form-control " id="TaxableValueM" />
+                                        </td>
+                                        <td>
+                                            <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd"><span class="fa fa-arrows"></span></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row" style="max-height:150px; overflow:scroll;" id="processing">
+                        <div class="col-md-12">
+
+                            <table class="table" id="maintable">
+
+                                <tbody>
+                                    @foreach (var data in Model.ssmtbl_DeliveryChallan_DetailsModelList)
+                                    {
+                                        <tr class="data-contact-person">
+                                            <td>
+                                                <input type="text" name="WOM" class="form-control WOM01" id="WOM" value="@data.wo" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="MaterialGradeM" class="form-control MaterialGradeM01" id="MaterialGradeM" value="@data.material_grade" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="SectionM" class="form-control SectionM01" id="SectionM" value="@data.section" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="CutWeightM" class="form-control CutWeightM01" id="CutWeightM" value="@data.cut_weight" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="HardnessM" class="form-control HardnessM01" id="HardnessM" value="@data.hardness" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="FinishWeightM" class="form-control FinishWeightM01" id="FinishWeightM" value="@data.finish_weight" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="HeatCodeM" class="form-control HeatCodeM01" id="HeatCodeM" value="@data.heat_code" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="WOBalanceM" class="form-control WOBalanceM01" id="WOBalanceM" value="@data.wo_balance" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="DescriptionM" class="form-control DescriptionM01" id="DescriptionM" value="@data.description" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="HSNSACCodeM" class="form-control HSNSACCodeM01" id="HSNSACCodeM" value="@data.hsn_sac_code" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="QtyM" class="form-control QtyM01" id="QtyM" value="@data.qty" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="RatePerM" class="form-control RatePerM01" id="RatePerM" value="@data.units" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="TaxableValueM" class="form-control TaxableValueM01" id="TaxableValueM" value="@data.taxable_value" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                              
+                                                <button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs" onclick="Remove(this);"><i class="icon i-remove"></i></button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
+
+
+
+        @*<div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>Total</h2></div>
+                <div class="panel-body">
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.cgst_perc, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.cgst_perc, null, new { @class = "form-control NoStar", id = "cgst_perc" })
+                                @Html.ValidationMessageFor(model => model.cgst_perc, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.cgst_amt, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "cgst_amt" })
+                                @Html.ValidationMessageFor(model => model.cgst_amt, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.sgst_perc, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.sgst_perc, null, new { @class = "form-control NoStar", id = "sgst_perc" })
+                                @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.sgst_amt, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "sgst_amt" })
+                                @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.igst_perc, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.igst_perc, null, new { @class = "form-control NoStar", id = "igst_perc" })
+                                @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.igst_amt, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "igst_amt" })
+                                @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.total, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.total, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "total" })
+                                @Html.ValidationMessageFor(model => model.total, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.grand_total, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.grand_total, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "grand_total" })
+                                @Html.ValidationMessageFor(model => model.grand_total, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
+
+        @*<div class="row" id="btnDiv">
+            <div class="col-md-12">
+                
+
+                <div class="form-group" style="text-align:center">
+                    <div class="col-md-4" id="Download">
+                        <a href="@Url.Action("DCJobDispatchPDF", "DeliveryChallan", new { DispatchNo = Model.dispatch_no, _target = "blank" })" class="btn btn-default btn-info">Download</a>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-6" id="submitDiv">
+                            <input type="button" name="Save" value="Update" class="btn btn-success btn-default" id="btnSubmit" />
+                        </div>
+                        <div class="col-md-6" id="loaderDiv" style="display:none;">
+                            <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 ">
+                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewDCJobDispatch", "DeliveryChallan")    '" />
+                    </div>
+                </div>
+                
+            </div>
+        </div>*@
+     
+    </fieldset>
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+
+        $j(document).ready(function () {
+            $j(document).on("click", ".classAdd", function () { //
+
+                var WOM = $j('#WOM').val();
+                var MaterialGradeM = $j('#MaterialGradeM').val();
+                var SectionM = $j('#SectionM').val();
+                var CutWeightM = $j('#CutWeightM').val();
+                var HardnessM = $j('#HardnessM').val();
+                var FinishWeightM = $j('#FinishWeightM').val();
+                var HeatCodeM = $j('#HeatCodeM').val();
+                var WOBalanceM = $j('#WOBalanceM').val();
+                var DescriptionM = $j('#DescriptionM').val();
+                var HSNSACCodeM = $j('#HSNSACCodeM').val();
+                var QtyM = $j('#QtyM').val();
+                var RatePerM = $j('#RatePerM').val();
+                var TaxableValueM = $j('#TaxableValueM').val();
+
+                //alert(store_id);
+
+                var rowCount = $j('.data-contact-person').length + 1;
+                //var contactdiv = $('.data-contact-person');
+                var contactdiv = '<tr class="data-contact-person">' +
+                    '<td><input type="text" name="WOM' + rowCount + '" class="form-control WOM01" value="' + WOM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="MaterialGradeM' + rowCount + '" class="form-control MaterialGradeM01" value="' + MaterialGradeM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="SectionM' + rowCount + '" class="form-control SectionM01" value="' + SectionM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="CutWeightM' + rowCount + '" class="form-control CutWeightM01" value="' + CutWeightM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="HardnessM' + rowCount + '" class="form-control HardnessM01" value="' + HardnessM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="FinishWeightM' + rowCount + '" class="form-control FinishWeightM01" value="' + FinishWeightM + '" readonly="readonly"/></td>' +
+
+                    '<td><input type="text" name="HeatCodeM' + rowCount + '" class="form-control HeatCodeM01" value="' + HeatCodeM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="WOBalanceM' + rowCount + '" class="form-control WOBalanceM01" value="' + WOBalanceM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="DescriptionM' + rowCount + '" class="form-control DescriptionM01" value="' + DescriptionM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="HSNSACCodeM' + rowCount + '" class="form-control HSNSACCodeM01" value="' + HSNSACCodeM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="QtyM' + rowCount + '" class="form-control QtyM01" value="' + QtyM + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="RatePerM' + rowCount + '" class="form-control RatePerM01" value="' + RatePerM + '" readonly="readonly"/></td>' +
+
+                    '<td><input type="text" name="TaxableValueM' + rowCount + '" class="form-control TaxableValueM01" value="' + TaxableValueM + '" readonly="readonly"/></td>' +
+                    //'<td><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add More</button>' +
+                    '<td><button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs" onclick="Remove(this);"><i class="icon icon-remove"></i></button></td>' +
+                    '</tr>';
+                //alert(contactdiv);
+                $j('#maintable').append(contactdiv); // Adding these controls to Main table class
+                // Clear Main Text Boxes And Combo Box
+                $j('#WOM').val("");
+                $j('#MaterialGradeM').val("");
+                $j('#SectionM').val("");
+                $j('#CutWeightM').val("");
+                $j('#HardnessM').val("");
+                $j('#FinishWeightM').val("");
+                $j('#HeatCodeM').val("");
+                $j('#WOBalanceM').val("");
+                //$j('#DescriptionM').val("");
+                //$j('#HSNSACCodeM').val("");
+                $j('#QtyM').val("");
+                $j('#RatePerM').val("");
+                $j('#TaxableValueM').val("");
+                $j('#WOM').focus();
+            });
+
+
+
+            $j("#WOM").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    var po_no = $j('#CustomerPONo').val();
+                    $j.ajax({
+                        url: "../DeliveryChallan/getWoNo",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term, pono: po_no },
+                        success: function (data) {
+                            response($j.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    $(this).val(ui.item.Id);
+                    $j.ajax({
+                        url: "../DeliveryChallan/getWoNoDetails",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Wono: ui.item.label },
+                        success: function (data) {
+                            //console.log(data);
+                            $j('#WOM').val(data.Wono);
+                            $j('#MaterialGradeM').val(data.Rawmaterial);
+                            $j('#SectionM').val(data.section);
+                            $j('#CutWeightM').val(data.cutweight);
+                            $j('#WOBalanceM').val(0);
+                            $j('#QtyM').focus();
+                        }
+                    });
+                }
+            });
+
+
+
+            $j("#customer_name").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $j.ajax({
+                        url: "../DeliveryChallan/getCustomernameandid",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($j.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    console.log(ui);
+                    $j(this).val(ui.item.label);
+                    $j('#customer_id').val(ui.item.Id);
+                }
+            });
+
+
+
+
+            $j("#CustomerPONo").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    var cname = $j('#customer_name').val();
+                    $j.ajax({
+                        url: "../DeliveryChallan/getCustomerPoNo",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term, CustomerName: cname },
+                        success: function (data) {
+                            response($j.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    console.log(ui);
+                    $j(this).val(ui.item.label);
+                    $j('#CustomerPONo').val(ui.item.Id);
+                    $j.ajax({
+                        url: "../DeliveryChallan/getCustomerPoDetails",
+                        type: "POST",
+                        dataType: "json",
+                        data: { CustomerPONo: ui.item.label },
+                        success: function (data) {
+                            //console.log(data);
+                            $j('#po_qty').val(data.po_qty);
+                            $j('#HSNSACCodeM').val(data.HSNCode);
+                            $j('#DescriptionM').val(data.Customer_part_no);
+                            $j('#HSNCode').val(data.HSNCode);
+                            $j('#Customer_part_no').val(data.Customer_part_no);
+                        }
+                    });
+                }
+            });
+
+
+        });
+
+
+        function getSubTotal() {
+            var quty = $('#QtyM').val();
+            var cost = $('#RateM').val();
+            var stot = parseFloat(quty) * parseFloat(cost);
+            $('#AmountM').val(stot);
+        }
+
+        $j('#QtyM').focusout(function () {
+            //getSubTotal();
+            //getNetTotal();
+        });
+
+
+
+
+
+        function Remove(button) {
+            //Determine the reference of the Row using the Button.
+            var row = $(button).closest("tr");
+            var name = $("td", row).eq(0).html();
+            if (confirm("Do you want to delete: " )) {
+
+                //Get the reference of the Table.
+                var table = $("#maintable")[0];
+
+                //Delete the Table row using it's Index.
+                table.deleteRow(row[0].rowIndex);
+
+                getNetTotal();
+            }
+        };
+
+
+        function getAllDCJobDispatchDetailsData() {
+            var data = [];
+            //console.log('manish');
+            $j('tr.data-contact-person').each(function () {
+                //alert('m');
+                var WOM = $j(this).find('.WOM01').val();
+                var MaterialGrade = $j(this).find('.MaterialGradeM01').val();
+                var Section = $j(this).find('.SectionM01').val();
+                var CutWeight = $j(this).find('.CutWeightM01').val();
+                var Hardness = $j(this).find('.HardnessM01').val();
+                var FinishWeight = $j(this).find('.FinishWeightM01').val();
+                var HeatCode = $j(this).find('.HeatCodeM01').val();
+                var WOBalance = $j(this).find('.WOBalanceM01').val();
+                var Description = $j(this).find('.DescriptionM01').val();
+                var HSNSACCode = $j(this).find('.HSNSACCodeM01').val();
+                var Qty = $j(this).find('.QtyM01').val();
+                var RatePer = $j(this).find('.RatePerM01').val();
+                var TaxableValue = $j(this).find('.TaxableValueM01').val();
+                var alldata = {
+                    'wo': WOM, 
+                    'material_grade': MaterialGrade, 
+                    'section': Section, 
+                    'cut_weight': CutWeight, 
+                    'hardness': Hardness,
+                    'finish_weight': FinishWeight, 
+                    'heat_code': HeatCode,
+                    'wo_balance': WOBalance,
+                    'description': Description,
+                    'hsn_sac_code': HSNSACCode,
+                    'qty': Qty,
+                    'units': RatePer,
+                    'taxable_value': TaxableValue
+                }
+                data.push(alldata);
+            });
+            return data;
+        }
+
+        function alertInnerHTML(e) {
+            e = e || window.event;//IE
+            alert(this.innerHTML);
+        }
+
+
+
+
+        function getAllDCJobDispatchData() {
+            var data = [];
+
+            var alldata = {
+                'dispatch_char': $j('#dispatch_char').val(),
+                'dispatch_id': $j('#dispatch_id').val(),
+                'dispatch_no': $j('#dispatch_no').val(),
+                'delivery_challan_type': $j('#delivery_challan_type').val(),
+                'customer_name': $j('#customer_name').val(),
+                'customer_id': $j('#customer_id').val(),
+                'CustomerPONo': $j('#CustomerPONo').val(),
+                'po_qty': $j('#po_qty').val(),
+                'HSNCode': $j('#HSNCode').val(),
+                'Customer_part_no': $j('#Customer_part_no').val(),
+                'total': $j('#total').val(),
+                'cgst_perc': $j('#cgst_perc').val(),
+                'cgst_amt': $j('#cgst_amt').val(),
+                'sgst_perc': $j('#sgst_perc').val(),
+                'sgst_amt': $j('#sgst_amt').val(),
+                'igst_perc': $j('#igst_perc').val(),
+                'igst_amt': $j('#igst_amt').val(),
+                'grand_total': $j('#grand_total').val()
+            }
+            return alldata;
+        }
+
+
+
+
+
+
+
+
+        $("#btnSubmit").click(function (e) {
+            
+            if ($j('#dispatch_no').val()) {
+
+                if ($j('#customer_name').val()) {
+
+                    if ($j('#CustomerPONo').val()) {
+                        if ($j('#HSNCode').val()) {
+                            if ($j('#Customer_part_no').val()) {
+                                
+                                var newdispatch_no = $j('#dispatch_no').val();
+                                var newUrl = '@Url.Action("EditDCJobDispatch", "DeliveryChallan")?DispatchNo=' + newdispatch_no + '&successmsg=updatesuccess';
+                                console.log(newUrl);
+
+                                var datas = JSON.stringify(getAllDCJobDispatchData());
+                                var detailsdata = JSON.stringify(getAllDCJobDispatchDetailsData());
+
+                                $j('#submitDiv').hide();
+                                $j('#loaderDiv').show();
+                                $.ajax({
+                                    url: '@Url.Action("EditDCJobDispatch", "DeliveryChallan")',
+                                    type: 'POST',
+                                    data: JSON.stringify({ 'dcjobdispatch': datas, 'dcjobdispatchdetails': detailsdata }),
+                                    dataType: 'json',
+                                    contentType: 'application/json; charset=utf-8',
+                                    success: function (sdata) {
+                                        if (sdata.result == "Delivery Challan Created Successfully!") {
+                                            window.location.href = newUrl;
+                                        }
+                                        else {
+                                            alert(sdata.result);
+                                            $j('#submitDiv').show();
+                                            $j('#loaderDiv').hide();
+                                        }
+                                    },
+                                    error: function () {
+                                        alert("Error while inserting data");
+                                        $j('#submitDiv').show();
+                                        $j('#loaderDiv').hide();
+                                    }
+                                });
+                            }
+                            else {
+                                alert('Please enter Customer Part Number!');
+                            }
+                        }
+                        else {
+                            alert('Please enter HSN code.!');
+                        }
+                    }
+                    else {
+                        alert('Please enter Customer PO Number.!');
+                    }
+                }
+                else {
+                    alert('Please enter Customer Name!');
+                }
+                //}
+                //else {
+                //    alert('Please enter PO Quantity.!');
+                //}
+            }
+            else {
+                alert('Please enter dispatch no.!');
+            }
+
+        });
+
+
+    </script>
+
+}
+

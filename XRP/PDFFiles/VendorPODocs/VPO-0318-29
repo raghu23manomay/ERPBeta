@@ -1,0 +1,25 @@
+--Exec ssmsp_GetAllVendorPO
+create proc ssmsp_GetAllVendorPO 
+(
+@vendor_po_type varchar(100)= NULL
+)
+As
+if(@vendor_po_type != null OR @vendor_po_type != '')
+Begin
+select auto_id, Isnull(po_no,'') as po_no,isnull(quotation_ref_no,'') as quotation_ref_no, isnull(vendor_name,'') as vendor_name,
+isnull(vendor_email,'') as vendor_email, isnull(vendor_mobile,'') as vendor_mobile, isnull(contact_person,'') as contact_person,
+isnull(valid_date,'') as valid_date, isnull(vendor_po_type,'') as vendor_po_type, isnull(vendor_po_status,'') as vendor_po_status,
+isnull(Comment,'') as Comment from dbo.ssmtbl_VendorPurchaseOrder 
+where ISNULL(vendor_po_type,'')=@vendor_po_type order by po_no
+End
+Else
+Begin
+select auto_id, Isnull(po_no,'') as po_no,isnull(quotation_ref_no,'') as quotation_ref_no, isnull(vendor_name,'') as vendor_name,
+isnull(vendor_email,'') as vendor_email, isnull(vendor_mobile,'') as vendor_mobile, isnull(contact_person,'') as contact_person,
+isnull(valid_date,'') as valid_date, isnull(vendor_po_type,'') as vendor_po_type, isnull(vendor_po_status,'') as vendor_po_status,
+isnull(Comment,'') as Comment from dbo.ssmtbl_VendorPurchaseOrder 
+End
+
+
+
+

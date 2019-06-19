@@ -1,0 +1,1001 @@
+E:\Bitbucket\XRP_New\XRP\XRP\bin\XRP.dll.config
+E:\Bitbucket\XRP_New\XRP\XRP\bin\XRP.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\XRP.pdb
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Antlr3.Runtime.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Newtonsoft.Json.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Owin.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Helpers.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Mvc.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Optimization.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Razor.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\WebGrease.dll
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Helpers.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Mvc.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Optimization.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Razor.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Antlr3.Runtime.pdb
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Newtonsoft.Json.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Bitbucket\XRP_New\XRP\XRP\obj\Debug\XRP.dll
+E:\Bitbucket\XRP_New\XRP\XRP\obj\Debug\XRP.pdb
+E:\Bitbucket\XRP_New\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+F:\Bitbucket\XRP_New\XRP\XRP\bin\XRP.dll.config
+F:\Bitbucket\XRP_New\XRP\XRP\bin\XRP.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\XRP.pdb
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Antlr3.Runtime.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Newtonsoft.Json.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Owin.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Helpers.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Mvc.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Optimization.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Razor.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\WebGrease.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Helpers.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Mvc.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Optimization.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.Razor.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Antlr3.Runtime.pdb
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Newtonsoft.Json.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Bitbucket\XRP_New\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Bitbucket\XRP_New\XRP\XRP\obj\Debug\XRP.dll
+F:\Bitbucket\XRP_New\XRP\XRP\obj\Debug\XRP.pdb
+F:\Bitbucket\XRP_New\XRP\XRP\bin\itextsharp.dll
+F:\Bitbucket\XRP_New\XRP\XRP\bin\itextsharp.xml
+E:\Desktop\XRP\XRP\bin\XRP.dll.config
+E:\Desktop\XRP\XRP\bin\XRP.dll
+E:\Desktop\XRP\XRP\bin\XRP.pdb
+E:\Desktop\XRP\XRP\bin\Antlr3.Runtime.dll
+E:\Desktop\XRP\XRP\bin\itextsharp.dll
+E:\Desktop\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Desktop\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Desktop\XRP\XRP\bin\Microsoft.Owin.dll
+E:\Desktop\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Desktop\XRP\XRP\bin\Microsoft.Owin.Security.dll
+E:\Desktop\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Desktop\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+E:\Desktop\XRP\XRP\bin\Newtonsoft.Json.dll
+E:\Desktop\XRP\XRP\bin\Owin.dll
+E:\Desktop\XRP\XRP\bin\System.Web.Helpers.dll
+E:\Desktop\XRP\XRP\bin\System.Web.Mvc.dll
+E:\Desktop\XRP\XRP\bin\System.Web.Optimization.dll
+E:\Desktop\XRP\XRP\bin\System.Web.Razor.dll
+E:\Desktop\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+E:\Desktop\XRP\XRP\bin\System.Web.WebPages.dll
+E:\Desktop\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+E:\Desktop\XRP\XRP\bin\WebGrease.dll
+E:\Desktop\XRP\XRP\bin\itextsharp.xml
+E:\Desktop\XRP\XRP\bin\System.Web.Helpers.xml
+E:\Desktop\XRP\XRP\bin\System.Web.Mvc.xml
+E:\Desktop\XRP\XRP\bin\System.Web.Optimization.xml
+E:\Desktop\XRP\XRP\bin\System.Web.Razor.xml
+E:\Desktop\XRP\XRP\bin\System.Web.WebPages.xml
+E:\Desktop\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+E:\Desktop\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+E:\Desktop\XRP\XRP\bin\Antlr3.Runtime.pdb
+E:\Desktop\XRP\XRP\bin\Newtonsoft.Json.xml
+E:\Desktop\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Desktop\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Desktop\XRP\XRP\bin\Microsoft.Owin.xml
+E:\Desktop\XRP\XRP\bin\Microsoft.Owin.Security.xml
+E:\Desktop\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Desktop\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Desktop\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+E:\Desktop\XRP\XRP\obj\Debug\XRP.dll
+E:\Desktop\XRP\XRP\obj\Debug\XRP.pdb
+F:\Bhuwan\XRP\XRP\XRP\bin\XRP.dll.config
+F:\Bhuwan\XRP\XRP\XRP\bin\XRP.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\XRP.pdb
+F:\Bhuwan\XRP\XRP\XRP\bin\Antlr3.Runtime.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\itextsharp.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.Owin.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.Owin.Security.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\Newtonsoft.Json.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\Owin.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.Helpers.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.Mvc.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.Optimization.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.Razor.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.WebPages.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\WebGrease.dll
+F:\Bhuwan\XRP\XRP\XRP\bin\itextsharp.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.Helpers.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.Mvc.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.Optimization.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.Razor.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.WebPages.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\Antlr3.Runtime.pdb
+F:\Bhuwan\XRP\XRP\XRP\bin\Newtonsoft.Json.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.Owin.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.Owin.Security.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Bhuwan\XRP\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Bhuwan\XRP\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+F:\Bhuwan\XRP\XRP\XRP\obj\Debug\XRP.dll
+F:\Bhuwan\XRP\XRP\XRP\obj\Debug\XRP.pdb
+F:\Bitbucket\XRP_New\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\XRP.dll.config
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\XRP.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\XRP.pdb
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Antlr3.Runtime.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\itextsharp.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.Owin.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Newtonsoft.Json.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Owin.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.Helpers.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.Mvc.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.Optimization.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.Razor.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.WebPages.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\WebGrease.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\itextsharp.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.Helpers.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.Mvc.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.Optimization.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.Razor.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.WebPages.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Antlr3.Runtime.pdb
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Newtonsoft.Json.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.Owin.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\obj\Debug\XRP.dll
+C:\Users\mycad\Downloads\From Rajiv\XRP (1)\XRP\XRP\obj\Debug\XRP.pdb
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\XRP.dll.config
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\XRP.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\XRP.pdb
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\itextsharp.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Owin.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Helpers.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Mvc.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Optimization.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Razor.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\WebGrease.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\itextsharp.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Helpers.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Mvc.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Optimization.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Razor.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\obj\Debug\XRP.dll
+D:\SSM_07May2018\IntegratedCode\XRP (1)\XRP\XRP\obj\Debug\XRP.pdb
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\XRP.dll.config
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\XRP.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\XRP.pdb
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Antlr3.Runtime.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\itextsharp.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Newtonsoft.Json.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Owin.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Helpers.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Mvc.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Optimization.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Razor.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\WebGrease.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\itextsharp.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Helpers.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Mvc.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Optimization.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Razor.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Antlr3.Runtime.pdb
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Newtonsoft.Json.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\obj\Debug\XRP.dll
+C:\Users\mycad\Desktop\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\obj\Debug\XRP.pdb
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\XRP.dll.config
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\XRP.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\XRP.pdb
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\itextsharp.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Owin.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Helpers.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Mvc.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Optimization.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Razor.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\WebGrease.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\itextsharp.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Helpers.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Mvc.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Optimization.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.Razor.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\obj\Debug\XRP.dll
+D:\Sharad_SSM\SSM_07May2018With_IntegratedCode\IntegratedCode\XRP (1)\XRP\XRP\obj\Debug\XRP.pdb
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\XRP.dll.config
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\XRP.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\XRP.pdb
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\itextsharp.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\itextsharp.xmlworker.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.Owin.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Owin.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.Helpers.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.Mvc.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.Optimization.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.Razor.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.WebPages.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\WebGrease.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\itextsharp.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.Helpers.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.Mvc.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.Optimization.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.Razor.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.WebPages.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.Owin.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\obj\Debug\XRP.dll
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\obj\Debug\XRP.pdb
+D:\Sharad_SSM\SSM_11May2018\IntegratedCode\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\ssm vinod sir\XRP\XRP\bin\XRP.dll.config
+D:\ssm vinod sir\XRP\XRP\bin\XRP.dll
+D:\ssm vinod sir\XRP\XRP\bin\XRP.pdb
+D:\ssm vinod sir\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\ssm vinod sir\XRP\XRP\bin\itextsharp.dll
+D:\ssm vinod sir\XRP\XRP\bin\itextsharp.xmlworker.dll
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.dll
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\ssm vinod sir\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\ssm vinod sir\XRP\XRP\bin\Owin.dll
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.Helpers.dll
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.Mvc.dll
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.Optimization.dll
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.Razor.dll
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.dll
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\ssm vinod sir\XRP\XRP\bin\WebGrease.dll
+D:\ssm vinod sir\XRP\XRP\bin\itextsharp.xml
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.Helpers.xml
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.Mvc.xml
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.Optimization.xml
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.Razor.xml
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.xml
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\ssm vinod sir\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\ssm vinod sir\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.xml
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\ssm vinod sir\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\ssm vinod sir\XRP\XRP\obj\Debug\XRP.dll
+D:\ssm vinod sir\XRP\XRP\obj\Debug\XRP.pdb
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\XRP.dll.config
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\XRP.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\XRP.pdb
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\itextsharp.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\itextsharp.xmlworker.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Owin.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.Helpers.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.Mvc.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.Optimization.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.Razor.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\WebGrease.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\itextsharp.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.Helpers.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.Mvc.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.Optimization.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.Razor.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\obj\Debug\XRP.dll
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\obj\Debug\XRP.pdb
+D:\Sharad_SSM\ssm vinod sir\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\project\XRP\XRP\bin\XRP.dll.config
+D:\project\XRP\XRP\bin\XRP.dll
+D:\project\XRP\XRP\bin\XRP.pdb
+D:\project\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\project\XRP\XRP\bin\itextsharp.dll
+D:\project\XRP\XRP\bin\itextsharp.xmlworker.dll
+D:\project\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\project\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\project\XRP\XRP\bin\Microsoft.Owin.dll
+D:\project\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\project\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\project\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\project\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\project\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\project\XRP\XRP\bin\Owin.dll
+D:\project\XRP\XRP\bin\System.Web.Helpers.dll
+D:\project\XRP\XRP\bin\System.Web.Mvc.dll
+D:\project\XRP\XRP\bin\System.Web.Optimization.dll
+D:\project\XRP\XRP\bin\System.Web.Razor.dll
+D:\project\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\project\XRP\XRP\bin\System.Web.WebPages.dll
+D:\project\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\project\XRP\XRP\bin\WebGrease.dll
+D:\project\XRP\XRP\bin\itextsharp.xml
+D:\project\XRP\XRP\bin\System.Web.Helpers.xml
+D:\project\XRP\XRP\bin\System.Web.Mvc.xml
+D:\project\XRP\XRP\bin\System.Web.Optimization.xml
+D:\project\XRP\XRP\bin\System.Web.Razor.xml
+D:\project\XRP\XRP\bin\System.Web.WebPages.xml
+D:\project\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\project\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\project\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\project\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\project\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\project\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\project\XRP\XRP\bin\Microsoft.Owin.xml
+D:\project\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\project\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\project\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\project\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\project\XRP\XRP\obj\Debug\XRP.dll
+D:\project\XRP\XRP\obj\Debug\XRP.pdb
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\XRP.dll.config
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\XRP.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\XRP.pdb
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\itextsharp.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\itextsharp.xmlworker.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Owin.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Helpers.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Mvc.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Optimization.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Razor.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\WebGrease.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\itextsharp.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Helpers.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Mvc.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Optimization.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Razor.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\obj\Debug\XRP.dll
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\obj\Debug\XRP.pdb
+D:\Sharad_SSM\SSM Integrated Code 03 July 2018\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\XRP.dll.config
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\XRP.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\XRP.pdb
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\itextsharp.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\itextsharp.xmlworker.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Owin.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Helpers.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Mvc.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Optimization.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Razor.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\WebGrease.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\itextsharp.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Helpers.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Mvc.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Optimization.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Razor.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\obj\Debug\XRP.dll
+D:\ssm project bkp\sharad bkp\13jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\obj\Debug\XRP.pdb
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\XRP.dll.config
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\XRP.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\XRP.pdb
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\itextsharp.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\itextsharp.xmlworker.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Owin.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Helpers.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Mvc.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Optimization.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Razor.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\WebGrease.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\itextsharp.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Helpers.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Mvc.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Optimization.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.Razor.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\obj\Debug\XRP.dll
+D:\ssm project bkp\sharad bkp\14Jul2018\SSM Integrated Code 03 July 2018\XRP\XRP\obj\Debug\XRP.pdb
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\XRP.dll.config
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\XRP.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\XRP.pdb
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Antlr3.Runtime.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\itextsharp.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\itextsharp.xmlworker.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.Owin.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.Owin.Security.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Newtonsoft.Json.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Owin.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.Helpers.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.Mvc.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.Optimization.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.Razor.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.WebPages.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.WebPages.Razor.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\WebGrease.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\itextsharp.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.Helpers.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.Mvc.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.Optimization.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.Razor.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.WebPages.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\System.Web.WebPages.Razor.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Antlr3.Runtime.pdb
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Newtonsoft.Json.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.Owin.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.Owin.Security.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\obj\Debug\XRP.dll
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\obj\Debug\XRP.pdb
+D:\project\SSM Integrated Code 14July 2018\XRP\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\XRP.dll.config
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\XRP.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\XRP.pdb
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Antlr3.Runtime.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\itextsharp.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\itextsharp.xmlworker.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.Owin.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Newtonsoft.Json.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Owin.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.Helpers.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.Mvc.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.Optimization.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.Razor.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.WebPages.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.WebPages.Razor.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\WebGrease.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\itextsharp.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.Helpers.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.Mvc.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.Optimization.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.Razor.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.WebPages.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\System.Web.WebPages.Razor.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Antlr3.Runtime.pdb
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Newtonsoft.Json.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.Owin.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\obj\Debug\XRP.dll
+D:\project\SSM Integrated Code 14July 2018\XRP1\XRP\obj\Debug\XRP.pdb
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\XRP.dll.config
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\XRP.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\XRP.pdb
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Antlr3.Runtime.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\itextsharp.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\itextsharp.xmlworker.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.Owin.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Newtonsoft.Json.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Owin.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.Helpers.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.Mvc.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.Optimization.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.Razor.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.WebPages.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.WebPages.Razor.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\WebGrease.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\itextsharp.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.Helpers.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.Mvc.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.Optimization.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.Razor.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.WebPages.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\System.Web.WebPages.Razor.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Antlr3.Runtime.pdb
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Newtonsoft.Json.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.Owin.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\obj\Debug\XRP.dll
+D:\Sharad_SSM\SSM 21 July 2018\XRP1\XRP\obj\Debug\XRP.pdb
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\XRP.dll.config
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\XRP.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\XRP.pdb
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Antlr3.Runtime.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\itextsharp.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\itextsharp.xmlworker.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.Owin.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Newtonsoft.Json.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Owin.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.Helpers.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.Mvc.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.Optimization.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.Razor.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.WebPages.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.WebPages.Razor.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\WebGrease.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\itextsharp.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.Helpers.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.Mvc.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.Optimization.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.Razor.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.WebPages.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\System.Web.WebPages.Razor.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Antlr3.Runtime.pdb
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Newtonsoft.Json.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.Owin.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\obj\Debug\XRP.dll
+D:\project\SSM Integrated Code 23July 2018\XRP1\XRP\obj\Debug\XRP.pdb
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\XRP.dll.config
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\XRP.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\XRP.pdb
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\itextsharp.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\itextsharp.xmlworker.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.Owin.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Owin.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.Helpers.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.Mvc.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.Optimization.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.Razor.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.WebPages.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\WebGrease.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\itextsharp.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.Helpers.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.Mvc.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.Optimization.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.Razor.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.WebPages.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.pdb
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.Owin.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\svnshare\trunk\ssmerp\XRP1\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\svnshare\trunk\ssmerp\XRP1\XRP\obj\Debug\XRP.dll
+D:\svnshare\trunk\ssmerp\XRP1\XRP\obj\Debug\XRP.pdb
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\XRP.dll.config
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\XRP.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\XRP.pdb
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\itextsharp.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\itextsharp.xmlworker.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.Owin.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Owin.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.Helpers.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.Mvc.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.Optimization.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.Razor.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.WebPages.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\WebGrease.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\itextsharp.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.Helpers.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.Mvc.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.Optimization.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.Razor.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.WebPages.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.pdb
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.Owin.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\lan share working copy\ssmerp\XRP1\XRP\obj\Debug\XRP.dll
+D:\lan share working copy\ssmerp\XRP1\XRP\obj\Debug\XRP.pdb
+D:\lan share working copy\ssmerp\XRP1\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+D:\SvnShare\ssmerp\XRP1\XRP\bin\XRP.dll.config
+D:\SvnShare\ssmerp\XRP1\XRP\bin\XRP.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\XRP.pdb
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\itextsharp.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\itextsharp.xmlworker.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.Owin.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.Web.Infrastructure.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Owin.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.Helpers.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.Mvc.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.Optimization.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.Razor.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.WebPages.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\WebGrease.dll
+D:\SvnShare\ssmerp\XRP1\XRP\bin\itextsharp.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.Helpers.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.Mvc.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.Optimization.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.Razor.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.WebPages.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.pdb
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.Owin.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\SvnShare\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\SvnShare\ssmerp\XRP1\XRP\obj\Debug\XRP.dll
+D:\SvnShare\ssmerp\XRP1\XRP\obj\Debug\XRP.pdb
+D:\SvnShare\ssmerp\XRP1\XRP\obj\Debug\XRP.csprojResolveAssemblyReference.cache
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\XRP.dll.config
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\XRP.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\XRP.pdb
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\itextsharp.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\itextsharp.xmlworker.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.Owin.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.Web.Infrastructure.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Owin.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.Helpers.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.Mvc.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.Optimization.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.Razor.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.WebPages.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\WebGrease.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\itextsharp.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.Helpers.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.Mvc.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.Optimization.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.Razor.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.WebPages.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.pdb
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.Owin.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+M:\New folder (2)\ssmerp\XRP1\XRP\obj\Debug\XRP.csprojAssemblyReference.cache
+M:\New folder (2)\ssmerp\XRP1\XRP\obj\Debug\XRP.csproj.CoreCompileInputs.cache
+M:\New folder (2)\ssmerp\XRP1\XRP\obj\Debug\XRP.csproj.CopyComplete
+M:\New folder (2)\ssmerp\XRP1\XRP\obj\Debug\XRP.dll
+M:\New folder (2)\ssmerp\XRP1\XRP\obj\Debug\XRP.pdb
+M:\Live project\ssmerp\XRP1\XRP\bin\XRP.dll.config
+M:\Live project\ssmerp\XRP1\XRP\bin\XRP.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\XRP.pdb
+M:\Live project\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\itextsharp.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\itextsharp.xmlworker.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.Owin.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.Web.Infrastructure.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\Owin.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.Helpers.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.Mvc.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.Optimization.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.Razor.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.WebPages.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\WebGrease.dll
+M:\Live project\ssmerp\XRP1\XRP\bin\itextsharp.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.Helpers.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.Mvc.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.Optimization.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.Razor.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.WebPages.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Deployment.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\System.Web.WebPages.Razor.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\Antlr3.Runtime.pdb
+M:\Live project\ssmerp\XRP1\XRP\bin\Newtonsoft.Json.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Core.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.AspNet.Identity.Owin.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.Owin.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.Cookies.xml
+M:\Live project\ssmerp\XRP1\XRP\bin\Microsoft.Owin.Security.OAuth.xml
+M:\Live project\ssmerp\XRP1\XRP\obj\Debug\XRP.csprojAssemblyReference.cache
+M:\Live project\ssmerp\XRP1\XRP\obj\Debug\XRP.csproj.CoreCompileInputs.cache
+M:\Live project\ssmerp\XRP1\XRP\obj\Debug\XRP.csproj.CopyComplete
+M:\Live project\ssmerp\XRP1\XRP\obj\Debug\XRP.dll
+M:\Live project\ssmerp\XRP1\XRP\obj\Debug\XRP.pdb

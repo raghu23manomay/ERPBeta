@@ -1,0 +1,625 @@
+﻿@model XRP.Models.ssmtbl_CustomerVendorMasterModel
+@{
+    ViewBag.Title = "EditVendor";
+    ViewBag.Active = "Master";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (Html.BeginForm("EditVendor", "Vendor", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                @*<div class="row p-t-b-10 ">
+                    <div class="col">*@
+                <h4>
+                    <i class="icon-database"></i>
+                    Vendor
+                </h4>
+                @*</div>
+                    </div>*@
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllVendor", "Vendor")'><i class="icon icon-home2"></i> All Vendors</a>
+
+                        </li>
+                        <li class="float-right">
+                            <a class="nav-link active" href='@Url.Action("EditVendor", "Vendor")'><i class="icon icon-edit"></i> Edit Vendor</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <div class="@ViewBag.HideClass" style="text-align:center;">
+            @ViewBag.Message
+        </div>
+        <input id="hdn_id" type="hidden" />
+        <!-- PAGE TITLE -->
+        <div class="card no-b  no-r">
+            <div class="card-body">
+                <div class="form-row mt-1" style="display:none">
+
+                    <div class="col-md-5 control-label">
+                        @Html.LabelFor(model => model.ID, new { @class = "Label" })
+                    </div>
+                    <div class="col-md-7">
+                        @Html.TextBoxFor(model => model.ID, null, new { @class = "form-control NoStar", @id = "txt_vid" })
+                        @Html.ValidationMessageFor(model => model.ID, null, new { @class = "alert-danger" })
+                    </div>
+                </div>
+                <div class="form-row mt-1">
+                    <div class="form-group col-4 m-0">
+                        @Html.LabelFor(model => model.Name, new { @class = "Label" })
+
+                        @Html.TextBoxFor(model => model.Name, null, new { @class = "form-control r-0 light s-12 ", @id = "txt_VendName" })
+                        @Html.ValidationMessageFor(model => model.Name, null, new { @class = "alert-danger" })
+                    </div>
+                    <div class="form-group col-4 m-0">
+                        @Html.LabelFor(model => model.Address, new { @class = "Label" })
+                        @Html.TextBoxFor(model => model.Address, null, new { @class = "form-control r-0 light s-12", @id = "txt_address" })
+                        @Html.ValidationMessageFor(model => model.Address, null, new { @class = "alert-danger" })
+                    </div>
+                    <div class="form-group col-4 m-0">
+                        @Html.LabelFor(model => model.City, new { @class = "Label" })
+                        @Html.TextBoxFor(model => model.City, null, new { @class = "form-control r-0 light s-12", @id = "txt_city" })
+                        @Html.ValidationMessageFor(model => model.City, null, new { @class = "alert-danger" })
+                    </div>
+                </div>
+                <div class="form-row mt-1">
+                    <div class="form-group col-4 m-0">
+                        @Html.LabelFor(model => model.Pincode, new { @class = "Label" })
+
+                        @Html.TextBoxFor(model => model.Pincode, null, new { @class = "form-control r-0 light s-12", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "6", @id = "txt_pincode" })
+                        @Html.ValidationMessageFor(model => model.Pincode, null, new { @class = "alert-danger" })
+                    </div>
+                    <div class="form-group col-4 m-0">
+                        @Html.LabelFor(model => model.Contact_Person, new { @class = "Label" })
+
+                        @Html.TextBoxFor(model => model.Contact_Person, null, new { @class = "form-control r-0 light s-12", @id = "txt_cperson" })
+                        @Html.ValidationMessageFor(model => model.Contact_Person, null, new { @class = "alert-danger" })
+                    </div>
+                    <div class="form-group col-4 m-0">
+                        @Html.LabelFor(model => model.Email_ID, new { @class = "Label" })
+
+                        @Html.TextBoxFor(model => model.Email_ID, null, new { @class = "form-control r-0 light s-12", @id = "txt_email" })
+                        @Html.ValidationMessageFor(model => model.Email_ID, null, new { @class = "alert-danger" })
+                    </div>
+                </div>
+                <div class="form-row mt-1">
+                    <div class="form-group col-4 m-0">
+                        @Html.LabelFor(model => model.Mobile_No, new { @class = "Label" })
+
+                        @Html.TextBoxFor(model => model.Mobile_No, null, new { @class = "form-control r-0 light s-12", @id = "txt_mob", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "10" })
+                        @Html.ValidationMessageFor(model => model.Mobile_No, null, new { @class = "alert-danger" })
+                    </div>
+                    <div class="form-group col-4 m-0">
+                        @Html.Label("STD Code", new { @class = "Label" })
+
+
+                        @Html.TextBoxFor(model => model.STD_Code, null, new { @class = "form-control r-0 light s-12", @id = "txt_stdcode", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "3" })
+                        @Html.ValidationMessageFor(model => model.STD_Code, null, new { @class = "alert-danger" })
+
+
+
+
+                    </div>
+                    <div class="form-group col-3 m-0">
+                        @Html.LabelFor(model => model.Telephone_No, new { @class = "Label" })
+                        @Html.TextBoxFor(model => model.Telephone_No, null, new { @class = "form-control r-0 light s-12", @id = "txt_phone", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "8" })
+                        @Html.ValidationMessageFor(model => model.Telephone_No, null, new { @class = "alert-danger" })
+                    </div>
+
+                    <div class="form-group col-1 m-0">
+                        <br />
+                        <button type="button" class="btn btn-secondary btn-sm" id="btn_tbladd" onclick="tbldataaddcp();"><i class="icon-add mr-2"></i>Add</button>
+                        @*<input type="button" value="Add" class="btn btn-success btn-default" id="btn_tbladd" onclick="return tbldataaddcp()" />*@
+
+                    </div>
+                </div>
+                <div class="form-row mt-1">
+                    <div class="form-group col-12 m-0">
+                        @Html.Label("Contact Details", new { @class = "Label" })
+                        <center>
+                            <table id="tbl_insertdatacp" class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Contact Person</th>
+                                        <th>Email</th>
+                                        <th>Mobile</th>
+                                        <th>Std Code</th>
+                                        <th>Phone Number</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbltbody_insertdatacp"></tbody>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="form-row mt-1">
+                    <div class="form-group col-4 m-0">
+                        @Html.LabelFor(model => model.Vendor_Code, new { @class = "Label" })
+
+                        @Html.TextBoxFor(model => model.Vendor_Code, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly", @style = "border: 0px; color:grey", @id = "txt_vcode" })
+                        @Html.ValidationMessageFor(model => model.Vendor_Code, null, new { @class = "alert-danger" })
+                    </div>
+
+
+                    <div class="form-group col-4 m-0">
+                        @Html.LabelFor(model => model.Remarks, new { @class = "Label" })
+
+                        @Html.TextBoxFor(model => model.Remarks, null, new { @class = "form-control r-0 light s-12", @id = "txt_remark" })
+                        @Html.ValidationMessageFor(model => model.Remarks, null, new { @class = "alert-danger" })
+
+
+
+
+                    </div>
+
+                </div>
+                <div class="card-body" align="right">
+                    @*<input type="submit" name="Save" value="Update" class="btn btn-success btn-default" id="btn_Save" onclick="return EditVendorDetails();" />*@
+                    <button type="submit" class="btn btn-primary btn-sm" id="btn_Save" onclick="EditVendorDetails();" value="Update"><i class="icon-update mr-2"></i>Update</button>
+
+                </div>
+            </div>
+
+        </div>
+        @*<div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-8">
+                        <div class="form-group" style="display:none">
+
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.ID, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.ID, null, new { @class = "form-control NoStar",@id="txt_vid", @autocomplete="on" })
+                                @Html.ValidationMessageFor(model => model.ID, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.Name, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Name, null, new { @class = "form-control NoStar", @id = "txt_VendName", @autocomplete = "name" })
+                                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.Address, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Address, null, new { @class = "form-control NoStar", @id = "txt_address", @autocomplete = "address-line1" })
+                                @Html.ValidationMessageFor(model => model.Address, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.City, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.City, null, new { @class = "form-control NoStar", @id = "txt_city", @autocomplete = "address-level2" })
+                                @Html.ValidationMessageFor(model => model.City, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.Pincode, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Pincode, null, new { @class = "form-control NoStar", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "6", @id = "txt_pincode", @autocomplete = "postal-code" })
+                                @Html.ValidationMessageFor(model => model.Pincode, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.Contact_Person, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Contact_Person, null, new { @class = "form-control NoStar", @id = "txt_cperson", @autocomplete = "name" })
+                                @Html.ValidationMessageFor(model => model.Contact_Person, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.Email_ID, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Email_ID, null, new { @class = "form-control NoStar", @id = "txt_email", @autocomplete = "email" })
+                                @Html.ValidationMessageFor(model => model.Email_ID, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.Mobile_No, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Mobile_No, null, new { @class = "form-control NoStar", @id = "txt_mob", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "10", @autocomplete = "tel-national" })
+                                @Html.ValidationMessageFor(model => model.Mobile_No, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.Telephone_No, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(model => model.STD_Code, null, new { @class = "form-control NoStar", @id = "txt_stdcode", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "3", @autocomplete = "tel-area-code" })
+                                @Html.ValidationMessageFor(model => model.STD_Code, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Telephone_No, null, new { @class = "form-control NoStar", @id = "txt_phone", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "8", @autocomplete = "tel" })
+                                @Html.ValidationMessageFor(model => model.Telephone_No, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-2">
+                                <center>
+                                    <input type="button" name="Save" value="Add" class="btn btn-success btn-default" id="btn_tbladd" onclick="return Tbldataaddcp();" />
+                                </center>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">Contact Details</div>
+                            <div class="col-md-7">
+                                <table>
+
+                                    <tr>
+
+                                        <td>
+                                            <table id="tbl_insertdatacp" class="table table-bordered table-condensed" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Contact Person</th>
+                                                        <th>Email</th>
+                                                        <th>Mobile</th>
+                                                        <th>Std Code</th>
+                                                        <th>Phone Number</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbltbody_insertdatacp"></tbody>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <br />
+                            <div class="alert" id="divwarn" style="display:none">
+                                <div class="@ViewBag.HideClass" style="text-align:center; color:red" id="lbl_validation">
+                                    @ViewBag.Message
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.Vendor_Code, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Vendor_Code, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px; color:grey", @id = "txt_vcode" })
+                                @Html.ValidationMessageFor(model => model.Vendor_Code, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-5 control-label">
+                                @Html.LabelFor(model => model.Remarks, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.Remarks, null, new { @class = "form-control NoStar", @id = "txt_remark" })
+                                @Html.ValidationMessageFor(model => model.Remarks, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>*@
+
+        @*<div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="text-align:center">
+                        <input type="submit" name="Save" value="Update" class="btn btn-success btn-default" id="btn_Save" onclick="return EditVendorDetails();" />
+                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewVendor", "Vendor")'"/>
+
+                    </div>
+                </div>
+            </div>*@
+    </fieldset>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+
+    <script type="text/javascript">
+        function EditVendorDetails()
+        {
+
+            var vid = document.getElementById('hdn_id').value;
+
+           // var vid = document.getElementById('txt_vid').value;
+            var cname = document.getElementById('txt_VendName').value;
+            var address = document.getElementById('txt_address').value;
+            var city = document.getElementById('txt_city').value;
+            var pin = document.getElementById('txt_pincode').value;
+
+            // var sal = document.getElementById('txt_sal').value;
+            var cperson = document.getElementById('txt_cperson').value;
+
+            // var fax = document.getElementById('txt_fax').value;
+            var email = document.getElementById('txt_email').value;
+            var vcode = document.getElementById('txt_vcode').value;
+            var remark = document.getElementById('txt_remark').value;//txt_vcode
+
+            if (cname == "") {
+
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "Please enter VendorName";
+                return false;
+            }
+            if (address == "") {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "Please enter Address";
+                return false;
+            }
+            if (city == "") {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "Please enter City";
+                return false;
+            }
+            if (pin == "") {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "Please enter Pincode";
+                return false;
+            }
+            if (!pin.match(/^\d{6}$/)) {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "Pincode must be 6 digit number";
+                return false;
+            }
+
+            if (vcode == "") {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "Please enter Vendorcode";
+                return false;
+            }
+            if (document.getElementById("btn_Save").value == "Update") {
+
+                $.ajax
+                       ({
+                           type: "POST",
+                           url: "../Vendor/EditVendor",
+                           data: JSON.stringify({id:' '+ vid +' ',
+                               cname: ' ' + cname + '', address: ' ' + address + '', city: ' ' + city + '',
+                               pin: ' ' + pin + '', sal: ' ' - '', mob: '0', stdcode: '0',
+                               phno: '0', fax: '0', vcode: ' ' + vcode + '', remark: ' ' + remark + ''
+                           }),
+                           contentType: "application/json;charset=utf-8",
+                           //dataType: "json",
+                           success: function (status) {
+                               deletemulticp(status);
+                               insertCPInsideDb(status);
+                               alert("Vendor Updated successfully");
+                               location.href = "@Url.Action("AllVendor", "Vendor")?id=" + vid;
+                              @*location.href = "@Url.Action("AllVendor", "Vendor")";*@
+                           },
+                           error: function (err) {
+                               alert('Error occured');
+                           }
+                       });
+            }
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
+
+          function insertCPInsideDb(id) {
+                  $j("#tbl_insertdatacp").find("tr:not(:first)").each(function (i) {
+                var currentRow = $(this).closest("tr");
+                var cpname = currentRow.find("td:eq(0)").text();
+                var email = currentRow.find("td:eq(1)").text();
+                var mob = currentRow.find("td:eq(2)").text();
+                var stdcode = currentRow.find("td:eq(3)").text();
+                var phno = currentRow.find("td:eq(4)").text();
+                  $.ajax({
+                                 type: "POST",
+                                 url: "../Vendor/InsertMultiCPerson",
+                                 data: JSON.stringify({id: ' ' + id + '', cpname: ' ' + cpname + '', email: ' ' + email + '', mob: ' ' + mob + '', stdcode: ' ' + stdcode + '', phno: ' ' + phno + ''}),
+                                 contentType: "application/json;charset=utf-8",
+                                 //dataType: "json",
+                                 success: function (data) {
+                                     location.href = "@Url.Action("EditVendor", "Vendor")?id=" + vid;
+                                 },
+                                 error: function (jqXHR, textStatus, errorThrown) {
+                                     //alert(textStatus + "Insert");
+                                     location.href = "@Url.Action("EditVendor", "Vendor")?id=" + vid;
+                                 }
+                             });
+            });
+
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
+
+            function deletemulticp(id) {
+                var id = id;
+                  $.ajax({
+                                 type: "POST",
+                                 url: "../Vendor/DeleteMultiCPerson",
+                                 data: JSON.stringify({ id: ' ' + id + '' }),
+                                 contentType: "application/json;charset=utf-8",
+                                 //dataType: "json",
+                                 success: function (data) {
+
+                                 },
+                                 error: function (jqXHR, textStatus, errorThrown) {
+                                     alert( textStatus+"Delete");
+                                 }
+                             });
+
+
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
+        function tbldataaddcp() {
+            var cperson = document.getElementById('txt_cperson').value;
+            var email = document.getElementById('txt_email').value;
+            var mob = document.getElementById('txt_mob').value;
+            var stdcode = document.getElementById('txt_stdcode').value;
+            var phno = document.getElementById('txt_phone').value;
+            var table = document.getElementById("tbltbody_insertdatacp");
+            if (cperson == "") {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "*Please Enter Contact Person";
+                return false;
+            }
+            if (email == "") {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "*Please Enter Email";
+                return false;
+            }
+            else
+            {
+                var reg = (/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/);
+                if (reg.test(email)) {
+                    //alert("Valid");
+                }
+                else {
+                    document.getElementById("divwarn").style.display = "block";
+                    document.getElementById("lbl_validation").innerHTML = "*Please Enter a Valid Email ID";
+                    return false;
+                }
+            }
+            if (stdcode == "" || stdcode == "0") {
+
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "*Please Enter Std Code";
+                return false;
+            }
+
+            if (mob == "" || mob == "0") {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "*Please Enter Mobile Number";
+                return false;
+            }
+            if (!mob.match(/^\d{10}$/)) {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "*Mobile Number must be 10 digit number";
+                return false;
+            }
+            if (phno == "" || phno == "0") {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "*Please Enter Phone Number";
+                return false;
+            }
+            if (!phno.match(/^\d{8}$/)) {
+                document.getElementById("divwarn").style.display = "block";
+                document.getElementById("lbl_validation").innerHTML = "*Phone Number must be 8 digit number";
+                return false;
+            } else { }
+
+            var rowcount = table.rows.length;
+            var row = table.insertRow(rowcount);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cpname = $('#txt_cperson').val();
+            var emailid = $('#txt_email').val();
+            var mob = $('#txt_mob').val();
+            var stdcode = $('#txt_stdcode').val();
+            var phno = $('#txt_phone').val();
+            cell1.innerHTML = cpname;
+            cell2.innerHTML = emailid;
+            cell3.innerHTML = mob;
+            cell4.innerHTML = stdcode;
+            cell5.innerHTML = phno;
+            //<button id='btndelete' class='btndelete'  value='Delete' onclick='GetdeleteData(this);'> Delete </button>"
+            cell6.innerHTML = "<input type='button'  id='btndelete' class='btndelete' onclick='GetdeleteData(this);' value='Delete'/>";
+            $('#txt_cperson').val("");
+            $('#txt_email').val("");
+            $('#txt_mob').val("");
+            $('#txt_stdcode').val("");
+            $('#txt_phone').val("");
+            document.getElementById("divwarn").style.display = "none";
+        }
+        function GetdeleteData(ids) {
+            var par = $(ids).parent().parent();
+            par.remove();
+
+        }
+        function isNumberKey(key) {
+            var keycode = (key.which) ? key.which : key.keyCode;
+            if (keycode > 31 && (keycode < 48 || keycode > 57) && keycode != 47) {
+                return false;
+            }
+            else return true;
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function ()        {
+            var id = getUrlVars()["id"];
+
+            document.getElementById('hdn_id').value = id;
+            $.ajax({
+                type: "POST",
+                url: "../Vendor/Bindmlticp",
+                // data: params,
+                data: JSON.stringify({ id: ' ' + id + '' }),
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    $("#tbltbody_insertdatacp").empty();
+                    //Append each row to html table
+                    for (var i = 0; i < data.length; i++) {
+                        tr = $('<tr/>');
+                        tr.append("<td valign='top'>" + data[i].Name + "</td>");
+                        tr.append("<td valign='top'>" + data[i].Email_ID + "</td>");
+                        tr.append("<td valign='top'>" + data[i].Mobile_No + "</td>");
+                        tr.append("<td valign='top'>" + data[i].STD_Code + "</td>");
+                        tr.append("<td valign='top'>" + data[i].Telephone_No + "</td>");
+                        tr.append("<td><input type='button'  id='btndelete' class='btndeleteclass' onclick='GetdeleteData(this);' value='Delete'/></td>");
+                        $('#tbl_insertdatacp').append(tr);
+                    }
+
+                    $('.btndeleteclass').hide();
+                },
+                error: function (err) {
+                    alert('Error occured');
+
+                }
+            });
+
+        });
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+    </script>
+}
+

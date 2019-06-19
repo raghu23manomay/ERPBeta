@@ -1,0 +1,408 @@
+﻿@model XRP.Models.ssmtbl_VendorPurchaseOrderModel
+@{
+    ViewBag.Title = "VPOApproval";
+    //ViewBag.Active = "My Approval";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+<fieldset>
+    @Html.HiddenFor(m => m.po_no)
+    @Html.HiddenFor(m=>m.valid_date,new {@id= "hdn_date" })
+
+    <header class="blue accent-3 relative" id="header">
+        <div class="container-fluid text-white">
+            <div class="row p-t-b-10 ">
+                <div class="col">
+                    <h4>
+                        <i class="icon-database"></i>
+                        Vendor Purchase Order
+                    </h4>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                    <li>
+                        <a class="nav-link" href='@Url.Action("VendorPurchaseOrderList", "VendorPurchaseOrderApproval")'><i class="icon icon-home2"></i>Vendor Purchase Order For Approval List</a>
+                    </li>
+                    @*<li>
+                            <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
+                        </li>*@
+                    <li class="float-right">
+                        <a class="nav-link  active"><i class="icon icon-eye"></i>Vendor Purchase Order View</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="page" id="printpdf">
+
+        <div class="container">
+            <div class="invoice white shadow">
+
+                <div class="p-5">
+                    <div id="printpdf1">
+                        <!-- title row -->
+                        <div class="row">
+                            <div class="col-12">
+                                @*<img class="w-80px mb-4" src="~/NewCssAndTheme/img/ssmlogo.jpg">*@
+                                <div class="float-right">
+                                    <div>
+                                        <h4>Purchase Order #@Html.DisplayFor(m => m.po_no)</h4>
+                                        <small>Revision Number:@Html.DisplayFor(m=>m.VersionNo) | Date:@Html.DisplayFor(m => m.quotation_ref_date)</small>
+                                    </div>
+                                    @*<table>
+                                            <tr>
+                                                <td class="font-weight-normal">Date:</td>
+                                                <td> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">Revision Number:</td>
+                                                <td>@Html.DisplayFor(m => m.new_Version_No)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">Part Description: &nbsp;  &nbsp; &nbsp;</td>
+                                                <td> @Html.DisplayFor(m => m.PartDescription)</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">Material:</td>
+                                                <td>@Html.DisplayFor(m => m.Material)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">Customer Part No:</td>
+                                                <td>@Html.DisplayFor(m => m.PartNo)</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">
+
+                                                    Heat Treatment:
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(m => m.HeatTreatmentText)
+                                                </td>
+                                            </tr>
+                                        </table>*@
+
+                                </div>
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- info row -->
+                        <div class="row my-3 ">
+
+                            <!-- /.col -->
+                            <div class="col-sm-4">
+                                To
+                                @*<br />*@
+                                <div>
+                                    <label class="Label"> <strong>@Html.DisplayFor(m => m.vendor_name)</strong></label>
+                                </div>
+                                <div>
+                                    @Html.DisplayFor(m => m.Address)
+                                </div>
+                                <div>
+                                   @Html.DisplayFor(m => m.contact_person) | @Html.DisplayFor(m => m.contact_person_email) | @Html.DisplayFor(m => m.contact_person_mobile)
+                                   
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-4">
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                        <div class="row">
+
+                            <div class="col-12 table-responsive">
+                                <strong></strong>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Quot Ref No:&nbsp; @Html.DisplayFor(m => m.quotation_ref_no)&nbsp;&nbsp;
+                                                | Po Date:&nbsp;@Html.DisplayFor(m => m.quotation_ref_date)&nbsp;&nbsp;
+                                                | Valid Date:&nbsp;@Html.LabelFor(m => m.valid_date.Date,new { @id="lbl_validdate"})
+                                              
+                                            </td>
+
+
+                                            @*<td>
+                                                Part Description&nbsp; </td>
+                                                    <td>@Html.DisplayFor(m => m.PartDescription)
+                                                </td>
+                                                <td> | Material:</td>
+                                                <td>@Html.DisplayFor(m => m.Material)</td>
+                                                <td>Customer Part No:</td>
+                                                <td>@Html.DisplayFor(m => m.PartNo)</td>
+                                                <td>
+
+                                                    Heat Treatment:
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(m => m.HeatTreatmentText)
+                                                </td>*@
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- Table row -->
+                        <div class="row">
+
+                            <div class="col-12 table-responsive">
+                                <strong>With Reference to above, Please Supply the following material as per term & condition mentioned below:</strong>
+                                <table class="table table-striped">
+                                    @{ int rowNo = 0; }
+                                    <tbody>
+                                        <tr>
+                                            <td>Sr. No.</td>
+                                            <td>Description</td>
+                                            <td>QTY</td>
+                                            <td>Rate</td>
+                                            <td>Rate Per </td>
+                                            <td>Amount</td>
+                                        </tr>
+                                        @foreach (var data in Model.ssmtbl_VendorPurchaseOrder_DetailsModel)
+                                        {
+                                            <tr>
+                                                <td>@(rowNo += 1)</td>
+                                                <td>@data.item_description</td>
+                                                <td>@data.qty</td>
+                                                <td>@data.rate</td>
+                                                <td>@data.rate_per</td>
+                                                <td>@data.amount</td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td colspan="5" align="right">Total&nbsp;</td>
+                                            <td>@Html.DisplayFor(model => model.total)</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" align="right">CGST(<span>@Html.DisplayFor(model => model.cgst_perc)%</span>)&nbsp;</td>
+                                            <td>@Html.DisplayFor(model => model.cgst_amt)</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" align="right">SGST(<span>@Html.DisplayFor(model => model.sgst_perc)%</span>)&nbsp;</td>
+                                            <td>@Html.DisplayFor(model => model.sgst_amt)</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" align="right">IGST(<span>@Html.DisplayFor(model => model.igst_perc)%</span>)&nbsp;</td>
+                                            <td>@Html.DisplayFor(model => model.igst_amt)</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" align="right">Grand Total&nbsp;</td>
+                                            <td>@Html.DisplayFor(model => model.grand_total)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-12 table-responsive">
+                                <strong>Terms And Conditions </strong>
+                                <table class="table table-striped">
+                                    @{ int rowNo1 = 0; }
+                                    <tbody>
+                                       
+                                        @foreach (var data in Model.ssmtbl_TermsNCondtionModel)
+                                        {
+                                            <tr>
+                                              
+                                                <td>@(rowNo1 += 1).@data.TermsNConditionContent</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="CommentForApproval" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Comment</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.TextArea("Comment", null, new { @class = "form-control r-0 light s-12", @id = "Comment", @cols = "3", @rows = "5" })
+                                </div>
+                                <div class="modal-footer">
+                                    @*<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>*@
+                                    <button type="button" class="btn btn-primary btn-sm" id="ConditionalApprove">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="CommentForView" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Changes</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.TextArea("Comment", null, new { @class = "form-control r-0 light s-12", @id = "Comment", @cols = "3", @rows = "5" })
+                                </div>
+                                <div class="modal-footer">
+                                 
+                                    <button type="button" class="btn btn-primary btn-sm" id="ConditionalView">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="footer">
+                        <div class="col-12">
+                            <div align="left">
+                        
+                                <input type="button" name="Save" value="Download" class="btn btn-primary btn-sm btn-default" id="download" style="display:none;" onclick="location.href='@Url.Action("VPOConsumablesPDF", "VendorPurchaseOrder", new { PONo = Model.po_no, _target = "blank" }) '" />
+                            </div>
+                            <div class="dropdown" align="right">
+
+
+                                <div class="btn-group dropup">
+                              
+                                    @*<div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#" id="" data-toggle="modal" data-target="#CommentForView">Changes</a>
+                                        </div>*@
+                                </div>
+                                @* <a href="@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" })" class="btn btn-primary btn-sm">Download</a>*@
+                                <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Approve
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:lightgrey;">
+                                    <a class="dropdown-item" href="#" id="Approve">Approve</a>
+                                    <a class="dropdown-item" href="#" id="" data-toggle="modal" data-target="#CommentForApproval">Conditional Approve</a>
+                                    <a class="dropdown-item" href="#" id="Reject">Reject</a>
+                                </div>
+                            </div>
+
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/jspdf.debug.js"></script>
+<script src="~/Content/jspdf.min.js"></script>
+<link href="~/NewCssAndTheme/FancyBox/jquery.fancybox.css" rel="stylesheet" />
+<script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
+<script src="~/Content/html2canvas.js"></script>
+
+<script>
+    var $j = jQuery.noConflict(true);
+</script>
+
+<script>
+   
+    function storepdfdata()
+    {
+       // alert($("input[name='GridHtml']").val($("#printpdf1").html()));
+        $("input[name='GridHtml']").val($("#printpdf1").html());
+        return false;
+    }
+</script>
+<script type="text/javascript">
+
+    $j(document).ready(function () {
+
+        var string = $j("#hdn_date").val();
+        string = string.split(" ")[0];
+        $j("#lbl_validdate").text(string);
+
+        $j("#Reject").click(function () {
+
+                // Save it!
+                var PO_No = $j('#po_no').val();
+                var CommentFor ="-";
+                $j.ajax({
+                    url: "../VendorPurchaseOrderApproval/RejectVendorPO",
+                    type: "POST",
+                    dataType: "json",
+                    data: { PONo: PO_No, Comment: CommentFor },
+                    success: function (data) {
+                        location.href = '@Url.Action("VendorPurchaseOrderList", "VendorPurchaseOrderApproval")';
+                        
+                    }
+                });
+
+
+            });
+        });
+
+        $j("#change").click(function () {
+
+
+        });
+
+
+        $j("#ConditionalView").click(function () {
+
+
+        });
+        $j("#Approve").click(function () {
+            $('#CommentForApproval').hide();
+
+                var PO_No = $j('#po_no').val();
+                var CommentFor = $j('#Comment').val();
+                $j.ajax({
+                    url: "../VendorPurchaseOrderApproval/ApproveVendorPO",
+                    type: "POST",
+                    dataType: "json",
+                    data: { PONo: PO_No, Comment: CommentFor },
+                    success: function (data) {
+                        location.href = '@Url.Action("VendorPurchaseOrderList", "VendorPurchaseOrderApproval")';
+                    }
+                });
+
+        });
+
+
+        $j("#ConditionalApprove").click(function () {
+            $('#CommentForApproval').hide();
+            
+            var PO_No = $j('#po_no').val();
+            var CommentFor = "-";
+            $j.ajax({
+                url: "../VendorPurchaseOrderApproval/ConditionalApprovedPurchaseOrder",
+                type: "POST",
+                dataType: "json",
+                data: { PONo: PO_No, Comment: CommentFor },
+                success: function (data) {
+                    location.href = '@Url.Action("VendorPurchaseOrderList", "VendorPurchaseOrderApproval")';
+                }
+            });
+
+
+             });
+
+</script>
+

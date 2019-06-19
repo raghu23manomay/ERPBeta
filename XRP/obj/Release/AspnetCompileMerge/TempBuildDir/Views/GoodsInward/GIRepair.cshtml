@@ -1,0 +1,730 @@
+﻿@model XRP.Models.ssmtbl_GoodsInwardModel
+@using XRP.Global;
+@using XRP.Models;
+@{
+    ViewBag.Title = "Repair Goods Inward";
+    ViewBag.Active = "Stock";
+    ViewBag.Active1 = "Goods Inward";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (Html.BeginForm("GIRepair", "GoodsInward", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+
+    <fieldset>
+        <!-- PAGE TITLE -->
+        @*<div class="page-title">
+            <h2><span class="fa fa-arrow-circle-o-left"></span>REPAIR</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <div class="form-group" style="text-align:center">
+                        <input type="button" class="btn btn-info" value="All Goods Inward" onclick="location.href = '@Url.Action("AllGoodsInward", "GoodsInward")'" />
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                @*<div class="row p-t-b-10 ">*@
+                @*<div class="col">*@
+                <h4>
+                    <i class="icon-database"></i>
+                    Goods Inward
+                </h4>
+                @*</div>*@
+                @*</div>*@
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllGoodsInward", "GoodsInward")'><i class="icon icon-home2"></i>All Goods Inward</a>
+
+                        </li>
+                        <li class="float-right">
+                            <a class="nav-link active" href='#'><i class="icon icon-plus-circle"></i> Add New Repair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        @Html.HiddenFor(model => model.inward_type)
+        @Html.HiddenFor(model => model.gin_char)
+        @Html.HiddenFor(model => model.gin_id)
+
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="animated fadeInUpShort">
+                <form action="#">
+                    <div class="card no-b  no-r">
+                        <div class="card-body">
+                            <div class="form-row mt-1">
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.gin_number, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.gin_number, null, new { @class = "form-control r-0 light s-12", id = "gin_number", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.gin_number, null, new { @class = "alert-danger" })
+
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.vendor_name, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.vendor_name, null, new { @class = "form-control r-0 light s-12", id = "vendor_name" })
+                                    @Html.ValidationMessageFor(model => model.vendor_name, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.vendor_po_no, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.vendor_po_no, null, new { @class = "form-control r-0 light s-12", id = "vendor_po_no" })
+                                    @Html.ValidationMessageFor(model => model.vendor_po_no, null, new { @class = "alert-danger" })
+
+                                </div>
+                            </div>
+                            <div class="form-row mt-1">
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.dispatch_code, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.dispatch_code, null, new { @class = "form-control r-0 light s-12", id = "dispatch_code" })
+                                    @Html.ValidationMessageFor(model => model.dispatch_code, null, new { @class = "alert-danger" })
+                                </div>
+
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.date_of_arrival, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.date_of_arrival, "{0:dd-MMM-yyyy}", new { @class = "date-time-picker form-control r-0 light s-12", id = "date_of_arrival" })
+                                    @Html.ValidationMessageFor(model => model.date_of_arrival, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.invoice_no, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.invoice_no, null, new { @class = "form-control r-0 light s-12", id = "invoice_no" })
+                                    @Html.ValidationMessageFor(model => model.invoice_no, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row mt-1">
+
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.gate_entry_no, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.gate_entry_no, null, new { @class = "form-control r-0 light s-12 ", id = "gate_entry_no" })
+                                    @Html.ValidationMessageFor(model => model.gate_entry_no, null, new { @class = "alert-danger" })
+
+                                </div>
+
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.last_gate_entry_no, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.last_gate_entry_no, null, new { @class = "form-control r-0 light s-12 ", id = "last_gate_entry_no" })
+                                    @Html.ValidationMessageFor(model => model.last_gate_entry_no, null, new { @class = "alert-danger" })
+                                </div>
+
+
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.challan_no, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.challan_no, null, new { @class = "form-control r-0 light s-12 ", id = "challan_no" })
+                                    @Html.ValidationMessageFor(model => model.challan_no, null, new { @class = "alert-danger" })
+
+                                </div>
+                            </div>
+                            <div class="form-row mt-1">
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.cost_center, new { @class = "Label" })
+
+                                    @Html.DropDownListFor(model => model.cost_center, @ViewBag.CostCenterDet as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = "form-control r-0 light s-12 ", id = "cost_center" })
+                                    @Html.ValidationMessageFor(model => model.cost_center, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.Label("Mode Of Transportation", new { @class = "Label" })
+                                    <br>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="Road" name="mode_of_transportation" for="mode_of_transportation" class="custom-control-input">
+                                        <label class="Label custom-control-label m-0" for="Road">Road</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="Courier" name="mode_of_transportation" for="mode_of_transportation" class="custom-control-input">
+                                        <label class="Label custom-control-label m-0" for="Courier">Courier</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="HandCarriedBy" name="mode_of_transportation" for="mode_of_transportation" class="custom-control-input">
+                                        <label class="Label custom-control-label m-0" for="HandCarriedBy">Hand Carried By</label>
+                                    </div>
+                                    @*<label class="btn btn-default">@Html.RadioButtonFor(model => model.mode_of_transportation, "Road")Road</label>
+
+            <label class="btn btn-default">@Html.RadioButtonFor(model => model.mode_of_transportation, "Courier")Courier</label>
+
+            <label class="btn btn-default">@Html.RadioButtonFor(model => model.mode_of_transportation, "Hand Carried By")Hand Carried By</label>*@
+                                </div>
+
+
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.vehicle_no, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.vehicle_no, null, new { @class = "form-control r-0 light s-12 ", id = "vehicle_no", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.vehicle_no, null, new { @class = "alert-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row mt-1">
+                            <div class="form-group col-10 m-0">
+
+                            </div>
+
+                            <div class="form-group col-2 m-0 custom-control-inline">
+
+                                <div id="submitDiv" align="right">
+                                    <button type="submit" class="btn btn-primary btn-sm" id="btnSubmit"><i class="icon-save mr-2"></i>Save</button>
+                                </div>&nbsp;&nbsp;
+                                <div id="loaderDiv" style="display:none;">
+                                    <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                                </div>
+
+                                <button type="reset" class="btn btn-success btn-sm" id="Reset"><i class="icon-refresh mr-2"></i>Reset</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+        @*<div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="col-md-2"><h2>Goods Inward</h2></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.gin_number, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.gin_number, null, new { @class = "form-control NoStar", id = "gin_number", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.gin_number, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.vendor_name, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.vendor_name, null, new { @class = "form-control NoStar", id = "vendor_name" })
+                                    @Html.ValidationMessageFor(model => model.vendor_name, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.vendor_po_no, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.vendor_po_no, null, new { @class = "form-control NoStar", id = "vendor_po_no", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.vendor_po_no, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.invoice_no, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.invoice_no, null, new { @class = "form-control NoStar", id = "invoice_no" })
+                                    @Html.ValidationMessageFor(model => model.invoice_no, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.date_of_arrival, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.date_of_arrival, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", id = "date_of_arrival" })
+                                    @Html.ValidationMessageFor(model => model.date_of_arrival, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.dispatch_code, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.dispatch_code, null, new { @class = "form-control NoStar", id = "dispatch_code" })
+                                    @Html.ValidationMessageFor(model => model.dispatch_code, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.gate_entry_no, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.gate_entry_no, null, new { @class = "form-control NoStar ", id = "gate_entry_no" })
+                                    @Html.ValidationMessageFor(model => model.gate_entry_no, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.last_gate_entry_no, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.last_gate_entry_no, null, new { @class = "form-control NoStar ", id = "last_gate_entry_no" })
+                                    @Html.ValidationMessageFor(model => model.last_gate_entry_no, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.challan_no, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.challan_no, null, new { @class = "form-control NoStar ", id = "challan_no" })
+                                    @Html.ValidationMessageFor(model => model.challan_no, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.cost_center, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(model => model.cost_center, @ViewBag.CostCenterDet as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = "form-control NoStar ", id = "cost_center" })
+                                    @Html.ValidationMessageFor(model => model.cost_center, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="col-md-12"><h2>Mode of Transportation</h2></div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="btn btn-default">@Html.RadioButtonFor(model => model.mode_of_transportation, "Road")Road</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="btn btn-default">@Html.RadioButtonFor(model => model.mode_of_transportation, "Courier")Courier</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="btn btn-default">@Html.RadioButtonFor(model => model.mode_of_transportation, "Hand Carried By")Hand Carried By</label>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="col-md-4 control-label">
+                                    @Html.LabelFor(model => model.vehicle_no, new { @class = "Label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.vehicle_no, null, new { @class = "form-control NoStar ", id = "vehicle_no", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.vehicle_no, null, new { @class = "alert-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="btnDiv">
+            <div class="col-md-12">
+
+                <div class="form-group" style="text-align:center">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col-md-6" id="submitDiv">
+                            <input type="button" name="Save" value="Save" class="btn btn-success btn-default" id="btnSubmit" />
+                        </div>
+                        <div class="col-md-6" id="loaderDiv" style="display:none;">
+                            <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                        </div>
+                    </div>
+                    <div class="col-md-3 ">
+                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("GIConsumables", "GoodsInward")    '" />
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+               
+            </div>
+        </div>*@
+       
+
+    </fieldset>
+
+
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+
+        $j(document).ready(function () {
+
+            if ($j('input[name=mode_of_transportation]').click(function () {
+                var radiodata = $j('input[name=mode_of_transportation]:checked').val();
+                if (radiodata == "Road") {
+                            document.getElementById("vehicle_no").readOnly = false;
+            }
+            else {
+                                document.getElementById("vehicle_no").readOnly = true;
+                $j("#vehicle_no").val('');
+            }
+            }));
+
+
+
+
+
+            $j("#vendor_name").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $j.ajax({
+                        url: "../VendorPurchaseOrder/getVendorName",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($j.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    $(this).val(ui.item.label);
+
+                    $j.ajax({
+                        url: "../VendorPurchaseOrder/getVendorDetails",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Id: ui.item.Id },
+                        success: function (data) {
+                            //console.log(data);
+                            $j('#vendor_name').val(data.Name);
+                        }
+                    });
+
+
+                }
+            });
+
+
+
+
+
+            $j("#dispatch_code").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    var v_name = $j("#vendor_name").val();
+                    var v_type = '@DeliveryChallanType.Repair';
+                    $j.ajax({
+                        url: "../GoodsInward/getDispacthNO",
+                        type: "POST",
+                        dataType: "json",
+                        data: { vendor_name: v_name, Prefix: request.term, vpo_type: v_type },
+                        success: function (data) {
+                            response($j.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    $(this).val(ui.item.label);
+                    $("#maintable").empty();
+                    $j.ajax({
+                        url: "../GoodsInward/getDispacthNODetails",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Id: ui.item.Id },
+                        success: function (data) {
+                            console.log(data);
+
+                            $j('#vendor_po_no').val(data.vendor_po_no);
+
+                            var tr;
+                            //Append each row to html table
+                            for (var i = 0; i < data.ssmtbl_DeliveryChallan_DetailsModelList.length; i++) {
+
+                                var rowCount = $j('.data-contact-person').length + 1;
+                                var contactdiv = '<tr class="data-contact-person">' +
+                    '<td><input type="text" name="i_code' + rowCount + '" class="form-control i_code01" value="' + data.ssmtbl_DeliveryChallan_DetailsModelList[i].item_code + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="i_desc' + rowCount + '" class="form-control i_desc01" value="' + data.ssmtbl_DeliveryChallan_DetailsModelList[i].item_description + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="o_qty' + rowCount + '" class="form-control o_qty01" value="' + data.ssmtbl_DeliveryChallan_DetailsModelList[i].qty + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="c_qty' + rowCount + '" class="form-control c_qty01" value="' + data.ssmtbl_DeliveryChallan_DetailsModelList[i].qty + '" /></td>' +
+                    '<td><input type="text" name="a_qty' + rowCount + '" class="form-control a_qty01" value="' + data.ssmtbl_DeliveryChallan_DetailsModelList[i].qty + '" /></td>' +
+                    '<td><input type="text" name="rate_per' + rowCount + '" class="form-control rate_per01" value="' + data.ssmtbl_DeliveryChallan_DetailsModelList[i].rate_per + '" readonly="readonly"/></td>' +
+                    '<td><input type="text" name="short_fall' + rowCount + '" class="form-control short_fall01" value=0 /></td>' +
+                    '<td><input type="text" name="reason' + rowCount + '" class="form-control reason01" value= ></td>' +
+                    '<td><button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs" onclick="Remove(this);"><span class="fa fa-arrows-h"></span></button></td>' +
+                    '</tr>';
+                                $j('#maintable').append(contactdiv); // Adding these controls to Main table class
+                            }
+
+                        }
+                    });
+
+
+                }
+            });
+
+        });
+
+
+
+
+
+
+        function getAllGIData() {
+            var data = [];
+
+            var alldata = {
+                'gin_char': $j('#gin_char').val(),
+                'gin_id': $j('#gin_id').val(),
+                'gin_number': $j('#gin_number').val(),
+                'inward_type': $j('#inward_type').val(),
+                'vendor_name': $j('#vendor_name').val(),
+                'vendor_po_no': $j('#vendor_po_no').val(),
+                'date_of_arrival': $j('#date_of_arrival').val(),
+                'gate_entry_no': $j('#gate_entry_no').val(),
+                'last_gate_entry_no': $j('#last_gate_entry_no').val(),
+                'challan_no': $j('#challan_no').val(),
+                'invoice_no': $j('#invoice_no').val(),
+                'cost_center': $j('#cost_center').val(),
+                'mode_of_transportation': $j('input[name=mode_of_transportation]:checked').val(),
+                'vehicle_no': $j('#vehicle_no').val(),
+                'comment': $j('#comment').val(),
+
+                'received_from': $j('#received_from').val(),
+                'supplier_name': $j('#supplier_name').val(),
+                'mill_tc_path': $j('#mill_tc_path').val(),
+                'dispatch_code': $j('#dispatch_code').val()
+
+            }
+            return alldata;
+        }
+
+
+        function getAllGIDetailsData() {
+            var data = [];
+            $j('tr.data-contact-person').each(function () {
+                //alert('m');
+                var i_code = $j(this).find('.i_code01').val();//Bind to the item code with class i_code01
+                var i_desc = $j(this).find('.i_desc01').val();//Bind to the item description with class i_desc01
+                var o_qty = $j(this).find('.o_qty01').val();//Bind to the quantity with class qty01
+                var c_qty = $j(this).find('.c_qty01').val();//Bind to the rate with class rate_per01
+                var a_qty = $j(this).find('.a_qty01').val();//Bind to the rate with class rate01
+                var rate_per = $j(this).find('.rate_per01').val();//Bind to the amount with class amount01
+                var short_fall = $j(this).find('.short_fall01').val();//Bind to the amount with class amount01
+                var reason = $j(this).find('.reason01').val();//Bind to the amount with class amount01
+                var alldata = {
+                    'item_code': i_code, //item_code as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                    'item_description': i_desc, //item_description as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                    'order_qty': o_qty, //qty as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                    'challan_qty': c_qty, //rate as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                    'accepted_qty': a_qty, //rate_per as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                    'rate_per': rate_per, //amount as per ssmtbl_VendorPurchaseOrder_DetailsModel class name in .cs
+                    'shortfall': short_fall,
+                    'reason': reason
+                }
+                data.push(alldata);
+            });
+            //console.log(data);//
+            return data;
+        }
+
+
+
+        function Remove(button) {
+            //Determine the reference of the Row using the Button.
+            var row = $(button).closest("tr");
+            var name = $("td", row).eq(0).html();
+            if (confirm("Do you want to delete: ")) {
+
+                //Get the reference of the Table.
+                var table = $("#maintable")[0];
+
+                //Delete the Table row using it's Index.
+                table.deleteRow(row[0].rowIndex);
+
+                getNetTotal();
+            }
+        };
+
+
+        function getAllGIDocReceivedData() {
+            var data = [];
+            $j('tr.data-doc-received').each(function () {
+                //alert('m');
+                //var i_ischecked = $j(this).find('.ischecked').val();//Bind to the item code with class i_code01
+                var i_ischecked = false;
+
+                if ($j(this).find('.ischecked').prop("checked") == true) {
+                    i_ischecked = true;
+                }
+
+                var i_doc_id = $j(this).find('.doc_id').val();//Bind to the item description with class i_desc01
+                var o_doc_name = $j(this).find('.doc_name').val();//Bind to the quantity with class qty01
+                var alldata = {
+                    'doc_id': i_doc_id, 
+                    'doc_name': o_doc_name, 
+                    'ischecked': i_ischecked 
+                }
+                data.push(alldata);
+            });
+            //console.log(data);//
+            return data;
+        }
+
+
+
+
+        $("#btnSubmit").click(function (e) {
+
+
+
+            if ($j('#gin_number').val()) {
+                if ($j('#gate_entry_no').val()) {
+                    if ($j('#vendor_name').val()) {
+
+                        if ($j('#last_gate_entry_no').val()) {
+
+
+                            if ($j('#challan_no').val()) {
+
+
+                                if ($j('#invoice_no').val()) {
+
+                                    if ($j('#cost_center').val()) {
+
+
+                                        if ($j('#date_of_arrival').val()) {
+
+                                            if ($j('#dispatch_code').val()) {
+
+                                                var newgin_number = $j('#gin_number').val();
+                                                var newUrl = '@Url.Action("UpdateGIRepair", "GoodsInward")?id=' + newgin_number + '&successmsg=success';
+
+
+                                                var datas = JSON.stringify(getAllGIData());
+                                                var detailsdata = JSON.stringify(getAllGIDetailsData());
+                                                var datadocreceived = JSON.stringify(getAllGIDocReceivedData());
+
+                                                $j('#submitDiv').hide();
+                                                $j('#loaderDiv').show();
+
+                                                $.ajax({
+                                                    url: '@Url.Action("GIRepair", "GoodsInward")',
+                                                    type: 'POST',
+                                                    data: JSON.stringify({ 'gidata': datas, 'gidetailsdata': detailsdata, 'gidocreceived': datadocreceived }),
+                                                    dataType: 'json',
+                                                    contentType: 'application/json; charset=utf-8',
+                                                    success: function (sdata) {
+                                                        if (sdata.result == "Goods Inward Created Successfully!") {
+                                                            window.location.href = newUrl;
+                                                        }
+                                                        else {
+                                                            alert(sdata.result);
+                                                            $j('#submitDiv').show();
+                                                            $j('#loaderDiv').hide();
+                                                        }
+                                                    },
+                                                    error: function () {
+                                                        alert("Error while inserting data");
+                                                        $j('#submitDiv').show();
+                                                        $j('#loaderDiv').hide();
+                                                    }
+                                                });
+
+                                            }
+                                            else {
+                                                alert('Please Enter Dispatch Code!');
+                                            }
+                                        }
+                                        else {
+                                            alert('Please Enter Date of arrival!');
+                                        }
+                                    }
+                                    else {
+                                        alert('Please Enter Cost Center!');
+                                    }
+                                }
+                                else {
+                                    alert('Please Enter Invoice Number!');
+                                }
+
+                            }
+                            else {
+                                alert('Please Enter Challan Number!');
+                            }
+
+                        }
+                        else {
+                            alert('Please Enter Last Gate Entry No.!');
+                        }
+                    }
+                    else {
+                        alert('Please Enter Vendor Name!');
+                    }
+                }
+                else {
+                    alert('Please Enter Gate Entry Number!');
+                }
+            }
+            else {
+                alert('Please Enter GIN number!');
+            }
+
+        });
+
+
+    </script>
+
+
+}

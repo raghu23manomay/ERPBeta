@@ -1,0 +1,485 @@
+﻿@model XRP.Models.Paged_ssmtbl_PurchaseOrderModel
+@using XRP.Global;
+@{
+    ViewBag.Title = "AllGoodsIssued";
+    ViewBag.Active = "Stock";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+<style>
+    .btnGenerateWO {
+        position: absolute;
+        bottom: 25px;
+        right: 20px;
+    }
+
+    .btnGenerateCuttingSlip {
+        position: absolute;
+        bottom: 25px;
+        left: 20px;
+    }
+</style>
+<link rel="stylesheet" href="~/assets/css/app.css">
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+@using (Html.BeginForm("AllGoodsIssued", "GoodsIssued", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <input type="hidden" id="hdngisID" />
+    <input type="hidden" id="hdnGrossWeight" />
+    <input type="hidden" id="hdnpoid" />
+    <input type="hidden" id="hdn_poidcnt" />
+    <style>
+        .icon:hover, .trDelivery:hover {
+            cursor: pointer;
+        }
+    </style>
+
+
+
+    <fieldset>
+
+
+        <!-- PAGE TITLE -->
+
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-default">
+
+
+                    <div class="container-fluid animatedParent animateOnce p-0">
+                        <div class="animated fadeInUpShort">
+                            <div class="row no-gutters">
+                                <div class="col-md-3 white sticky" style="height:auto">
+                                    <div class="sticky white">
+                                        <ul class="nav nav-tabs nav-material">
+                                            <li class="nav-item">
+                                                <a class="nav-link p-3 active show" id="w2--tab1" data-toggle="tab" href="#w2-tab1" style="height:auto">
+                                                    <i class="icon icon-document s-18 text-success"></i>Goods Issued
+                                                    <input type="text" class="" id="txt_search" style="display:none;width:20%;height:5%" />
+                                                    <i class="icon-search" onclick="search();"></i>
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="slimScroll" style="position:relative;overflow:hidden;height:initial">
+                                        <div class="slimScroll" style="">
+                                            <div class="tab-content " id="v-pills-tabContent">
+                                                <div class="tab-pane fade show active slimScroll" id="w2-tab1" role="tabpanel"
+                                                     aria-labelledby="w2-tab1">
+                                                    <ul class="list-unstyled table table-bordered table-hover trDelivery" id="ullslistbind">
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 tab-pane animated fadeInUpShort" id="GIDiv" style="height:auto">
+
+                                    <div class="m-md-2">
+
+                                        <div class="card b-0 m-2">
+                                            <div class="card-body" style="height:600px">
+                                                <div>
+
+                                                    <span class="col-form-label s-12 float-right">
+
+                                                    </span>
+
+                                                    <br />
+                                                    <div class="media" data-toggle="collapse" data-target="#GISDiv">
+
+                                                        @*<div class="mr-2 float-left">
+
+                                                                <i class="icon icon-note-list text-light-blue s-48"></i>
+
+                                                                    <label class="mr-2 float-right">Goods Issued No #</label>  <strong id="lblGoodsIssuedno" class="Label"></strong>
+
+                                                            </div>*@
+
+                                                        <div class="media-body" id="">
+
+                                                            <h6 class="mt-0 mb-1 font-weight-normal" id="lblCustName"><label title="Customer Name"></label></h6>
+
+                                                            <span style="padding-bottom:0">
+                                                                GIS # <strong id="lblGoodsIssuedno" class="Label">  </strong>
+                                                                <br />
+                                                                WorkOrder #  <strong id="lblWorkorderno" class="Label"></strong>
+                                                                <br />
+                                                                CreatedDate :<strong id="lblCreatedDate" class="Label"></strong>
+                                                            </span>
+                                                            <span>
+
+                                                            </span>
+                                                            <div class="collapse my-3 show" id="">
+                                                                <div class="form-row m-0">
+                                                                    <div class="form-group col-12 m-0">
+                                                                        Part Name : <label id="lblPartName" class="Label"></label><br>
+                                                                        Part No # <label id="lblPartNo" class="Label"></label><br>
+                                                                        Raw Material : <label id="lblRM" class="Label"></label><br>
+
+
+                                                                        @*</div>
+                                                                            <div class="form-group col-6 m-0">*@
+                                                                        Cut Weight: &nbsp;<label id="lblCutWt" class="Label"></label>
+                                                                        <br>
+                                                                        Qty:&nbsp;<label id="lblPOQty" class="Label"></label>&nbsp;&nbsp;|&nbsp;
+                                                                        Weight : <label id="lblWeight" class="Label"></label>
+                                                                        <br />
+                                                                        Section:&nbsp;<label id="lblSection" class="Label"></label><br />
+
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                                <div class="form-row">
+                                                                    <div class="col-md-4">
+                                                                        Issued Qty (Kgs) :&nbsp;<br />
+
+                                                                        <input id="txtIssuedQty" class="form-control r-0 light s-12 Float-Number" type="text">
+                                                                        @*<select class="form-control r-0 light s-12" id="drpCuttingMachine">
+                                                                                <option value="Select">- Select -</option>
+                                                                                <option value="Machine 1">Machine 1</option>
+                                                                                <option value="Machine 2">Machine 2</option>
+                                                                                <option value="Machine 3">Machine 3</option>
+                                                                                <option value="Machine 4">Machine 4</option>
+                                                                                <option value="Machine 5">Machine 5</option>
+                                                                            </select>*@
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-4 m-0">
+                                                                        Remark:
+
+                                                                        <textarea id="txtRemark" class="form-control r-0 light s-12"></textarea>
+                                                                    </div>
+                                                                    <div class="form-group col-6 m-0">
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="card-body" id="div_gpo">
+
+                                                        <div class="float-right">
+                                                            <button type="button" value="Save" class="btn btn-primary btn-default btn-sm btnGenerateWO" id="btn_Save1" onclick="saveGoodsIssued()"><i class="icon-save mr-2"></i> Save </button>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+
+    <script type="text/javascript">
+        var $j = jQuery.noConflict(true);
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#GIDiv").hide();
+            $("#GIDetailsDiv").hide();
+            document.body.style.overflow = 'hidden';
+            $(function () {
+                $('.date-time-picker').datetimepicker({
+                    format: 'd/m/Y',
+                    timepicker: false,
+
+                });
+            });
+            // getGISNo();
+            getGoodsIssuedList(0);
+        });
+    </script>
+    @*<script>
+            function getGISNo() {
+                var ID = "0";
+                $.ajax
+                                       ({
+                                           type: "POST",
+                                           url: "../GoodsIssued/GetMaxGoodsIssuedNo",
+                                           data: JSON.stringify({ ID: ' ' + ID + '' }),
+                                           contentType: "application/json;charset=utf-8",
+                                           //dataType: "json",
+                                           success: function (data) {
+                                               $("#lblGoodsIssuedno").text(data);
+                                           },
+                                           error: function (err) {
+
+                                           }
+                                       });
+
+            }
+        </script>*@
+    <script>
+        function getGoodsIssuedList(id) {
+            $.ajax({
+                type: "POST",
+                url: "../GoodsIssued/GoodsIssuedList",
+                // data: params,
+                data: JSON.stringify({ id: ' ' + id + '' }),
+                contentType: "application/json;charset=utf-8",
+                // dataType: "json",
+                success: function (data) {
+                    var items = [];
+                    for (var i = 0; i < data.length; i++) {
+                        // tr = $('<tr class="mosurhandsymbol dataGrid"/>');
+                        // tr.append('<td style="display:none;">' + data[i].RfqID + '</td>');
+                        // tr.append('<td><div class="avatar avatar-md mr-3 mt-1 float-left"><span class="avatar-letter avatar-letter-' + data[i].UserName.substring(0, 1).toLowerCase() + ' avatar-md circle"></span></div><div><div><strong>' + data[i].UserName + '</strong></div><span>' + data[i].Status + ' | ' + data[i].VendorType + '</span></div></td>');
+                        //$('#tbl_AllVpo').append(tr);
+                        items.push('<li class="media p-3 b-b has-hover mosurhandsymbol" onclick="fetchsinglelist(' + data[i].GoodsIssuedID + ')"><i class="icon icon-note-list text-light-blue s-48"></i><div class="media-body text-truncate"><small class="float-right" title="Created Date"><span>' + jsondateformatconvert(data[i].CreatedDate) + '</span></small><h6 class="mt-0 mb-1 font-weight-normal">' + data[i].GoodsType + '</h6><small>' + data[i].WorkorderNo + '</small><small> | Qty# ' + data[i].Quantity + '</small></div></li>');
+
+                    }
+                    $('#ullslistbind').append(items.join(''));
+                },
+                error: function (err) {
+                    alert('Error occured');
+
+                }
+            });
+        }
+    </script>
+    <script>
+        function fetchsinglelist(id) {
+            $('#hdngisID').val(id);
+            $('#GIDiv').show();
+            $("#GIDetailsDiv").show();
+            $(this).addClass("p-3 b-b light border-right border-primary");
+            $(this).siblings().removeClass("p-3 b-b light border-right border-primary");
+            $.ajax({
+                type: "POST",
+                url: "../GoodsIssued/GetOneGoodsIssued",
+                // data: params,
+                data: JSON.stringify({ id: ' ' + id + '' }),
+                contentType: "application/json;charset=utf-8",
+                // dataType: "json",
+                success: function (data) {
+                    $('#lblIssuedQty').text(data[0].Quantity);
+                    $('#hdnGoodsIssuedID').val(data[0].CuttingID);
+                    $("#lblGoodsIssuedno").text(data[0].GoodsIssuedNo);
+                    $("#lblPOQty").text(data[0].Quantity);
+                    $("#lblCreatedDate").text(jsondateformatconvert1(data[0].CreatedDate));
+                    $("#lblWeight").text(data[0].Weight);
+                    $("#lblWorkorderno").text(data[0].WorkorderNo);
+                    $("#lblCutWt").text(data[0].CutWeight);
+                    $("#lblSection").text(data[0].Section);
+                    $("#lblRM").text(data[0].RawMaterial);
+                    $("#lblCustName").text(data[0].Name);
+                    $("#lblcustomerName1").text(data[0].Name);
+                    $("#lblPartName").text(data[0].PartName);
+                    $("#lblPartNo").text(data[0].PartNo);
+
+                },
+                error: function (err) {
+                    alert('Error occured');
+
+                }
+            });
+        }
+    </script>
+
+
+    <script>
+        function saveGoodsIssued() {
+            var gisId = $("#hdngisID").val();
+            var issuedWt = $("#txtIssuedQty").val();
+            var remark = $("#txtRemark").val();
+            var goodsIssuedno = $("#lblGoodsIssuedno").text();
+            if (issuedWt == '') {
+                alert("Please Enter Issued Qty.!");
+                return false;
+            }
+            //if (remark == '') {
+            //    alert("Please Enter Remark..");
+            //    return false;
+            //}
+            $.ajax({
+
+                type: "POST",
+                url: "../GoodsIssued/GenerateGoodsIssued",
+                data: JSON.stringify({
+                    gisId: ' ' + gisId + ' ', issuedWt: ' ' + issuedWt + ' ', remark: ' ' + remark + ' ',
+                    goodsIssuedno: ' ' + goodsIssuedno + ' '
+                }),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    alert(data);
+                    location.href = '@Url.Action("AllGoodsIssued", "GoodsIssued")';
+                },
+                error: function (err) {
+                    // alert('Error occured');
+                }
+            });
+
+        }
+    </script>
+
+
+
+    <script>
+
+        $(".trDelivery").click(function () {
+
+            //$(this).addClass("p-3 b-b has-hover light border-left");
+            //$(this).siblings().removeClass("p-3 b-b has-hover light border-left");
+            //$(this).siblings().addClass("p-3 b-b has-hover");
+            //$(this).addClass("p-3 b-b light border-right border-primary");
+            //$(this).siblings().removeClass("p-3 b-b light border-right border-primary");
+        });
+
+    </script>
+
+
+
+
+
+    <script>
+        function jsondateformatconvert1(jsondate) {
+            var MyDate_String_Value = jsondate;
+            var value = new Date
+            (
+            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+            );
+            var date = value.getDate();
+            if (date < 10) {
+                date = "0" + date;
+            } else {
+                date = date;
+            }
+            var month = value.getMonth() + 1;
+            if (month < 10) {
+                month = "0" + month;
+            } else {
+                month = month;
+            }
+            var year = value.getFullYear();
+            var hrs = value.getHours();
+            var minutes = value.getMinutes();
+            var sec = value.getSeconds();
+            var day = value.getDay();
+
+            var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            var dayName = days[value.getDay()];
+
+            //var d = new Date(dateString);
+            //var dayName = d.toString().split(' ')[0];
+
+            var dat = date + "-" + month + "-" + year;
+            return dat;
+        }
+        function jsondateformatconvert(jsondate) {
+            var MyDate_String_Value = jsondate;
+            var value = new Date
+            (
+            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+            );
+            var date = value.getDate();
+
+            if (date < 10) {
+                date = "0" + date;
+            } else {
+                date = date;
+            }
+            var month = value.getMonth() + 1;
+            if (month < 10) {
+                month = "0" + month;
+            } else {
+                month = month;
+            }
+            var year = value.getFullYear();
+            var hrs = value.getHours();
+            var minutes = value.getMinutes();
+            var sec = value.getSeconds();
+            var day = value.getDay();
+
+            var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            var dayName = days[value.getDay()];
+            var mnths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var mnthName = mnths[value.getMonth()];
+
+
+            var dat = date + "-" + mnthName;
+            return dat;
+        }
+    </script>
+    <script>
+        $(document).on("keypress", "input[type=text].Float-Number", function (event) {
+            //  $(".Float-Number").keypress(function (event) {
+            ///For Positive float
+            //if (isNaN(this.value + "" + String.fromCharCode(e.charCode)))
+            //    return false;
+            $(this).bind("cut copy paste", function (e) {
+                e.preventDefault();
+            });
+            var value = $("#" + this.id).val();
+            //    alert(event.which);
+            var iKeyCode = (event.which) ? event.which : event.keyCode
+            if (iKeyCode != 46 && iKeyCode != 09 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57)) {
+                //  alert("Enter Numbers Only");
+                event.preventDefault();
+                return false;
+            }
+            if (event.which < 45 || event.which > 58 || event.which == 47) {
+                if (event.which != 8) {
+                    return false;
+                    event.preventDefault();
+                }
+            } // prevent if not number/dot
+
+            if (event.which == 46 && value.indexOf('.') != -1) {
+                return false;
+                event.preventDefault();
+            } // prevent if already dot
+
+            if (event.which == 45 && value.indexOf('-') != -1) {
+                return false;
+                event.preventDefault();
+            } // prevent if already dot
+
+            if (event.which == 45 && value.length > 0) {
+                event.preventDefault();
+            } // prevent if already -
+
+            return true;
+
+
+        });
+        function search() {
+            $("#txt_search").show();
+
+        }
+    </script>
+}

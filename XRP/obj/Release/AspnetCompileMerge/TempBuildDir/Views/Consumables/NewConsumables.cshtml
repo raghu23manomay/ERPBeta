@@ -1,0 +1,347 @@
+﻿@model XRP.Models.ssmtbl_ConsumableModel
+@{
+    ViewBag.Title = "NewConsumables";
+    ViewBag.Active = "Stock";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (Html.BeginForm("NewConsumables", "Consumables", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            <i class="icon-database"></i>
+                            Consuambles
+                        </h4>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("ConsumablesList", "Consumables")'><i class="icon icon-home2"></i>All Consuambles</a>
+                            
+                        </li>
+                        @*<li>
+                            <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
+                        </li>*@
+                        <li class="float-right">
+                            <a class="nav-link active" href='#'><i class="icon icon-plus-circle"></i> Add New Consuambles</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="animated fadeInUpShort">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <form action="#">
+                            <div class="card no-b  no-r">
+                                <div class="card-body">
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.Code, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.Code, null, new { @class = "form-control r-0 light s-12 ", @id = "txt_code" })
+                                            @Html.ValidationMessageFor(model => model.Code, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.Description, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.Description, null, new { @class = "form-control r-0 light s-12 " })
+                                            @Html.ValidationMessageFor(model => model.Description, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                           @Html.LabelFor(model => model.Specification, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.Specification, null, new { @class = "form-control r-0 light s-12 " })
+                                            @Html.ValidationMessageFor(model => model.Specification, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.Applicationcenter_CostCenter, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.Applicationcenter_CostCenter, null, new { @class = "form-control r-0 light s-12 ", @id = "txt_applicationcenter_costcenter" })
+                                            @Html.ValidationMessageFor(model => model.Applicationcenter_CostCenter, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                          @Html.LabelFor(model => model.StorageLevelMin, new { @class = "Label" })
+                                          @Html.TextBoxFor(model => model.StorageLevelMin, null, new { @class = "form-control r-0 light s-12 " })
+                                          @Html.ValidationMessageFor(model => model.StorageLevelMin, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.MaxQunatity, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.MaxQunatity, null, new { @class = "form-control r-0 light s-12 " })
+                                            @Html.ValidationMessageFor(model => model.MaxQunatity, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.BalanceQunatity, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.BalanceQunatity, null, new { @class = "form-control r-0 light s-12 " })
+                                            @Html.ValidationMessageFor(model => model.BalanceQunatity, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.Units, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.Units, null, new { @class = "form-control r-0 light s-12 ", @id = "txt_units" })
+                                            @Html.ValidationMessageFor(model => model.Units, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.OpeningStock, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.OpeningStock, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly" })
+                                            
+                                            @Html.ValidationMessageFor(model => model.OpeningStock, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.OpeningDate, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.OpeningDate, null, new { @class = "form-control r-0 light s-12 ", @readonly="readonly" })
+                                          
+                                            @Html.ValidationMessageFor(model => model.OpeningDate, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                            @Html.LabelFor(model => model.CreatedBy, new { @class = "Label", @style = "display:none;" })
+                                            @Html.TextBoxFor(model => model.CreatedBy, null, new { @class = "form-control r-0 light s-12 ", @style = "display:none;" })
+                                            @Html.ValidationMessageFor(model => model.CreatedBy, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="form-group col-4 m-0">
+                                         
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="card-body" align="right">
+                                    
+                                    <button type="submit" name="Save" value="Save" class="btn btn-primary btn-default btn-sm" id="Save"><i class="icon-save mr-2"></i>Save</button>
+                                    <button type="reset" name="Save" value="Reset" class="btn btn-success btn-default btn-sm" onclick="location.href = '@Url.Action("NewConsumableIssued", "ConsumableIssued")'">
+                                        <i class="icon-refresh mr-2"></i>Reset
+                                     </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="divwarn" class="warning">
+                <label id="lbl_validation"></label>
+            </div>
+        </div>
+       
+       
+
+     
+        @*<div class="row">
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.Code, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.Code, null, new { @class = "form-control NoStar", @id="txt_code" })
+                            @Html.ValidationMessageFor(model => model.Code, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.Description, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.Description, null, new { @class = "form-control NoStar" })
+                            @Html.ValidationMessageFor(model => model.Description, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.Specification, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.Specification, null, new { @class = "form-control NoStar" })
+                            @Html.ValidationMessageFor(model => model.Specification, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.Applicationcenter_CostCenter, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.Applicationcenter_CostCenter, null, new { @class = "form-control NoStar", @id = "txt_applicationcenter_costcenter" })
+                            @Html.ValidationMessageFor(model => model.Applicationcenter_CostCenter, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.StorageLevelMin, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.StorageLevelMin, null, new { @class = "form-control NoStar" })
+                            @Html.ValidationMessageFor(model => model.StorageLevelMin, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.MaxQunatity, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.MaxQunatity, null, new { @class = "form-control NoStar" })
+                            @Html.ValidationMessageFor(model => model.MaxQunatity, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.BalanceQunatity, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.BalanceQunatity, null, new { @class = "form-control NoStar" })
+                            @Html.ValidationMessageFor(model => model.BalanceQunatity, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.Units, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.Units, null, new { @class = "form-control NoStar", @id = "txt_units" })
+                            @Html.ValidationMessageFor(model => model.Units, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.OpeningStock, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.OpeningStock, null, new { @class = "form-control NoStar", @readonly = "readonly", @style="border: 0px;" })
+                            @Html.ValidationMessageFor(model => model.OpeningStock, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.OpeningDate, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.OpeningDate, null, new { @class = "form-control NoStar", @readonly = "readonly", @style = "border: 0px;" })
+                            @Html.ValidationMessageFor(model => model.OpeningDate, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>    
+                    <div class="form-group" style="display:none">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.CreatedBy, new { @class = "Label", @style = "display:none;"})
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.CreatedBy, null, new { @class = "form-control NoStar", @style = "display:none;" })
+                            @Html.ValidationMessageFor(model => model.CreatedBy, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>                
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+            </div>
+    &nbsp;
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="text-align:center">
+                        <input type="submit" name="Save" value="Save" class="btn btn-success btn-default" id="Save" />
+                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewConsumableIssued", "ConsumableIssued")    '" />
+
+                    </div>
+                </div>
+            </div>*@
+    </fieldset>
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+    <script type="text/javascript">
+        $("#txt_code").focusout(function () {                
+                var code = $("#txt_code").val();                
+                $.ajax({
+                    type: "POST",
+                    url: "../Consumables/GetCode",
+                    data: JSON.stringify({ Code: '' + code + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {                       
+                        var data1 = data[0];
+                        try {
+                            var vn = data1.Code;
+                            if (typeof (vn) != "undefined")                               
+                            {
+                                $("#txt_code").val('');
+                                $("#txt_code").focus();
+                                $("#txt_code").css('border-color','indianred');
+                                alert('Code is Already Present. Please enter new Code.');
+                            }
+                            else {
+                            }
+
+                        } catch (e) {
+                           
+                        }
+
+                    },
+                    error: function (err) {
+                        alert('Error occured');                       
+                    }
+                });
+        });
+        $j("#txt_applicationcenter_costcenter").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "../Consumables/GetCostCenter",
+                    type: "POST",
+                    dataType: "json",
+                    data: { startwith: request.term },
+                    success: function (results) {
+                        $("#txt_applicationcenter_costcenter").val(results[0].Applicationcenter_CostCenter);                           
+                    }
+                })
+            },
+            change: function (event, ui) {
+                $(this).val((ui.item ? ui.item.label : ""));
+            }
+        });
+
+        $j("#txt_units").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "../Consumables/GetUnits",
+                    type: "POST",
+                    dataType: "json",
+                    data: { startwith: request.term },
+                    success: function (data) {
+                        $("#txt_units").val(data[0].Units);                           
+                      }
+                })
+            },
+            change: function (event, ui) {
+                $(this).val((ui.item ? ui.item.label : ""));
+            }
+        });
+    </script>
+}

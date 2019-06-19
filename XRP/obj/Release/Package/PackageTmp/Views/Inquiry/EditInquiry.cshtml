@@ -1,0 +1,426 @@
+﻿@model XRP.Models.ssmtbl_InquiryModel
+@{
+    ViewBag.Title = "Edit Inquiry";
+    ViewBag.Active = "Marketing";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (Html.BeginForm("EditInquiry", "Inquiry", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.DieID, new { @id = "hdn_diedescid" })
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                @*<div class="row p-t-b-10 ">
+                    <div class="col">*@
+                        <h4>
+                            <i class="icon-database"></i>
+                            Enquiry
+                        </h4>
+                    @*</div>
+                </div>*@
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllInquiry", "Inquiry")'><i class="icon icon-home2"></i>Enquiry List</a>
+                            @*<a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>All Inquiry</a>*@
+                        </li>
+                        @*<li>
+        <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
+    </li>*@
+                        <li>
+                            
+                            <a class="nav-link active" href='@Url.Action("EditInquiry", "Inquiry")'><i class="icon icon-pencil"></i> Edit Enquiry</a>
+                         </li>
+                        @*<li class="float-right">
+                            <a class="nav-link" href='@Url.Action("NewInquiry", "Inquiry")'><i class="icon icon-plus-circle"></i> Add New Inquiry</a>
+                        </li>*@
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+
+        <!-- PAGE TITLE -->
+      
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="animated fadeInUpShort">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <form action="#">
+                            <div class="card no-b no-r" style="height:480px">
+                                <div class="card-body">
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-6 m-0">
+                                            @Html.LabelFor(model => model.InquiryNo, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.InquiryNo, null, new { @class = "form-control r-0 light s-12 ", maxlength = 40, @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.InquiryNo, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-6 m-0">
+                                            @Html.LabelFor(model => model.DieNumber, new { @class = "Label" })
+                                            @*@Html.DropDownListFor(model => model.DieNumber, ViewData["DieNumber"] as IEnumerable<SelectListItem>,
+                    XRP.Global.DropDownSelection.DropDownSelect, new { @class = "form-control r-0 light s-12 .chzn-select", @required = "required",@onchange="fetchdiadetails()",@id="drp_dialist"})*@
+                                            @Html.TextBoxFor(model => model.DieNumber, null, new { @class = "form-control r-0 light s-12 " })
+                                            @Html.ValidationMessageFor(model => model.DieNumber, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-6 m-0">
+                                            @Html.LabelFor(model => model.customerName, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.customerName, null, new { @class = "form-control r-0 light s-12 ", @id = "customerName", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.customerName, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+                                        <div class="form-group col-6 m-0">
+                                            @Html.LabelFor(model => model.PartName, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.PartName, null, new { @class = "form-control r-0 light s-12 " })
+                                            @Html.ValidationMessageFor(model => model.PartName, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-6 m-0">
+                                            @Html.LabelFor(model => model.PartNo, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.PartNo, null, new { @class = "form-control r-0 light s-12 " })
+                                            @Html.ValidationMessageFor(model => model.PartNo, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-6 m-0">
+                                            @Html.LabelFor(model => model.InquiryDate, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.InquiryDate, "{0:dd/MM/yyyy}", new { @class = "date-time-picker form-control r-0 light s-12" })
+                                            @Html.ValidationMessageFor(model => model.InquiryDate, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-6 m-0">
+                                            @Html.LabelFor(model => model.CustomerDrgNo, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.CustomerDrgNo, null, new { @class = "form-control r-0 light s-12 " })
+                                            @Html.ValidationMessageFor(model => model.CustomerDrgNo, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-6 m-0">
+                                            @Html.LabelFor(model => model.Qty, new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.Qty, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.Qty, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-6 m-0">
+                                            @Html.LabelFor(model => model.FrequencyRepearOrder, new { @class = "Label" })
+                                            @Html.DropDownListFor(model => model.FrequencyRepearOrder, ViewData["FreqRepeatOrder"] as IEnumerable<SelectListItem>,
+                                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = "form-control r-0 light s-12 .chzn-select", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.FrequencyRepearOrder, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("HSN / SAC Code", new { @class = "Label" })
+                                            @Html.TextBoxFor(model => model.HSN, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+                                            @Html.ValidationMessageFor(model => model.HSN, null, new { @class = "alert-danger" })
+
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="form-row mt-1">
+                                        <div class="form-group col-6 m-0">
+                                            <label class="Label">Comment</label>
+                                            @Html.TextBoxFor(model => model.Remark, null, new { @class = "form-control r-0 light s-12 " })
+                                            @Html.ValidationMessageFor(model => model.Remark, null, new { @class = "alert-danger" })
+
+                                        </div>
+                                        <div class="form-group col-6 m-0">
+
+
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+                                <div class="card-body" align="right">
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="icon-save mr-2"></i>Update</button>
+
+                @*<button type="button" class="btn btn-dark btn-sm" id="CloseInquiry"><i class="icon-close mr-2"></i>Close Enquiry</button>*@
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="row">
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.InquiryNo, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.InquiryNo, null, new { @class = "form-control NoStar", maxlength = 40, @readonly = "readonly", @id="InquiryNo" })
+                            @Html.ValidationMessageFor(model => model.InquiryNo, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.customerName, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.customerName, null, new { @class = "form-control NoStar", @id = "customerName" })
+                            @Html.ValidationMessageFor(model => model.customerName, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.InquiryDate, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.InquiryDate, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker" })
+                            @Html.ValidationMessageFor(model => model.InquiryDate, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.PartName, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.PartName, null, new { @class = "form-control NoStar" })
+                            @Html.ValidationMessageFor(model => model.PartName, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.PartNo, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.PartNo, null, new { @class = "form-control NoStar" })
+                            @Html.ValidationMessageFor(model => model.PartNo, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.CustomerDrgNo, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.CustomerDrgNo, null, new { @class = "form-control NoStar" })
+                            @Html.ValidationMessageFor(model => model.CustomerDrgNo, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.Qty, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(model => model.Qty, null, new { @class = "form-control NoStar" })
+                            @Html.ValidationMessageFor(model => model.Qty, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.FrequencyRepearOrder, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.DropDownListFor(model => model.FrequencyRepearOrder, ViewData["FreqRepeatOrder"] as IEnumerable<SelectListItem>,
+                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control" })
+                            @Html.ValidationMessageFor(model => model.FrequencyRepearOrder, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+
+
+        <div class="row" style="display:none;" id="CommentDiv">
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <div class="col-md-5 control-label">
+                            @Html.LabelFor(model => model.CommentForClose, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-7">
+                            @Html.TextAreaFor(model => model.CommentForClose, new { @class = "form-control NoStar", @id = "CommentForClose" })
+                            @Html.ValidationMessageFor(model => model.CommentForClose, null, new { @class = "alert-danger" })
+                        </div>
+                    </div>                    
+                </div>
+
+                <div class="col-md-3">
+                    <input type="button" value="Close" class=" btn btn-default" id="Close"/>
+                </div>
+            </div>
+        </div>*@
+
+        @*&nbsp;
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" style="text-align:center">
+                    <input type="submit" name="Save" value="Update" class="btn btn-success btn-default" id="Save" />
+                    <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewInquiry", "Inquiry")    '" />
+                    <input type="button" name="Save" value="Close Inquiry" class="btn btn-success btn-primary" id="CloseInquiry" />
+                </div>
+            </div>
+        </div>*@
+
+    </fieldset>
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+    var $j = jQuery.noConflict(true);
+    </script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            document.body.style.overflow = 'hidden';
+            $(function () {
+                $('.date-time-picker').datetimepicker({
+                    format: 'd/m/Y',
+                    timepicker: false
+                });
+            });
+            $j("#customerName").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $.ajax({
+                        url: "../Inquiry/getCustomername",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                change: function (event, ui) {
+                    $(this).val((ui.item ? ui.item.label : ""));
+                }
+            });
+
+            $j("#Close").click(function (){
+                if (confirm('Are you sure you want to Close this Inquiry?')) {
+                    // Save it!
+                    var InqNo = $j('#InquiryNo').val();
+                    var CommentFor = $j('#CommentForClose').val();
+                    $.ajax({
+                        url: "../Inquiry/CloseInquiry",
+                        type: "POST",
+                        dataType: "json",
+                        data: { InquiryNo: InqNo, Comment: CommentFor },
+                        success: function (data) {
+                            alert(data);
+                        }
+                    });
+                } else {
+                    // Do nothing!
+                    $j('#CommentDiv').hide();
+                }
+            });
+
+            $j("#CloseInquiry").click(function (){
+                $j('#CommentDiv').show();
+            });
+            $j("#DieNumber").autocomplete({
+                source: function (request, response) {
+                    $("#customerName").val("");
+                    $("#PartName").val("");
+                    var customer = new Array();
+                    $.ajax({
+                        url: "../Inquiry/getDiaDetails",
+                        type: "POST",
+                        dataType: "json",
+                        data: { DiaID: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                change: function (event, ui) {
+                    // $(this).val((ui.item ? ui.item.label : ""));
+
+                    if (ui.item == null) {
+                        // alert("Die does not exist  Please add customer..!");
+
+                        $("#customerName").removeAttr("readonly");
+                        $("#PartName").removeAttr("readonly");
+                        $("#hdn_diedescid").val("0");
+                    }
+                    else {
+                        fetchdiadetails(ui.item.label);
+                    }
+
+                }
+            });
+        });
+        function fetchdiadetails(drpdia) {
+            // var drpdia = $("#drp_dialist").val();
+            if (drpdia != "") {
+                $.ajax({
+                    type: "POST",
+                    url: "../Inquiry/fetchDiaDetails",
+                    data: JSON.stringify({ dianumber: ' ' + drpdia + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        $("#customerName").val(data[0].Name);
+                        // $("#customerName").attr("readonly", "readonly");
+                        $("#PartName").val(data[0].PartName);
+                        //  $("#PartName").attr("readonly", "readonly");
+                        $("#hdn_diedescid").val(data[0].Id);
+                    },
+                    error: function (err) {
+
+                        //alert(err);
+                    }
+                });
+
+            }
+        }
+    </script>
+
+}
+

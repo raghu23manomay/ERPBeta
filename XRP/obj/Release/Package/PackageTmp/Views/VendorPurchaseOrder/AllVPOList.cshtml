@@ -1,0 +1,669 @@
+﻿@model XRP.Models.Paged_ssmtbl_VendorPurchaseOrderModel
+@using XRP.Models;
+@{
+    ViewBag.Title = "VPOList";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+    ViewBag.Active = "Purchase";
+    ViewBag.Feature = "Vendor Purchase Order";
+}
+
+@using (Html.BeginForm("PORequisitionList", "PORequisition", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.po_char, new { @id = "po_char" })
+    @Html.HiddenFor(model => model.po_id, new { @id = "po_id" })
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                @*<div class="row p-t-b-10 ">
+                    <div class="col">*@
+                @*<h4>
+                        <i class="icon-database"></i>
+                        Delivery Challans
+                    </h4>*@
+                @*</div>
+                    </div>*@
+                @*<div class="row justify-content-between">
+                        <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                            <li>
+                                <a class="nav-link" href='@Url.Action("AllDeliveryChallan", "DeliveryChallan")'><i class="icon icon-home2"></i>All Delivery Challan</a>
+
+                            </li>
+
+                        </ul>
+                    </div>*@
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="card shadow b-0">
+                <div class="row no-gutters">
+                    <div class="col-md-3 d-none d-md-block text-truncate white b-r white sticky" style="">
+                        <div class="slimScroll" data-height="600">
+                            @*<div class="slimScroll" data-height="600">*@
+                            <ul class="list-unstyled">
+                                <li>
+                                    <table class="table table-bordered table-hover" id="tbl_AllVpo" style="width:100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <h4>
+                                                        <b> Vendor Purchase Order</b>
+                                                    </h4>
+
+                                                    @*<div class="mosurhandsymbol float-left" data-toggle="popover" tabindex="3" data-trigger="focus" title="Vendor Purchase Order" data-content="Consumables"> <span class="icon icon-circle s-12  mr-1 text-success"></span></div>
+                                        <div class="mosurhandsymbol float-left" data-toggle="popover" tabindex="2" data-trigger="focus" title="Vendor Purchase Order" data-content="Outsourcing"> <span class="icon icon-circle s-12  mr-1 text-warning"></span></div>
+                                        <div class="mosurhandsymbol float-left" data-toggle="popover" tabindex="1" data-trigger="focus" title="Vendor Purchase Order" data-content="Raw Material"><span class="icon icon-circle s-12  mr-1 text-primary"></span></div>
+                                        <div class="mosurhandsymbol float-left" data-toggle="popover" tabindex="0" data-trigger="focus" title="Vendor Purchase Order" data-content="Maintainance Spares"><span class="icon icon-circle s-12  mr-1 text-dark"></span></div>*@
+                                                    <div class="float-left" data-toggle="popover" tabindex="4" data-trigger="focus" data-content='All Goods Inwards' title="Goods Inwards Type">
+                                                        <a href="@Url.Action("AllVPOList","VendorPurchaseOrder")" class="" title="View Purchase Order" readonly="readonly">
+                                                            <span class="icon icon-circle s-12  mr-1 text-danger" title="All Vendor Purchase Order"></span>
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="float-left" data-toggle="popover" tabindex="3" data-trigger="focus" data-content='Outsourcing' title="Goods Inwards Type">
+                                                        <a href="@Url.Action("AllVPOFilter","VendorPurchaseOrder")?_inward_type=Outsourcing" class="" title="View Purchase Order" readonly="readonly">
+                                                            <span class="icon icon-circle s-12  mr-1 text-success" title="Outsourcing"></span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="float-left" data-toggle="popover" tabindex="2" data-trigger="focus" data-content='Maintainance Spares' title="Goods Inwards Type">
+                                                        <a href="@Url.Action("AllVPOFilter","VendorPurchaseOrder")?_inward_type=Maintainance " class="" title="View Purchase Order" readonly="readonly">
+                                                            <span class="icon icon-circle s-12  mr-1 text-primary" title="Maintenance"></span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="float-left" data-toggle="popover" tabindex="1" data-trigger="focus" data-content='Raw Material' title="Goods Inwards Type">
+                                                        <a href="@Url.Action("AllVPOFilter","VendorPurchaseOrder")?_inward_type=Raw Material" class="" title="View Purchase Order" readonly="readonly">
+                                                            <span class="icon icon-circle s-12  mr-1 text-secondary" title="Raw Material"></span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="float-left" data-toggle="popover" data-content='Consumables' tabindex="0" data-trigger="focus" title="Goods Inwards Type">
+                                                        <a href="@Url.Action("AllVPOFilter","VendorPurchaseOrder")?_inward_type=Consumables" class="" title="View Purchase Order" readonly="readonly">
+                                                            <span class="icon icon-circle s-12  mr-1 text-warning" title="Consumables"></span>
+                                                        </a>
+                                                    </div><i class="icon-search" onclick="search();"></i>
+                                                    <br />
+                                                    <input type="text" class="" id="txt_search" style="display:none;" />
+
+
+                                                </th>
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody id="tbody_tbl_AllVpo">
+                                            @foreach (var data in Model.ssmtbl_VendorPurchaseOrderModelList)
+                                            {
+
+
+                                                if (@data.vendor_po_type == "Raw Material")
+                                                {
+                                                    <tr class="mosurhandsymbol">
+                                                        <td style="display:none;">@data.po_no</td>
+                                                        <td>
+                                                            <div class="avatar avatar-md mr-3 mt-1 float-left">
+
+                                                                <span class="avatar-letter avatar-letter-r avatar-md circle" style="background-color:#6c757d"></span>
+                                                            </div>
+
+                                                            <div>
+                                                                <a title="@data.vendor_name"> <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6></a>
+
+                                                            </div>
+
+                                                            <small style="color:grey" title="Vendor PO No">@data.po_no &nbsp; </small>
+                                                            <small style="color:grey" title="PO Date"> |   &nbsp; @data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
+                                                            <small style="color:grey" title="Vendor Type"> | &nbsp; @data.vendor_po_type</small>
+                                                        </td>
+
+
+                                                    </tr>
+                                                }
+                                                if (@data.vendor_po_type == "Consumables")
+                                                {
+                                                    <tr class="mosurhandsymbol">
+                                                        <td style="display:none;">@data.po_no</td>
+                                                        <td>
+                                                            <div class="avatar avatar-md mr-3 mt-1 float-left">
+
+                                                                <span class="avatar-letter avatar-letter-c avatar-md circle" style="background-color:#FCCE54"></span>
+                                                            </div>
+                                                            <div>
+                                                                <a title="@data.vendor_name"> <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6></a>
+
+
+                                                            </div>
+
+                                                            <small style="color:grey" title="Vendor PO No">@data.po_no &nbsp; </small>
+                                                            <small style="color:grey" title="Expected Date"> |   &nbsp; @data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
+                                                            <small style="color:grey" title="Dispatch No"> | &nbsp; @data.vendor_po_type</small>
+
+                                                        </td>
+
+
+                                                    </tr>
+                                                }
+                                                if (@data.vendor_po_type == "Outsourcing")
+                                                {
+                                                    <tr class="mosurhandsymbol">
+                                                        <td style="display:none;">@data.po_no</td>
+                                                        <td>
+                                                            <div class="avatar avatar-md mr-3 mt-1 float-left">
+
+                                                                <span class="avatar-letter avatar-letter-o avatar-md circle" style="background-color:#7dc855"></span>
+                                                            </div>
+                                                            <div>
+                                                                <a title="@data.vendor_name"> <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6></a>
+
+
+                                                            </div>
+
+                                                            <small style="color:grey" title="Vendor PO No">@data.po_no &nbsp; </small>
+                                                            <small style="color:grey" title="Expected Date"> |   &nbsp; @data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
+                                                            <small style="color:grey" title="Dispatch No"> | &nbsp; @data.vendor_po_type</small>
+
+
+
+
+                                                        </td>
+
+
+                                                    </tr>
+                                                }
+                                                if (data.vendor_po_type == "Maintenance")
+                                                {
+                                                    <tr class="mosurhandsymbol">
+                                                        <td style="display:none;">@data.po_no</td>
+                                                        <td>
+                                                            <div class="avatar avatar-md mr-3 mt-1 float-left">
+
+                                                                <span class="avatar-letter avatar-letter-m avatar-md circle" style="background-color:#03a9f4"></span>
+                                                            </div>
+                                                            <div>
+                                                                <a title="@data.vendor_name"> <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6></a>
+                                                            </div>
+                                                            <small style="color:grey" title="Vendor PO No">@data.po_no &nbsp; </small>
+                                                            <small style="color:grey" title="Expected Date"> |   &nbsp; @data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
+                                                            <small style="color:grey" title="Dispatch No"> | &nbsp; @data.vendor_po_type</small>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                 
+                    <div class="col-md-9 col-sm-12 white" id="divvendorformat" style="display:none;">
+
+                        <div class="slimScroll" data-height="600">
+                            <div class="w-body w-scroll">
+                                <br />
+                                <div class="tab-pane fade show" id="w4-tab2" role="tabpanel" aria-labelledby="w4-tab2">
+
+                                    <center>
+                                        <div class="col-sm-11" style="" align="center" id="divprint">
+
+                                            <table style="color:gray;" align="center">
+                                                <tr>
+                                                    <td><img src="~/NewCssAndTheme/img/SSMlogoNew.png" height="60" width="60" alt=""></td>
+                                                    <td>
+                                                        <center>
+                                                            <font size="4">
+                                                                <b>Shree Siddheshwari Metal Forging Pvt. Ltd.</b>
+                                                            </font><br />
+                                                            <font size="1">
+                                                                PLOT NO. 489 &amp; 490, 'J' BLOCK M.I.D.C. BHOSARI, PUNE-411026<br>
+                                                                PHONE NO. : (020) 27130120 EMAIL: scm@ssmforge.com
+                                                            </font>
+                                                        </center>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                            <center>
+
+                                                <u><b><font size="4"> Purchase Order</font></b></u><br>
+                                                <small>(Note - Please quote this P.O. No on all Bills, Challans, Correspondence, Document etc.)</small>
+                                            </center>
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>&nbsp; P.O. NO. :<span id="vpono"></span></td>
+
+                                                        <td>&nbsp; DATE :<span id="date1"></span></td>
+
+                                                        <td>&nbsp; Valid Date :<span id="datev"></span></td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>&nbsp; Ven. Ref.:<span id="venref"></span></td>
+
+                                                        <td>&nbsp; DATE :<span id="date2"></span></td>
+
+                                                        <td></td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <table class="table border-bottom" style="width:100%">
+                                                <tbody>
+                                                    <tr>
+                                                        <td valign="top" style="width:50%">
+                                                            &nbsp;To,<br>
+                                                            &nbsp;<span id="name"></span><br>
+                                                            &nbsp;<span id="address"></span>
+                                                        </td>
+                                                        <td style="width:50%">
+                                                            &nbsp;CONTACT PERSON:&nbsp;<span id="contactperson"></span><br>
+
+                                                            &nbsp;Contact Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="contactno"></span><br>
+                                                            &nbsp;Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span id="email"></span>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <small> With Reference to above, Please Supply the following material as per term &amp; condition mentioned below:</small>
+                                            <table class="table" style="width:100%" id="tblpdfvpodetails">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Sr.No.</td>
+                                                        <td>Description</td>
+                                                        <td>Wt (KG)</td>
+                                                        <td>Rate</td>
+                                                        <td>Rate Per </td>
+                                                        <td>Amount</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody_tblpdfvpodetails" class="table"></tbody>
+                                            </table>
+
+                                            <table id="tbl_tnc" align="left" class="border-bottom" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <td> <b><u>TERMS &amp; CONDITIONS:</u></b></td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody_tbl_tnc"></tbody>
+                                            </table>
+                                            <table id="tbl_notes" align="left" class="border-bottom" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <td> <b><u>Notes:</u></b></td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody_tbl_notes"></tbody>
+                                            </table>
+                                            <table width="100%">
+
+                                                <tr>
+                                                    <td align="left">
+
+                                                        GSTIN:27AARCS5238G1ZX<br />
+                                                        PAN NO.: AARCS5238G.<br /><br />
+                                                        Thanking You.<br />
+                                                        Purchase<br />
+                                                        PO/WO Received, Reviewed &amp; Accepted by:
+                                                    </td>
+                                                    <td align="right">
+                                                        <b>For Shree Siddheshwari Metal Forging Pvt. Ltd.</b><br />
+                                                        Authorised Signatory<br /><br />
+                                                        <b>MT/FM-08</b><br />
+                                                        <b>This document is autogenerated</b>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+
+                                        </div>
+                                    </center>
+
+
+                                    <table style="width:100%" align="left">
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td align="right"><button class="btn btn-primary btn-sm" type="button" onclick="printDiv('divprint')"><i class="icon-mail">&nbsp;Print</i></button> </td>
+                                                <td></td>
+
+                                        </tbody>
+                                    </table>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <style>
+        .mosurhandsymbol {
+            cursor: pointer;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+            max-height: 600px;
+            overflow-y: auto;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+    </style>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'hidden';
+
+            $('[data-toggle="popover"]').popover(
+                {
+                    placement: 'top'
+                }
+                );
+            $(function () {
+                $('.date-time-picker').datetimepicker({
+                    format: 'd-m-Y',
+                    timepicker: false,
+                    setdate: 'today',
+                });
+            });
+            $('.date-time-picker').datepicker('setDate', 'now');
+            $("#tbl_AllVpo").on('click', 'tr:not(:first)', function (e) {
+
+                var currentRow = $(this).closest("tr");
+                var id = currentRow.find("td:eq(0)").text();
+                id = id.trim();
+                $.ajax
+                             ({
+                                 type: "POST",
+                                 url: "../VendorPurchaseOrder/fetchVPO",
+                                 data: JSON.stringify({
+                                     id: '' + id + ''
+                                 }),
+                                 contentType: "application/json;charset=utf-8",
+                                 //dataType: "json",
+                                 success: function (status) {
+                                     $("#divvendorformat").show();
+                                     $("#vpono").text(status[0].po_no);
+                                     $("#venref").text(status[0].quotation_ref_no);
+                                     $("#date1").text(jsondateformatconvert(status[0].quotation_ref_date));
+                                     $("#date2").text(jsondateformatconvert(status[0].po_date));
+                                     $("#datev").text(jsondateformatconvert(status[0].valid_date));
+                                     $("#name").text(status[0].Name);
+                                     //$("#GSTIN").text(status[0].GSTIN);
+                                     //$("#PAN").text(status[0].PAN);
+                                     $("#contactperson").text(status[0].ContactPersonName);
+                                     $("#contactno").text(status[0].Mob);
+                                     $("#email").text(status[0].Email);
+                                     $("#address").text(status[0].Address);
+                                     //code for multi data disply from vendor po details
+                                     fetchvpodetails(id);
+
+                                     fetchnotes(status[0].po_no);
+                                     fetchtnc(id);
+
+
+
+                                 },
+                                 error: function (err) {
+                                     // alert('Error occured');
+                                 }
+                             });
+
+            });
+        });
+        function jsondateformatconvert(jsondate) {
+            var MyDate_String_Value = jsondate;
+            var value = new Date
+            (
+            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+            );
+            var date = value.getDate();
+            if (date < 10) {
+                date = "0" + date;
+            } else {
+                date = date;
+            }
+            var month = parseInt(value.getMonth()) + 1;
+
+            if (month < 10) {
+                month = "0" + month;
+            } else {
+                month = month;
+            }
+            var year = value.getFullYear();
+            var dat = date + "-" + month + "-" + year;
+            return dat;
+        }
+        function printDiv(divprint) {
+            var printContents = document.getElementById(divprint).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+            window.location.reload();
+
+        }
+        function fetchvpodetails(id) {
+            $.ajax
+                           ({
+                               type: "POST",
+                               url: "../VendorPurchaseOrder/fetchVPODetails",
+                               data: JSON.stringify({
+                                   id: '' + id + ''
+                               }),
+                               contentType: "application/json;charset=utf-8",
+                               //dataType: "json",
+                               success: function (status) {
+
+                                   if (status != "") {
+                                       $("#tbody_tblpdfvpodetails").empty();
+                                       //Append each row to html table
+                                       for (var i = 0; i < status.length; i++) {
+                                           tr = $('<tr />');
+                                           tr.append("<td>" + (i + 1) + "</td>");
+                                           //tr.append("<td>'" + status[i].item_code+ "'</td>");
+                                           tr.append("<td>" + status[i].item_description + "</td>");
+                                           tr.append("<td align='center'>" + status[i].qty + "</td>");
+                                           tr.append("<td  align='center'>" + status[i].rate + "</td>");
+                                           tr.append("<td>" + status[i].rate_per + "</td>");
+                                           tr.append("<td  align='center'>" + status[i].amount + "</td>");
+
+                                           $('#tblpdfvpodetails').append(tr);
+                                       }
+
+                                   }
+
+                               },
+                               error: function (err) {
+                                   // alert('Error occured');
+                               }
+                           });
+
+        }
+        function fetchtnc(rfqid) {
+            $.ajax
+                         ({
+                             type: "POST",
+                             url: "../VendorPurchaseOrder/fetchtnc",
+                             data: JSON.stringify({
+                                 rfqid: '' + rfqid + ''
+                             }),
+                             contentType: "application/json;charset=utf-8",
+                             //dataType: "json",
+                             success: function (status) {
+
+                                 if (status != "") {
+                                     $("#tbody_tbl_tnc").empty();
+                                     //Append each row to html table
+                                     for (var i = 0; i < status.length; i++) {
+                                         tr = $('<tr />');
+                                         tr.append("<td>" + (i + 1) + "." + status[i].Termandcondition + "</td>");
+                                         // tr.append("<td>" + status[i].TermsNConditionContent + "</td>");
+                                         $('#tbl_tnc').append(tr);
+
+                                     }
+                                 }
+
+                             },
+                             error: function (err) {
+                                 // alert('Error occured');
+                             }
+                         });
+        }
+        function fetchnotes(pono) {
+            $.ajax
+                         ({
+                             type: "POST",
+                             url: "../VendorPurchaseOrder/fetchtnotes",
+                             data: JSON.stringify({
+                                 pono: '' + pono + ''
+                             }),
+                             contentType: "application/json;charset=utf-8",
+                             //dataType: "json",
+                             success: function (status) {
+
+                                 if (status != "") {
+                                     $("#tbody_tbl_notes").empty();
+                                     //Append each row to html table
+                                     for (var i = 0; i < status.length; i++) {
+                                         tr = $('<tr />');
+                                         tr.append("<td>" + (i + 1) + "." + status[i].description + "</td>");
+                                         // tr.append("<td>" + status[i].TermsNConditionContent + "</td>");
+                                         $('#tbl_notes').append(tr);
+
+                                     }
+                                 }
+
+                             },
+                             error: function (err) {
+                                 // alert('Error occured');
+                             }
+                         });
+        }
+        function search() {
+            $("#txt_search").show();
+            var search = $("#txt_search").val();
+            if (search != "") {
+                $.ajax
+                       ({
+                           type: "POST",
+                           url: "../VendorPurchaseOrder/VPOAllSearch",
+                           data: JSON.stringify({
+                               search: '' + search + ''
+                           }),
+                           contentType: "application/json;charset=utf-8",
+                           //dataType: "json",
+                           success: function (status) {
+
+                               if (status != "") {
+                                   $("#tbody_tbl_AllVpo").empty();
+                                   //Append each row to html table
+                                   for (var i = 0; i < status.length; i++) {
+                                       var date = jsondateformatconvert('' + status[i].po_date + '');
+                                       //tr = $('<tr class="mosurhandsymbol"/>');
+                                       if (status[i].vendor_po_type == "Raw Material") {
+
+                                           tr = $('<tr class="mosurhandsymbol"/>');
+                                           tr.append('<td style="display:none;">' + status[i].po_no + '</td>');
+                                           tr.append('<td><div class="avatar avatar-md mr-3 mt-1 float-left"><span class="avatar-letter avatar-letter-r avatar-md circle" style="background-color:#6c757d"></span></div><div> <a title="' + status[i].vendor_name + '"> <h6 class="mt-0 mb-1 font-weight-normal">' + status[i].Name + '</h6></a><small style="color:grey" title="Vendor PO No">' + status[i].po_no + ' &nbsp;</small> <small style="color:grey" title="PO Date"> |   &nbsp;  ' + date + ' &nbsp;</small><small style="color:grey" title="Vendor Type"> | &nbsp; ' + status[i].vendor_po_type + '</small></td>');
+                                       }
+                                       if (status[i].vendor_po_type == "Consumables") {
+
+                                           tr = $('<tr class="mosurhandsymbol"/>');
+                                           tr.append('<td style="display:none;">' + status[i].po_no + '</td>');
+                                           tr.append('<td><div class="avatar avatar-md mr-3 mt-1 float-left"><span class="avatar-letter avatar-letter-r avatar-md circle" style="background-color:#FCCE54"></span></div><div> <a title="' + status[i].vendor_name + '"> <h6 class="mt-0 mb-1 font-weight-normal">' + status[i].Name + '</h6></a><small style="color:grey" title="Vendor PO No">' + status[i].po_no + ' &nbsp;</small> <small style="color:grey" title="PO Date"> |   &nbsp;  ' + date + ' &nbsp;</small><small style="color:grey" title="Vendor Type"> | &nbsp; ' + status[i].vendor_po_type + '</small></td>');
+                                       }
+                                       if (status[i].vendor_po_type == "Outsourcing") {
+
+                                           tr = $('<tr class="mosurhandsymbol"/>');
+                                           tr.append('<td style="display:none;">' + status[i].po_no + '</td>');
+                                           tr.append('<td><div class="avatar avatar-md mr-3 mt-1 float-left"><span class="avatar-letter avatar-letter-r avatar-md circle" style="background-color:#7dc855"></span></div><div> <a title="' + status[i].vendor_name + '"> <h6 class="mt-0 mb-1 font-weight-normal">' + status[i].Name + '</h6></a><small style="color:grey" title="Vendor PO No">' + status[i].po_no + ' &nbsp;</small> <small style="color:grey" title="PO Date"> |   &nbsp;  ' + date + ' &nbsp;</small><small style="color:grey" title="Vendor Type"> | &nbsp; ' + status[i].vendor_po_type + '</small></td>');
+                                       }
+                                       if (status[i].vendor_po_type == "Maintenance") {
+
+                                           tr = $('<tr class="mosurhandsymbol"/>');
+                                           tr.append('<td style="display:none;">status[i].po_no</td>');
+                                           tr.append('<td><div class="avatar avatar-md mr-3 mt-1 float-left"><span class="avatar-letter avatar-letter-r avatar-md circle" style="background-color:#03a9f4"></span></div><div> <a title="' + status[i].vendor_name + '"> <h6 class="mt-0 mb-1 font-weight-normal">' + status[i].Name + '</h6></a><small style="color:grey" title="Vendor PO No">' + status[i].po_no + ' &nbsp;</small> <small style="color:grey" title="PO Date"> |   &nbsp;  ' + date + ' &nbsp;</small><small style="color:grey" title="Vendor Type"> | &nbsp; ' + status[i].vendor_po_type + '</small></td>');
+                                       }
+                                       $('#tbl_AllVpo').append(tr);
+
+                                   }
+                               }
+
+                           },
+                           error: function (err) {
+                               // alert('Error occured');
+                           }
+                       });
+
+            }
+        }
+        function jsondateformatconvert(jsondate) {
+
+            var MyDate_String_Value = jsondate;
+            var value = new Date
+            (
+            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+            );
+            var date = value.getDate();
+            if (date < 10) {
+                date = "0" + date;
+            } else {
+                date = date;
+            }
+            var month = value.getMonth() + 1;
+            if (month < 10) {
+                month = "0" + month;
+            } else {
+                month = month;
+            }
+            var year = value.getFullYear();
+            var hrs = value.getHours();
+            var minutes = value.getMinutes();
+            var sec = value.getSeconds();
+            var day = value.getDay();
+
+            var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            var dayName = days[value.getDay()];
+            var monthlist = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            var monthname = monthlist[value.getMonth()];
+            //var d = new Date(dateString);
+            //var dayName = d.toString().split(' ')[0];
+            var result = "";
+            var dat = date + "-" + monthname + "-" + year;
+
+            return dat;
+        }
+    </script>
+
+}

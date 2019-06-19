@@ -1,0 +1,246 @@
+﻿@model XRP.Models.ssmtbl_InquiryModel
+@{
+    ViewBag.Title = "New Enquiry";
+    ViewBag.Active = "Marketing";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+@*<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />*@
+<style>
+    #btnSubmit {
+        position: absolute;
+        bottom: 4%;
+        right: 10%;
+    }
+
+    #btnReset {
+        position: absolute;
+        bottom: 4%;
+        right: 2%;
+    }
+</style>
+@using (Html.BeginForm("NewInquiry", "Inquiry", FormMethod.Get, new { @class = "form-horizontal form-horizontal1", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.DieID, new { @id = "hdn_diedescid" })
+    @Html.HiddenFor(model => model.InquiryNo, new { @id = "InquiryNo" })
+    <div class="paddingLeft15 paddingTop15">
+        
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+            <li role="presentation">
+                <a href="@Url.Action("AllInquiry", "Inquiry")" class="" title="New Enquiry">Enquiry List</a>
+            </li>
+            <li role="presentation" class="active"><a href="#NewEnquiry" aria-controls="NewEnquiry" role="tab" data-toggle="tab">New Enquiry</a></li>
+
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active paddingTop15" id="EnquiryList">
+
+
+
+                <div class="@ViewBag.HideClass" style="text-align:center">
+                    @ViewBag.Message
+                </div>
+                 
+
+                <form role="form"> 
+
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="DieNumber">Die Number :</label> 
+                        @Html.TextBoxFor(model => model.DieNumber, null, new { @class = "form-control r-0 light s-12 " })
+                        @Html.ValidationMessageFor(model => model.DieNumber, null, new { @class = "alert-danger" })
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="customerName">Customer Name :</label>
+                        @Html.TextBoxFor(model => model.customerName, null, new { @class = "form-control r-0 light s-12", @id = "customerName", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.customerName, null, new { @class = "alert-danger" })
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="PartName">Part Name</label>
+                        @Html.TextBoxFor(model => model.PartName, null, new { @class = "form-control r-0 light s-12 " })
+                        @Html.ValidationMessageFor(model => model.PartName, null, new { @class = "alert-danger" })
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="PartNumber">Part Number</label>
+                        @Html.TextBoxFor(model => model.PartNo, null, new { @class = "form-control r-0 light s-12 " })
+                        @Html.ValidationMessageFor(model => model.PartNo, null, new { @class = "alert-danger" })
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="EnquiryDate">Enquiry Date</label>
+                        @Html.TextBoxFor(model => model.InquiryDate, "{0:dd/MM/yyyy}", new { @class = "date-time-picker form-control r-0 light s-12" })
+                        @Html.ValidationMessageFor(model => model.InquiryDate, null, new { @class = "alert-danger" })
+
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="DrawingNumber">Customer Drawing Number</label>
+                        @Html.TextBoxFor(model => model.CustomerDrgNo, null, new { @class = "form-control r-0 light s-12 " })
+                        @Html.ValidationMessageFor(model => model.CustomerDrgNo, null, new { @class = "alert-danger" })
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="Quantity">Quantity</label>
+                        @Html.TextBoxFor(model => model.Qty, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.Qty, null, new { @class = "alert-danger" })
+
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="OrderFrequency">Order Frequency</label>
+                        @Html.DropDownListFor(model => model.FrequencyRepearOrder, ViewData["FreqRepeatOrder"] as IEnumerable<SelectListItem>,
+                                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = "form-control r-0 light s-12 .chzn-select", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.FrequencyRepearOrder, null, new { @class = "alert-danger" })
+
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="HSNCode">HSN / SAC Code</label>
+                        @Html.TextBoxFor(model => model.HSN, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.HSN, null, new { @class = "alert-danger" })
+
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-4 col-md-4 col-lg-4">
+                        <label for="Comment">Comment</label>
+
+                        @Html.TextBoxFor(model => model.Remark, null, new { @class = "form-control r-0 light s-12 " })
+                        @Html.ValidationMessageFor(model => model.Remark, null, new { @class = "alert-danger" })
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <br /><br />
+
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-primary" id="btnSubmit" onclick="preventMultipleSubmissions()"><i class="icon-save mr-2"></i>Save</button>
+                        <button type="reset" class="btn btn-success btn-sm" id="btnReset"><i class="icon-refresh mr-2"></i>Reset</button>
+
+                       
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <link href="~/assets/asset/css/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    
+    
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            document.body.style.overflow = 'hidden';
+            $(function () {
+                $('.date-time-picker').datetimepicker({
+                    format: 'd/m/Y',
+                    timepicker: false
+                });
+            });
+
+            $j("#customerName").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $.ajax({
+                        url: "../Inquiry/getCustomername",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                change: function (event, ui) {
+                    $(this).val((ui.item ? ui.item.label : ""));
+
+                    if (ui.item == null) {
+                        alert("Customer does not exist  Please add customer..!");
+                        location.href = "../Customer/NewCustomer";
+                    }
+
+                }
+            });
+            $j("#DieNumber").autocomplete({
+                source: function (request, response) {
+                    $("#customerName").val("");
+                    $("#PartName").val("");
+                    var customer = new Array();
+                    $.ajax({
+                        url: "../Inquiry/getDiaDetails",
+                        type: "POST",
+                        dataType: "json",
+                        data: { DiaID: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                change: function (event, ui) {
+                    // $(this).val((ui.item ? ui.item.label : ""));
+
+                    if (ui.item == null) {
+                        // alert("Die does not exist  Please add customer..!");
+
+                        $("#customerName").removeAttr("readonly");
+                        $("#PartName").removeAttr("readonly");
+                        $("#hdn_diedescid").val("0");
+                    }
+                    else {
+                        fetchdiadetails(ui.item.Id);
+                    }
+
+                }
+            });
+        });
+        function fetchdiadetails(drpdia) {
+            // var drpdia = $("#drp_dialist").val();
+            if (drpdia != "") {
+                $.ajax({
+                    type: "POST",
+                    url: "../Inquiry/fetchDiaDetails",
+                    data: JSON.stringify({ dianumber: ' ' + drpdia + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        $("#customerName").val(data[0].Name);
+                        // $("#customerName").attr("readonly", "readonly");
+                        $("#PartName").val(data[0].PartName);
+                        //  $("#PartName").attr("readonly", "readonly");
+                        $("#hdn_diedescid").val(data[0].Id);
+                    },
+                    error: function (err) {
+
+                        //alert(err);
+                    }
+                });
+
+            }
+        }
+    </script>
+
+}
+

@@ -1,0 +1,150 @@
+﻿@model XRP.Models.Paged_ssmtbl_ConsumableModel
+@using XRP.Global;
+@{
+    ViewBag.Title = "ConsumablesList";
+    ViewBag.Active = "Stock";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+    }
+
+    @using (Html.BeginForm("ConsumablesList", "Consumables", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+
+
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            <i class="icon-database"></i>
+                            Consumables
+                        </h4>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>All Consumables</a>
+                        </li>
+                        @*<li>
+                                <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
+                            </li>*@
+                        <li class="float-right">
+                            <a class="nav-link" href='@Url.Action("NewConsumables", "Consumables")'><i class="icon icon-plus-circle"></i> Add New Consumables</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <!-- PAGE TITLE -->
+        @*<div class="page-title">
+                <h2><span class="fa fa-arrow-circle-o-left"></span>ALL Consumables</h2>
+            </div>*@
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="tab-content my-3" id="v-pills-tabContent">
+                <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                    <div class="row my-3">
+                        <div class="col-md-12">
+                            <div class="card r-0 shadow">
+                                <div class="table-responsive">
+                                    <form action="">
+                                        @*<div class="row">
+                                            <div class="col-md-12">*@
+                                                <!-- START DEFAULT DATATABLE -->
+                                                <div class="panel panel-default">
+                                                    @*<div class="panel-heading">
+                                                        <h3 class="panel-title">Consumables List</h3>
+                                                        <ul class="panel-controls">
+                                                            <input type="button" class="btn btn-info" value="New Consumables" onclick="location.href = '@Url.Action("NewConsumables", "Consumables")'" />
+                                                        </ul>
+                                                    </div>*@
+                                                    <div class="panel-body panel-body-table">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-hover r-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            Code
+                                                                        </th>
+                                                                        <th>
+                                                                            Description
+                                                                        </th>
+                                                                        <th>
+                                                                            Specification
+                                                                        </th>
+                                                                        <th>
+                                                                            Cost Center
+                                                                        </th>
+                                                                        <th>
+                                                                            Min Qty
+                                                                        </th>
+                                                                        <th>
+                                                                            Max Qty
+                                                                        </th>
+                                                                        <th>
+                                                                            Balance Qty
+                                                                        </th>
+
+                                                                        <th>
+                                                                            Unit
+                                                                        </th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach (var data in Model.ssmtbl_ConsumableModel)
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @data.Code
+                                                                            </td>
+                                                                            <td>
+                                                                                @data.Description
+                                                                            </td>
+                                                                            <td>
+                                                                                @data.Specification
+                                                                            </td>
+                                                                            <td>
+                                                                                @data.Applicationcenter_CostCenter
+                                                                            </td>
+
+                                                                            <td align="center">
+                                                                                @data.StorageLevelMin
+                                                                            </td>
+                                                                            <td align="center">
+                                                                                @data.MaxQunatity
+                                                                            </td>
+                                                                            <td align="center">
+                                                                                @data.BalanceQunatity
+                                                                            </td>
+                                                                            <td>
+                                                                                @data.Units
+                                                                            </td>
+
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @*</div>
+                                        </div>*@
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </fieldset>
+    }

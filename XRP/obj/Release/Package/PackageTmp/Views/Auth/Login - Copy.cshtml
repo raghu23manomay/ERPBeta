@@ -1,0 +1,130 @@
+﻿@model XRP.Models.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" class="body-full-height">
+<head>
+
+    <title>SSM- Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+    @*<link rel="stylesheet" type="text/css" id="theme" href="~/NewCssAndTheme/css/theme-default.css" />*@
+
+</head>
+
+
+<body class="light">
+    <!-- Pre loader -->
+    <div id="loader" class="loader">
+        <div class="plane-container">
+            <div class="preloader-wrapper small active">
+                <div class="spinner-layer spinner-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-green">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="app">
+        <main>
+            <div id="primary" class="p-t-b-100 height-full ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 mx-md-auto">
+                            <div class="text-center">
+                                @*<img src="~/NewCssAndTheme/img/ssmlogo.jpg" width="25%" height="10%" />*@
+                                <img src="~/NewCssAndTheme/img/SSMlogoNew.png" width="25%" height="10%" />
+                                <h3 class="mt-2">Welcome</h3>
+
+                            </div>
+                            @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                            {
+                                <div class="form-group has-icon">
+                                    <i class="icon-user"></i>
+                                    @*<input type="text" class="form-control form-control-lg"
+                    placeholder="User Name">*@
+                                    @Html.TextBoxFor(model => model.UserName, null, new { @class = "form-control form-control-lg", maxlength = 15 })
+                                    @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group has-icon">
+                                    <i class="icon-unlock-alt"></i>
+                                    @*<input type="text" class="form-control form-control-lg"
+                    placeholder="Password">*@
+                                    @Html.TextBoxFor(model => model.Password, null, new { @class = "form-control form-control-lg", maxlength = 15, @type = "Password" })
+                                    @Html.ValidationMessageFor(model => model.Password, null, new { @class = "alert-danger" })
+                                </div>
+                                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In">
+                                <p class="forget-pass">Have you forgot your username or password ?</p>
+                                <p><center><strong>Powered By:</strong></center></p>
+                                <p><center><strong><img src="~/NewCssAndTheme/img/GM-Logo.png" alt="GM Manufacturing Pvt Ltd" title="GM Manufacturing Pvt Ltd" /></strong></center></p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+    <!--/#app -->
+
+    <script src="../assets/js/app.js"></script>
+</body>
+
+</html>

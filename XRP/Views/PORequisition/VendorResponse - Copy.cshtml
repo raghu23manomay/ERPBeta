@@ -1,0 +1,1035 @@
+﻿
+
+@model XRP.Models.Paged_ssmtbl_VendorPurchaseOrderModel
+@using XRP.Models;
+@{
+        ViewBag.Title = "VendorResponse";
+        Layout = "~/Views/Shared/_DesignLayout.cshtml";
+     }
+@using (Html.BeginForm("PORequisitionList", "PORequisition", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+        <!-- CSS -->
+    <link href="~/assets/css/app.css" rel="stylesheet" />
+    <style>
+        .loader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F5F8FA;
+            z-index: 9998;
+            text-align: center;
+        }
+
+        .plane-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+
+    <style>
+        .mosurhandsymbol {
+            cursor: pointer;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+            max-height: 600px;
+            overflow-y: auto;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        .mytable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .mytabletdtr tr td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        body {
+            color: #86939e;
+        }
+    </style>
+
+    
+    @Html.ValidationSummary(true)
+    <input type="hidden" id="hdn_rfqid" />
+    <input type="hidden" id="hdn_tblrowindex" />
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        @*<h4>
+                                <i class="icon-database"></i>
+                                Vendor Purchase Order
+                            </h4>*@
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    @*<ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                            <li>
+                                <a class="nav-link" href=''><i class="icon icon-home2"></i>All Vendor Purchase Order</a>
+
+                            </li>
+
+                        </ul>*@
+                </div>
+            </div>
+
+        </header>
+        <div class="animated fadeInUpShort go">
+            <div class="row no-gutters">
+                <div class="col-md-3 white sticky" style="height:570px;">
+                    <div class="sticky white">
+                        <ul class="nav nav-tabs nav-material">
+                            <li class="nav-item">
+                                <a class="nav-link p-3 active show" id="w2--tab1" data-toggle="tab" href="#w2-tab1"><i class="icon icon-mail-envelope-closed s-18 text-success"></i>Vendor Response</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height:100px;">
+                        <div class="slimScroll" style="overflow: hidden; width: auto; height:400px;">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active slimScroll" id="w2-tab1" role="tabpanel" style="height:500px;" data-height="500px">
+                                    <ul class="list-unstyled" id="ullslistbind"></ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="slimScrollBar" style="background: rgba(0, 0, 0, 0.95); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 270.855px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-9" id="div_reqdetails" style="display:none;">
+                    <div class="m-md-3">
+
+                        <div class="card b-0 m-2">
+                            <div class="card-body" style="height:550px;">
+                                <div data-target="#message1">
+                                    <div class="media">
+                                        <img class="d-flex mr-3 height-50" src="../assets/img/dummy/u1.png" alt="Generic placeholder image">
+                                        @*<div class="avatar avatar-md mr-3 mt-1 float-left">
+
+                                                <span class="avatar-letter avatar-letter-u avatar-md circle"></span>
+                                            </div>*@
+                                        <div class="media-body">
+                                            <h6 class="mt-0 mb-1 font-weight-normal"><span id="spn_uname"></span></h6>
+                                            <span id="spn_vtype"></span> |  WO # <strong><span id="spn_wono"></span></strong> | Request# <strong><span id="spn_rqno"></span></strong>
+                                            <br>
+                                            <small><span id="spn_reqdate"></span></small>
+                                            <div class="collapse my-3 show" id="message1">
+                                                <div>
+                                                   
+                                                        <div class="" >
+                                                            <div class="form-row">
+
+                                                                <div class="form-group col-2 m-0">
+                                                                    <label for="txtItem" class="col-form-label s-12">Item</label>
+                                                                    <input id="txtItem" class="form-control r-0 light s-12 " type="text">
+
+                                                                </div>
+
+                                                                <div class="form-group col-2 m-0">
+                                                                    <label for="txtItemDesc" class="col-form-label s-12">Description</label>
+
+                                                                    <input id="txtItemDesc" class="form-control r-0 light s-12 " type="text">
+
+                                                                </div>
+                                                                <div class="form-group col-2 m-0">
+                                                                    <label for="txtqnt" class="col-form-label s-12">Quantity</label>
+
+                                                                    <input id="txtqnt" class="form-control r-0 light s-12 " type="text" oninput="calrate()" onkeypress="return validateFloatKeyPress(this,event);" >
+
+                                                                </div>
+                                                                <div class="form-group col-2 m-0">
+                                                                    <label for="txtrate" class="col-form-label s-12">Rate</label>
+
+                                                                    <input id="txtrate" class="form-control r-0 light s-12 " type="text" oninput="calrate()" onkeypress="return validateFloatKeyPress(this,event);" >
+
+                                                                </div>
+                                                                <div class="form-group col-2 m-0">
+                                                                    <label for="drpunit" class="col-form-label s-12">Unit</label>
+
+                                                                    <select id="drpunit" class="form-control r-0 light s-12" style="height:auto"> 
+                                                                    <option value="NOs">Nos</option><option value="KG">KG</option>
+                                                                    <option value="Piece">Piece</option>
+                                                                    </select>
+
+                                                                </div>
+                                                                <div class="form-group col-2 m-0">
+                                                                <label for="txtamt" class="col-form-label s-12">Amount</label>
+
+                                                                <input id="txtamt" class="form-control r-0 light s-12 " type="text" readonly>
+
+                                                            </div>
+                            
+                                                            </div>
+                                                            <div align="right">
+                                                                <a class="mosurhandsymbol" onclick="itemadd();"><i class="icon-add text-primary text-primary"></i></a>
+                                                            </div>
+                                                            <div class="table-responsive slimScroll" style="height: 200px; overflow: hidden; width: auto;" data-height="200">
+                                                                <table id="tblitem" class="table" style="">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Item</th>
+
+                                                                            <th>Desc</th>
+                                                                            <th>Qty</th>
+                                                                            <th>Rate</th>
+                                                                            <th>Unit</th>
+                                                                            <th>Amt</th>
+                                                                            <th></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody id="tbodytblitem"></tbody>
+                                                                      
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                    <div class="float-left card-body">
+                                                        <button type="button" value="Save" class="btn btn-primary btn-default btn-sm float-right" id="btntc" href="#" data-toggle="modal" data-target="#CommentForApproval" title="Term and Condition">
+                                                            <i class="icon-input"></i>
+                                                        </button>
+                                                        
+                                                       
+                                                    </div>
+                                                    <div class="float-left card-body">
+                                                        
+                                                        <button type="button" value="Save" class="btn btn-primary btn-default btn-sm" id="btn_fu" href="#" data-toggle="modal" data-target="#fileupload" title="File Upload"><i class="icon-file mr-2"></i>Upload File</button>
+
+                                                    </div>
+                                                    <div class="float-right card-body">
+                                                        <button type="button" value="Save" onclick="save()" class="btn btn-primary btn-default btn-sm" id="btn_Save1"><i class="icon-save mr-2"></i>Save</button>
+                                                    </div>
+                                                    </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+           
+
+
+            </div>
+        </div>
+        <div class="modal fade" id="CommentForApproval" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header r-0 bg-primary">
+                        <h5 class="modal-title text-white" id="exampleModalLongTitle">Term and Condition</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover display" id="tbl_termcondition">
+
+                            <tbody id="tbltbody_termcondition">
+                                @{
+
+                                    @Html.Hidden("TotalTermsNcondition", (ViewData["VPOTermsAndCondition"] as List<ssmtbl_LKP_TermsAndConditionModel>).Count());
+                                }
+                                @foreach (var item in ViewData["VPOTermsAndCondition"] as List<ssmtbl_LKP_TermsAndConditionModel>)
+                                {
+
+                                    <tr>
+                                        @*<td style="display:none">@Html.Hidden("chkitemID" + item.id, item.id)</td>*@
+                                        <td style="width:5px">
+                                            @if (item.flag == true)
+                                            {
+                                                @*<input type='checkbox' id='chk_termcondition_" +item.id+ "' name='chk_termcondition' value='"+item.id+ "' checked />*@
+                                                @Html.CheckBox("chk_termcondition", new { @id = "chk_termcondition_" + item.id, @value = item.id, @checked = "checked" })
+                                            }
+                                            else
+                                            {
+                                                @*<input type='checkbox' id='chk_termcondition_" + item.id + "' name='chk_termcondition' value='"+item.id+ "' />*@
+                                                @Html.CheckBox("chk_termcondition", new { @id = "chk_termcondition_" + item.id, @value = item.id })
+                                            }
+
+                                        </td>
+                                        <td>
+                                            @Html.TextArea("txt_termcondition", item.description, new { @class = "form-control r-0 light s-12", @Rows = "2", @id = "txt_termcondition_" + item.id })
+                                            @*<textarea style='width:100%;' id='txt_termcondition_" + item.id+ "' name='txt_termcondition' value=item.description></textarea>*@
+                                        </td>
+                                    </tr>
+
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="fileupload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header r-0 bg-primary">
+                        <h5 class="modal-title text-white" id="exampleModalLongTitle">Upload File</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive slimScroll" style="height:500px;" data-height="500">
+                            <table id="tbl_vlist" class="table">
+                                <thead>
+                                    <tr>
+                                        <td style="display:none;"></td>
+                                        <td></td>
+                                        <td><h6>Upload File</h6></td>
+                                        <td><h6>Vendor Name</h6></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_tblvlist"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @*<script src="~/assets/js/app.js"></script>*@
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+        <script src="~/Content/Validations/JqueryUi.js"></script>
+
+
+        <script type="text/javascript">
+            function ValidateSize(file) {
+                var FileSize = file.files[0].size / 1024 / 1024; // in MB
+                var filename = ($(file).val());
+                var array = new Array();
+                array = filename.split(".");
+                var ext = (array[1]);
+              
+                if (ext=="pdf") {
+                   
+                }
+                else {
+                    $(file).val(''); //for clearing with Jquery
+                    alert("Please Upload Only PDF File");
+                }
+                //if (FileSize > 2) {
+                //    alert('File size exceeds 2 MB');
+                //    $(file).val(''); //for clearing with Jquery
+                //} else {
+
+                //}
+            }
+            function save()
+            {
+                generatepo();
+                //fileupload(19);
+                
+            }
+            function generatepo() {
+                var parameters = new Array();
+                // TODO: maybe you want to assign an unique id to your table element
+                $('#tblitem  tr:not(:first)').each(function () {
+                    var id = $("#hdn_rfqid").val().trim();
+                    var item= $(this).find("td").eq(0).text();
+                    var itemdesc = $(this).find("td").eq(1).text();
+                    var qty = $(this).find("td").eq(2).text();
+                    var price = $(this).find("td").eq(3).text();
+                    var unit = $(this).find("td").eq(4).text();
+                    var amount = $(this).find("td").eq(5).text();
+                    var capstr = "^";
+
+                    parameters.push(id,item,itemdesc, qty, price, unit, amount, capstr);
+
+                });
+
+                var flag = "";
+                var tcflag = "";
+                var rfqid = $("#hdn_rfqid").val().trim();
+                if (rfqid != "") {
+                    var remark = "-";
+               
+                    var parentValueToPush = new Array();
+                    $('[name="chk_vendor"]').each(function () {
+                        if ($(this).prop('checked') == true) {
+                            vid = $(this).val();
+                            parentValueToPush.push($(this).val());
+                            flag = 1;
+
+                        }
+                        else {
+                            //flag = 0;
+
+                        }
+                    });
+
+                }
+               
+                if (flag != 1) {
+                    alert('Please atleast one Vendor');
+                    return false;
+                }
+                $('[name="chk_termcondition"]').each(function () {
+                    if ($(this).prop('checked') == true) {
+
+                        tcflag = 1;
+
+                    }
+                    else {
+                        //flag = 0;
+
+                    }
+                });
+                if (tcflag != 1) {
+                    alert('Please select Term and Condition');
+                    return false;
+                }
+                ////
+                $('#tbl_vlist tr:not(:first)').each(function () {
+                    var id = $(this).find("td").eq(0).text();
+
+                    var chk = $(this).find("td").eq(1).find(":radio").val();
+                    var flag1 = "";
+
+                    if ($('#' + chk).is(':checked')) {
+                        flag1 = "true";
+
+                    }
+                    else {
+                        flag1 = "false";
+                    }
+                    var fu = $(this).find("td").eq(2).find(":file").val();
+                    if (fu == "") {
+                        alert('Please Upload All Vendor File');
+                        return false;
+                    }
+                    var tcflag1 = "";
+                    $('[name="chk_vendor"]').each(function () {
+                        if ($(this).prop('checked') == true) {
+
+                            tcflag1 = 1;
+
+                        }
+                        else {
+                            //flag = 0;
+
+                        }
+                    });
+                    if (tcflag1 != 1) {
+                        alert('Please select At Least One Vendor');
+                        return false;
+                    }
+       
+                });
+                /////
+                $.ajax({
+                    type: "POST",
+                    url: "../PORequisition/PORPOgenerate",
+                    // data: params,
+                    data: JSON.stringify({ rfqid: ' ' + rfqid + '', parentValueToPush: ' ' + parentValueToPush + '', remark: ' ' + remark + '', parameters: ' ' + parameters + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    // dataType: "json",
+                    success: function (data) {
+                        insertTermsNCondition(rfqid);
+                        fileupload(rfqid);
+                        alert('Vendor PO Generate');
+                        location.reload();
+
+                    },
+                    error: function (err) {
+                       // alert('Error occured');
+
+                    }
+                });
+
+
+            }
+            function fileupload(rfqid)
+            {
+                $('#tbl_vlist tr:not(:first)').each(function () {
+                    var id = $(this).find("td").eq(0).text();
+                   
+                    var chk = $(this).find("td").eq(1).find(":radio").val();
+                    var flag = "";
+                    
+                    if ($('#' + chk).is(':checked'))
+                    {
+                        flag = "true";
+                       
+                    }
+                    else {
+                        flag = "false";
+                    }
+                    var fu = $(this).find("td").eq(2).find(":file").val();
+                    if (fu=="") {
+                        alert('Please Upload All Vendor File');
+                        return false;
+                    }
+                    var tcflag = "";
+                    $('[name="chk_vendor"]').each(function () {
+                            if ($(this).prop('checked') == true) {
+
+                                tcflag = 1;
+
+                            }
+                            else {
+                                //flag = 0;
+
+                            }
+                        });
+                        if (tcflag != 1) {
+                            alert('Please select At Least One Vendor');
+                            return false;
+                        }
+                        var fileUpload = $("#fu_" + chk).get(0);
+                        var files = fileUpload.files;
+              
+                    // Create FormData object  
+                        var fileData = new FormData();  
+  
+                    // Looping over all files and add it to FormData object  
+                        for (var i = 0; i < files.length; i++) {  
+                            fileData.append(files[i].name, files[i]);  
+                        }  
+                        fileData.append('VendorId', id);
+                        fileData.append('rfqid', rfqid);
+                        fileData.append('flag', flag);
+                         
+                    $.ajax({
+                        type: "POST",
+                        url: '../PORequisition/fileupload',
+                        data: fileData,
+                        dataType: 'json',
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+
+                        },
+                        error: function (error) {
+
+                        }
+                    });
+
+                });
+            }
+            function validateFloatKeyPress(el, evt) {
+                var charCode = (evt.which) ? evt.which : event.keyCode;
+
+                if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+
+                if (charCode == 46 && el.value.indexOf(".") !== -1) {
+                    return false;
+                }
+
+                if (el.value.indexOf(".") !== -1) {
+                    var range = document.selection.createRange();
+
+                    if (range.text != "") {
+                    }
+                    else {
+                        var number = el.value.split('.');
+                        if (number.length == 2 && number[1].length > 1)
+                            return false;
+                    }
+                }
+
+                return true;
+            }
+            function editritemtablerow(ids) {
+                console.log(ids);
+                var indexRow = parseInt(ids.rowIndex);
+                console.log(indexRow);
+                $('#hdn_tblrowindex').val(indexRow);
+               
+                var currentRow = $(ids).closest("tr");
+               
+                $("#txtItem").val(currentRow.find("td:eq(0)").text().trim());
+                $("#txtItemDesc").val(currentRow.find("td:eq(1)").text().trim());
+                $("#txtqnt").val(currentRow.find("td:eq(2)").text().trim());
+                $("#txtrate").val(currentRow.find("td:eq(3)").text().trim());
+                $("#drpunit").val(currentRow.find("td:eq(4)").text().trim());
+                $("#txtamt").val(currentRow.find("td:eq(5)").text().trim());
+               
+
+            }
+            function calrate()
+            {
+                var qun = parseFloat($("#txtqnt").val()).toFixed(2);
+               
+                
+                var rate = parseFloat($("#txtrate").val()).toFixed(2);
+                
+                var amt = parseFloat(qun * rate).toFixed(2);
+                $("#txtamt").val(amt);
+            }
+            function itemadd()
+            {
+                var tblridx = $('#hdn_tblrowindex').val();
+               
+                if (tblridx == "") {
+
+                }
+                else {
+
+                    document.getElementById("tblitem").deleteRow(tblridx);
+                }
+                var item = $("#txtItem").val();
+                if (item == "") {
+                    alert("Please Enter Item");
+                    return false;
+                }
+                var itmdesc = $("#txtItemDesc").val();
+              
+                if (itmdesc == "") {
+                    alert("Please Enter Item Description");
+                    return false;
+                }
+                var qun = $("#txtqnt").val();
+                if (qun == "") {
+                    alert("Please Enter Quantity");
+                    return false;
+                }
+                var rate = $("#txtrate").val();
+                if (rate == "") {
+                    alert("Please Enter Rate");
+                    return false;
+                }
+                var unit = $("#drpunit").val();
+                var amt = $("#txtamt").val();
+                if (amt == "") {
+                    alert("Please Enter Amount");
+                    return false;
+                }
+                tr = $('<tr onclick="editritemtablerow(this)" class="mosurhandsymbol"/>');
+                tr.append('<td>' + item + '</td>');
+                tr.append('<td>' + itmdesc + '</td>');
+                tr.append('<td>' + qun + '</td>');
+                tr.append('<td>' + rate + '</td>');
+                tr.append('<td>' + unit + '</td>');
+                tr.append('<td>' + amt + '</td>');
+                tr.append('<td><a onclick="GetdeleteAddData(this);"><i class="icon-close2 text-danger-o text-danger"></i></a></td>');
+                $('#tblitem').append(tr);
+                clear();
+
+                $('#hdn_tblrowindex').val("");
+            }
+            function clear()
+            {
+                 $("#txtItem").val("");
+                $("#txtItemDesc").val("");
+                $("#txtqnt").val("");
+                 $("#txtrate").val("");
+               // $("#drpunit").val();
+                 $("#txtamt").val("");
+            }
+            function GetdeleteAddData(ids) {
+                var currentRow = $(ids).closest("tr");
+                var par = $(ids).parent().parent();
+                par.remove();
+            }
+            //function generatepo() {
+            //    var parameters = new Array();
+            //    // TODO: maybe you want to assign an unique id to your table element
+            //    $('#tbodytblitem tr').each(function () {
+            //        var id = $(this).find("td").eq(0).text();
+            //        var itemdesc = $(this).find("td").eq(1).text();
+            //        var qty = $(this).find("td").eq(2).text();
+            //        var price = $(this).find("td").eq(3).find(":text").val();
+            //        var unit = $(this).find("td").eq(4).find("select option:selected").text();
+            //        var amount = $(this).find("td").eq(5).text();
+            //        var capstr = "^";
+
+            //        parameters.push(id, itemdesc, qty,price, unit, amount, capstr);
+
+            //    });
+
+            //    var flag = "";
+            //    var tcflag = "";
+            //    var rfqid = $("#hdn_rfqid").val().trim();
+            //    if (rfqid != "") {
+            //        var remark = "-";
+            //        //var remark = $("#txt_remark").val();
+            //        //if (remark=="") {
+            //        //    alert('Please Enter Remark');
+            //        //    return false;
+            //        //}
+            //        var parentValueToPush = new Array();
+            //        $('[name="chk_vendor"]').each(function () {
+            //            if ($(this).prop('checked') == true) {
+            //                vid = $(this).val();
+            //                parentValueToPush.push($(this).val());
+            //                flag = 1;
+
+            //            }
+            //            else {
+            //                //flag = 0;
+
+            //            }
+            //        });
+
+            //    }
+            //    else {
+            //        alert('Please Select RFQ');
+            //    }
+            //    if (flag != 1) {
+            //        alert('Please atleast one Vendor');
+            //        return false;
+            //    }
+            //    $('[name="chk_termcondition"]').each(function () {
+            //        if ($(this).prop('checked') == true) {
+
+            //            tcflag = 1;
+
+            //        }
+            //        else {
+            //            //flag = 0;
+
+            //        }
+            //    });
+            //    if (tcflag != 1) {
+            //        alert('Please select Term and Condition');
+            //        return false;
+            //    }
+
+            //    $.ajax({
+            //        type: "POST",
+            //        url: "../PORequisition/pogenerate",
+            //        // data: params,
+            //        data: JSON.stringify({ rfqid: ' ' + rfqid + '', parentValueToPush: ' ' + parentValueToPush + '', remark: ' ' + remark + '', parameters: ' ' + parameters + ''  }),
+            //        contentType: "application/json;charset=utf-8",
+            //        // dataType: "json",
+            //        success: function (data) {
+            //            insertTermsNCondition(rfqid);
+            //            alert('Vendor PO Generate');
+            //            location.reload();
+
+            //        },
+            //        error: function (err) {
+            //            alert('Error occured');
+
+            //        }
+            //    });
+
+
+            //}
+            //function sendrfq() {
+            //    var flag = "";
+            //    var rfqid = $("#hdn_rfqid").val().trim();
+            //    if (rfqid != "") {
+            //        var remark ="-";
+            //       // var remark = $("#txt_remark").val();
+            //        //if (remark=="") {
+            //        //    alert('Please Enter Remark');
+            //        //    return false;
+            //        //}
+            //        var parentValueToPush = new Array();
+            //        $('[name="chk_vendor"]').each(function () {
+            //            if ($(this).prop('checked') == true) {
+            //                vid = $(this).val();
+            //                parentValueToPush.push($(this).val());
+            //                flag = 1;
+
+            //            }
+            //            else {
+            //                //flag = 0;
+
+            //            }
+            //        });
+            //    }
+            //    else {
+            //        alert('Please Select RFQ');
+            //    }
+            //    if (flag != 1) {
+            //        alert('Please atleast one Vendor');
+            //        return false;
+            //    }
+            //   $.ajax({
+            //            type: "POST",
+            //            url: "../PORequisition/sendmultirfq",
+            //            // data: params,
+            //            data: JSON.stringify({ rfqid: ' ' + rfqid + '', parentValueToPush: ' ' + parentValueToPush + '', remark: ' ' + remark + '' }),
+            //            contentType: "application/json;charset=utf-8",
+            //            // dataType: "json",
+            //            success: function (data) {
+
+            //                alert('Requisition Send');
+            //                location.reload();
+
+            //            },
+            //            error: function (err) {
+            //                alert('Error occured');
+
+            //            }
+            //        });
+
+
+            //}
+            $(document).ready(function () {
+                $("html").css("overflow", "hidden");
+                //$("#tbl_AllVpo").on('click', 'tr', function (e) {
+                //    var currentRow = $(this).closest("tr");
+                //    var id = currentRow.find("td:eq(0)").text();
+                //    id = id.trim();
+
+                //    if (id != "") {
+                //        $("#hdn_rfqid").val(id);
+                //        fetchsinglelist(id);
+
+                //    }
+
+                //});
+                var id = 0;
+                fetchlist(id);
+                //fetchitemlist(id);
+               //fetchsinglelist(id);
+
+
+            });
+            function vendorbind(id)
+            {
+
+                $.ajax({
+                    type: "POST",
+                    url: "../PORequisition/VendordrpbindforResponse",
+                    // data: params,
+                    data: JSON.stringify({ id: ' ' + id + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    // dataType: "json",
+                    success: function (data) {
+                        $("#tbody_tblvlist").empty();
+                        var tr = "";
+                        for (var i = 0; i < data.length; i++) {
+
+                            tr = $('<tr class="mosurhandsymbol"/>');
+                            tr.append('<td style="display:none;">' + data[i].ID + '</td>');
+                            tr.append('<td width="2%"><div class="custom-control custom-radio mb-3" align="right"><input type="radio"  class="custom-control-input"  name="chk_vendor" value="' + data[i].ID + '"  id="' + data[i].ID + '" required=""><label class="custom-control-label" for="' + data[i].ID + '"></label> </div></td>');
+                           // tr.append('<td width:20%><input type="file"  id="fu_' + data[i].ID + '" name="filename1" onchange="ValidateSize(this)"></td>');
+                            tr.append('<td  width="40%"><div class="custom-file"> <input type="file" class="custom-file-input r-0" id="fu_' + data[i].ID + '" name="filename1" onchange="ValidateSize(this)" style="width:5px;"><label class="custom-file-label" for="fu_' + data[i].ID + '">Choose file...</label></div></td>');
+                            tr.append('<td width="50%">'+ data[i].Name +'</td>');
+                            $('#tbl_vlist').append(tr);
+                        }
+                        //fetchitemlist(id);
+                    },
+                    error: function (err) {
+                        alert('Error occured');
+
+                    }
+                });
+            }
+            function hideshowbtn()
+            {
+                var i = 0;
+                $('[name="chk_vendor"]').each(function () {
+                    if ($(this).prop('checked') == true) {
+
+                        i++;
+
+                    }
+                    else {
+                        //flag = 0;
+
+                    }
+                });
+                if (i > 1) {
+                    $("#div_rfq").show();
+                    $("#div_gpo").hide();
+                   // $("#tblitem").hide();
+                }
+                else {
+                    $("#div_rfq").hide();
+                    $("#div_gpo").show();
+                   // $("#tblitem").show();
+                }
+            }
+            function fetchitemlist(id) {
+                $('#tbodytblitem').empty();
+                $.ajax({
+                    type: "POST",
+                    url: "../PORequisition/fetchitemlist",
+                    // data: params,
+                    data: JSON.stringify({ id: ' ' + id + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    // dataType: "json",
+                    success: function (data) {
+                        var tr = "";
+                        for (var i = 0; i < data.length; i++) {
+                            tr = $('<tr class="mosurhandsymbol"/>');
+                            //tr.append('<td>' + i + '</td>');
+                            tr.append('<td style="display:none;">' + data[i].RfQItemId+ '</td>');
+                            tr.append('<td>' + data[i].ItemDesc + '</td>');
+                            tr.append('<td>' + data[i].Quantity + '</td>');
+                            //tr.append('<td>' + data[i].Rate + '</td>');
+                            tr.append('<td><input type="text" name="rate" class="" value="' + data[i].Rate + '" style="width:60px;" oninput="javascript:calrate(this);"></td>');
+                            //tr.append('<td>' + data[i].RatePerUnit + '</td>');
+                            tr.append('<td><select id="unitper" name="unit" style="height:25px;"> <option value="NOs">Nos</option><option value="KG">KG</option><option value="Per Piece">Piece</option></select></td>');
+                            tr.append('<td>' + data[i].Amount + '</td>');
+
+                            $('#tblitem').append(tr);
+                        }
+
+                    },
+                    error: function (err) {
+                        alert('Error occured');
+
+                    }
+                });
+            }
+            function insertTermsNCondition(status) {
+
+                var rfqid = status;
+                var v1 = "";
+                var v2 = "";
+                var flag = "true";
+                $('[name="chk_termcondition"]').each(function () {
+                    if ($(this).prop('checked') == true) {
+                        id = $(this).val();
+                        v1 = $(this).val();
+                        var chkid = "txt_termcondition_" + $(this).val();
+                        var tcdesc = $("#" + chkid).val();
+
+                        $.ajax
+                          ({
+                              type: "POST",
+                              url: "../PORequisition/InsertTermsNCondition",
+                              // data: params,
+                              data: JSON.stringify({
+
+                                  id, tcdesc, rfqid, flag
+
+                              }),
+                              contentType: "application/json;charset=utf-8",
+                              dataType: "json",
+                              success: function (status) {
+
+                              },
+                              error: function (err) {
+
+                                  // alert(err.message);
+                              }
+                          });
+
+                    }
+                });
+                fileupload(rfqid);
+                //var str1 = v1.slice(0, -1);
+                //if (str1 == "") {
+                //    alert("Please select Term & condition");
+                //    return false;
+                //}
+
+
+
+
+            }
+            
+            function fetchsinglelist(id) {
+                $("#div_vendorlist").show();
+                $("#div_reqdetails").show();
+                $("#hdn_rfqid").val(id);
+                $.ajax({
+                    type: "POST",
+                    url: "../PORequisition/BindsingleRfqList",
+                    // data: params,
+                    data: JSON.stringify({ id: ' ' + id + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    // dataType: "json",
+                    success: function (data) {
+                        $("#spn_uname").text(data[0].UserName);
+                        $("#spn_vtype").text(data[0].VendorType);
+                        $("#spn_rqno").text(data[0].RfqID);
+                        $("#spn_wono").text(data[0].ReqNo);
+                        $("#spn_reqdate").text(jsondateformatconvert(data[0].ReqDate));
+                        $("#spn_desc").text(data[0].Description);
+                        $("#spn_pdesc").text(data[0].ParrtDesc);
+                        $("#spn_partno").text(data[0].PartNO);
+                       // fetchitemlist(id);
+                       vendorbind(id);
+
+                    },
+                    error: function (err) {
+                        alert('Error occured');
+
+                    }
+                });
+            }
+            function jsondateformatconvert(jsondate) {
+                var MyDate_String_Value = jsondate;
+                var value = new Date
+                (
+                parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+                );
+                var date = value.getDate();
+                if (date < 10) {
+                    date = "0" + date;
+                } else {
+                    date = date;
+                }
+                var month = parseInt(value.getMonth()) + 1;
+
+                if (month < 10) {
+                    month = "0" + month;
+                } else {
+                    month = month;
+                }
+                var year = value.getFullYear();
+                var dat = date + "-" + month + "-" + year;
+                return dat;
+            }
+            function fetchlist(id) {
+                $.ajax({
+                    type: "POST",
+                    url: "../PORequisition/BindRfqListforVendorResponse",
+                    // data: params,
+                    data: JSON.stringify({ id: ' ' + id + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    // dataType: "json",
+                    success: function (data) {
+
+                        //code for display table
+                        //$("#tbl_tbodyAllVpo").empty();
+                        //Append each row to html table
+                        //var tr = "";
+                        var items = [];
+                        for (var i = 0; i < data.length; i++) {
+                           // tr = $('<tr class="mosurhandsymbol dataGrid"/>');
+                           // tr.append('<td style="display:none;">' + data[i].RfqID + '</td>');
+                           // tr.append('<td><div class="avatar avatar-md mr-3 mt-1 float-left"><span class="avatar-letter avatar-letter-' + data[i].UserName.substring(0, 1).toLowerCase() + ' avatar-md circle"></span></div><div><div><strong>' + data[i].UserName + '</strong></div><span>' + data[i].Status + ' | ' + data[i].VendorType + '</span></div></td>');
+                            //$('#tbl_AllVpo').append(tr);
+                            items.push('<li class="media p-3 b-b has-hover mosurhandsymbol" onclick="fetchsinglelist(' + data[i].RfqID + ')"><img class="d-flex mr-3 height-50" src="../assets/img/dummy/u1.png" alt="Generic placeholder image"><div class="media-body text-truncate"><small class="float-right"><span>' + jsondateformatconvert(data[i].ReqDate) + '</span></small><h6 class="mt-0 mb-1 font-weight-normal">' + data[i].UserName + '</h6><span>' + data[i].VendorType + '</span><br><small>Request# ' + data[i].RfqID + '</small></div></li>');
+
+                        }
+                        $('#ullslistbind').append(items.join(''));
+                    },
+                    error: function (err) {
+                        alert('Error occured');
+
+                    }
+                });
+            }
+
+        </script>
+
+    </fieldset>
+ }
+
+

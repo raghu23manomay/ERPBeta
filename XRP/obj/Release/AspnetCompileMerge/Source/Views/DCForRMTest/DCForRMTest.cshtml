@@ -1,0 +1,572 @@
+﻿
+@{
+    ViewBag.Title = "DCForRMTest";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+<div class="col-sm-11" style="" align="center" id="divprint">
+
+    <table style="color:gray;" align="center">
+        <tbody>
+            <tr>
+                <td><img src="~/NewCssAndTheme/img/SSMlogoNew.png" height="60" width="60" alt=""></td>
+                <td>
+                    <center>
+                        <font size="4">
+                            <b>Shree Siddheshwari Metal Forging Pvt. Ltd.</b>
+                        </font><br>
+                        <font size="1">
+                            PLOT NO. 489 &amp; 490, 'J' BLOCK M.I.D.C. BHOSARI, PUNE-411026<br>
+                            PHONE NO. : (020) 27130120 EMAIL: scm@ssmforge.com
+                        </font>
+                    </center>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <center>
+
+        <u><b><font size="4"> DELIVERY CHALLAN FOR RAW MATERIAL TESTING</font></b></u><br>
+
+    </center>
+
+
+    <table class="table border-bottom" style="width:100%">
+        <tbody>
+            <tr>
+                <td valign="top" style="width:50%">
+                    &nbsp;To,<br>
+                    &nbsp;<span id="name"></span><br>
+                    &nbsp;<span id="address"></span>
+                </td>
+                <td style="width:50%">
+                    &nbsp;Date:&nbsp;<span id="spn_date"></span> | Challan No:&nbsp;<span id="spn_challanno"></span><br>
+
+                    &nbsp;Material Grade:&nbsp;<span id="spn_gm"></span> | Section:&nbsp;<span id="spn_section"></span><br>
+                    &nbsp;Heat Code:&nbsp;<span id="spn_hc"></span> | Heat Number:&nbsp;<span id="spn_hn"></span><br>
+                    &nbsp;Qty:&nbsp;<span id="spn_qtyTonne"></span>&nbsp;Tonne
+                    &nbsp; | Mode Of Transport:&nbsp;<span id="spn_mot"></span>/<span id="spn_mott"></span>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table class="table table-condensed table-bordered m-0" cellspacing="0">
+        <tbody>
+            <tr>
+
+                <td rowspan="2" align="center" style="padding:0">
+                    <b>1.</b>
+                </td>
+                <td><b>Chemical Analysis:</b></td>
+                <td colspan="3">
+                    <input type="text" id="txt_chemnooftestpcs" class="form-control r-0 light s-12" placeholder="No. of Test Pieces"  />
+                </td>
+                <td colspan="3">
+                    <input type="text" id="txt_chemnooftestpcskg" class="form-control r-0 light s-12" placeholder="No. of Test Pieces (kg)"  />
+                </td>
+                <td colspan="3">
+                    <input type="text" id="txt_suppliergrade" class="form-control r-0 light s-12" placeholder="Supplier Grade"  />
+                </td>
+                <td colspan="3">
+                    <input type="text" id="txt_heatno" class="form-control r-0 light s-12" placeholder="Challan Number" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table m-0">
+        <tbody>
+            <tr>
+                <td>Parameters:</td>
+                <td>C%</td>
+                <td>Mn%</td>
+                <td>P%</td>
+                <td>S%</td>
+                <td>Si%</td>
+                <td>Al%</td>
+                <td>Cr%</td>
+                <td>Mo%</td>
+                <td>Ni%</td>
+                <td>Cu%</td>
+                <td>V%</td>
+                <td>Pb%</td>
+
+            </tr>
+            <tr>
+                <td>Required:</td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="1" id="1a" required="">
+                        <label class="custom-control-label" for="1a"></label>
+                    </div>
+              
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="2" id="2a" required="">
+                        <label class="custom-control-label" for="2a"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="3" id="3a" required="">
+                        <label class="custom-control-label" for="3a"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="4" id="4a" required="">
+                        <label class="custom-control-label" for="4a"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="5" id="5a" required="">
+                        <label class="custom-control-label" for="5a"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="6" id="6a" required="">
+                        <label class="custom-control-label" for="6a"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="7" id="7a" required="">
+                        <label class="custom-control-label" for="7a"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="8" id="8a" required="">
+                        <label class="custom-control-label" for="8a"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="9" id="9a" required="">
+                        <label class="custom-control-label" for="9a"></label>
+                    </div>
+               
+                </td>
+
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="11" id="11a" required="">
+                        <label class="custom-control-label" for="11a"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="12" id="12a" required="">
+                        <label class="custom-control-label" for="12a"></label>
+                    </div>
+                </td>
+                <td>
+                    <div class="custom-control custom-checkbox mb-3" align="right">
+                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="13" id="13a" required="">
+                        <label class="custom-control-label" for="13a"></label>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <table width="100%" class="table-condensed table-bordered">
+
+        <tr>
+            <td rowspan="2" align="center" style="padding:0"><b>2.</b></td>
+            <td colspan="3" rowspan="2" align="center" style="min-width:50px"><b>Metallography Analysis</b></td>
+
+            <td>I</td>
+            <td>Micro</td>
+            <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtmicro" /></td>
+            <td>III</td>
+            <td>Inclusion</td>
+            <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtinclusion" /></td>
+
+        </tr>
+        <tr>
+
+            <td>II</td>
+            <td>Macro</td>
+            <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtmacro" /></td>
+            <td>IV</td>
+            <td>Grainsize</td>
+            <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtgrainsize" /></td>
+        </tr>
+    </table>
+    <br />
+    <table cellspacing="0" class="table-condensed table-bordered" width="100%" >
+        <tr>
+            <td rowspan="2" align="center" style="padding:0"><b>3.</b></td>
+            <td colspan="3" align="center" style="min-width:50px"><b>Mechanical Analysis</b></td>
+
+            @*<td colspan="1" style="min-width:50px" align="center"><b>No. of Test Pieces</b></td>*@
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mechnoofpcs" placeholder="No. of Test Pieces"></td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mechnoofpcskg" placeholder="No. of Test Pieces (kg)"></td>
+
+        </tr>
+        <tr>
+
+            <td align="right"><b>Specification</b></td>
+            <td style="min-width:50px" align="center"><b>Min.</b></td>
+            <td style="min-width:50px" align="center"><b>Max.</b></td>
+            <td style="min-width:50px" colspan="2" rowspan="8"></td>
+
+        </tr>
+        <tr>
+            <td>I</td>
+            <td style="min-width:50px">Impact</td>
+            <td style="min-width:50px" align="center"><input class="form-control r-0 light s-12" type="text" id="txt_minimpact"></td>
+            <td style="min-width:50px" align="center"><input class="form-control r-0 light s-12" type="text" id="txt_maximpact"></td>
+            @*<td style="min-width:50px"></td>
+                <td style="min-width:50px"></td>*@
+        </tr>
+        <tr>
+            <td>II</td>
+            <td colspan="3" style="min-width:50px">Tensile</td>
+            @*<td style="min-width:50px" align="center"></td>
+                <td style="min-width:50px" align="center"></td>*@
+            @*<td style="min-width:50px"></td>
+                <td style="min-width:50px"></td>*@
+        </tr>
+        <tr>
+            <td>a</td>
+            <td align="right" style="min-width:50px">UTS</td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_utsmintensile"></td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_utsmaxtensile"></td>
+            @*<td style="min-width:50px"></td>
+                <td style="min-width:50px"></td>*@
+        </tr>
+        <tr>
+            <td>b</td>
+            <td align="right" style="min-width:50px">YS</td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_ysmintensile"></td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_ysmaxtensile"></td>
+            @*<td style="min-width:50px"></td>
+                <td style="min-width:50px"></td>*@
+        </tr>
+        <tr>
+            <td>c</td>
+            <td align="right" style="min-width:50px">Reduction</td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_reductionmintensile"></td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_reductionmaxtensile"></td>
+            @*<td style="min-width:50px"></td>
+                <td style="min-width:50px"></td>*@
+        </tr>
+        <tr>
+            <td>III</td>
+            <td style="min-width:50px">Charpy (at 46<sup>0</sup> C)</td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mincharpy"></td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_maxcharpy"></td>
+            @*<td style="min-width:50px"></td>
+                <td style="min-width:50px"></td>*@
+        </tr>
+        <tr>
+            <td>IV</td>
+            <td style="min-width:50px">Jominy</td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_minjominy"></td>
+            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_maxjominy"></td>
+            @*<td style="min-width:50px"></td>
+                <td style="min-width:50px"></td>*@
+        </tr>
+    </table>
+
+    <table id="tbl_notes" align="left" class="border-bottom" width="100%">
+        <thead>
+            <tr>
+                <td> <b>Notes:&nbsp;Test Pieces should be return to us after testing.</b></td>
+
+            </tr>
+        </thead>
+
+    </table>
+    <table width="100%">
+
+        <tbody>
+            <tr>
+                <td align="left">
+                    <b> Remarks:<input type="text" class="form-control r-0 light s-12" id="txt_remarks"></b><br />
+                    <br>
+                    Receiver's Signature
+                </td>
+                <td align="right">
+                    <b>For Shree Siddheshwari Metal Forging Pvt. Ltd.</b><br>
+                    Authorised Signatory<br><br>
+
+                    <b>This document is autogenerated</b>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div align="right">
+        @*<button class="btn btn-primary btn-sm" type="button" onclick="printDiv('divprint')"><i class="icon-mail">Print</i></button>*@
+        <button type="button" id="btn_save" class="btn btn-sm btn-primary" onclick="save()">Save</button>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/Validations/JqueryUi.js"></script>
+<script>
+        var $j = jQuery.noConflict(true);
+</script>
+<script type="text/javascript">
+    function save() {
+        unsaved = false;
+        var chemicalpara = "";
+        $('[name="chk_vendor"]').each(function () {
+            if ($(this).prop('checked') == true) {
+
+                chemicalpara = chemicalpara + $(this).val() + ",";
+
+            }
+            else {
+                //flag = 0;
+
+            }
+        });
+        var grade    = $("#spn_gm").text();
+        var section = $("#spn_section").text();
+        var heatCode = $("#spn_hc").text();
+        var qtyTonne = $("#spn_qtyTonne").text();
+        var suppliergrade = $("#txt_suppliergrade").val();
+        if (suppliergrade == "") {
+            alert('Please Enter Supplier Grade');
+            return false;
+        }
+        var heatno = $("#txt_heatno").val();
+        if (heatno == "") {
+            alert('Please Enter Heat Number');
+            return false;
+        }
+        var chemicaltestpcs = $("#txt_chemnooftestpcs").val();
+        if (chemicaltestpcs == "") {
+            alert('Please Enter Chemical No.of Test Pieces');
+            return false;
+        }
+        var chemicaltestpcskg = $("#txt_chemnooftestpcskg").val();
+        if (chemicaltestpcskg == "") {
+            alert('Please Enter Chemical No.of Test Pieces in kg');
+            return false;
+        }
+
+        var micro = $("#txtmicro").val();
+        if (micro == "") {
+            alert('Please Enter Micro');
+            return false;
+        }
+        var macro = $("#txtmacro").val();
+        if (macro == "") {
+            alert('Please Enter Macro');
+            return false;
+        }
+        var inclusion = $("#txtinclusion").val();
+        if (inclusion == "") {
+            alert('Please Enter Inclusion');
+            return false;
+        }
+        var grainsize = $("#txtgrainsize").val();
+        if (grainsize == "") {
+            alert('Please Enter Grainsize');
+            return false;
+        }
+        var mechnooftestpcs = $("#txt_mechnoofpcs").val();
+        if (mechnooftestpcs == "") {
+            alert('Please Enter Mechanical No. of Test Pieces');
+            return false;
+        }
+        var mechnooftestpcskg = $("#txt_mechnoofpcskg").val();
+        if (mechnooftestpcskg == "") {
+            alert('Please Enter Mechanical No. of Test Pieces in kg');
+            return false;
+        }
+
+        var impactmin = $("#txt_minimpact").val();
+        if (impactmin == "") {
+            alert('Please Enter ImpactMinimum');
+            return false;
+        }
+        var impactmax = $("#txt_maximpact").val();
+        if (impactmax == "") {
+            alert('Please Enter ImpactMaximum');
+            return false;
+        }
+        var utsmin = $("#txt_utsmintensile").val();
+        if (utsmin == "") {
+            alert('Please Enter UTS Min.');
+            return false;
+        }
+        var utsmax = $("#txt_utsmaxtensile").val();
+        if (utsmax == "") {
+            alert('Please Enter UTS Max.');
+            return false;
+        }
+        var ysmin = $("#txt_utsmaxtensile").val();
+        if (ysmin == "") {
+            alert('Please Enter YS Min.');
+            return false;
+        }
+        var ysmax = $("#txt_ysmaxtensile").val();
+        if (ysmax == "") {
+            alert('Please Enter YS Max.');
+            return false;
+        }
+        var reductionmin = $("#txt_reductionmintensile").val();
+        if (reductionmin == "") {
+            alert('Please Enter Reduction Min.');
+            return false;
+        }
+        var reductionmax = $("#txt_reductionmaxtensile").val();
+        if (reductionmax == "") {
+            alert('Please Enter Reduction Max.');
+            return false;
+        }
+        var charpymax = $("#txt_maxcharpy").val();
+        if (charpymax == "") {
+            alert('Please Enter Charpy Max.');
+            return false;
+        }
+        var charpymin = $("#txt_mincharpy").val();
+        if (charpymin == "") {
+            alert('Please Enter Charpy Min.');
+            return false;
+        }
+        var jominaymin = $("#txt_minjominy").val();
+        if (jominaymin == "") {
+            alert('Please Enter Jominy Min..');
+            return false;
+        }
+        var jominymax = $("#txt_maxjominy").val();
+        if (jominymax == "") {
+            alert('Please Enter Jominy Max.');
+            return false;
+        }
+        var remarks = $("#txt_remarks").val();
+        var ginid = getUrlVars()["ginid"];
+        $.ajax({
+            type: "POST",
+            url: "../DCForRMTest/InsertDCRMFetchDatafromGIN",
+            // data: params,
+            data: JSON.stringify({
+                ginid, suppliergrade, heatno, chemicaltestpcs, chemicalpara, micro, macro, inclusion, grainsize,
+                mechnooftestpcs, impactmin, impactmax, utsmin, utsmax, ysmin, ysmax, reductionmin, reductionmax,
+                charpymax, charpymin, jominaymin, jominymax, remarks, chemicaltestpcskg, mechnooftestpcskg, grade, section, heatCode, qtyTonne
+            }),
+            contentType: "application/json;charset=utf-8",
+            // dataType: "json",
+            success: function (data) {
+                alert("Delivery Challan For Raw Material Test Inserted Successfully");
+                location.href = "@Url.Action("GinDetails", "DCForRMTest")";
+            },
+            error: function (err) {
+                alert('Error occured');
+
+            }
+        });
+    }
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+    function printDiv() {
+        $("#btn_print").hide();
+        $("#btn_save").hide();
+        var pesos = document.getElementById("txt_remarks").value;
+        alert(pesos);
+        document.getElementById("txt_remarks").value = pesos;
+        var printContents = document.getElementById("divprint").innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+        window.location.reload();
+    }
+
+    $(document).ready(function () {
+        var ginid = getUrlVars()["ginid"];
+        $.ajax({
+            type: "POST",
+            url: "../DCForRMTest/DCRMFetchDatafromGIN",
+            // data: params,
+            data: JSON.stringify({ ginid: ' ' + ginid + '' }),
+            contentType: "application/json;charset=utf-8",
+            // dataType: "json",
+            success: function (data) {
+
+                //for (var i = 0; i < data.length; i++) {
+
+
+                //}
+                $("#name").text(data[0].Name);
+                $("#address").text(data[0].Address);
+                var dat = jsondateformatconvert(data[0].CurrentDate);
+
+                $("#spn_date").text(dat);
+
+                $("#spn_challanno").text(data[0].challan_no);
+                $("#spn_gm").text(data[0].Materialgrade);
+                $("#spn_section").text(data[0].XSection);
+                $("#spn_hc").text(data[0].heat_code);
+                $("#spn_hn").text(data[0].heat_number);
+
+                $("#spn_mot").text(data[0].mode_of_transportation);
+                $("#spn_mott").text(data[0].vehicle_no);
+                $("#spn_qtyTonne").text(data[0].TotalReceivedQty);
+            },
+            error: function (err) {
+                alert('Error occured');
+
+            }
+        });
+    });
+    function jsondateformatconvert(jsondate) {
+        var MyDate_String_Value = jsondate;
+        var value = new Date
+        (
+        parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+        );
+        var date = value.getDate();
+        if (date < 10) {
+            date = "0" + date;
+        } else {
+            date = date;
+        }
+        var month = parseInt(value.getMonth()) + 1;
+
+        if (month < 10) {
+            month = "0" + month;
+        } else {
+            month = month;
+        }
+        var year = value.getFullYear();
+        var dat = date + "-" + month + "-" + year;
+
+        return dat;
+    }
+</script>
+<script type="text/javascript">   
+        var unsaved = false;
+        $j(":input").change(function(){ //trigers change in all input fields including text type
+            unsaved = true;           
+        });
+
+        function unloadPage() {           
+            if (unsaved) {               
+                return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+            }
+        }
+        window.onbeforeunload = unloadPage;
+</script>

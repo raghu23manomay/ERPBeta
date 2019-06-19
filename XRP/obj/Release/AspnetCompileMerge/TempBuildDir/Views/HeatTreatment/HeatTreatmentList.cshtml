@@ -1,0 +1,655 @@
+﻿
+@{
+    ViewBag.Title = "HeatTreatmentList";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+
+
+<style>
+    .icon:hover, .trDelivery:hover {
+        cursor: pointer;
+    }
+</style>
+<style>
+    .btnGenerateWO {
+        position: absolute;
+        bottom: 25px;
+        right: 20px;
+    }
+
+    .btnGenerateCuttingSlip {
+        position: absolute;
+        bottom: 25px;
+        left: 20px;
+    }
+</style>
+
+<link rel="stylesheet" href="~/assets/css/app.css">
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+@using (Html.BeginForm("ForgingList", "Forging", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <input type="hidden" id="hdnHTID" />
+    <input type="hidden" id="hdnCuttingID" />
+    <input type="hidden" id="woPOID" />
+    <input type="hidden" id="hdnGrossWeight" />
+    <fieldset>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-default">
+
+
+                    <div class="container-fluid animatedParent animateOnce p-0">
+                        <div class="animated fadeInUpShort">
+                            <div class="row no-gutters">
+                                <div class="col-md-3 white sticky" style="height:auto">
+                                    <div class="sticky white">
+                                        <ul class="nav nav-tabs nav-material">
+                                            <li class="nav-item">
+                                                <a class="nav-link p-3 active show" id="w2--tab1" data-toggle="tab" href="#w2-tab1" style="height:auto">
+                                                    <i class="icon icon-document s-18 text-success"></i>Heat Treatment
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div class="slimScroll" style="position:relative;overflow:hidden;height:initial">
+                                        <div class="slimScroll" style="">
+                                            <div class="tab-content " id="v-pills-tabContent">
+                                                <div class="tab-pane fade show active slimScroll" id="w2-tab1" role="tabpanel"
+                                                     aria-labelledby="w2-tab1">
+                                                    <ul class="list-unstyled trDelivery" id="ullslistbind"></ul>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-5 tab-pane animated fadeInUpShort" id="CutDetailsDiv" style="height:auto">
+
+                                    <div class="m-md-1">
+
+                                        <div class="card b-0 m-2">
+                                            <div class="card-body" style="height:600px">
+                                                <div>
+                                                    @*<span class="r-3 badge badge-primary align-self-end float-right" id="lblNatureOfWork" title="Nature Of Work">Nature Of Work</span>
+                                                        <br /><br />*@
+                                                    <br />
+
+                                                    <div class="media" data-toggle="collapse" data-target="">
+
+                                                        <div class="mr-2 float-left">
+                                                            @*<img src="~/NewCssAndTheme/img/imageWOs.jpg" class="s-48" style="height:100px;" />*@
+                                                            <i class="icon icon-note-list text-light-blue s-48"></i>
+
+                                                        </div>
+                                                        <div class="media-body" id="">
+                                                            @*<label class="float-right">Approved Qty</label>*@
+                                                            <h6 class="mt-0 mb-1 font-weight-normal" id="lblCutSlipNo"><label title="Cutting Slip"></label></h6>
+                                                            <strong id="lblCustName" class="Label"></strong> &nbsp;<br />
+                                                            Issued Quantity : <label id="lblrecvqnt" class="Label"></label><br />
+                                                            <div class="form-row m-0" style=" padding-bottom : 10px">
+                                                                <div class="form-group col-4 m-0 b-2">
+                                                                    Received Qty : &nbsp; <label id="lblReceivedQty" class="Label"></label>
+                                                                </div>
+                                                                <div class="form-group col-5 m-0 b-2">
+                                                                    <input id="txtReceivedQty1" class="form-control r-0 light s-12 Float-Number" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row m-0">
+                                                                <div class="form-group col-4 m-0">
+                                                                    Remark : &nbsp; <label id="lblReceivedRemark" class="Label"></label>
+                                                                </div>
+                                                                <div class="form-group col-5 m-0">
+                                                                    <input id="txtReceivedRemark1" class="form-control r-0 light s-12" type="text">
+                                                                </div>
+                                                                <button type="button" id="btnreceived" class="btn btn-outline-info btn-xs float-right" onclick="received();"> Receive </button>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div id="divrow2details">
+                                                        <div class="collapse my-3 show" id="">
+                                                            <div class="form-row">
+                                                                <div class="form-group col-06 m-0">
+
+                                                                    Part Name : <label id="lblPartName" class="Label"></label><br>
+                                                                    Part No # <label id="lblPartNo" class="Label"></label><br>
+                                                                    Raw Material : <label id="lblRM" class="Label"></label><br>
+                                                                </div>
+                                                                <div class="form-group col-06 m-0">
+                                                                    Section:&nbsp;<label id="lblSection" class="Label"></label><br />
+                                                                    Cut Weight: &nbsp;<label id="lblCutWt" class="Label"></label>
+                                                                    <br>
+
+
+                                                                    Qty:&nbsp;<label id="lblPOQty" class="Label"></label>&nbsp;&nbsp;|&nbsp;
+                                                                    Weight : <label id="lblWeight" class="Label"></label>
+                                                                    <br />
+                                                                    @*Created Date : &nbsp;*@<label id="lblCreatedDate" class="Label" style="display:none;"></label>
+                                                                    Heat Code:&nbsp; <label id="lblhc" class="Label"></label>
+                                                                </div>
+
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="form-row m-0">
+                                                            <div class="form-group col-12 m-0">
+                                                                Operations Involved:&nbsp;<label id="lblOpsinvolved" class="Label"></label>
+                                                            </div>
+                                                        </div>
+                                                        <label for="txtMcBrkDwn" class="col-form-label s-12" style="padding-bottom:0px;"><strong style="padding-bottom:0px;">Machine Idle Time:</strong></label>
+                                                        <div class="form-row">
+
+
+                                                            <div class="form-group col-6 m-0">
+
+                                                                <label for="txtMcIdleFrom" class="col-form-label s-12">From:</label>
+                                                                <input id="txtMcIdleFrom" class="date-time-picker form-control r-0 light s-12 " type="text" readonly="readonly">
+                                                            </div>
+                                                            <div class="form-group col-6 m-0">
+                                                                <label for="txtMcIdleTo" class="col-form-label s-12">To:</label>
+                                                                <input id="txtMcIdleTo" class="date-time-picker form-control r-0 light s-12 " type="text" readonly="readonly">
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-12 m-0">
+                                                                <label for="txtMcBrkDwnReason" class="col-form-label s-12">Reason:</label>
+                                                                @*<textarea id="txtMcBrkDwnReason" class="form-control r-0 light s-12"></textarea>*@
+
+                                                                <select class="form-control r-0 light s-12" id="txtMcBrkDwnReason">
+                                                                    <option value="Select">- Select -</option>
+                                                                    <option value="Breakdown">Breakdown</option>
+                                                                    <option value="Die Change">Die Change</option>
+                                                                    <option value="Other">Other</option>
+                                                                    @*<option>4</option>
+            <option>5</option>*@
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4 tab-pane animated fadeInUpShort" id="CuttDetailsDiv" style="display:none; overflow : hidden ; height : 900px ;" data-height="900">
+                                    <div class="m-md-1">
+                                        <!--Message Start-->
+                                        <div class="card b-0 m-2">
+                                            <div class="card-body" style="height:600px">
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-12 m-0 float-right">
+                                                        <span class="col-form-label s-12 float-right">
+
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="form-group col-12 m-0">
+                                                        HT # <strong id="lblCSno" class="Label">  </strong>
+                                                        <h6 class="mt-0 font-weight-normal" id="lblcustomerName1"><label title="Customer Name"></label></h6>
+
+                                                        <span>
+                                                            <label>WO # </label>&nbsp;<strong id="lblWorkorderno" class="Label"></strong>
+                                                        </span>
+
+
+                                                        <br /><br />
+
+                                                        @*<div class="form-row">
+
+                                                                <div class="form-group col-12 m-0">
+                                                                    <label for="txtTargetDate" class="col-form-label s-12">  Target Date:</label>
+                                                                    <input id="txtTargetDate" class="date-time-picker form-control r-0 light s-12 " type="text" readonly="readonly">
+
+                                                                </div>
+                                                            </div>*@
+                                                        @*<div class="form-row">
+                                                                <div class="form-group col-12 m-0">
+                                                                    <label for="txtOkCutPcs" class="col-form-label s-12">OK Cut Pcs:</label>
+                                                                    <input id="txtOkCutPcs" class="form-control r-0 light s-12 Float-Number" type="text">
+                                                                </div>
+                                                            </div>*@
+                                                        <div class="form-row">
+                                                            <div class="form-group col-12 m-0">
+                                                                <label for="lbluntrimmed" class="col-form-label s-12">Untrimmed (Qty):</label>
+                                                                <input id="txtuntrimmed" class="form-control r-0 light s-12 Float-Number" type="text">
+                                                            </div>
+                                                            <div class="form-group col-12 m-0">
+                                                                <label for="lblok" class="col-form-label s-12">OK (Qty):</label>
+                                                                <input id="txtok" class="form-control r-0 light s-12 Float-Number" type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-12 m-0">
+                                                                <label for="lblrejected" class="col-form-label s-12">Rejected (Qty):</label>
+                                                                <input id="txtrejected" class="form-control r-0 light s-12 Float-Number" type="text">
+                                                            </div>
+                                                            <div class="form-group col-12 m-0">
+                                                                <label for="lblrejectedrework" class="col-form-label s-12">Rejected Rework (Qty):</label>
+                                                                <input id="txtrejectedrework" class="form-control r-0 light s-12 Float-Number" type="text">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="card-body" id="div_gpo">
+
+                                                        <div class="float-right">
+                                                            <button type="button" value="Save" class="btn btn-primary btn-default btn-sm btnGenerateWO" id="btn_Save1" onclick="saveForgingDetails()"><i class="icon-save mr-2"></i> Save </button>
+                                                            @*<button type="button" value="Save" class="btn btn-primary btn-xs float-right" id="btnGenerateDieReq" href="#modalGenerateDieRequisition" data-toggle="modal" data-target="#modalGenerateDieRequisition" title="Generate Die Requisition"><i class="icon-input"></i>  </button>*@
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+            <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Content/Validations/JqueryUi.js"></script>
+
+            <script type="text/javascript">
+                var $j = jQuery.noConflict(true);
+            </script>
+            <script type="text/javascript">
+                function received()
+                {
+                    var hid = $("#hdnHTID").val();
+                    var recqnt = $("#txtReceivedQty1").val();
+                    var remark = $("#txtReceivedRemark1").val();
+                    $.ajax({
+                        type: "POST",
+                        url: "../HeatTreatment/UpdateReceivedQuantity",
+                        // data: params,
+                        data: JSON.stringify({ fid: ' ' + hid + '', recqnt: ' ' + recqnt + '', remark: ' ' + remark + '' }),
+                        contentType: "application/json;charset=utf-8",
+                        // dataType: "json",
+                        success: function (data) {
+                           // alert("Received Quantity Updated");
+                          // $("#txtReceivedQty1").val("");
+                          // $("#txtReceivedRemark1").val("");
+                           $("#CuttDetailsDiv").show();
+                           $('#CutDetailsDiv').show();
+                           $('#divrow2details').show();
+                           $('#btnreceived').attr('disabled', 'disabled');
+                        },
+                        error: function (err) {
+                            alert('Error occured');
+
+                        }
+                    });
+                }
+                $(document).ready(function () {
+                    $("#CutDetailsDiv").hide();
+                    $("#CuttDetailsDiv").hide();
+                    document.body.style.overflow = 'hidden';
+                    $(function () {
+                        $('.date-time-picker').datetimepicker({
+                            format: 'd/m/Y h:m a',
+                            timepicker: true,
+
+                        });
+                    });
+
+                    BindForgingList(0);
+                });
+            </script>
+
+            <script>
+                function BindForgingList(id) {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "../HeatTreatment/BindFogingList",
+                        // data: params,
+                        data: JSON.stringify({ id: ' ' + id + '' }),
+                        contentType: "application/json;charset=utf-8",
+                        // dataType: "json",
+                        success: function (data) {
+
+
+                            var items = [];
+                            for (var i = 0; i < data.length; i++) {
+
+                                items.push('<li class="media p-3 b-b has-hover mosurhandsymbol" onclick="fetchsinglelist(' + data[i].HeatTreatmentID + ')"><i class="icon icon-note-list text-light-blue s-48"></i><div class="media-body text-truncate"><small class="float-right" title="Created Date"><span>' + jsondateformatconvert(data[i].CreatedDate) + '</span></small><h6 class="mt-0 mb-1 font-weight-normal">' + data[i].ForgingNo + '</h6><small>' + data[i].WorkorderNo + '</small><small> | Qty# ' + data[i].Quantity + '</small></div></li>');
+
+                            }
+                            $('#ullslistbind').append(items.join(''));
+                        },
+                        error: function (err) {
+                            alert('Error occured');
+
+                        }
+                    });
+                }
+            </script>
+
+
+
+            <script>
+                function fetchsinglelist(hid) {
+                    $('#CutDetailsDiv').show();
+                    $("#CuttDetailsDiv").hide();
+                    $('#divrow2details').hide();
+                    $("#hdnHTID").val(hid);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "../HeatTreatment/BindsingleForging",
+                        // data: params,
+                        data: JSON.stringify({ id: ' ' + hid + '' }),
+                        contentType: "application/json;charset=utf-8",
+                        // dataType: "json",
+                        success: function (data) {
+                            $("#lblrecvqnt").text(data[0].Quantity);
+                            $('#hdnCuttingID').val(data[0].CuttingID);
+                            $("#lblCutSlipNo").text(data[0].HeatTreatmentNo);
+                            $("#lblWorkorderno1").text(data[0].WorkorderNo);
+                            $("#lblPOQty").text(data[0].QtymentionedinPO);
+                           // $("#lblCreatedDate").text(jsondateformatconvert1(data[0].CreatedDate));
+                            $("#lblWeight").text(parseFloat(data[0].QtymentionedinPO) * parseFloat(data[0].grossweight));
+                            $("#lblCSno").text(data[0].HeatTreatmentNo);
+                            $("#lblWorkorderno").text(data[0].WorkorderNo);
+                            $("#lblCutWt").text(data[0].CutWeight);
+                            $("#lblSection").text(data[0].Section);
+                            $("#lblRM").text(data[0].RawMaterial);
+                            $("#lblCustName").text(data[0].Name);
+                            $("#lblcustomerName1").text(data[0].Name);
+                            $("#lblPartName").text(data[0].PartName);
+                            $("#lblPartNo").text(data[0].PartNo);
+                            $("#lblhc").text(data[0].HeatCode);
+                             //alert(data[0].ReceivedFlag);
+                            if (data[0].ReceivedFlag == 1) {
+
+                                //  $("#CuttDetailsDiv").show();
+                               // $('#CutDetailsDiv').hide();
+                               // $('#divrow2details').hide();
+                                // $('#btnreceived').attr('disabled', 'disabled');
+
+                            }
+                            else {
+
+                                //$('#CutDetailsDiv').hide();
+                               // $("#CuttDetailsDiv").hide();
+                                //$('#divrow2details').hide();
+                                // $('#btnreceived').attr('enabled', 'enabled');
+                            }
+                            getOpsInvolved(data[0].poID);
+                        },
+                        error: function (err) {
+                            alert('Error occured');
+
+                        }
+                    });
+                }
+                function getOpsInvolved(poID) {
+
+                    $.ajax({
+
+                        type: "POST",
+                        url: "../Workorder/getOpsInvolved",
+                        data: JSON.stringify({ PoID: '' + poID + '' }),
+                        contentType: "application/json;charset=utf-8",
+                        //dataType: "json",
+                        success: function (data) {
+                            var append = new Array();
+                            for (var i = 0; i < data.length; i++) {
+
+                                append.push(data[i].operationinvolvedname);
+
+                            }
+                            append = append.toString();
+
+                            append = append.replace(/,/g, ", ");
+                            $j("#lblOpsinvolved").text(append);
+                        }
+                    });
+
+                }
+            </script>
+            <script>
+
+                $(".liPOS").click(function () {
+
+                    $(this).addClass("media p-3 b-b has-hover light border-right");
+                    $(this).siblings().removeClass("media p-3 b-b has-hover light border-right");
+                    $(this).siblings().addClass("media p-3 b-b has-hover");
+                });
+
+            </script>
+
+            <script>
+                function saveForgingDetails()
+                {
+                    var htid = $("#hdnHTID").val();
+                    var untrimmed = $('#txtuntrimmed').val();
+                    if (untrimmed=="") {
+                        alert("Please Enter Untrimmed Qty");
+                        return false;
+                    }
+                    var okqnt = $('#txtok').val();
+                    if (okqnt == "") {
+                        alert("Please Enter OK Qty");
+                        return false;
+                    }
+                    var rejectedqnt = $('#txtrejected').val();
+                    if (rejectedqnt == "") {
+                        alert("Please Enter Reject Qty");
+                        return false;
+                    }
+                    var reworkqnt = $('#txtrejectedrework').val();
+                    if (reworkqnt == "") {
+                        alert("Please Enter Reject Rework Qty");
+                        return false;
+                    }
+                    var fromtime = $('#txtMcIdleFrom').val();
+                    if (fromtime == "") {
+                        alert("Please Enter Machine Idle Time From");
+                        return false;
+                    }
+                    var totime = $('#txtMcIdleTo').val();
+                    if (totime == "") {
+                        alert("Please Enter Machine Idle Time To");
+                        return false;
+                    }
+                    var reason = $('#txtMcBrkDwnReason').val();
+                    var sec = $('#lblOpsinvolved').text();
+                    var rm = $('#lblRM').text();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "../HeatTreatment/InsertHeatTreatmentDetails",
+                        // data: params,
+                        data: JSON.stringify({
+                            htid: ' ' + htid + '', untrimmed: ' ' + untrimmed + '', okqnt: ' ' + okqnt + '', rejectedqnt: ' ' + rejectedqnt + '',
+                            reworkqnt: ' ' + reworkqnt + '', fromtime: ' ' + fromtime + '', totime: ' ' + totime + '', reason: ' ' + reason + '',
+                            sec: ' ' + sec + ' ', rm: ' ' + rm + ' '
+                        }),
+                        contentType: "application/json;charset=utf-8",
+                        // dataType: "json",
+                        success: function (data) {
+                            alert("Heat Treatment Inserted");
+                            $("input[type=text]").val("");
+                            $("textarea").val("");
+                            location.href = '@Url.Action("HeatTreatmentList", "HeatTreatment")';
+                        },
+                        error: function (err) {
+                            alert('Error occured');
+
+                        }
+                    });
+                }
+
+            </script>
+
+
+
+            <script>
+        function jsondateformatconvert(jsondate) {
+            var MyDate_String_Value = jsondate;
+            var value = new Date
+            (
+            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+            );
+            var date = value.getDate();
+            if (date < 10) {
+                date = "0" + date;
+            } else {
+                date = date;
+            }
+            var month = value.getMonth() + 1;
+            if (month < 10) {
+                month = "0" + month;
+            } else {
+                month = month;
+            }
+            var year = value.getFullYear();
+            var hrs = value.getHours();
+            var minutes = value.getMinutes();
+            var sec = value.getSeconds();
+            var day = value.getDay();
+
+            var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            var dayName = days[value.getDay()];
+            var mnths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var mnthName = mnths[value.getMonth()];
+
+
+            var dat = date + "-" + mnthName;
+            return dat;
+        }
+
+        function jsondateformatconvert1(jsondate) {
+            var MyDate_String_Value = jsondate;
+            var value = new Date
+            (
+            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+            );
+            var date = value.getDate();
+            if (date < 10) {
+                date = "0" + date;
+            } else {
+                date = date;
+            }
+            var month = value.getMonth() + 1;
+            if (month < 10) {
+                month = "0" + month;
+            } else {
+                month = month;
+            }
+            var year = value.getFullYear();
+            var hrs = value.getHours();
+            var minutes = value.getMinutes();
+            var sec = value.getSeconds();
+            var day = value.getDay();
+
+            var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            var dayName = days[value.getDay()];
+
+            //var d = new Date(dateString);
+            //var dayName = d.toString().split(' ')[0];
+
+            var dat = date + "-" + month + "-" + year;
+            return dat;
+        }
+            </script>
+            @*<script>
+                    $(function () {
+                        $('#txtMcIdleFrom').datetimepicker({
+                            format: 'Y/m/d',
+                            onShow: function (ct) {
+                                this.setOptions({
+                                    maxDate: jQuery('#txtMcIdleTo').val() ? jQuery('#txtMcIdleTo').val() : false
+                                })
+                            },
+                            timepicker: false
+                        });
+                        $('#txtMcIdleTo').datetimepicker({
+                            format: 'Y/m/d',
+                            onShow: function (ct) {
+                                this.setOptions({
+                                    minDate: jQuery('#txtMcIdleFrom').val() ? jQuery('#txtMcIdleFrom').val() : false
+                                })
+                            },
+                            timepicker: false
+                        });
+                    });
+                </script>*@
+
+            <script>
+        $(document).on("keypress", "input[type=text].Float-Number", function (event) {
+            //  $(".Float-Number").keypress(function (event) {
+            ///For Positive float
+            //if (isNaN(this.value + "" + String.fromCharCode(e.charCode)))
+            //    return false;
+            $(this).bind("cut copy paste", function (e) {
+                e.preventDefault();
+            });
+            var value = $("#" + this.id).val();
+            //    alert(event.which);
+            var iKeyCode = (event.which) ? event.which : event.keyCode
+            if (iKeyCode != 46 && iKeyCode != 09 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57)) {
+                //  alert("Enter Numbers Only");
+                event.preventDefault();
+                return false;
+            }
+            if (event.which < 45 || event.which > 58 || event.which == 47) {
+                if (event.which != 8) {
+                    return false;
+                    event.preventDefault();
+                }
+            } // prevent if not number/dot
+
+            if (event.which == 46 && value.indexOf('.') != -1) {
+                return false;
+                event.preventDefault();
+            } // prevent if already dot
+
+            if (event.which == 45 && value.indexOf('-') != -1) {
+                return false;
+                event.preventDefault();
+            } // prevent if already dot
+
+            if (event.which == 45 && value.length > 0) {
+                event.preventDefault();
+            } // prevent if already -
+
+            return true;
+
+
+        });
+            </script>
+}

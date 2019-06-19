@@ -1,0 +1,1214 @@
+﻿@model XRP.Models.ssmtbl_Quotation_PoModel
+@using XRP.Models;
+
+@{
+    ViewBag.Title = "New Purchase Order";
+    ViewBag.Active = "Marketing";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+<style>
+    .file-field.medium .file-path-wrapper {
+        height: 3rem;
+    }
+
+        .file-field.medium .file-path-wrapper .file-path {
+            height: 2.8rem;
+        }
+
+    .file-field.big-2 .file-path-wrapper {
+        height: 3.7rem;
+    }
+
+        .file-field.big-2 .file-path-wrapper .file-path {
+            height: 3.5rem;
+        }
+</style>
+@using (Html.BeginForm("NewPurchaseOrder", "PurchaseOrder", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                @*<div class="row p-t-b-10 ">
+                    <div class="col">*@
+                <h4>
+                    <i class="icon-database"></i>
+                    Purchase Order
+                </h4>
+                @*</div>
+                    </div>*@
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllInquiry", "Inquiry")'><i class="icon icon-home2"></i>Enquiry List</a>
+
+                        </li>
+
+                        <li class="float-right">
+                            <a class="nav-link active"><i class="icon icon-plus-circle"></i>New Purchase Order</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="@TempData[" hideclass"]" style=" text-align:center; display:none">
+                    @TempData["Message"]
+                </div>
+            </div>
+            <input type="hidden" id="hdn_saqcu" value="0" />
+            @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.sameasquotation, new { @id = "hdn_sameasquotation", @value = "False" })
+            @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.POQty_Open, new { @id = "hdn_POQty_Open", @value = "False" })
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.InquiryNo)
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.QuotationNo)
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.id)
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.CustomerName)
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.ForgingCostBased, new { @id = "hdn_fbo" })
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.MPICostBasedOn, new { @id = "hdn_mbo" })
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.SteelCost, new { @id = "hdn_steelcost" })
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.Transportation, new { @id = "hdn_transpotation" })
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.TotalRowMaterialCost, new { @id = "hdn_totalrawmaterialcost" })
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.GrossWeight, new { @id = "hdn_grossweight" })
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.NetWeight, new { @id = "hdn_netweight" })
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.CutWeight, new { @id = "hdn_cutweight" })
+            @Html.HiddenFor(model => model.ssmtbl_QuotationModel.CutWeight, new { @id = "hdn_cutweight" })
+
+
+        </header>
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+        <input id="hdn_NatureOfWork" type="hidden" />
+        <div class="container-fluid my-3">
+            <div class="d-flex row">
+
+                <div class="col-md-12">
+                    <div class="card mb-3 shadow no-b r-0">
+                        <div class="card-header white">
+                            <div class="form-row mt-1" id="divNewPO">
+                                <div class="form-group col-3 m-0">
+                                    <label for="validationCustom04">Enquiry No</label>
+                                    <input type="text" class="form-control r-0 light s-12" id="txtEnqNo" readonly="readonly">
+                                </div>
+                                <div class="form-group col-3 m-0">
+                                    <label for="validationCustom04">Customer Name</label>
+                                    <input type="text" class="form-control r-0 light s-12" id="txtCustomerName">
+                                </div>
+
+                                <div class="form-group col-3 m-0">
+                                    <label for="validationCustom04">Raw Material</label>
+
+                                    <select class="form-control r-0 light s-12" id="drpRMRawMaterial">
+                                        <option value="0">-- Please Select --</option>
+                                    </select>
+
+                                </div>
+                                <div class="form-group col-3 m-0">
+                                    <label for="validationCustom05">Section</label>
+
+                                    <select class="form-control r-0 light s-12" id="drpRMSection">
+                                        <option value="0">-- Please Select --</option>
+                                    </select>
+                                </div>
+                                <hr />
+                            </div>
+                            <div class="form-row mt-1">
+                                <div class="form-group col-2 m-0">
+                                    @Html.Label("PO No", new { @class = "Label" })
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CustomerPONo, null, new { @class = "form-control r-0 light s-12", @required = "required" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.CustomerPONo, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-2 m-0">
+                                    @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO, new { @class = "Label" })
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO, null, new { @class = "form-control r-0 light s-12", @required = "required" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO, null, new { @class = "alert-danger" })
+
+
+                                </div>
+                                <div class="form-group col-2 m-0">
+                                    @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, null, new { @class = "form-control r-0 light s-12", @required = "required" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-2 m-0">
+                                    <br />
+
+                                    @Html.CheckBox("False", new { @class = "btn btn-default", @id = "POQty_Open", @value = "False", @name = "POQty_Open" })PO Qty Open
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.POQty_Open, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-2 m-0">
+                                    @*@Html.Label("file", new { @class = "Label", @style = "color:#f8f9fa" })*@
+                                    <br />
+                                    <input type="file" id="filename1" name="filename1" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page has-sidebar-right bg-light height-full">
+
+            <div class="container-fluid my-3">
+                <div class="d-flex row">
+
+                    <div class="col-md-6">
+
+                        <!-- Basic Validation -->
+                        <div class="card mb-3 shadow no-b r-0" id="div_quotationRawMaterial">
+                            <div class="card-header white">
+
+                                <h6>Raw Material Cost Details Based On <label id="lbl_fbo" class="" style="font-size:14px;"></label></h6>
+                            </div>
+                            <div class="card-body">
+                                <form class="needs-validation" novalidate>
+                                    <div class="" style="overflow: hidden; width: auto; height: 70px;">
+                                        <div>
+                                            @Html.Label("Steel Rate(Per kg):", new { @class = "Label" })
+                                            @Html.DisplayFor(model => model.ssmtbl_QuotationModel.SteelCost, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
+
+                                            &nbsp;
+                                            @Html.Label("Transpotation:", new { @class = "Label" })
+
+                                            @Html.DisplayFor(model => model.ssmtbl_QuotationModel.Transportation, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
+                                        </div>
+
+                                        <br />
+                                        <div>
+                                            @Html.Label("Total Raw Material Cost:", new { @class = "Label" })
+
+                                            @Html.DisplayFor(model => model.ssmtbl_QuotationModel.TotalRowMaterialCost, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
+                                        </div>
+
+
+
+                                        @*@Html.Label("Gross Weight:", new { @class = "Label" })
+                                             @Html.DisplayFor(model => model.ssmtbl_QuotationModel.GrossWeight, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
+                                            &nbsp;
+                                             @Html.Label("Cut Weight:", new { @class = "Label" })
+
+                                             @Html.DisplayFor(model => model.ssmtbl_QuotationModel.CutWeight, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
+                                             &nbsp;
+                                             @Html.Label("Net Weight:", new { @class = "Label" })
+
+                                             @Html.DisplayFor(model => model.ssmtbl_QuotationModel.NetWeight, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })*@
+
+
+                                    </div>
+
+
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- #END# Advanced Validation -->
+                        <div class="card mb-3 shadow no-b r-0">
+                            <div class="card-header white">
+                                <h6>
+                                    Conversion Rate Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Same As Quotation&nbsp;&nbsp;
+
+                                    @Html.CheckBox("False", new { @class = " btn btn-default", @id = "SameAsQuotation", @name = "SameAsQuotation", @value = "False" })
+                                    @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.sameasquotation, null, new { @class = "alert-danger" })
+                                    @*@Html.CheckBoxFor(model => model.ssmtbl_PurchaseOrderModel.sameasquotation, new { @class ="btn btn-default", @id = "SameAsQuotation",@value="False" })
+
+                                        @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.sameasquotation, null, new { @class = "alert-danger" })*@
+
+
+                                </h6>
+
+                            </div>
+                            <div class="card-body pt-0 bg-light slimScroll" data-height="278" style="overflow: hidden; width: auto; height: 278px;">
+
+                                @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
+                                {
+
+                                    if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Cutting (Rs Per Sq Inch)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.CuttingSquare1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                            @*
+                                                </div>
+                                                <div class="form-group col-4 m-0 ">
+                                            *@
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.CuttingSquare2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+                                    }
+                                    if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
+                                    {
+
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Forging", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Forging1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                            &nbsp;&nbsp;
+
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Forging2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+                                    }
+                                    if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-12 m-0">
+                                            @Html.Label("Heat Treatment Cost (Net Wt):", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-6 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.HeatTreatment1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.HeatTreatment2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+
+                                        </div>
+
+                                    }
+                                    if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Shot Blasting (Net Wt)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ShotBlasting1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ShotBlasting2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+
+
+                                    }
+                                    if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("MPI", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.MPI1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.MPI2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+
+
+                                    }
+                                    if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Grinding (Per Piece)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Grinding1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Grinding2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+
+                                    }
+                                    if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Cold Coining (Per Piece)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ColdCoining1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ColdCoining2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+                                    }
+                                    if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-6 m-0">
+                                            @Html.Label("Machining (Per Piece)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Machining1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+
+                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Machining2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+                                    }
+
+                                }
+
+                                <div class="form-group col-6 m-0">
+                                    <label class="Label">Die Maintaince Cost</label>
+
+                                </div>
+
+                                <div class="form-group col-12 m-0 custom-control-inline">
+                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.DieMaintenance1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                    &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.DieMaintenance2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                </div>
+
+                                @* <div class="form-group col-6 m-0">
+                                        <label class="Label">ICC & Overhead on RM </label>
+
+                                    </div>
+
+                                    <div class="form-group col-12 m-0 custom-control-inline">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.iccoverhadrm, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totaliccoverhadrm, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                    </div>
+
+                                    <div class="form-group col-6 m-0">
+                                        <label class="Label">Profit on Conversion</label>
+
+                                    </div>
+
+                                    <div class="form-group col-12 m-0 custom-control-inline">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.profitonconversion, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totalprofitonconversion, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                    </div>
+                                    <div class="form-group col-6 m-0">
+                                        <label class="Label">Rejection</label>
+
+                                    </div>
+
+                                    <div class="form-group col-12 m-0 custom-control-inline">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.rejection, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totalrejection, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                    </div>
+                                    <div class="form-group col-6 m-0">
+                                        <label class="Label">Packing,Transport</label>
+
+                                    </div>
+
+                                    <div class="form-group col-12 m-0 custom-control-inline">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.packingtransport, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                        &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totalpackingtransport, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                    </div>*@
+
+                                <div class="form-group col-6 m-0">
+                                    <label class="Label">Total Conversion Cost</label>
+                                </div>
+
+                                <div class="form-group col-12 m-0 custom-control-inline">
+                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.TotalConverstionCost, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                </div>
+                                <div class="form-group col-6 m-0">
+                                    <label class="Label">Total Component Cost</label>
+                                </div>
+
+                                <div class="form-group col-12 m-0 custom-control-inline">
+                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.TotalComponentCost, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                </div>
+                                <div class="form-group col-6 m-0">
+                                    <label class="Label">Initial Die Cost	</label>
+                                </div>
+
+                                <div class="form-group col-12 m-0 custom-control-inline">
+                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.InitialDieCost, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                </div>
+                                @*<div class="form-group col-6 m-0">
+                                        <label class="Label">Total Other Cost	</label>
+                                    </div>
+
+                                    <div class="form-group col-12 m-0 custom-control-inline">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totallycost, new { @class = "", @readonly = "readonly", @style = "border:none;" })
+                                    </div>*@
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="card mb-3 shadow no-b r-0" id="div_poRawMaterial">
+                            <div class="card-header white">
+                                <div class="form-row mt-1">
+                                    <div class="form-group col-10 m-0" valign="top">
+                                        <h6>Raw Material Cost Details</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                @*<form class="needs-validation" novalidate>*@
+                                <div class="form-row" style="overflow: hidden; width: auto; height: 70px;">
+                                    <div class="col-md-4 mb-3">
+                                        @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost, new { @class = "Label" })
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost, null, new { @class = "form-control r-0 light s-12", @oninput = "return CalcRawMaterialTotal();", @value = "0", @id = "SteelCost", @required = "required" })
+                                        @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost, null, new { @class = "alert-danger" })
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.Transportation, new { @class = "Label" })
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Transportation, null, new { @class = "form-control r-0 light s-12", @oninput = "return CalcRawMaterialTotal();", @id = "Transportation", @required = "required" })
+                                        @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.Transportation, null, new { @class = "alert-danger" })
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost, new { @class = "Label" })
+
+                                        @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost, null, new { @class = "", @readonly = "readonly", @style = "border:none;", @id = "TotalRowMaterialCost" })
+                                        @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost, null, new { @class = "alert-danger" })
+                                    </div>
+
+                                </div>
+
+
+
+                                @*</form>*@
+
+                            </div>
+                        </div>
+                        <div class="card mb-3 shadow no-b r-0">
+                            <div class="card-header white">
+                                <div class="form-row mt-1">
+                                    <div class="form-group col-10 m-0" valign="top">
+                                        <h6>Conversion Rate Details</h6>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-body pt-0 bg-light slimScroll" data-height="278" style="overflow: hidden; width: auto; height: 278px;">
+                                @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
+                                {
+
+                                    if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-10 m-0">
+                                            @Html.Label("Cutting (Rs Per Sq Inch)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare1, new { @class = "form-control r-0 light s-12", @id = "CuttingSquare1", oninput = "return CalcForCuttingSq();", @required = "required" })
+                                            @*
+                                                </div>
+                                                <div class="form-group col-4 m-0 ">
+                                            *@
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare2, new { @class = "", @id = "CuttingSquare2", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+                                    }
+                                    if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
+                                    {
+
+                                        <div class="form-group col-4 m-0">
+                                            @Html.Label("Forging", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Forging1, new { @class = "form-control r-0 light s-12", @id = "Forging1", oninput = "CalcForging2()", @required = "required" })
+                                            &nbsp;&nbsp;
+
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Forging2, new { @class = "", @id = "Forging2", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+                                    }
+                                    if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-4 m-0">
+                                            @Html.Label("Heat Treatment Cost (Net Wt):", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment1, new { @class = "form-control r-0 light s-12", @id = "HeatTreatment1", @oninput = "return CalcForNetWeight(this);", @required = "required" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment2, new { @class = "", @id = "HeatTreatment2", @readonly = "readonly", @style = "border:none;" })
+
+                                        </div>
+
+                                    }
+                                    if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-4 m-0">
+                                            @Html.Label("Shot Blasting (Net Wt)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting1, new { @class = "form-control r-0 light s-12", @id = "ShotBlasting1", @oninput = "return CalcForNetWeight(this);", @required = "required" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting2, new { @class = "", @id = "ShotBlasting2", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+
+
+                                    }
+                                    if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-4 m-0">
+                                            @Html.Label("MPI", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.MPI1, new { @class = "form-control r-0 light s-12", @id = "MPI1", oninput = "CalcMPI2()", @required = "required" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.MPI2, new { @class = "", @id = "MPI2", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+
+
+                                    }
+                                    if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-4 m-0">
+                                            @Html.Label("Grinding (Per Piece)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Grinding1, new { @class = "form-control r-0 light s-12", @id = "Grinding1", oninput = "CalcForPerPiece(this)", @required = "required" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Grinding2, new { @class = "", @id = "Grinding2", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+
+                                    }
+                                    if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-4 m-0">
+                                            @Html.Label("Cold Coining (Per Piece)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining1, new { @class = "form-control r-0 light s-12", @id = "ColdCoining1", oninput = "CalcForPerPiece(this)", @required = "required" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining2, new { @class = "", @id = "ColdCoining2", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+                                    }
+                                    if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
+                                    {
+                                        <div class="form-group col-4 m-0">
+                                            @Html.Label("Machining (Per Piece)", new { @class = "Label" })
+                                        </div>
+                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Machining1, new { @class = "form-control r-0 light s-12", @id = "Machining1", oninput = "CalcForPerPiece(this)", @required = "required" })
+
+
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Machining2, new { @class = "", @id = "Machining2", @readonly = "readonly", @style = "border:none;" })
+                                        </div>
+                                    }
+
+                                }
+
+                                <div class="form-group col-12 m-0">
+                                    <label class="Label">Die Maintaince Cost</label>
+
+                                </div>
+
+                                <div class="form-group col-12 m-0 custom-control-inline">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance1, new { @class = "form-control r-0 light s-12", @id = "DieMaintenance1", oninput = "CalcForging2()", @required = "required" })
+                                    &nbsp;@Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance2, new { @class = "", @id = "DieMaintenance2", @readonly = "readonly", @style = "border:none;" })
+                                </div>
+                                <div class="form-group col-12 m-0">
+                                    <label class="Label">Total Conversion Cost</label>
+
+                                </div>
+
+                                <div class="form-group col-12 m-0 custom-control-inline">
+
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalConverstionCost, new { @class = "", @id = "TotalConverstionCost", @readonly = "readonly", @style = "border:none;" })
+                                </div>
+                                <div class="form-group col-12 m-0">
+                                    <label class="Label">Total Component Cost</label>
+
+                                </div>
+
+                                <div class="form-group col-12 m-0 custom-control-inline">
+
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalComponentCost, new { @class = "", @id = "TotalComponentCost", @readonly = "readonly", @style = "border:none;" })
+                                </div>
+                                <div class="form-group col-12 m-0">
+                                    <label class="Label">Initial Die Cost	</label>
+
+                                </div>
+
+                                <div class="form-group col-5 m-0 custom-control-inline">
+
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.InitialDieCost, new { @class = "form-control r-0 light s-12", @id = "InitialDieCost", @onblur = "setDeafult();", @required = "required" })
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body" align="right">
+                <button type="submit" class="btn btn-primary btn-sm" id="Save"><i class="icon-save mr-2"></i>Save</button>
+                <button type="reset" class="btn btn-success btn-sm"><i class="icon-refresh mr-2"></i>Reset</button>
+
+            </div>
+        </div>
+
+        <div class="control-sidebar-bg shadow white fixed"></div>
+
+
+
+    </fieldset>
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+    <script type="text/javascript">
+        $j(document).ready(function() {
+
+            //$j('#POQty_Open').val('False');
+            //$("input").change(function(){
+            //    var chkcon= $j('#hdn_saqcu').val();
+
+
+            //});
+          
+            var url=window.location.href;
+            var isNew= (url.split("?")[1]).split("=")[1];
+            if (isNew == "0") {
+                $("#divNewPO").show();
+
+            }else {
+                $("#divNewPO").hide();
+            }
+            var EnqNumber = @Html.Raw(Json.Encode(@ViewData["maxInqNo"]));
+            $("#txtEnqNo").val(EnqNumber);
+            bindRawMaterial();
+            bindSection();
+
+            $j("#txtCustomerName").autocomplete({
+                source: function(request, response) {
+                    var customer = new Array();
+                    $.ajax({
+                        url: "../Inquiry/getCustomername",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function(data) {
+                            response($.map(data, function(item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                change: function(event, ui) {
+                    $(this).val((ui.item ? ui.item.label : ""));
+
+                    if (ui.item == null)
+                    {
+                        alert("Customer does not exist  Please add customer..!");
+                        location.href = "../Customer/NewCustomer";
+                    }
+
+                }
+            });
+
+            $("input").keypress(function()
+            {
+                $j('#SameAsQuotation').attr('checked', false);
+            });
+
+            var fbo =$("#hdn_fbo").val();
+
+            if (fbo = "Gross Wt") {
+                $("#lbl_fbo").text("Gross Weight");
+            }
+            else if (fbo = "Cut Wt") {
+                $("#lbl_fbo").text("Cut Weight");
+            }
+            else if (fbo = "Net Wt") {
+                $("#lbl_fbo").text("Net Weight");
+            }
+            else {
+
+            }
+            $(function()
+            {
+
+                $('.date-time-picker').datetimepicker({
+                    format: 'd/m/Y',
+                    timepicker: false
+                });
+            });
+            $("#hdn_NatureOfWork").val(@ViewData["NatureOfWork"]);
+
+            if ($("#hdn_NatureOfWork").val() != "201") {
+                $("#div_quotationRawMaterial ").show();
+                $("#div_poRawMaterial").show();
+            } else {
+                $("#div_quotationRawMaterial").hide();
+                $("#div_poRawMaterial").hide();
+            }
+            $j('#SameAsQuotation').click(function ()
+            {
+                if ( $j('#SameAsQuotation').prop('checked')) {
+                    $j('#SameAsQuotation').val('True');
+                    $j('#hdn_sameasquotation').val('True');
+                }
+                else {
+                    $j('#SameAsQuotation').val('False');
+                    $j('#hdn_sameasquotation').val('False');
+                }
+
+                if (confirm('Are you sure you want to Reset Same As Quotation?'))
+                {
+
+                    $j('#hdn_saqcu').val("1");
+                    $j('#SteelCost').val($j('#hdn_steelcost').val());
+                    $j('#Transportation').val($j('#hdn_transpotation').val());
+                    //$j('#ssmtbl_PurchaseOrderModel_Total').val($j('#ssmtbl_QuotationModel_Total').val());
+                    $j('#TotalRowMaterialCost').val($j('#hdn_totalrawmaterialcost').val());
+
+                    $j('#Forging1').val($j('#ssmtbl_QuotationModel_Forging1').val());
+                    $j('#Forging2').val($j('#ssmtbl_QuotationModel_Forging2').val());
+                    $j('#MPI1').val($j('#ssmtbl_QuotationModel_MPI1').val());
+                    $j('#MPI2').val($j('#ssmtbl_QuotationModel_MPI2').val());
+                    $j('#ShotBlasting1').val($j('#ssmtbl_QuotationModel_ShotBlasting1').val());
+                    $j('#ShotBlasting2').val($j('#ssmtbl_QuotationModel_ShotBlasting2').val());
+                    $j('#HeatTreatment1').val($j('#ssmtbl_QuotationModel_HeatTreatment1').val());
+                    $j('#HeatTreatment2').val($j('#ssmtbl_QuotationModel_HeatTreatment2').val());
+                    $j('#CuttingSquare1').val($j('#ssmtbl_QuotationModel_CuttingSquare1').val());
+                    $j('#CuttingSquare2').val($j('#ssmtbl_QuotationModel_CuttingSquare2').val());
+
+                    $j('#Grinding1').val($j('#ssmtbl_QuotationModel_Grinding1').val());
+                    $j('#Grinding2').val($j('#ssmtbl_QuotationModel_Grinding2').val());
+
+                    $j('#Machining1').val($j('#ssmtbl_QuotationModel_Machining1').val());
+                    $j('#Machining2').val($j('#ssmtbl_QuotationModel_Machining2').val());
+
+                    $j('#ColdCoining1').val($j('#ssmtbl_QuotationModel_ColdCoining1').val());
+                    $j('#ColdCoining2').val($j('#ssmtbl_QuotationModel_ColdCoining2').val());
+
+
+
+                    $j('#DieMaintenance1').val($j('#ssmtbl_QuotationModel_DieMaintenance1').val());
+                    $j('#DieMaintenance2').val($j('#ssmtbl_QuotationModel_DieMaintenance2').val());
+                    $j('#TotalConverstionCost').val($j('#ssmtbl_QuotationModel_TotalConverstionCost').val());
+                    $j('#TotalComponentCost').val($j('#ssmtbl_QuotationModel_TotalComponentCost').val());
+                    $j('#InitialDieCost').val($j('#ssmtbl_QuotationModel_InitialDieCost').val());
+
+                }
+                else
+                {
+                    // Do nothing!
+                }
+            });
+
+        });
+    </script>
+        <script type="text/javascript">
+
+            function CalcForging2() {
+                try {
+                    var gw = parseFloat($("#hdn_grossweight").val());
+                    var nw = parseFloat($("#hdn_netweight").val());
+                    var cw = parseFloat($("#hdn_cutweight").val());
+
+                    $('#Forging1').val(IsNumber($('#Forging1').val()));
+
+                    var forgingcost = parseFloat($("#Forging1").val());
+                    var netcostcal = "";
+
+                    if ($("#hdn_fbo").val() == 'Gross Wt') {
+
+                        // $("#divGrossWt").show();
+                        netcostcal = parseFloat(gw * forgingcost).toFixed(2);
+                        $("#Forging2").val(netcostcal);
+
+
+                        var dieMaintaince = parseFloat(IsNumber($("#DieMaintenance1").val()));
+                        netcostcalDM = parseFloat(gw * dieMaintaince).toFixed(2);
+                        $("#DieMaintenance2").val(netcostcalDM);
+
+                    }
+                    if ($("#hdn_fbo").val() == 'Cut Wt') {
+                        // $("#divCutWt").show();
+                        netcostcal = parseFloat(cw * forgingcost).toFixed(2);
+                        $("#Forging2").val(netcostcal);
+                        var dieMaintaince = parseFloat(IsNumber($("#DieMaintenance1").val()));
+                        netcostcalDM = parseFloat(cw * dieMaintaince).toFixed(2);
+                        $("#DieMaintenance2").val(netcostcalDM);
+                    }
+                    if ($("#hdn_fbo").val() == 'Net Wt') {
+                        // $("#divNetWt").show();
+                        netcostcal = parseFloat(nw * forgingcost).toFixed(2);
+                        $("#Forging2").val(netcostcal);
+                        var dieMaintaince = parseFloat(IsNumber($("#DieMaintenance1").val()));
+                        netcostcalDM = parseFloat(nw * dieMaintaince).toFixed(2);
+                        $("#DieMaintenance2").val(netcostcalDM);
+                    }
+
+                    //for quot
+                    CalcTotal();
+                }
+                catch (err) {
+                    alert(err.message);
+                }
+            }
+            function CalcMPI2() {
+                try {
+
+                    var gw = parseFloat($("#hdn_grossweight").val());
+                    var nw = parseFloat($("#hdn_netweight").val());
+                    var cw = parseFloat($("#hdn_cutweight").val());
+
+                    //var pieceRate = IsNumber(parseFloat($("#PerPieceRate").val()));
+                    var pieceRate = 1;
+                    var mpicost = parseFloat(IsNumber($("#MPI1").val()));
+                    var netcostcal = "";
+
+                    if ($("#hdn_mbo").val()== 'Net Wt') {
+                        netcostcal = parseFloat(nw * mpicost).toFixed(2);
+                        $("#MPI2").val(netcostcal);
+                    }
+                    if ($("#hdn_mbo").val() == 'Per Piece') {
+                        netcostcal = parseFloat(pieceRate * mpicost).toFixed(2);
+                        $("#MPI2").val(netcostcal);
+                    }
+                    //for quot
+                    CalcTotal();
+                }
+                catch (err) {
+                    alert(err.message);
+                }
+            }
+
+            function CalcForPerPiece(ppid) {
+                try {
+
+                    setDeafult();
+                    var pieceRate = parseFloat(IsNumber($("#PerPieceRate").val()));
+
+                    var id = ppid.id;
+                    if (id == "ColdCoining1") {
+                        var cc = parseFloat(IsNumber($("#ColdCoining1").val()));
+
+                        var ccnc = parseFloat(cc * 1).toFixed(2);
+
+                        $("#ColdCoining2").val(ccnc);
+                    }
+                    if (id == "Grinding1") {
+
+                        var grd = parseFloat(IsNumber($("#Grinding1").val()));
+
+                        var grdnc = parseFloat(grd * 1).toFixed(2);
+
+                        $("#Grinding2").val(grdnc);
+                    }
+                    if (id == "Machining1") {
+                        var mech = parseFloat(IsNumber($("#Machining1").val()));
+
+                        var mechnc = parseFloat(mech * 1).toFixed(2);
+
+                        $("#Machining2").val(mechnc);
+                    }
+
+                    //for quot
+                    CalcTotal();
+                }
+                catch (err) {
+                    alert(err.message);
+                }
+            }
+            function CalcForNetWeight(netwtid) {
+                try {
+                    setDeafult();
+                    var id = netwtid.id;
+                    // var netwt = $("#NetWeight").val();
+                    var gw = parseFloat($("#hdn_grossweight").val());
+                    var netwt = parseFloat($("#hdn_netweight").val());
+                    var cw = parseFloat($("#hdn_cutweight").val());
+                    if (id == "ShotBlasting1") {
+                        var sbc = parseFloat(IsNumber($("#ShotBlasting1").val()));
+
+                        var sbnc = parseFloat(netwt * sbc).toFixed(2);
+
+                        $("#ShotBlasting2").val(sbnc);
+                    }
+                    if (id == "HeatTreatment1") {
+
+                        var htc = parseFloat(IsNumber($("#HeatTreatment1").val()));
+
+                        var htnc = parseFloat(htc * netwt).toFixed(2);
+
+                        $("#HeatTreatment2").val(htnc);
+                    }
+
+                    //for quot
+                    CalcTotal();
+                }
+                catch (err) {
+                    alert(err.message);
+                }
+            }
+            function CalcForCuttingSq() {
+
+                var section = @Html.Raw(Json.Encode(ViewData["sectionName"]));
+
+                var cuttingSquInchRate = ($("#CuttingSquare1").val());
+                if (section.split(" ")[1] == "Dia") {
+
+                    var xsec = section.split(" ")[0];
+
+                    var cutsqinch = parseFloat((((Math.PI) * (xsec * xsec)) / (4 * 25.4 * 25.4)) * cuttingSquInchRate).toFixed(2);
+                    $j('#CuttingSquare2').val(cutsqinch);
+                } else {
+
+                    var xsec = section.split(" ")[0];
+
+                    var cutsqinch = parseFloat((((xsec * xsec)) / (25.4 * 25.4)) * cuttingSquInchRate).toFixed(2);
+
+                    $j('#CuttingSquare2').val(cutsqinch);
+                }
+                CalcTotal();
+
+
+            }
+            function CalcRawMaterialTotal() {
+                try {
+                    var gw = parseFloat($('#hdn_grossweight').val());
+                    var sc = parseFloat($('#SteelCost').val());
+
+                    var trans = parseFloat(IsNumber($('#Transportation').val()));
+                    var tc = parseFloat(sc + trans);
+                    var tgc = parseFloat(gw * (sc + trans));
+
+                    $('#TotalRowMaterialCost').val(IsNumber(tgc));
+                    CalcTotal();
+
+                }
+                catch (err) {
+
+                    alert(err.message);
+                }
+
+            }
+            function IsNumber(ele) {
+                if (isNaN(ele) || ele == '') {
+                    return 0;
+                }
+                else { return ele; }
+            }
+            function setDeafult() {
+                $("#Transportation").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#SteelCost").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+
+
+                $("#CuttingSquare1").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#Forging1").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#HeatTreatment1").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#ShotBlasting1").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#MPI1").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#Grinding1").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#ColdCoining1").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#Machining1").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#DieMaintenance1").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+                $("#InitialDieCost").on("blur", function () {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).val("0");
+                    }
+                });
+
+
+
+            }
+            function CalcTotal() {
+
+                setDeafult();
+                var CuttingSquare2;
+                var Forging2;
+                var HeatTreatment2;
+                var ShotBlasting2;
+                var MPI2;
+                var Grinding2;
+                var ColdCoining2;
+                var Machining2;
+
+                if ($('#CuttingSquare2').length) {
+                    if ($('#CuttingSquare2').val()=="") {
+                        CuttingSquare2 = "0.00";
+                    }
+                    else {
+                        CuttingSquare2 = $('#CuttingSquare2').val();
+                    }
+
+                }
+                else {
+
+                    CuttingSquare2 = "0.00";
+                }
+                if ($('#Forging2').length) {
+
+                    if ($('#Forging2').val() == "") {
+                        Forging2 = "0.00";
+                    }
+                    else {
+                        Forging2 = $('#Forging2').val();
+                    }
+                }
+                else {
+                    Forging2 = "0.00";
+                }
+                if ($('#HeatTreatment2').length) {
+                    if ($('#HeatTreatment2').val() == "") {
+                        HeatTreatment2 = "0.00";
+                    }
+                    else {
+                        HeatTreatment2 = $('#HeatTreatment2').val();
+                    }
+
+                }
+                else {
+                    HeatTreatment2 = "0.00";
+                }
+                if ($('#ShotBlasting2').length) {
+                    if ($('#ShotBlasting2').val() == "") {
+                        ShotBlasting2 = "0.00";
+                    }
+                    else {
+                        ShotBlasting2 = $('#ShotBlasting2').val();
+                    }
+
+                }
+                else {
+                    ShotBlasting2 = "0.00";
+                }
+                if ($('#MPI2').length) {
+                    if ($('#MPI2').val() == "") {
+                        MPI2 = "0.00";
+                    }
+                    else {
+                        MPI2 = $('#MPI2').val();
+                    }
+
+                }
+                else {
+                    MPI2 = "0.00";
+                }
+                if ($('#Grinding2').length) {
+                    if ($('#Grinding2').val() == "") {
+                        Grinding2 = "0.00";
+                    }
+                    else {
+                        Grinding2 = $('#Grinding2').val();
+                    }
+
+                }
+                else {
+                    Grinding2 = "0.00";
+                }
+                if ($('#ColdCoining2').length) {
+                    if ($('#ColdCoining2').val() == "") {
+                        ColdCoining2 = "0.00";
+                    }
+                    else {
+                        ColdCoining2 = $('#ColdCoining2').val();
+                    }
+
+                }
+                else {
+                    ColdCoining2 = "0.00";
+                }
+                if ($('#Machining2').length) {
+                    if ($('#Machining2').val() == "") {
+                        Machining2 = "0.00";
+                    }
+                    else {
+                        Machining2 = $('#Machining2').val();
+                    }
+
+                }
+                else {
+                    Machining2 = "0.00";
+                }
+
+                var toalconcostq = parseFloat(Forging2) + parseFloat(ShotBlasting2) + parseFloat(HeatTreatment2)
+                    + parseFloat(MPI2) + parseFloat(CuttingSquare2) + parseFloat(ColdCoining2)
+                    + parseFloat(Grinding2) + parseFloat(Machining2) + parseFloat(IsNumber($('#DieMaintenance2').val()));
+
+                $('#TotalConverstionCost').val(toalconcostq.toFixed(2));
+
+                var totalcomcostq = (parseFloat(toalconcostq) + parseFloat(IsNumber($('#TotalRowMaterialCost').val()))).toFixed(2);
+                $('#TotalComponentCost').val(totalcomcostq);
+
+            }
+
+            $j('#POQty_Open').click(function () {
+                if ( $j('#POQty_Open').prop('checked')) {
+                    $j('#POQty_Open').val('True');
+                    $j('#hdn_POQty_Open').val('True');
+                }
+                else {
+                    $j('#POQty_Open').val('False');
+                    $j('#hdn_POQty_Open').val('False');
+                }
+            });
+
+
+
+        </script>
+        <script>
+            function bindRawMaterial(){
+                var stringArray = @Html.Raw(Json.Encode(@ViewData["RawMaterial"]));
+
+                $.each(stringArray, function (i, data) {      // bind the dropdown list using json result
+                    $('<option>',
+                       {
+                           value: data.Value,
+                           text: data.Text
+                       }).html(data.BindType).appendTo("#drpRMRawMaterial");
+                });
+            }
+            function bindSection(){
+                var stringArray = @Html.Raw(Json.Encode(@ViewData["Section"]));
+
+                $.each(stringArray, function (i, data) {      // bind the dropdown list using json result
+                    $('<option>',
+                       {
+                           value: data.Value,
+                           text: data.Text
+                       }).html(data.BindType).appendTo("#drpRMSection");
+                });
+            }
+        </script>
+
+}
+

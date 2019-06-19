@@ -1,0 +1,171 @@
+﻿@{
+    ViewBag.Title = "Daily Consumptions";
+    ViewBag.Active = "Master";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+<fieldset>
+    <header class="blue accent-3 relative">
+        <div class="container-fluid text-white">
+            <h4>
+                <i class="icon-database"></i>
+                Daily Consumptions
+            </h4>
+
+            <div class="row justify-content-between">
+                <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                    <li>
+                        <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>Daily Consumptions</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+    </header>
+    <!-- PAGE TITLE -->
+    <div class="container-fluid animatedParent animateOnce">
+        <div class="tab-content my-3" id="v-pills-tabContent">
+            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                @*<div class="row my-3">*@
+                <div class="col-md-12">
+                    <div class="card r-0 shadow">
+                        @*<div class="table-responsive">*@
+                        <form action="">
+                            <!-- START DEFAULT DATATABLE -->
+                            <div class="panel panel-default">
+
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card mb-3 shadow no-b r-0">
+                                                <div class="card-body">
+                                                    <div class="form-row">
+                                                        
+                                                        <div class="col-md-2 mb-3">
+
+                                                        </div>
+                                                        <div class="col-md-4 mb-3">
+                                                            <label for="DailyConsuamble" class="Label">Daily Consumable</label>
+                                                        </div>
+                                                        <div class="form-group col-md-4">                                                         
+                                                            @Html.DropDownList("DailyConsumable", ViewData["DailyConsumable"] as IEnumerable<SelectListItem>                                        ,
+                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })                                                          
+                                                        </div>
+                                                       
+                                                    </div>
+                                                        <div class="form-row">
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+                                                                <label class="Label" for="Name">Rate Per Unit</label>
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+
+                                                                <input class="form-control r-0 light s-12" id="txtRatePerUnit" type="text" value="">
+
+                                                            </div>
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+                                                                <label class="Label" for="Telephone_No">Start Reading</label>
+                                                            </div>
+                                                            <div class="col-md-4 mb-3">
+
+                                                                <input class="form-control r-0 light s-12" id="txtStartReading" type="text" value="">
+
+                                                            </div>
+                                                            <div class="col-md-2 mb-3">
+
+                                                            </div>
+                                                        </div>
+                                                       
+
+                                                    </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <center>
+
+
+                                        <div class="alert alert-warning" id="divwarn" style="display:none">
+                                            <strong>Warning!</strong> <label id="lbl_validation"></label>
+                                        </div>
+                                        <center>
+                                            <input type="button" name="Save" value="Save" class="btn btn-primary btn-sm" id="btn_Save" onclick="save();" />
+                                        </center>
+                                        <br />
+                                    </center>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</fieldset>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script src="~/Content/Validations/JqueryUi.js"></script>
+<script src="~/Scripts/date.format.js" type="text/javascript"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+
+
+
+
+
+        function save() {
+            var userid=@Session["userid"];
+            var dailyConsumableTypeId = $("#DailyConsumable").val();
+            var ratePerUnit = $("#txtRatePerUnit").val();
+            var startReading = $("#txtStartReading").val();
+            if (dailyConsumableTypeId== "") {
+                alert("Please Select Daily Consumable ");
+                return false;
+            }
+            if (ratePerUnit=="" ) {
+                alert("Please Enter Rate Per Unit ");
+                return false;
+            }
+            if (startReading=="") {
+                alert("Please Enter Start Reading");
+                return false;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "../DailyConsumptions/SaveDailyConsumables",
+                data: JSON.stringify({ dailyConsumableTypeId, ratePerUnit, startReading}),
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (status) {
+
+                        alert("Data Saved Successfully");
+                        location.href = "@Url.Action("AllInquiry", "Inquiry")";
+                },
+                error: function (err) {
+
+                    alert('Error occured');
+                }
+            });
+        }
+</script>
+

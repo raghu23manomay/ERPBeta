@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- META SECTION -->
+    <title>SSM-WorkorderPlanning</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="~/ProjectImages/elogo.ico" type="image/x-icon" />
+    <!-- END META SECTION -->
+    <!-- CSS INCLUDE -->
+    <link href="../assets/css/app.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" id="theme" href="~/NewCssAndTheme/css/theme-default.css" />
+    <link rel="stylesheet" type="text/css" href="~/NewCssAndTheme/css/datatables.min.css" />
+    <style>
+        table {
+            color: black;
+            font-size: 12px;
+        }
+        .Label{
+            color: black;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+@model XRP.Models.ssmtbl_WorkorderModel
+@{
+    ViewBag.Title = "Workorder Planning";
+    ViewBag.Active = "Marketing";
+    // Layout = "~/Views/Shared/_NewLayout.cshtml";
+    Layout = null;
+}
+@using (Html.BeginForm("WorkorderPlanning", "Workorder", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                   
+                        <h4>
+                            <i class="icon-database"></i>
+                            Workorder Planning
+                        </h4>
+                    
+                </div>
+
+                <div class="row left-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link active" aria-controls="first" href='#first' role="tab" data-toggle="tab">Raw Material</a>
+                            @*<a href="#first" aria-controls="first" role="tab" data-toggle="tab">Raw Material</a>*@
+                        </li>
+                        <li>
+                            <a class="nav-link" href='#second' role="tab" aria-controls="second" data-toggle="tab">Production Unit</a>
+                            @*<a href="#second" aria-controls="second" role="tab" data-toggle="tab">Production Unit</a>*@
+                        </li>
+                        <li>
+                            <a href="#third" class="nav-link" aria-controls="third" role="tab" data-toggle="tab">Die</a>
+                        </li>
+                        <li>
+                            <a href="#fourth" class="nav-link" aria-controls="fourth" role="tab" data-toggle="tab">Track</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+        <!-- PAGE TITLE -->
+       
+                    <div class="panel panel-default tabs" id="tabs">
+
+                        <!-- Tab panes -->
+                        <div class="panel-body tab-content">
+                            <div class="tab-pane active" id="first">
+                                @Html.Action("RMPlanning", "Planning", new { wono = @TempData["wono"], gradeOfMaterial = @TempData["gof"], section = @TempData["section"], ht = @TempData["ht"] });
+                            </div>
+                            <div class="tab-pane" id="second">
+                          
+                            </div>
+                            <div class="tab-pane" id="third">
+                               
+                            </div>
+                            <div class="tab-pane" id="fourth">
+                              
+                            </div>
+                        </div>
+                        @*<div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="first">
+                                @Html.Action("RMPlanning", "Planning", new { wono = @TempData["wono"], gradeOfMaterial = @TempData["gof"], section = @TempData["section"], ht = @TempData["ht"] });
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="second">
+                              
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="third">
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="fourth">
+
+                            </div>
+                        </div>*@
+                    </div>
+              
+    </fieldset>
+
+        <script type="text/javascript" src="~/NewCssAndTheme/js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="~/NewCssAndTheme/js/plugins/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="~/NewCssAndTheme/js/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="../assets/js/app.js"></script>
+        <script src="~/Scripts/datatables.min.js"></script>
+
+        <script type="text/javascript">
+          $(document).ready(function () {
+              var wono = getUrlVars()["wono"];
+              var gof = getUrlVars()["gof"];
+              var ht = getUrlVars()["ht"];
+              var section = getUrlVars()["section"];
+              function getUrlVars() {
+                  var vars = {};
+                  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                      vars[key] = value;
+                  });
+                  return vars;
+              }
+          });
+        </script>
+}

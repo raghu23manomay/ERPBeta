@@ -1,0 +1,402 @@
+﻿@model XRP.Models.ssmtbl_QuotationModel
+@{
+    ViewBag.Title = "Quotation";
+    ViewBag.Active = "Marketing";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (Html.BeginForm("CreateQuotation", "Quotation", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{@Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+
+        <!-- PAGE TITLE -->
+        <div class="page-title">
+            <h2><span class="fa fa-arrow-circle-o-left"></span>FEASIBILITY</h2>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="col-md-10"></div>
+                <div class="col-md-2">
+                    <div class="form-group" style="text-align:center">
+                        <input type="button" class="btn btn-info" value="All Inquiry" onclick="location.href = '@Url.Action("AllInquiry", "Inquiry")    '" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading"><h4>Inquiry Details</h4></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.QuotationNo, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayTextFor(m => m.QuotationNo)
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.PartDescription, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayTextFor(m => m.PartDescription)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.Material, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayTextFor(m => m.Material)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.PartNo, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayTextFor(m => m.PartNo)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.HeatTreatment, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayTextFor(m => m.HeatTreatment)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading"><h4>Components Weight Details</h4></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.Section, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.Section, ViewData["Section"] as IEnumerable<SelectListItem>,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control" })
+                                @Html.ValidationMessageFor(model => model.Section, null, new { @class = "alert-danger" })
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.GrossWeight, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayTextFor(m => m.GrossWeight)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.ForgingCostBased, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.RadioButtonFor(m => m.ForgingCostBased, "Gross Wt", new { @class = "radio-inline" })Gross Wt
+                            @Html.RadioButtonFor(m => m.ForgingCostBased, "Cut Wt", new { @class = "radio-inline" })Cut Wt
+                            @Html.RadioButtonFor(m => m.ForgingCostBased, "Net Wt", new { @class = "radio-inline" })Net Wt
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(m => m.MPICostBasedOn, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.RadioButtonFor(m => m.MPICostBasedOn, "Net Wt", new { @class = "radio-inline" })Net Wt
+                            @Html.RadioButtonFor(m => m.MPICostBasedOn, "Per Piece", new { @class = "radio-inline" })Per Piece
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.Material, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayTextFor(m => m.Material)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.HeatTreatment, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayTextFor(m => m.HeatTreatment)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 control-label">
+                            @Html.LabelFor(model => model.NetWeight, new { @class = "Label" })
+                        </div>
+                        <div class="col-md-8">
+                            @Html.DisplayTextFor(m => m.NetWeight)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-heading"><h4>Raw Material Cost Details</h4></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.SteelCost, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-3">
+
+                                @Html.TextBoxFor(model => model.SteelCost, new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.TotalRowMaterialCost, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-3">
+
+                                @Html.TextBoxFor(model => model.TotalRowMaterialCost, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.Transportation, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-3">
+
+                                @Html.TextBoxFor(model => model.Transportation, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.TotalRowMaterialCost, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-3">
+
+                                @Html.TextBoxFor(model => model.TotalRowMaterialCost, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-heading"><h4>Conversion Rate Details</h4></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.Cutting, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+
+                                @Html.TextBoxFor(model => model.CuttingSquare1, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.CuttingSquare2, new { @class = "form-control" })
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                <label>Die Maintaince Cost(Per Piece)</label>
+                            </div>
+                            <div class="col-md-4">
+
+                                @Html.TextBoxFor(model => model.DieMaintenance1, new { @class = "form-control" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.DieMaintenance1, new { @class = "form-control" })
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.TotalConverstionCost, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+
+                                @*@Html.TextBoxFor(model => model.TotalConverstionCost, new { @class = "form-control" })*@
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.TotalConverstionCost, new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.TotalComponentCost, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.TotalComponentCost, new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 control-label">
+                                @Html.LabelFor(model => model.DieCost, new { @class = "Label" })
+                            </div>
+                            <div class="col-md-4">
+
+                                @*@Html.TextBoxFor(model => model.DieCost, new { @class = "form-control" })*@
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.DieCost, new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+            &nbsp;
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="text-align:center">
+                        <input type="submit" name="Save" value="Save" class="btn btn-success btn-default" id="Save" />
+                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" id="Reset" onclick="location.href = '@Url.Action("CreateFeasibility", "Feasibility", new { InquiryNo = Model.InquiryNo })'" />
+
+                    </div>
+                </div>
+            </div>
+            &nbsp;
+
+    </fieldset>
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+    </script>
+
+    <script type="text/javascript">
+        $j(document).ready(function () {
+
+            getDieDescriptionValue();
+
+            $j('#Insert').click(function () {
+                $j('#Dia').show();
+                $j('#Length').show();
+                $j('#fisdiavalue').show();
+                $j('#fisdialength').show();
+
+                var dieIns = 'Dia' + $j('#fisdiavalue').val() + ' Len' + $j('#fisdialength').val();
+                $j('#DieDescription').val(dieIns);
+
+                $j('#DieLength').hide();
+                $j('#Width').hide();
+                $j('#Height').hide();
+                $j('#fisdiablockwidth').val(0);
+                $j('#fisdiablockheight').val(0);
+                $j('#fisdiablocklength').val(0);
+                $j('#fisdiablockwidth').hide();
+                $j('#fisdiablockheight').hide();
+                $j('#fisdiablocklength').hide();
+            });
+            $j('#DieBlock').click(function () {
+                $j('#Dia').hide();
+                $j('#Length').hide();
+                $j('#fisdiavalue').val(0);
+                $j('#fisdialength').val(0);
+                $j('#fisdiavalue').hide();
+                $j('#fisdialength').hide();
+
+                $j('#DieLength').show();
+                $j('#Width').show();
+                $j('#Height').show();
+                $j('#fisdiablockwidth').show();
+                $j('#fisdiablockheight').show();
+                $j('#fisdiablocklength').show();
+
+                var dieIns = 'Len' + $j('#fisdiablocklength').val() + ' Wid' + $j('#fisdiablockwidth').val() + ' Ht' + $j('#fisdiablockheight').val();
+                $j('#DieDescription').val(dieIns);
+            });
+
+
+
+        });
+
+        function getDieDescriptionValue() {
+            if (document.getElementById('Insert').checked == true) {
+                $j('#Dia').show();
+                $j('#Length').show();
+                $j('#fisdiavalue').show();
+                $j('#fisdialength').show();
+                var dieIns = 'Dia' + $j('#fisdiavalue').val() + ' Len' + $j('#fisdialength').val();
+                $j('#DieDescription').val(dieIns);
+            }
+            else if (document.getElementById('DieBlock').checked == true) {
+                $j('#DieLength').show();
+                $j('#Width').show();
+                $j('#Height').show();
+                $j('#fisdiablockwidth').show();
+                $j('#fisdiablockheight').show();
+                $j('#fisdiablocklength').show();
+                var dieIns = 'Len' + $j('#fisdiablocklength').val() + ' Wid' + $j('#fisdiablockwidth').val() + ' Ht' + $j('#fisdiablockheight').val();
+                $j('#DieDescription').val(dieIns);
+            }
+        }
+
+
+    </script>
+}
+

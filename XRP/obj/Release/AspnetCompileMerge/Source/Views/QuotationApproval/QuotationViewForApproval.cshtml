@@ -1,0 +1,720 @@
+﻿@model XRP.Models.ssmtbl_QuotationModel
+@{
+    ViewBag.Title = "QuotationApproval";
+    //ViewBag.Active = "My Approval";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+@*<style>
+        div {
+        font-family:Roboto;
+        font:14px;
+        }
+        /*table {
+             font-family:Roboto;
+        font:13px;
+        }*/
+    </style>*@
+<fieldset>
+    @Html.HiddenFor(m => m.CreatedOn.Date, new { @id = "hdn_date" })
+    @Html.HiddenFor(m => m.VersionNo)
+    @Html.HiddenFor(m => m.id, new { @id = "hdn_quotId" })
+    @Html.HiddenFor(m => m.InquiryNo)
+    @Html.HiddenFor(m => m.new_Version_No)
+    @Html.HiddenFor(m => m.QuotationNo)
+    @Html.HiddenFor(m => m.CuttingSquare1)
+    @Html.HiddenFor(m => m.CuttingSquare2)
+    @Html.HiddenFor(m => m.Forging1)
+    @Html.HiddenFor(m => m.Forging2)
+    @Html.HiddenFor(m => m.HeatTreatment1)
+    @Html.HiddenFor(m => m.HeatTreatment2)
+    @Html.HiddenFor(m => m.ShotBlasting1)
+    @Html.HiddenFor(m => m.ShotBlasting2)
+    @Html.HiddenFor(m => m.MPI1)
+    @Html.HiddenFor(m => m.MPI2)
+    @Html.HiddenFor(m => m.Grinding1)
+    @Html.HiddenFor(m => m.Grinding2)
+    @Html.HiddenFor(m => m.ColdCoining1)
+    @Html.HiddenFor(m => m.ColdCoining2)
+    @Html.HiddenFor(m => m.Machining1)
+    @Html.HiddenFor(m => m.Machining2)
+    @Html.HiddenFor(m => m.DieMaintenance1)
+    @Html.HiddenFor(m => m.DieMaintenance2)
+    @Html.HiddenFor(m => m.FileStatus, new { @id = "hdn_FileStatus" })
+
+
+    <header class="blue accent-3 relative" id="header">
+        <div class="container-fluid text-white">
+            <div class="row p-t-b-10 ">
+                <div class="col">
+                    <h4>
+                        <i class="icon-database"></i>
+                        Quotation
+                    </h4>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                    <li>
+                        <a class="nav-link" href='@Url.Action("QuotationList", "QuotationApproval")'><i class="icon icon-home2"></i>Quotations For Approval</a>
+                    </li>
+                    @*<li>
+                            <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
+                        </li>*@
+                    <li class="float-right">
+                        <a class="nav-link  active"><i class="icon icon-eye"></i>Quotation View</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="page" id="printpdf">
+
+        <div class="container">
+            <div class="invoice white shadow">
+
+                <div class="p-5">
+                    <div id="printpdf1">
+                        <!-- title row -->
+                        <div class="row">
+                            <div class="col-12">
+                                @*<img class="w-80px mb-4" src="~/NewCssAndTheme/img/ssmlogo.jpg">*@
+                                <div class="float-right">
+                                    <div>
+                                        <h4>Quotation #@Html.DisplayFor(m => m.QuotationNo)</h4>
+                                        <small>Revision Number:@Html.DisplayFor(m => m.new_Version_No) | Date:<span id="lbl_cdate"></span></small>
+                                    </div>
+                                    @*<table>
+                                            <tr>
+                                                <td class="font-weight-normal">Date:</td>
+                                                <td> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">Revision Number:</td>
+                                                <td>@Html.DisplayFor(m => m.new_Version_No)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">Part Description: &nbsp;  &nbsp; &nbsp;</td>
+                                                <td> @Html.DisplayFor(m => m.PartDescription)</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">Material:</td>
+                                                <td>@Html.DisplayFor(m => m.Material)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">Customer Part No:</td>
+                                                <td>@Html.DisplayFor(m => m.PartNo)</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-normal">
+
+                                                    Heat Treatment:
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(m => m.HeatTreatmentText)
+                                                </td>
+                                            </tr>
+                                        </table>*@
+
+                                </div>
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- info row -->
+                        <div class="row my-3 ">
+
+                            <!-- /.col -->
+                            <div class="col-sm-4">
+                                To
+                                @*<br />*@
+                                <div>
+                                    <label class="Label"> <strong>@Html.DisplayFor(m => m.CustomerName)</strong></label>
+                                </div>
+                                <div>
+                                    <address class="Label">@Html.DisplayFor(m => m.address)</address>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-4">
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                        <div class="row">
+
+                            <div class="col-12 table-responsive">
+                                <strong>Component Details</strong>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Part Description:&nbsp; @Html.DisplayFor(m => m.PartDescription)&nbsp;
+                                                | Material:&nbsp;@Html.DisplayFor(m => m.Material)&nbsp;
+                                                | Customer Part No:&nbsp;@Html.DisplayFor(m => m.PartNo)
+                                                &nbsp; | Heat Treatment:&nbsp;
+                                                @Html.DisplayFor(m => m.HeatTreatmentText)
+                                                &nbsp; | Hardness:&nbsp; Min:&nbsp;
+                                                @Html.DisplayFor(m => m.hardnessmin)&nbsp; Max:&nbsp;
+                                                @Html.DisplayFor(m => m.hardnessmax) &nbsp; @Html.DisplayFor(m => m.hardnessunits)
+                                            </td>
+
+
+                                            @*<td>
+                                                Part Description&nbsp; </td>
+                                                    <td>@Html.DisplayFor(m => m.PartDescription)
+                                                </td>
+                                                <td> | Material:</td>
+                                                <td>@Html.DisplayFor(m => m.Material)</td>
+                                                <td>Customer Part No:</td>
+                                                <td>@Html.DisplayFor(m => m.PartNo)</td>
+                                                <td>
+
+                                                    Heat Treatment:
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(m => m.HeatTreatmentText)
+                                                </td>*@
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- Table row -->
+                        <div class="row">
+
+                            <div class="col-12 table-responsive">
+                                <strong>Raw Material Cost Details</strong>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th width="60%">Particulars</th>
+                                            <th width="20%">Basic Rate (Rs/kg)</th>
+                                            <th width="20%">Amount (Rs)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Steel Cost</td>
+                                            <td>@Html.DisplayFor(m => m.SteelCost)</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Transportation</td>
+                                            <td>@Html.DisplayFor(m => m.Transportation)</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td></td>
+                                            <td>@Html.DisplayFor(m => m.TotalRowMaterialCost)</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+
+
+
+                        <div class="row">
+
+                            <div class="col-12 table-responsive">
+                                <strong>Conversion Rate Details</strong>
+                                <table class="table table-striped">
+                                    @*<table cellpadding="5" cellspacing="0" style="border: 1px solid #ccc;font-size: 9pt;" width="100%">*@
+                                    <thead>
+                                        <tr>
+                                            <th width="60%">Particulars</th>
+                                            <th width="20%">Basic Rate (Rs/kg)</th>
+                                            <th width="20%">Amount (Rs)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewData["fisopvinvseqlist"] != null)
+
+                                        {
+
+                                            foreach (System.Data.DataRow dr in (ViewData["fisopvinvseqlist"] as System.Data.DataTable).Rows)
+
+                                            {
+                                                if (@dr["Operations_Involved"].ToString() == "1")//for cutting
+                                                {
+                                                    <tr id="qpdf1_1" name="qpdf1_1">
+                                                        <td>Cutting</td>
+                                                        <td>@Html.DisplayFor(m => m.CuttingSquare1)</td>
+                                                        <td>@Html.DisplayFor(m => m.CuttingSquare2)</td>
+                                                    </tr>
+                                                }
+                                                if (@dr["Operations_Involved"].ToString() == "2")//for forging
+                                                {
+                                                    <tr id="qpdf1_2" name="qpdf1_2">
+                                                        <td>Forging</td>
+                                                        <td>@Html.DisplayFor(m => m.Forging1)</td>
+                                                        <td>@Html.DisplayFor(m => m.Forging2)</td>
+                                                    </tr>
+
+                                                }
+                                                if (@dr["Operations_Involved"].ToString() == "5")//for mpi
+                                                {
+                                                    <tr id="qpdf1_5" name="qpdf1_5">
+                                                        <td>MPI</td>
+                                                        <td>@Html.DisplayFor(m => m.MPI1)</td>
+                                                        <td>@Html.DisplayFor(m => m.MPI2)</td>
+                                                    </tr>
+                                                }
+                                                if (@dr["Operations_Involved"].ToString() == "4")//for shoart blasting
+                                                {
+                                                    <tr id="qpdf1_4" name="qpdf1_4">
+                                                        <td>Shot Blasting</td>
+                                                        <td>@Html.DisplayFor(m => m.ShotBlasting1)</td>
+                                                        <td>@Html.DisplayFor(m => m.ShotBlasting2)</td>
+                                                    </tr>
+                                                }
+                                                if (@dr["Operations_Involved"].ToString() == "3")//for heat treartment
+                                                {
+                                                    <tr id="qpdf1_3" name="qpdf1_3">
+                                                        <td>Heat Treatment</td>
+                                                        <td>@Html.DisplayFor(m => m.HeatTreatment1)</td>
+                                                        <td>@Html.DisplayFor(m => m.HeatTreatment2)</td>
+                                                    </tr>
+                                                }
+                                                if (@dr["Operations_Involved"].ToString() == "15")//for mechaineing
+                                                {
+                                                    <tr id="qpdf1_15" name="qpdf1_15">
+                                                        <td>Machining (Per Piece)</td>
+                                                        <td>@Html.DisplayFor(m => m.Machining1)</td>
+                                                        <td>@Html.DisplayFor(m => m.Machining2)</td>
+                                                    </tr>
+                                                }
+                                                if (@dr["Operations_Involved"].ToString() == "14")//for coldcoining
+                                                {
+                                                    <tr id="qpdf1_14" name="qpdf1_14">
+                                                        <td>Cold Coining(Per Piece)</td>
+                                                        <td>@Html.DisplayFor(m => m.ColdCoining1)</td>
+                                                        <td>@Html.DisplayFor(m => m.ColdCoining2)</td>
+                                                    </tr>
+                                                }
+                                                if (@dr["Operations_Involved"].ToString() == "13")//for griding
+                                                {
+                                                    <tr id="qpdf1_13" name="qpdf1_13">
+                                                        <td>Grinding (Per Piece)</td>
+                                                        <td>@Html.DisplayFor(m => m.Grinding1)</td>
+
+                                                        <td>
+                                                            @Html.DisplayFor(m => m.Grinding2)
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+
+                                        }
+                                        <tr>
+                                            <td>Die Maintaince Cost (Per Piece)</td>
+                                            <td>@Html.DisplayFor(m => m.DieMaintenance1)</td>
+                                            <td>@Html.DisplayFor(m => m.DieMaintenance2)</td>
+                                        </tr>
+                                        @if (Model.iccoverhadrm != "")
+                                        {
+                                            <tr>
+                                                <td>ICC & Overhead on RM(%)</td>
+                                                <td>@Html.DisplayFor(m => m.iccoverhadrm)</td>
+                                                <td>@Html.DisplayFor(m => m.totaliccoverhadrm)</td>
+                                            </tr>
+                                        }
+                                        @if (Model.profitonconversion != "")
+                                        {
+                                            <tr>
+                                                <td>Profit on Conversion(%)</td>
+                                                <td>@Html.DisplayFor(m => m.profitonconversion)</td>
+                                                <td>@Html.DisplayFor(m => m.totalprofitonconversion)</td>
+                                            </tr>
+                                        }
+
+                                        @if (Model.rejection != "")
+                                        {
+                                            <tr>
+                                                <td>Rejection(%)</td>
+                                                <td>@Html.DisplayFor(m => m.rejection)</td>
+                                                <td>@Html.DisplayFor(m => m.totalrejection)</td>
+                                            </tr>
+                                        }
+                                        @if (Model.packingtransport != "")
+                                        {
+                                            <tr>
+                                                <td>Packing,Transport(KG)</td>
+                                                <td>@Html.DisplayFor(m => m.packingtransport)</td>
+                                                <td>@Html.DisplayFor(m => m.totalpackingtransport)</td>
+                                            </tr>
+                                        }
+                                       
+                                        @*<tr id="qpdf1_diecostinclude" name="qpdf1_diecostinclude" style="display:none">
+                                            <td>
+                                                <span id="spn_dcincludepdf1" style="display:none;">Initial Die Cost:</span><span id="spn_dmcincludepdf1" style="display:none;">Initial Die Cost:</span>
+                                            </td>
+                                            <td></td>
+                                            <td><span id='dienetcost_pdf1'></span></td>
+                                        </tr>*@
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <div class="row">
+                            <!-- accepted payments column -->
+                            <div class="col-6">
+                                <strong>Terms And Conditions </strong>
+                                <div id="divtcnotes1" class="table-responsive">
+                                    <table>
+                                        @{ int rowNo = 0; }
+                                        @if (Model.ssmtbl_TermsNCondtionModel != null)
+                                        {
+
+                                            foreach (var data in Model.ssmtbl_TermsNCondtionModel)
+                                            {
+
+                                                <tr>
+                                                    <td>@(rowNo += 1).</td>
+                                                    <td>@data.TermsNConditionContent</td>
+
+                                                </tr>
+
+
+                                            }
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-1"></div>
+                            <div class="col-5">
+                                <strong>Total</strong>
+
+                                <div class="table-responsive" align="right">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th style="width:50%">Total Component Cost:</th>
+                                                <td>@Html.DisplayFor(m => m.TotalComponentCost)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Initial Die Cost:</th>
+                                                <td>@Html.DisplayFor(m => m.InitialDieCost)</td>
+                                            </tr>
+                                            @if (Model.totallycost != "")
+                                            {
+                                                <tr>
+                                                    <th>Total Other Cost:</th>
+                                                    <td>@Html.DisplayFor(m => m.totallycost)</td>
+                                                </tr>
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="CommentForApproval" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Comment</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.TextArea("Comment", null, new { @class = "form-control r-0 light s-12", @id = "Comment", @cols = "3", @rows = "5" })
+                                </div>
+                                <div class="modal-footer">
+                                    @*<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>*@
+                                    <button type="button" class="btn btn-primary btn-sm" id="ConditionalApprove">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="CommentForView" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Changes</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.TextArea("Comment", null, new { @class = "form-control r-0 light s-12", @id = "Comment", @cols = "3", @rows = "5" })
+                                </div>
+                                <div class="modal-footer">
+                                    @*<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>*@
+                                    <button type="button" class="btn btn-primary btn-sm" id="ConditionalView">Done</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="footer">
+                        <div class="col-12">
+                            <div align="left">
+                                @*@using (Html.BeginForm("Export", "Quotation", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="GridHtml" />
+                                        <input type="submit" name="Save" value="Download" class="btn btn-primary btn-sm btn-default" id="download" onclick="storepdfdata()" style="display:none;" />
+                                    }*@
+
+                                <input type="button" name="Save" value="Download" class="btn btn-primary btn-sm btn-default" id="download" style="display:none;" onclick="location.href='@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" }) '" />
+                            </div>
+                            <div class="dropdown" align="right">
+
+                                @*<a href="#" class="btn btn-sm btn-primary float-left" id="change"><i class="icon icon-change_history"></i>Change</a>*@
+                                <div class="btn-group dropup">
+                                    <button type="button" class="btn btn-sm btn-primary float-left" id="change">
+                                        <i class="icon icon-change_history"></i>
+                                        Change
+                                    </button>
+                                    <button type="button" id="ToggleDropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="modal" data-target="#CommentForView" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    @*<div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#" id="" data-toggle="modal" data-target="#CommentForView">Changes</a>
+                                        </div>*@
+                                </div>
+                                @* <a href="@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" })" class="btn btn-primary btn-sm">Download</a>*@
+                                <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Approve
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:lightgrey;">
+                                    <a class="dropdown-item" href="#" id="Approve">Approve</a>
+                                    <a class="dropdown-item" href="#" id="" data-toggle="modal" data-target="#CommentForApproval">Conditional Approve</a>
+                                    <a class="dropdown-item" href="#" id="Reject">Reject</a>
+                                </div>
+                            </div>
+
+                            @*<div class="form-group" style="text-align:center">*@
+                            @*<input type="button" name="Save" value="View All Version" class="btn btn-primary btn-default" id="ViewAllVersion" onclick="location.href = '@Url.Action("GetAllVersionOfOneQuotation", "QuotationApproval", new { QuotationNo = Model.QuotationNo, QuotId=Model.id })'" />*@
+                            @*<a class="editVaccin  btn btn-default btn-rounded" href="/QuotationApproval/QuotationViewForApproval?QuotationId=@data.id" title="View Quotation"><span class="fa fa-edit"></span></a>*@
+                            @*<a href="@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" })" class=" btn btn-default btn-info">Download</a>*@
+                            @*<input type="button" name="Save" value="Download" class="btn btn-info btn-default" onclick="location.href='@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" }) '" />*@
+                            @*<input type="button" name="Save" value="Approve" class="btn btn-primary" id="Approve" />
+                                <input type="button" name="Save" value="Reject" class="btn btn-danger btn-default" id="Reject" />*@
+                            @*<input type="button" name="Save" value="Close" class="btn btn-warning btn-default" id="Close" />*@
+                            @*</div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/jspdf.debug.js"></script>
+<script src="~/Content/jspdf.min.js"></script>
+<link href="~/NewCssAndTheme/FancyBox/jquery.fancybox.css" rel="stylesheet" />
+<script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
+<script src="~/Content/html2canvas.js"></script>
+
+<script>
+    var $j = jQuery.noConflict(true);
+</script>
+
+<script>
+    //$j("#download").click(function () {
+    //    var GridHtml = $j("#printpdf1").html();
+
+    //    $j.ajax({
+    //        url: "../Quotation/Export",
+    //        type: "POST",
+    //        dataType: "json",
+    //        data: { GridHtml: GridHtml },
+    //        success: function (data) {
+
+
+    //        }
+    //    });
+    //});
+    //$(function () {
+    //    $("#download").click(function () {
+
+    //    });
+    //});
+    function storepdfdata() {
+        // alert($("input[name='GridHtml']").val($("#printpdf1").html()));
+        $("input[name='GridHtml']").val($("#printpdf1").html());
+        return false;
+    }
+</script>
+<script type="text/javascript">
+
+    $j(document).ready(function () {
+        if ($j("#hdn_FileStatus").val() == "Conditional Quotation Approved") {
+            $j("#dropdownMenuButton").hide();
+            $j("#change").show();
+            $j("#ToggleDropdown").show();
+        }
+        else if ($j("#hdn_FileStatus").val() == "Quotation Approved") {
+            $j("#dropdownMenuButton").hide();
+            $j("#change").hide();
+            $j("#ToggleDropdown").hide();
+            $j("#download").show();
+        }
+        else {
+            $j("#dropdownMenuButton").show();
+            $j("#change").hide();
+            $j("#ToggleDropdown").hide();
+        }
+
+        //if ($j("#CuttingSquare1").val()) {
+        //    $j("#qpdf1_1").show();
+        //}
+        //if ($j("#Forging1").val()) {
+        //    $j("#qpdf1_2").show();
+        //}
+        //if ($j("#HeatTreatment1").val()) {
+        //    $j("#qpdf1_3").show();
+        //}
+        //if ($j("#ShotBlasting1").val()) {
+        //    $j("#qpdf1_4").show();
+        //}
+        //if ($j("#MPI1").val()) {
+        //    $j("#qpdf1_5").show();
+        //}
+        //if ($j("#Grinding1").val()) {
+        //    $j("#qpdf1_6").show();
+        //}
+        //if ($j("#ColdCoining1").val()) {
+        //    $j("#qpdf1_7").show();
+        //}
+        //if ($j("#Machining1").val()) {
+        //    $j("#qpdf1_8").show();
+        //}
+
+
+        var string = $j("#hdn_date").val();
+        string = string.split(" ")[0];
+        $j("#lbl_cdate").text(string);
+
+        NewUrl = '@Url.Action("QuotationList", "QuotationApproval")';
+
+        $j("#Reject").click(function () {
+            //if (confirm('Are you sure you want to Reject this Quotation?')) {
+
+            //} else {
+
+            //}
+            // Save it!
+            var QuotNo = $j('#QuotationNo').val();
+            var CommentFor = $j('#Comment').val();
+            var Version = $j('#VersionNo').val();
+            var InqNo = $j('#InquiryNo').val();
+            $j.ajax({
+                url: "../QuotationApproval/RejectQuotation",
+                type: "POST",
+                dataType: "json",
+                data: { QuotationNo: QuotNo, Comment: CommentFor, VersionNo: Version, InquiryNo: InqNo },
+                success: function (data) {
+                    alert(data);
+                    location.href = '@Url.Action("QuotationList", "QuotationApproval")';
+                }
+            });
+        });
+
+        $j("#change").click(function () {
+
+            var InqNo = $j('#InquiryNo').val();
+
+            window.location.href = '@Url.Action("NewQuotation", "Quotation")?id=' + InqNo;
+        });
+
+
+        $j("#ConditionalView").click(function () {
+
+            var InqNo = $j('#InquiryNo').val();
+
+            window.location.href = '@Url.Action("NewQuotation", "Quotation")?id=' + InqNo;
+        });
+        $j("#Approve").click(function () {
+            $('#CommentForApproval').hide();
+            //if (confirm('Are you sure you want to Approve this Quotation?')) {
+
+            //} else {
+
+            //}
+            // Save it!
+            var QuotNo = $j('#QuotationNo').val();
+            var CommentFor = $j('#Comment').val();
+            var Version = $j('#VersionNo').val();
+            var InqNo = $j('#InquiryNo').val();
+            $j.ajax({
+                url: "../QuotationApproval/ApproveQuotation",
+                type: "POST",
+                dataType: "json",
+                data: { QuotationNo: QuotNo, Comment: CommentFor, VersionNo: Version, InquiryNo: InqNo },
+                success: function (data) {
+                    alert(data);
+                    location.href = '@Url.Action("QuotationList", "QuotationApproval")';
+                }
+            });
+        });
+
+
+        $j("#ConditionalApprove").click(function () {
+
+            $('#CommentForApproval').hide();
+            var QuotNo = $j('#QuotationNo').val();
+            var CommentFor = $j('#Comment').val();
+            var Version = $j('#VersionNo').val();
+            var InqNo = $j('#InquiryNo').val();
+            $j.ajax({
+                url: "../QuotationApproval/ApproveConditionalQuotation",
+                type: "POST",
+                dataType: "json",
+                data: { QuotationNo: QuotNo, Comment: CommentFor, VersionNo: Version, InquiryNo: InqNo },
+                success: function (data) {
+
+                    alert(data);
+                    location.href = '@Url.Action("QuotationList", "QuotationApproval")';
+
+                }
+            });
+
+        });
+        //$j("#Download").click(function () {
+        //    //pdf download start
+        //    var div = document.getElementById("printpdf");
+        //    //alert(div);
+        //    div.style.display = "block";
+        //    var doc = new jsPDF('p', 'mm', [600, 500]);
+        //    doc.addHTML($j('#printpdf')[0], 10, 10, {
+        //        'background': '#fff',
+        //    }, function () {
+        //        doc.save('Quotation.pdf');
+        //    });
+
+        //    //div.style.display = "none";
+        //    //pdf download complete
+        //});
+
+
+    });
+
+</script>
+

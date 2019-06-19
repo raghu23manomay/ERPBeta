@@ -1,0 +1,625 @@
+﻿
+@{
+    ViewBag.Title = "Reports";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+<fieldset>
+    <header class="blue accent-3 relative">
+        <div class="container-fluid text-white">
+            <div class="row">
+                <div class="col">
+                    <h4 class="">
+                        <i class="icon icon-document-text blue-text s-18"></i>
+                        Reports
+                    </h4>
+                    <div class="row justify-content-between">
+                        <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                            <li>
+                                <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>Reports List</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="container-fluid animatedParent animateOnce">
+        <div class="tab-content my-3" id="v-pills-tabContent">
+            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <div class="card r-0 shadow">
+                            <div class="form-row mt-0 m-1" style="padding:15px 0px 0px 35px; margin:0px">
+
+                                <div class="form-group col-3">
+                                    <h5>
+
+                                        Purchase 
+                                    </h5>
+                                </div>
+
+                                <div class="form-group col-3">
+                                    <h5>
+
+                                        Stores/Inventory 
+                                    </h5>
+                                </div>
+                                <div class="form-group col-3">
+                                    <h5>
+
+                                        Sales 
+                                    </h5>
+                                </div>
+
+                                <div class="form-group col-3">
+                                    <h5>
+
+                                        Quality 
+                                    </h5>
+
+                                </div>
+                            </div>
+                            <hr class="m-0 p-0"/>
+
+                            <div class="">
+                                <div class="card-body  chat-widget p-0 slimScroll" data-height="450">
+                                    <div class="w-body w-scroll">
+                                        <div class="card-body">
+                                            <div class="tab-content" id="v-pills-tabContent1">
+                                                <div class="tab-pane fade  show active" id="w2-tab1" role="tabpanel" aria-labelledby="w2-tab1">
+                                                    <div class="row">
+                                                        <div class="col-sm-12" style="padding-bottom:20px;">
+
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Indent Reports
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Location wise Stock Reports
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Sales Register
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Inward Inspection Report
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Short Closed POs
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Goods Receipt Register
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Order Booking
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        In process Inspection Report
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Material-wise Indents
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Location wise Stock Summary
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Sales Invoice Report
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        First Setup Approval Report
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        POs with invoices
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Supplier wise Goods Receipt Register
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Pending Sales Quotation
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Pre Dispatch Inspection Report
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Indent status report
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Stock Ledger
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Sales Summary
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Buyer Wise PO
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Item wise Goods Receipt Register
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Pending Orders Book
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        User-wise Indents
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Physical Inventory Adjustment Report
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Customer wise Sales Report
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        PO Amendment Report
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Transfer Register
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Over Due Sales Order
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Quotation Compare Report
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Opening Stock Summary
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Item wise Sales Report
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Material wise POs
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Finish Goods Receipt Register
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Pending Sales Invoice
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Supplier wise Quotations
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Stock Valuation Report
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Sales Order/Schedule Status Report
+                                                                    </a>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Supplier wise POs
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Returns Reports
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Customer’s PO wise Sales Register
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Purchase Order Reports
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Issue Register
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Region wise Sales Report
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Purchase Invoice Register
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Vendor Returns
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Salesman wise Sales Report
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        POs awaiting approval
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Min Max Planning Report with Alerts
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Status of on-going Schedules
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Supplier wise Pending Material
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Customer Returns
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Agent wise Sales Report
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        POs Rejected
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Stock Receipts/Issues Reports
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Job Work Order Tracking
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Item wise Invoices
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Rejection Register
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        City wise Sales Report
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Closed POs
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Subcontract & Customer Stock Report
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Item wise Sales Report
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Pending POs
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Material Traceability Report
+                                                                    </a>
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Sales Return Register
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row mt-1 m-0 p-1">
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                   
+                                                                </div>
+                                                                <div class="form-group col-3">
+                                                                    
+                                                                    <a href="#">
+                                                                        <i class="icon-donut_small"></i>
+                                                                        Packing List Report
+                                                                    </a>
+                                                                </div>
+
+                                                                <div class="form-group col-3">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    </div>
+
+</fieldset>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/Validations/JqueryUi.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        document.body.style.overflow = 'hidden';
+
+
+    });
+
+</script>

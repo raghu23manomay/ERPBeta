@@ -1,0 +1,1180 @@
+﻿@model XRP.Models.ssmtbl_CustomerModel
+@{
+    ViewBag.Title = "EditVendor";
+    ViewBag.Active = "Master";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+<style>
+    .mytable {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .mytabletdtr tr td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .mosurhandsymbol {
+        cursor: pointer;
+    }
+</style>
+@using (Html.BeginForm("EditVendor", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Name, new { @class = "form-control r-0 light s-12 required", @id = "hdn_custname" })
+    @Html.HiddenFor(model => model.flag, new { @class = "form-control r-0 light s-12 required", @id = "hdn_isactive" })
+    <input type="hidden" id="hdn_tblrowindex" />
+    <input type="hidden" id="hdn_tblrowindex1" />
+    <fieldset>
+        <input id="hdn_id" type="hidden" />
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+
+                <h4>
+                    <i class="icon-database"></i>
+                    Vendor
+                </h4>
+
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllVendor", "Vendor")'><i class="icon icon-home2"></i>Vendor List</a>
+                            @*<a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>All Inquiry</a>*@
+                        </li>
+                        @*<li>
+                                <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
+                            </li>*@
+                        <li class="float-right">
+                            <a class="nav-link active"><i class="icon icon-plus-circle"></i> Edit Vendor</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+
+        <div class="page has-sidebar-right bg-light height-full">
+
+            <div class="container-fluid my-3">
+                <div class="d-flex row">
+                    <div class="col-md-7">
+                        <!-- Basic Validation -->
+                        <div class="card mb-3 shadow no-b r-0">
+
+
+                            <div class="card-header white">
+
+
+                                <div class="custom-control-inline">
+                                    <small>
+                                        @Html.HiddenFor(model => model.Vendor_Code, new { @class = "Label", @id = "lbl_vcode" })
+                                        @Html.DisplayFor(model => model.Vendor_Code, new { @class = "Label", @style = "font-size:8px" })
+
+                                    </small>
+
+                                </div>
+
+                                <div class="custom-control-inline" style="font-size:x-small">
+                                    <label style="font-size:11px">Type:&nbsp;</label>
+                                    <select class="select2 " name="VendorType[]" multiple="multiple" id="mySelect2">
+                                        @for (int i = 0; i < Model.VendorTypeListModel.Count; i++)
+                                        {
+                                            <option value="@Model.VendorTypeListModel[i].Id" class="form-control inline r-0 light s-12">
+
+                                                @Model.VendorTypeListModel[i].Type
+                                            </option>
+
+                                        }
+                                    </select>
+
+                                </div>
+
+
+
+
+
+
+                            </div>
+                            <div class="card-body">
+                                <form class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            @Html.LabelFor(model => model.Name, new { @class = "" })
+                                            @Html.TextBoxFor(model => model.Name, null, new { @class = "form-control r-0 light s-12 required", @id = "txt_VendName", @oninput = "javascript:capitalize(this.id, this.value);" })
+                                            @Html.ValidationMessageFor(model => model.Name, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            @Html.LabelFor(model => model.Telephone_No, new { @class = "" })
+                                            @Html.TextBoxFor(model => model.Telephone_No, null, new { @class = "form-control r-0 light s-12", @id = "txt_phone", @onkeypress = "javascript:return isNumberKey (event)" })
+                                            @Html.ValidationMessageFor(model => model.Telephone_No, null, new { @class = "alert-danger" })
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            @Html.LabelFor(model => model.GSTNo, new { @class = "" })
+                                            @Html.TextBoxFor(model => model.GSTNo, null, new { @class = "form-control r-0 light s-12", @id = "txt_gst", @maxlength = "15", @oninput = "javascript:capitalize(this.id, this.value);", @onkeypress = "return IsAlphaNumeric(event);" })
+                                            @Html.ValidationMessageFor(model => model.GSTNo, null, new { @class = "alert-danger" })
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            @Html.LabelFor(model => model.PANNo, new { @class = "" })
+                                            @Html.TextBoxFor(model => model.PANNo, null, new { @class = "form-control r-0 light s-12", @id = "txt_pan", @maxlength = "10", @oninput = "javascript:capitalize(this.id, this.value);", @onkeypress = "return IsAlphaNumeric(event);" })
+                                            @Html.ValidationMessageFor(model => model.PANNo, null, new { @class = "alert-danger" })
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            @Html.LabelFor(model => model.Remarks, new { @class = "" })
+                                            @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control r-0 light s-12", @id = "txt_remark" })
+                                            @Html.ValidationMessageFor(model => model.Remarks, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3 ">
+                                            <div class="custom-control custom-checkbox float-right">
+                                                <input type="checkbox" class="custom-control-input" id="chk_isactive">
+                                                <label class="custom-control-label" for="chk_isactive">De Active</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    @*<button class="btn btn-primary btn-sm" type="submit">Save</button>*@
+                                </form>
+
+                            </div>
+                        </div>
+                        <!-- #END# Advanced Validation -->
+                        <div class="card no-b">
+                            <div class="card-header white pb-0">
+                                <div class="d-flex justify-content-between">
+
+                                    <div class="align-self-center">
+                                        <ul class="nav nav-pills mb-3" role="tablist" id="myTab">
+
+                                            <li class="nav-item">
+                                                <a class="nav-link active show" id="w4--tab2" data-toggle="tab" href="#w4-tab2" role="tab" aria-controls="tab2" aria-selected="false">Address</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="w4--tab1" data-toggle="tab" href="#w4-tab1" role="tab" aria-controls="tab1" aria-expanded="true" aria-selected="true">Contact Details</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body no-p">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show " id="w4-tab1" role="tabpanel" aria-labelledby="w4-tab1">
+                                        <div class="card-body">
+                                            <form class="needs-validation" novalidate>
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-3">
+                                                        @Html.LabelFor(model => model.Contact_Person, new { @class = "" })
+                                                        @Html.TextBoxFor(model => model.Contact_Person, null, new { @class = "form-control r-0 light s-12", @id = "txt_cperson" })
+                                                        @Html.ValidationMessageFor(model => model.Contact_Person, null, new { @class = "alert-danger" })
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        @Html.LabelFor(model => model.Email_ID, new { @class = "" })
+                                                        @Html.TextBoxFor(model => model.Email_ID, null, new { @class = "form-control r-0 light s-12", @id = "txt_email" })
+                                                        @Html.ValidationMessageFor(model => model.Email_ID, null, new { @class = "alert-danger" })
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-3">
+                                                        @Html.LabelFor(model => model.Mobile_No, new { @class = "" })
+                                                        @Html.TextBoxFor(model => model.Mobile_No, null, new { @class = "form-control r-0 light s-12", @id = "txt_mob", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "10" })
+                                                        @Html.ValidationMessageFor(model => model.Mobile_No, null, new { @class = "alert-danger" })
+                                                    </div>
+
+                                                    <div class="custom-control custom-checkbox mb-3" align="right">
+
+                                                        <input type="checkbox" class="custom-control-input" id="chk_defaultcontact" required="">
+                                                        <label class="custom-control-label" for="chk_defaultcontact">Primary</label>
+
+
+                                                    </div>
+
+                                                </div>
+                                                <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbldataaddcp();"><i class="icon-add"><font face="roboto">Add</font></i></button></div>
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade show active" id="w4-tab2" role="tabpanel" aria-labelledby="w4-tab2">
+                                        <div class="card-body">
+                                            <form class="needs-validation" novalidate>
+                                                <div class="form-row">
+                                                    <div class="col-md-12 mb-3">
+                                                        @Html.LabelFor(model => model.Address, new { @class = "" })
+                                                        @Html.TextAreaFor(model => model.Address, new { @class = "form-control r-0 light s-12", @id = "txt_address" })
+                                                        @Html.ValidationMessageFor(model => model.Address, null, new { @class = "alert-danger" })
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col-md-6 mb-3">
+                                                        @*@Html.LabelFor(model => model.PlaceofSupply, new { @class = "" })
+                                                        @Html.DropDownListFor(model => model.PlaceofSupply, ViewData["StateCodeDrpDwn"] as IEnumerable<SelectListItem>
+                                        ,
+                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", @id = "drppos" })
+                                                        @Html.ValidationMessageFor(model => model.PlaceofSupply, null, new { @class = "alert-danger" })*@
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="custom-control custom-checkbox mb-3 float-right">
+
+                                                            <input type="checkbox" class="custom-control-input" id="chk_defaultaddress" required="">
+                                                            <label class="custom-control-label" for="chk_defaultaddress">Primary</label>
+
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbladdaddress()"><i class="icon-add"><font face="roboto">Add</font></i></button></div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card mb-3 shadow no-b r-0">
+                            <div class="card-header white">
+                                <div class="form-row mt-1">
+                                    <div class="form-group col-10 m-0" valign="top">
+                                        <i class="icon-address-book-o Address blue-text"> </i> Address
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-body pt-0  slimScroll" data-height="300" style="overflow:auto; width:auto;height:300px;background-color:white;">
+
+                                <table class="table border-bottom" id="tbl_addresslist">
+
+
+                                    <tbody id="tbltbody_addresslist" class="mosurhandsymbol"></tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                        <div class="card mb-3 shadow no-b r-0">
+                            <div class="card-header white">
+                                <div class="form-row mt-1">
+                                    <div class="form-group col-10 m-0" valign="top">
+                                        <i class="icon-clipboard-edit blue-text"></i> Contacts
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-body pt-0  slimScroll" data-height="278" style="overflow: hidden; width: auto; height: 278px;background-color:white;">
+
+                                <table id="tbl_insertdatacp" class="table border-bottom">
+
+                                    <tbody id="tbltbody_insertdatacp" class="mosurhandsymbol"></tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="control-sidebar-bg shadow white fixed"></div>
+        <div class="card-body" align="right">
+            <button type="button" value="Save" class="btn btn-primary btn-default btn-sm" id="btn_Save" onclick="SaveCustomerDetails();"><i class="icon-save mr-2"></i>Save</button>
+
+
+        </div>
+        <div id="divwarn" class="warning">
+            <label id="lbl_validation" style="color:red;"></label>
+        </div>
+      
+    </fieldset>
+    <style>
+        .mosurhandsymbol {
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+        function capitalize(textboxid, str) {
+
+            str = str.toUpperCase();
+
+            document.getElementById(textboxid).value = str;
+        }
+    </script>
+    <script type="text/javascript">
+        function tbldataaddcp() {
+            var tblridx = $('#hdn_tblrowindex1').val();
+            if (tblridx == "") {
+
+            }
+            else {
+
+                document.getElementById("tbl_insertdatacp").deleteRow(tblridx);
+            }
+            var cperson = document.getElementById('txt_cperson').value;
+            var email = document.getElementById('txt_email').value;
+            var mob = document.getElementById('txt_mob').value;
+            var phno = document.getElementById('txt_phone').value;
+
+            if (cperson == "") {
+                //document.getElementById("divwarn").style.display = "block";
+                //document.getElementById("lbl_validation").innerHTML = "*Please Enter Contact Person";
+                alert('Please Enter Contact Person');
+                return false;
+            }
+            if (email == "") {
+                //document.getElementById("divwarn").style.display = "block";
+                //document.getElementById("lbl_validation").innerHTML = "*Please Enter Email";
+                alert('Please Enter Email');
+                return false;
+            }
+            else {
+                var reg = (/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/);
+                if (reg.test(email)) {
+
+                }
+                else {
+                    //document.getElementById("divwarn").style.display = "block";
+                    //document.getElementById("lbl_validation").innerHTML = "*Please Enter a Valid Email ID";
+                    alert('Please Enter a Valid Email ID');
+                    return false;
+                }
+            }
+
+            if (mob == "" || mob == "0") {
+                //document.getElementById("divwarn").style.display = "block";
+                //document.getElementById("lbl_validation").innerHTML = "*Please Enter Mobile Number";
+                alert('Please Enter Mobile Number');
+                return false;
+            }
+            if (!mob.match(/^\d{10}$/)) {
+                //document.getElementById("divwarn").style.display = "block";
+                //document.getElementById("lbl_validation").innerHTML = "*Mobile Number must be 10 digit number";
+                alert('Mobile Number must be 10 digit number');
+                return false;
+            }
+            else { }
+            var rowCount = $('#tbl_insertdatacp tr').length;
+            if (rowCount == 0) {
+
+                flag = "true";
+            }
+            else {
+                if ($("#chk_defaultcontact").prop('checked') == true) {
+                    if ($('#spn_PContact').length) {
+
+                        if (confirm('Do You Want to Change Primay Contact?')) {
+                            $("#spn_PContact").remove();
+                            flag = "true";
+                        }
+                        else {
+                            flag = "false";
+                        }
+                    }
+                    else {
+                        flag = "true";
+                    }
+
+                }
+                else {
+                    if ($('#spn_PContact').length) {
+
+                        flag = "false";
+                    }
+                    else {
+                        alert("Please Select Primary Contact");
+                        return false;
+                    }
+                }
+            }
+
+            var cpname = $('#txt_cperson').val();
+            var emailid = $('#txt_email').val();
+            var mob = $('#txt_mob').val();
+            var table = document.getElementById("tbltbody_insertdatacp");
+
+
+            if (flag != "false") {
+                tr = $('<tr bgcolor="white"/>');
+            }
+            else {
+                tr = $('<tr bgcolor="white"/>');
+            }
+            if (flag == "false") {
+
+                tr.append('<td class="w-10"><span id="spn_PContact1" class="avatar-letter circle"></span></td>');
+                tr.append('<td><a onclick="editlistcontact(this)"><h6>' + cpname + '</h6><small class="text-muted"><i class="icon-envelope-o"> ' + emailid + '<i> | <i class="icon-phone">' + mob + '</i></small></a></td>');
+                tr.append("<td style='display:none;'> " + cpname + "</td>");
+                tr.append("<td style='display:none;'> " + emailid + "</td>");
+                tr.append("<td style='display:none;'> " + mob + "</td>");
+                tr.append('<td><a  onclick="GetdeleteData(this);"><i class="icon-close2 text-danger-o text-danger"></i></a></td>');
+
+            }
+            else {
+
+                tr.append('<td class="w-10"><span id="spn_PContact" class="avatar-letter avatar-letter-p circle"></span></td>');
+                tr.append('<td><a onclick="editlistcontact(this)"><h6>' + cpname + '</h6><small class="text-muted"><i class="icon-envelope-o"> ' + emailid + '<i> | <i class="icon-phone">' + mob + '</i></small></a></td>');
+                tr.append("<td style='display:none;'> " + cpname + "</td>");
+                tr.append("<td style='display:none;'> " + emailid + "</td>");
+                tr.append("<td style='display:none;'> " + mob + "</td>");
+                tr.append('<td><a  onclick="GetdeleteData(this);"><i class="icon-close2 text-danger-o text-danger"></i></a></td>');
+            }
+            $('#tbl_insertdatacp').append(tr);
+
+            $('#txt_cperson').val("");
+            $('#txt_email').val("");
+            $('#txt_mob').val("");
+            $('#chk_defaultcontact').prop('checked', false);
+            $('#hdn_tblrowindex1').val("");
+        }
+        function editlistcontact(ids) {
+            var indexRow = $(ids).closest('td').parent()[0].sectionRowIndex;
+            $('#hdn_tblrowindex1').val(indexRow);
+            var currentRow = $(ids).closest("tr");
+            var flag = currentRow.find("td:eq(0)").html().trim();
+          
+            $("#txt_cperson").val(currentRow.find("td:eq(2)").text().trim());
+            $("#txt_email").val(currentRow.find("td:eq(3)").text().trim());
+            $("#txt_mob").val(currentRow.find("td:eq(4)").text().trim());
+            if ((flag != '<span id="spn_PContact1" class="avatar-letter circle"></span>')) {
+                $('#chk_defaultcontact').prop('checked', true);
+               
+            }
+            else {
+                $('#chk_defaultcontact').prop('checked', false);
+               
+            }
+            //code for delete row
+            //var par = $(ids).parent().parent();
+            // par.remove();
+            $("#myTab a:last").tab('show');
+        }
+        function GetdeleteData(ids) {
+            var currentRow = $(ids).closest("tr");
+            var par = $(ids).parent().parent();
+            par.remove();
+        }
+        function isNumberKey(key) {
+            var keycode = (key.which) ? key.which : key.keyCode;
+            if (keycode > 31 && (keycode < 48 || keycode > 57) && keycode != 47) {
+                return false;
+            }
+            else return true;
+        }
+    </script>
+    <script type="text/javascript">
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        specialKeys.push(9); //Tab
+        specialKeys.push(46); //Delete
+        specialKeys.push(36); //Home
+        specialKeys.push(35); //End
+        specialKeys.push(37); //Left
+        specialKeys.push(39); //Right
+        function IsAlphaNumeric(e) {
+            var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
+            var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
+           // document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+        }
+    </script>
+    <script type="text/javascript">
+        function tbladdaddress() {
+            var tblridx = $('#hdn_tblrowindex').val();
+            if (tblridx == "") {
+
+            }
+            else {
+
+                document.getElementById("tbl_addresslist").deleteRow(tblridx);
+            }
+
+            var address = document.getElementById('txt_address').value;
+          //  var posdrp = document.getElementById("drppos");
+            var pos = 0;
+
+            var posvalue =0;
+
+            if (address == "") {
+                //document.getElementById("divwarn").style.display = "block";
+                //document.getElementById("lbl_validation").innerHTML = "*Please Enter Address";
+                alert('Please Enter Addres');
+                return false;
+            }
+            //if (posvalue == "") {
+            //    //document.getElementById("divwarn").style.display = "block";
+            //    //document.getElementById("lbl_validation").innerHTML = "*Please Select Place of Supply";
+            //    alert('Please Select Place of Supply');
+            //    return false;
+            //}
+            var rowCount = $('#tbl_addresslist tr').length;
+
+            if (rowCount == 0) {
+
+                flag = "true";
+            }
+            else {
+                if ($("#chk_defaultaddress").prop('checked') == true) {
+                    if ($('#spn_PAddress').length) {
+
+                        if (confirm('Do You Want to Change Primay Address?')) {
+                            $("#spn_PAddress").remove();
+                            flag = "true";
+                        }
+                        else {
+                            flag = "false";
+                        }
+                    }
+                    else {
+                        flag = "true";
+                    }
+                }
+                else {
+                    if ($('#spn_PAddress').length) {
+
+                        flag = "false";
+                    }
+                    else {
+                        alert("Please Select Primary Address");
+                        return false;
+                    }
+
+                }
+            }
+
+            var table = document.getElementById("tbltbody_addresslist");
+
+
+            if (flag != "false") {
+                tr = $('<tr bgcolor="white"/>');
+            }
+            else {
+                tr = $('<tr bgcolor="white"/>');
+            }
+            if (flag == "false") {
+
+                tr.append('<td onclick="editlistaddress(this)" class="w-10"><span id="spn_PAddress1" class="avatar-letter circle"></span></td>');
+                tr.append('<td  onclick="editlistaddress(this)"><a><strong class="text-muted"><a  title="' + address + '">' + address.substring(0, 55) + "..." + '</a></strong></a></td>');
+                tr.append("<td style='display:none;' onclick='editlistaddress(this)'> " + posvalue + "</td>");
+                tr.append("<td style='display:none;' onclick='editlistaddress(this)'> " + address + "</td>");
+                tr.append('<td><a  onclick="GetdeleteAddData(this);"><i class="icon-close2 text-danger-o text-danger"></i></a></td>');
+
+            }
+            else {
+
+                tr.append('<td class="w-10" onclick="editlistaddress(this)"><span id="spn_PAddress" class="avatar-letter avatar-letter-p circle"></span></td>');
+                tr.append('<td onclick="editlistaddress(this)"><a><strong class="text-muted"><a title="' + address + '">' + address.substring(0, 55) + "..." + '</a></strong></a></td>');
+                tr.append("<td style='display:none;' onclick='editlistaddress(this)'>" + posvalue + "</td>");
+                tr.append("<td style='display:none;' onclick='editlistaddress(this)'> " + address + "</td>");
+                tr.append('<td><a onclick="GetdeleteAddData(this);"><i class="icon-close2 text-danger-o text-danger"></i></a></td>');
+            }
+            $('#tbl_addresslist').append(tr);
+            //////
+
+            $('#txt_address').val("");
+           // $('#drppos').val("");
+            $('#chk_defaultaddress').prop('checked', false);
+            $('#hdn_tblrowindex').val("");
+            document.getElementById("divwarn").style.display = "none";
+        }
+        function GetdeleteAddData(ids) {
+            var currentRow = $(ids).closest("tr");
+            var par = $(ids).parent().parent();
+            par.remove();
+        }
+        function editlistaddress(ids) {
+        
+            var indexRow = $(ids).closest('td').parent()[0].sectionRowIndex;
+           
+            $('#hdn_tblrowindex').val(indexRow);
+            //alert(indexRow);
+            var currentRow = $(ids).closest("tr");
+            var flag = currentRow.find("td:eq(0)").html();
+            //var pid = currentRow.find("td:eq(2)").text();
+         //   $("#drppos").val(pid.trim());
+            var address = currentRow.find("td:eq(3)").text();
+            $("#txt_address").val(address.trim());
+            if (flag == '<span id="spn_PAddress" class="avatar-letter avatar-letter-p circle"></span>') {
+                $('#chk_defaultaddress').prop('checked', true);
+            }
+            else {
+                $('#chk_defaultaddress').prop('checked', false);
+            }
+
+            //code for delete
+            //var par = $(ids).parent().parent();
+            //par.remove();
+
+
+            $("#myTab a:first").tab('show');
+        }
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$(window).bind('beforeunload', function () {
+            //    return 'Do you really want to leave this page?';
+            //});
+            $('[data-toggle="tooltip"]').tooltip();
+            var isactive = $("#hdn_isactive").val();
+            if (isactive == "True") {
+
+                $("#chk_isactive").prop("checked", false);
+            }
+            else {
+
+                $("#chk_isactive").prop("checked", true);
+            }
+
+            $("#txt_VendName").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $.ajax({
+                        url: "../Inquiry/getVendorname",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                change: function (event, ui) {
+                    var txt = $j("#txt_VendName").val();
+                    if (txt = ui.item.label) {
+                        $("#txt_VendName").val("");
+                        alert('Vendor already exist!!!');
+
+                    }
+
+                    //$(this).val((ui.item ? ui.item.label : ""));
+                }
+            });
+            var id = getUrlVars()["id"];
+            getVType(id);
+            //fetchcontact(id);
+            //fetchaddressdata(id);
+
+
+
+        });
+
+        function getVType(id) {
+
+            //$.ajax({
+            //    type: "POST",
+            //    url: "../Vendor/getVType",
+            //    data: JSON.stringify({ VId: ' ' + id + '' }),
+            //    contentType: "application/json;charset=utf-8",
+            //    success: function (response) {
+            //        for (var i = 0; i < response.length; i++) {
+            //            var insertFeasOpsInvolved = document.getElementsByName('VendorType[]')[0];
+            //            var drpval = (Number(response[i].Id))-1;
+            //            insertFeasOpsInvolved.options[drpval].selected = true;
+            //        }
+
+            //        fetchaddressdata(id);
+            //    },
+            //    error: function (err) {
+            //        alert(err);
+            //    }
+            //});
+          
+            var stringArray = @Html.Raw(Json.Encode(@ViewData["vtype"]));
+         
+            $("#mySelect2").val(stringArray);
+           
+            fetchaddressdata(id);
+        }
+        function fetchcontact(id) {
+            $.ajax({
+                type: "POST",
+                url: "../Customer/Bindmlticp",
+                // data: params,
+                data: JSON.stringify({ id: ' ' + id + '' }),
+                contentType: "application/json;charset=utf-8",
+                // dataType: "json",
+                success: function (data) {
+
+                    //code for display table
+                    $("#tbltbody_insertdatacp").empty();
+                    //Append each row to html table
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].flag != 0) {
+                            tr = $('<tr bgcolor="white"/>');
+                        }
+                        else {
+                            tr = $('<tr bgcolor="white"/>');
+                        }
+                        if (data[i].flag == 0) {
+
+                            tr.append('<td class="w-10" onclick="editlistcontact(this)"><span id="spn_PContact1" class="avatar-letter circle"></span></td>');
+                            tr.append('<td onclick="editlistcontact(this)"><a><h6>' + data[i].Name + '</h6><small class="text-muted"><i class="icon-envelope-o"> ' + data[i].Email_ID + '<i> | <i class="icon-phone">' + data[i].Mobile_No + '</i></small></a></td>');
+                            tr.append("<td style='display:none;' onclick='editlistcontact(this)'> " + data[i].Name + "</td>");
+                            tr.append("<td style='display:none;' onclick='editlistcontact(this)'> " + data[i].Email_ID + "</td>");
+                            tr.append("<td style='display:none;' onclick='editlistcontact(this)'> " + data[i].Mobile_No + "</td>");
+                            tr.append('<td><a  onclick="GetdeleteData(this);"><i class="icon-close2 text-danger-o text-danger"></i></a></td>');
+
+                        }
+                        else {
+
+                            tr.append('<td class="w-10" onclick="editlistcontact(this)"><span id="spn_PContact" class="avatar-letter avatar-letter-p circle"></span></td>');
+                            tr.append('<td onclick="editlistcontact(this)"><a><h6>' + data[i].Name + '</h6><small class="text-muted"><i class="icon-envelope-o"> ' + data[i].Email_ID + '<i> | <i class="icon-phone">' + data[i].Mobile_No + '</i></small></a></td>');
+                            tr.append("<td style='display:none;' onclick='editlistcontact(this)'> " + data[i].Name + "</td>");
+                            tr.append("<td style='display:none;' onclick='editlistcontact(this)'> " + data[i].Email_ID + "</td>");
+                            tr.append("<td style='display:none;' onclick='editlistcontact(this)'> " + data[i].Mobile_No + "</td>");
+                            tr.append('<td><a  onclick="GetdeleteData(this);"><i class="icon-close2 text-danger-o text-danger"></i></a></td>');
+                        }
+
+
+
+                        $('#tbl_insertdatacp').append(tr);
+                    }
+
+                },
+                error: function (err) {
+                    alert('Error occured');
+
+                }
+            });
+        }
+        function fetchaddressdata(id) {
+
+
+            $.ajax({
+                type: "POST",
+                url: "../Customer/Bindaddress",
+                // data: params,
+                data: JSON.stringify({ id: ' ' + id + '' }),
+                contentType: "application/json;charset=utf-8",
+                // dataType: "json",
+                success: function (data) {
+
+                    //code for display table
+                    $("#tbltbody_addresslist").empty();
+                    //Append each row to html table
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].flag != 0) {
+                            tr = $('<tr bgcolor="white"/>');
+                        }
+                        else {
+                            tr = $('<tr bgcolor="white"/>');
+                        }
+                       
+                        if (data[i].flag == 0) {
+                            tr.append('<td class="w-10"  onclick="editlistaddress(this)"><span id="spn_PAddress1" class="avatar-letter circle"></span></td>');
+                            tr.append('<td onclick="editlistaddress(this)"><a><strong class="text-muted"><a  title="' + data[i].Address + '">' + data[i].Address.substring(0, 55) + "..." + '</a></strong></a></td>');
+                            tr.append("<td style='display:none;' onclick='editlistaddress(this)'> " + data[i].ID + "</td>");
+                            tr.append("<td style='display:none;'  onclick='editlistaddress(this)'> " + data[i].Address + "</td>");
+                            tr.append('<td><a  onclick="GetdeleteAddData(this);"><i class="icon-close2 text-danger-o text-danger"></i></a></td>');
+                        }
+                        else {
+                            tr.append('<td class="w-10" onclick="editlistaddress(this)"><span id="spn_PAddress" class="avatar-letter avatar-letter-p circle"></span></td>');
+                            tr.append('<td onclick="editlistaddress(this)"><a><strong class="text-muted"><a title="' + data[i].Address + '">' + data[i].Address.substring(0, 55) + "..." + '</a></strong></a></td>');
+                            tr.append("<td style='display:none;'  onclick='editlistaddress(this)'>" + data[i].ID + "</td>");
+                            tr.append("<td style='display:none;'  onclick='editlistaddress(this)'> " + data[i].Address + "</td>");
+                            tr.append('<td><a onclick="GetdeleteAddData(this);"><i class="icon-close2 text-danger-o text-danger"></i></a></td>');
+                        }
+
+                        $('#tbl_addresslist').append(tr);
+                    }
+                    var table = document.getElementById("tbl_addresslist");
+                    fetchcontact(id);
+
+                },
+                error: function (err) {
+                    alert('Error occured');
+
+                }
+            });
+        }
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+    </script>
+    <script type="text/javascript">
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+        function SaveCustomerDetails() {
+            unsaved = false;
+            checkcondition();
+
+        }
+        function checkcondition() {
+            var hdn = ($("#hdn_custname").val()).trim();
+            var txt = ($("#txt_VendName").val()).trim();
+
+            $.ajax({
+                url: "../Inquiry/getVendorname",
+                type: "POST",
+                dataType: "json",
+                data: { Prefix:txt},
+                success: function (data) {
+                    if (txt == hdn) {
+                        var cname = document.getElementById('txt_VendName').value;
+
+                        var phno = document.getElementById('txt_phone').value;
+
+                        var remark = document.getElementById('txt_remark').value;
+                        var gst = document.getElementById('txt_gst').value;
+                        var pan = document.getElementById('txt_pan').value;
+                        var vpotype = document.getElementById('mySelect2').value;
+
+                        if (cname == "") {
+                            alert("Please enter CustomerName");
+                            //document.getElementById("divwarn").style.display = "block";
+                            //document.getElementById("lbl_validation").innerHTML = "Pease enter CustomerName";
+                            return false;
+                        }
+                        if (phno == "") {
+                            alert("Please enter TelephoneNumber");
+                            return false;
+                        }
+                        if (gst == "") {
+                            alert("Please enter GST");
+                            return false;
+                        }
+                        if (pan == "") {
+                            alert("Please enter PAN");
+                            return false;
+                        }
+                        //if (remark == "") {
+                        //    alert("Pease enter Remarks");
+                        //    return false;
+                        //}
+                        if (vpotype == "") {
+                            alert("Please Choose Vendor Type");
+                            return false;
+                        }
+                        var table2 = document.getElementById('tbl_addresslist');
+                        if (table2.rows.length == 0) {
+                            alert("Please Add atleast one Address");
+                            return false;
+                        }
+                        var table1 = document.getElementById('tbl_insertdatacp');
+                        if (table1.rows.length == 0) {
+                            alert("Please Add atleast one Contact");
+                            return false;
+                        }
+                        if ($('#spn_PAddress').length) {
+
+                        }
+                        else {
+                            alert('Please Set Primary Address');
+                            return false;
+                        }
+                        if ($('#spn_PContact').length) {
+
+                        }
+                        else {
+                            alert('Please Set Primary Contact');
+                            return false;
+                        }
+                        var isactive=""
+                        if ($("#chk_isactive").prop("checked") == true) {
+                            isactive = "false";
+                        }
+                        else {
+                            isactive = "true";
+                        }
+                        var id = getUrlVars()["id"];
+                        var type = "vendor";
+
+                        $.ajax
+                              ({
+                                  type: "POST",
+                                  url: "../Vendor/UpdateCustomer",
+                                  data: JSON.stringify({
+                                      id: ' ' + id + '', cname: ' ' + cname + '', gst: ' ' + gst + '', pan: ' ' + pan + '',
+                                      phno: '' + phno + '', remark: ' ' + remark + '', isactive: ' ' + isactive + '', type: ' ' + type + ''
+                                  }),
+                                  contentType: "application/json;charset=utf-8",
+                                  dataType: "json",
+                                  success: function (update) {
+
+                                      insertcpinsidedb(id);
+                                     insertmultiaddress(id);
+                                      insertVendorType(id);
+                                      alert("Vendor data updated successfully");
+                                      location.href="@Url.Action("AllVendor", "Vendor")";
+                                  },
+                                  error: function (err) {
+                                      alert(err);
+                                  }
+                              });
+                        
+                    }
+                    else {
+                        if ((txt = (data[0].Text))) {
+                            $("#txt_VendName").val("");
+                            alert('Customer already exist!!!');
+
+
+                        }
+
+                        else {
+                            var cname = document.getElementById('txt_VendName').value;
+
+                            var phno = document.getElementById('txt_phone').value;
+
+                            var remark = document.getElementById('txt_remark').value;
+                            var gst = document.getElementById('txt_gst').value;
+                            var pan = document.getElementById('txt_pan').value;
+                            var vpotype = document.getElementById('mySelect2').value;
+                            if (cname == "") {
+                                alert("Please enter CustomerName");
+                                //document.getElementById("divwarn").style.display = "block";
+                                //document.getElementById("lbl_validation").innerHTML = "Pease enter CustomerName";
+                                return false;
+                            }
+                            if (phno == "") {
+                                alert("Please enter TelephoneNumber");
+                                return false;
+                            }
+                            if (gst == "") {
+                                alert("Please enter GST");
+                                return false;
+                            }
+                            if (pan == "") {
+                                alert("Please enter PAN");
+                                return false;
+                            }
+                            //if (remark == "") {
+                            //    alert("Pease enter Remarks");
+                            //    return false;
+                            //}
+                            if (vpotype == "") {
+                                alert("Please Choose Vendor Type");
+                                return false;
+                            }
+                            var table2 = document.getElementById('tbl_addresslist');
+                            if (table2.rows.length == 0) {
+                                alert("Please Add atleast one Address");
+                                return false;
+                            }
+                            var table1 = document.getElementById('tbl_insertdatacp');
+                            if (table1.rows.length == 0) {
+                                alert("Please Add atleast one Contact");
+                                return false;
+                            }
+                            if ($('#spn_PAddress').length) {
+
+                            }
+                            else {
+                                alert('Please Set Primary Address');
+                                return false;
+                            }
+                            if ($('#spn_PContact').length) {
+
+                            }
+                            else {
+                                alert('Please Set Primary Contact');
+                                return false;
+                            }
+                            var id = getUrlVars()["id"];
+
+                            var type = "vendor";
+                            $.ajax
+                                  ({
+                                      type: "POST",
+                                      url: "../Vendor/UpdateCustomer",
+                                      data: JSON.stringify({
+                                          id: ' ' + id + '', cname: ' ' + cname + '', gst: ' ' + gst + '', pan: ' ' + pan + '',
+                                          phno: '' + phno + '', remark: ' ' + remark + '', type: ' ' + type + ''
+                                      }),
+                                      contentType: "application/json;charset=utf-8",
+                                      dataType: "json",
+                                      success: function (update) {
+
+                                          insertcpinsidedb(id);
+                                          insertmultiaddress(id);
+                                          insertVendorType(id);
+                                          alert("Vendor data updated successfully");
+                                          location.href="@Url.Action("AllVendor", "Vendor")";
+                                      },
+                                      error: function (err) {
+                                          alert(err);
+                                      }
+                                  });
+                            
+
+
+                        }
+                    }
+
+
+
+
+                }
+            });
+
+        }
+  
+        
+
+    </script>
+    <script type="text/javascript">
+        function insertcpinsidedb(id) {
+
+            $j("#tbl_insertdatacp").find("tr").each(function (i) {
+                var currentRow = $(this).closest("tr");
+                var cpname = currentRow.find("td:eq(2)").text();
+
+                var email = currentRow.find("td:eq(3)").text();
+
+                var mob = currentRow.find("td:eq(4)").text();
+                var cell1 = currentRow.find("td:eq(0)").html();
+                cell1 = cell1.trim();
+                if (cell1 != '<span id="spn_PContact" class="avatar-letter avatar-letter-p circle"></span>') {
+
+                    flag = "false";
+                }
+                else {
+                    flag = "true";
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "../Customer/InsertMultiCPerson",
+                    data: JSON.stringify({ id: '' + id + '', cpname: '' + cpname + '', email: '' + email + '', mob: '' + mob + '', flag: '' + flag + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    // dataType: "json",
+                    success: function (status) {
+
+                    },
+                    error: function (err) {
+                        //alert('Error occured');
+                    }
+                });
+
+
+            });
+
+
+
+        }
+        function insertmultiaddress(id) {
+            $j("#tbl_addresslist").find("tr").each(function (i) {
+
+                var flag = "";
+                var currentRow = $(this).closest("tr");
+                var cell1 = currentRow.find("td:eq(0)").html();
+                cell1 = cell1.trim();
+                if (cell1 != '<span id="spn_PAddress" class="avatar-letter avatar-letter-p circle"></span>') {
+                    flag = "false";
+                }
+                else {
+                    flag = "true";
+                }
+                var pid = currentRow.find("td:eq(2)").text();
+                var address = currentRow.find("td:eq(3)").text();
+
+                $.ajax({
+                    type: "POST",
+                    url: "../Customer/InsertMultiAddress",
+                    data: JSON.stringify({ id: ' ' + id + '', address: ' ' + address + '', pid: ' ' + pid + '', flag: '' + flag + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    // dataType: "json",
+                    success: function (status) {
+
+                    },
+                    error: function (err) {
+                        // alert('Error occured');
+                    }
+                });
+
+            });
+        }
+        function insertVendorType(id) {
+            var VpoType = document.getElementsByName('VendorType[]')[0];
+            var VpoTypeValues ="";
+            for (var i = 0; i < VpoType.length; i++) {
+                if (VpoType.options[i].selected) {
+                    VpoTypeValues = (VpoType.options[i].value);
+                    $.ajax({
+                        type: "POST",
+                        url: "../Vendor/InsertVPOType",
+                        data: JSON.stringify({ id: ' ' + id + '', VpoTypeValues: ' ' + VpoTypeValues + ''}),
+                        contentType: "application/json;charset=utf-8",
+                        // dataType: "json",
+                        success: function (status) {
+
+                        },
+                        error: function (err) {
+                            //alert('Error occured');
+                        }
+                    });
+
+                }
+
+            }
+        }
+    </script>
+    <script type="text/javascript" language="JavaScript">
+        var unsaved = false;
+
+        $j(":input").change(function () { //trigers change in all input fields including text type
+            unsaved = true;
+        });
+
+        function unloadPage() {
+            if (unsaved) {
+                return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+            }
+        }
+
+        window.onbeforeunload = unloadPage;
+    </script>
+
+}
+
+    
+

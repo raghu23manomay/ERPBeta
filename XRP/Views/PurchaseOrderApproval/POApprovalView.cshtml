@@ -1,0 +1,525 @@
+﻿@model XRP.Models.ssmtbl_Quotation_PoModel
+@using XRP.Models;
+@{
+    ViewBag.Title = "POApprovalView";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+@using (Html.BeginForm("PurchaseOrderList", "PurchaseOrderApproval", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <style>
+        .mosurhandsymbol {
+            cursor: pointer;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+            max-height: 600px;
+            overflow-y: auto;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+    </style>
+    @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.POQty_Open, new { @id = "hdn_POQty_Open" })
+    @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.sameasquotation, new { @id = "hdn_sameasquotation" })
+    @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.po_id, new { @id = "po_id" })
+
+    @Html.HiddenFor(model => model.ssmtbl_PurchaseOrderModel.InquiryNo, new { @id = "InquiryNo" })
+    @Html.HiddenFor(model => model.ssmtbl_QuotationModel.QuotationNo)
+    @Html.HiddenFor(model => model.ssmtbl_QuotationModel.id)
+    @Html.HiddenFor(model => model.ssmtbl_QuotationModel.CustomerName)
+    <fieldset>
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                <div class="row p-t-b-10 ">
+                    <div class="col">
+                        <h4>
+                            <i class="icon-database"></i>
+                            Purchase Order
+                        </h4>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("PurchaseOrderList", "PurchaseOrderApproval")'><i class="icon icon-home2"></i>Purchase Order List For Approval</a>
+                           
+                        </li>
+                        
+                        <li>
+                            <a class="nav-link active"><i class="icon icon-eye"></i>Review Customer PO</a>
+
+                        </li>
+                      
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <div class="page" id="printpdf">
+
+            <div class="container">
+                <div class="invoice white shadow">
+
+                    <div class="p-5">
+                        <div id="printpdf1">
+                            <!-- title row -->
+                            <div class="row">
+                                <div class="col-12">
+                                  
+                                    <div class="float-right">
+                                        <div>
+                                            <h4>Po #@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.CustomerPONo)</h4>
+                                            <h6>Customer Name: @Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.customerName)</h6>
+                                            <small>Po Quantity:@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO) | Die Number: @Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber) </small>
+                                        </div>
+                               
+
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-6"><strong>Quotation Details</strong></div>
+                             
+                                <div class="col-6"><strong>Purchase Order Details</strong></div>
+                             
+                            </div>
+                            <div class="row" id="div_quotationRawMaterial" >
+
+                                <div class="col-6 table-responsive">
+                                   Raw Material Cost Details
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Steel Rate:&nbsp;@Html.DisplayFor(model => model.ssmtbl_QuotationModel.SteelCost)
+                                                    | Transpotation:&nbsp;@Html.DisplayFor(model => model.ssmtbl_QuotationModel.Transportation)
+                                                    | Total Raw Material Cost:&nbsp;@Html.DisplayFor(model => model.ssmtbl_QuotationModel.TotalRowMaterialCost)
+                                                    
+                                                </td>
+
+
+
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-6 table-responsive">
+                                    Raw Material Cost Details
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Steel Rate:&nbsp;@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost)
+                                                    | Transpotation:&nbsp;@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.Transportation)
+                                                    | Total Raw Material Cost:&nbsp;@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost)
+
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                          
+
+                            <div class="row">
+                                <div class="col-6 table-responsive">
+                                    Conversion Rate Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Same As Quotation&nbsp;&nbsp;<input type="checkbox" class="" id="SameAsQuotation" readonly disabled />
+                                    <table class="table">
+                                        <tbody>
+                                            @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
+                                            {
+
+
+                                                if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
+                                                {
+                                            <tr>
+                                                <td>Cutting (Sq In)</td>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.ssmtbl_QuotationModel.CuttingSquare1, new { @class = "form-control", @readonly = "readonly" })
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(model => model.ssmtbl_QuotationModel.CuttingSquare2, new { @class = "form-control", @readonly = "readonly" })
+                                                </td>
+
+                                            </tr>
+                                                }
+                                                if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
+                                                {
+                                            <tr>
+                                                <td>Forging</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.Forging1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.Forging2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+
+                                                }
+                                                if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
+                                                {
+                                            <tr>
+                                                <td> Heat Treatment Cost (Net Wt)</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.HeatTreatment1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.HeatTreatment2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+
+                                                }
+                                                if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
+                                                {
+                                            <tr>
+                                                <td>Shot Blasting (Net Wt)</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.ShotBlasting1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.ShotBlasting2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+
+                                                }
+                                                if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
+                                                {
+                                            <tr>
+                                                <td>MPI</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.MPI1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.MPI2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+
+                                                }
+                                                if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
+                                                {
+                                            <tr>
+                                                <td>Grinding (Per Piece)</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.Grinding1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.Grinding2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+
+                                                }
+                                                if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
+                                                {
+                                            <tr>
+                                                <td>Cold Coining (Per Piece)</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.ColdCoining1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.ColdCoining2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+
+                                                }
+                                                if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
+                                                {
+                                            <tr>
+                                                <td>Machining (Per Piece)</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.Machining1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.Machining2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+
+                                                }
+
+                                            }
+                                            <tr>
+                                                <td>Die Maintaince Cost (Per Piece)</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.DieMaintenance1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.DieMaintenance2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>Total Conversion Cost</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.TotalConverstionCost, new { @class = "form-control", @readonly = "readonly" })</td>
+                                               
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>Total Component Cost</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.TotalComponentCost, new { @class = "form-control", @readonly = "readonly" })</td>
+                                               
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>Initial Die Cost</td>
+
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_QuotationModel.InitialDieCost, new { @class = "form-control", @readonly = "readonly" })</td>
+                                               
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+
+                                </div>
+                                <div class="col-6 table-responsive">
+                                   Conversion Rate Details
+                                    <table class="table">
+                                        <tbody>
+                                            @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
+                                            {
+                                                if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
+                                                {
+                                                    <tr>
+                                                        <td>Cutting (Sq In)</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                    </tr>
+        
+                                                }
+                                                if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
+                                                {
+                                                    <tr>
+                                                        <td>Forging</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.Forging1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.Forging2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                    </tr>
+                                                    
+                                                }
+                                                if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
+                                                {
+                                                    <tr>
+                                                        <td>Heat Treatment Cost (Net Wt)</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                    </tr>
+                                                   
+                                                }
+                                                if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
+                                                {
+                                                    <tr>
+                                                        <td>Shot Blasting (Net Wt)</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                    </tr>
+                                                    
+                                                }
+                                                if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
+                                                {
+                                                    <tr>
+                                                        <td>MPI</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.MPI1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.MPI2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                    </tr>
+                                                   
+                                                }
+                                                if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
+                                                {
+                                                    <tr>
+                                                        <td>Grinding (Per Piece)</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.Grinding1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.Grinding2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                    </tr>
+                                                   
+                                                }
+                                                if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
+                                                {
+                                                    <tr>
+                                                        <td>Cold Coining (Per Piece)</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                    </tr>
+                                                    
+                                                }
+                                                if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
+                                                {
+                                                    <tr>
+                                                        <td>Machining (Per Piece)</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.Machining1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                        <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.Machining2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                    </tr>
+                                                  
+                                                }
+
+                                            }
+                                            <tr>
+                                               
+                                                <td>Die Maintaince Cost (Per Piece)</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance1, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance2, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>Total Conversion Cost</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.TotalConverstionCost, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>Total Component Cost</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.TotalComponentCost, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>Initial Die Cost</td>
+                                                <td>@Html.DisplayFor(model => model.ssmtbl_PurchaseOrderModel.InitialDieCost, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                      
+                                    
+                                        
+                                     
+                                     
+
+                                    </div>
+                               
+                                <!-- /.col -->
+                            </div>
+                         
+                         
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="CommentForApproval" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Comment</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @Html.TextArea("Comment", null, new { @class = "form-control r-0 light s-12", @id = "Comment", @cols = "3", @rows = "5" })
+                                    </div>
+                                    <div class="modal-footer">
+                                        @*<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>*@
+                                        <button type="button" class="btn btn-primary btn-sm" id="ConditionalApprove">Done</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="row" id="footer">
+                            <div class="col-6">
+                                
+                                 <button type="button" class="btn btn-primary btn-sm" onclick="podownload();"><i class="icon-eye mr-2"></i>View Customer PO</button>
+                            
+                                @*<h1> <a onclick="podownload();" title="View Customer PO" class="mosurhandsymbol"><span class="mailbox-attachment-icon"><i class="icon-document-file-pdf text-danger"></i></span></a></h1>*@
+                                       
+                                  
+
+
+                            </div>
+                            <div  class="col-6" align="right">
+                                <div class="dropdown">
+
+                                    <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Approve
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:lightgrey;">
+                                        <a class="dropdown-item" href="#" id="Approve">Accept</a>
+                                        <a class="dropdown-item" href="#" id="" data-toggle="modal" data-target="#CommentForApproval">Reject</a>
+
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </fieldset>
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <link href="~/NewCssAndTheme/FancyBox/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
+    <script>
+            var $j = jQuery.noConflict(true);
+    </script>
+    <script type="text/javascript">
+
+        $j(document).ready(function () {
+
+           
+           var now=(@ViewData["NatureOfWork"]);
+            if (now != "201") {
+                $j("#div_quotationRawMaterial ").show();
+              
+            } else {
+                $j("#div_quotationRawMaterial").hide();
+                
+            }
+
+
+            var saq = $j("#hdn_sameasquotation").val();
+
+            if (saq == "True") {
+
+                $j("#SameAsQuotation").prop('checked', true);
+            }
+            else {
+                $j("#SameAsQuotation").prop('checked', false);
+            }
+
+            $j("#ConditionalApprove").click(function () {
+                // Save it!
+                var CommentFor = $j('#Comment').val();
+                var POId = $j('#po_id').val();
+                var InqNo = $j('#InquiryNo').val();
+              
+                if (CommentFor=="") {
+                    alert('Please Enter Commnent');
+                    return false;
+                }
+              
+                $j.ajax({
+                    url: "../PurchaseOrderApproval/RejectPurchaseOrder",
+                    type: "POST",
+                    dataType: "json",
+                    data: { PO_Id: POId, InquiryNo: InqNo, Comment: CommentFor },
+                    success: function (data) {
+                        location.href="@Url.Action("PurchaseOrderList", "PurchaseOrderApproval")" ;
+                    }
+                });
+            });
+
+            $j("#Approve").click(function () {
+                // Save it!
+                var CommentFor = "-";
+                var POId = $j('#po_id').val();
+                var InqNo = $j('#InquiryNo').val();
+                $j.ajax({
+                    url: "../PurchaseOrderApproval/ApprovePurchaseOrder",
+                    type: "POST",
+                    dataType: "json",
+                    data: { PO_Id: POId, InquiryNo: InqNo, Comment: CommentFor },
+                    success: function (data) {
+                        location.href="@Url.Action("PurchaseOrderList", "PurchaseOrderApproval")";
+                    }
+                });
+            });
+
+
+            $j("#Download").click(function () {
+                //pdf download start
+                var div = document.getElementById("printpdf");
+                //alert(div);
+                div.style.display = "block";
+                var doc = new jsPDF('p', 'mm', [600, 500]);
+                doc.addHTML($j('#printpdf')[0], 10, 10, {
+                    'background': '#fff',
+                }, function () {
+                    doc.save('Quotation.pdf');
+                });
+
+                //div.style.display = "none";
+                //pdf download complete
+            });
+
+
+        });
+        function podownload()
+        {
+            var downloadpath="@ViewData["filepath"]";
+            window.open('..'+downloadpath+'', target = "_blank");
+
+        }
+    </script>
+
+}
+

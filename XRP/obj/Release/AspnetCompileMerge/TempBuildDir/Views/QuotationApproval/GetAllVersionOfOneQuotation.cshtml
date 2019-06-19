@@ -1,0 +1,64 @@
+﻿@model IEnumerable<XRP.Models.ssmtbl_QuotationModel>
+
+
+<link href="~/NewCssAndTheme/css/theme-default.css" rel="stylesheet" />
+
+<fieldset>
+
+    <!-- PAGE TITLE -->
+    <div class="page-title">
+        <h2><span class="fa fa-arrow-circle-o-left"></span>ALL VERSION OF ONE QUOTATION</h2>
+    </div>
+
+    @*@Html.Hidden("inputType",ViewData["QuotId"])*@
+
+    <div class="row" >
+        <div class="col-md-12">
+            <!-- START DEFAULT DATATABLE -->
+            <div class="panel panel-default" >
+
+                <div class="panel-body panel-body-table">
+                    <div class="table-responsive">
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th>VERSION No</th>
+                                    <th>CUSTOMER NAME</th>
+                                    <th>INQUIRY No</th>
+                                    <th>QUOTATION No</th>
+                                    <th>CREATED BY</th>
+                                    <th>CREATED ON</th>
+                                    <th>FILE STATUS</th>
+                                    <th>DOWNLOAD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var data in Model)
+                                {
+                                    <tr>
+                                        <td>@data.new_Version_No</td>
+                                        <td>@data.CustomerName</td>
+                                        <td>@data.InquiryNo</td>
+                                        <td>@data.QuotationNo</td>
+                                        <td>@data.Createdby</td>
+                                        <td>@data.CreatedOn.Date.ToString("dd-MMM-yyyy")</td>
+                                        <td>@data.FileStatus</td>
+                                        <td><a href="@Url.Action("QuotationPDF", "Quotation", new { QuotationId = @data.id, _target = "blank" })" class=" btn btn-default btn-info">Download</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            @*<div style="text-align:center;">
+                <input type="button" value="Back" class="btn btn-default btn-primary" onclick="location.href = '@Url.Action("QuotationViewForApproval", "QuotationApproval", new { QuotationId = $j('#inputType').val() })'" />
+            </div>*@
+
+        </div>
+    </div>
+
+</fieldset>
+
+

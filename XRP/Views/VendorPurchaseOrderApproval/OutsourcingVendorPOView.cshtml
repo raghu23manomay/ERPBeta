@@ -1,0 +1,246 @@
+﻿@model XRP.Models.ssmtbl_VendorPurchaseOrderModel
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<div style="border-width: 2px; border-style: solid; border-color: black; overflow:auto;height:100%;" id="printpdfdiv">
+    <div id="printpdf">
+
+        @Html.HiddenFor(m => m.po_no)
+
+
+        <table align="center">
+            <tr>
+                <td><img src="~/NewCssAndTheme/img/ssmlogo.jpg" height="42" width="42" alt="" /><b style="font-size:24px;font-weight:bold;">SHREE SIDDHESHWARI METAL FORGING PRIVATE LIMITED</b> </td>
+            </tr>
+        </table>
+        <hr />
+        <center>PLOT NO. 489 & 490, 'J' BLOCK M.I.D.C. BHOSARI, PUNE-411026</center>
+        <center>PHONE NO. : (020) 27130120 EMAIL: scm@ssmforge.com </center>
+        <br />
+        <center style="font-size:24px;font-weight:bold;">PURCHASE ORDER</center>
+        <center>(Note - Please quote this P.O. No on all Bills, Challans, Correspondence, Document etc.)</center>
+        <hr />
+        <hr />
+
+
+        <table border="1" style="width:100%">
+            <tbody>
+                <tr>
+                    <td>&nbsp; P.O. NO. :<span id="vpono">@Html.DisplayFor(model => model.po_no)</span></td>
+
+                    <td>&nbsp; DATE :<span id="date1">@Html.DisplayFor(m => m.po_date.Date)</span></td>
+
+                    <td rowspan="2">&nbsp; Valid Date :<span id="datev">@Html.DisplayFor(m => m.valid_date.Date)</span></td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp; Ven. Ref.:<span id="venref">@Html.DisplayFor(model => model.quotation_ref_no)</span></td>
+
+                    <td>&nbsp; DATE :<span id="date2">@Html.DisplayFor(m => m.quotation_ref_date.Date)</span></td>
+
+
+
+                </tr>
+            </tbody>
+        </table>
+        <table border="1" style="width:100%">
+            <tbody>
+                <tr>
+                    <td valign="top" style="width:50%">
+                        &nbsp;To,<br>
+                        &nbsp;<span id="name">@Html.DisplayFor(model => model.vendor_name)</span><br>
+                        &nbsp;<span id="mobile">@Html.DisplayFor(model => model.vendor_mobile)</span>
+                    </td>
+                    <td style="width:50%">
+                        <b>&nbsp;CONTACT PERSON:</b>&nbsp;<span id="contactperson">@Html.DisplayFor(model => model.contact_person)</span><br><br>
+
+                        &nbsp;Contact No. :<span id="contactno">@Html.DisplayFor(model => model.contact_person_mobile)</span><br><br>
+                        &nbsp;Email:<span id="email">@Html.DisplayFor(model => model.contact_person_email)</span>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; With Reference to above, Please Supply the following material as per term &amp; condition mentioned below:
+
+        <table border="1" style="width:100%" id="tblpdfvpodetails">
+            <tbody>
+                <tr>
+                    <td>Sr. No.</td>
+                    <td>Process</td>
+                    <td>Rate</td>
+                    <td>Rate Per</td>
+                </tr>
+                @foreach (var data in Model.ssmtbl_VendorPurchaseOrder_DetailsModel)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@data.process</td>
+                        <td>@data.rate</td>
+                        <td>@data.rate_per</td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="3" align="right">CGST(<span>@Html.DisplayFor(model => model.cgst_perc)%</span>)&nbsp;</td>
+                    <td>@Html.DisplayFor(model => model.cgst_amt)</td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="right">SGST(<span>@Html.DisplayFor(model => model.sgst_perc)%</span>)&nbsp;</td>
+                    <td>@Html.DisplayFor(model => model.sgst_amt)</td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="right">IGST(<span>@Html.DisplayFor(model => model.igst_perc)%</span>)&nbsp;</td>
+                    <td>@Html.DisplayFor(model => model.igst_amt)</td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="right">Grand Total&nbsp;</td>
+                    <td>@Html.DisplayFor(model => model.grand_total)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <b><u>TERMS &amp; CONDITIONS:</u></b>
+        <table border="1" style="width:100%" id="tblpdfvpodetails">
+            <tbody>
+                <tr>
+                    <td>Sr. No.</td>
+                    <td>Description</td>
+                </tr>
+                @foreach (var data in Model.ssmtbl_TermsNCondtionModel)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@data.TermsNConditionContent</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+        <hr>
+        <b>
+            GSTIN-27AARCS5238G1ZX<br><br>
+            PAN NO.: AARCS5238G.   &nbsp; &nbsp; <br>
+        </b>
+        <hr>
+        <b><u style="display:none;">Notes:-</u></b>
+        <ul id="noteslbl"></ul>
+
+        Thanking You.<br>
+        <p align="right"><b>For Shree Siddheshwari Metal Forging Pvt. Ltd.</b></p><br>
+        &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;Purchase<p align="right"><b>Authorised Signatory</b></p>
+        <hr>
+        PO/WO Received, Reviewed &amp; Accepted by:<br>
+        <p align="right"><b>MT/FM-08</b></p>
+        <p align="right"><b>This is autogenerated</b></p>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-md-4">
+                    @Html.Label("Comment")
+                </div>
+                <div class="col-md-8">
+                    @Html.TextArea("Comment", null, new { @class = "form-control", @id = "Comment" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group" style="text-align:center">
+                <a href="@Url.Action("VPOOutsourcingPDF", "VendorPurchaseOrder", new { PONo = Model.po_no, _target = "blank" })" class=" btn btn-default btn-info">Download</a>
+                <input type="button" name="Save" value="Approve" class="btn btn-success btn-default" id="Approve" />
+                <input type="button" name="Save" value="Reject" class="btn btn-danger btn-default" id="Reject" />
+                @*<input type="button" name="Save" value="Close" class="btn btn-warning btn-default" id="Close" />*@
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Content/jspdf.debug.js"></script>
+<script src="~/Content/jspdf.min.js"></script>
+<link href="~/NewCssAndTheme/FancyBox/jquery.fancybox.css" rel="stylesheet" />
+<script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
+<script src="~/Content/html2canvas.js"></script>
+
+<script>
+    var $j = jQuery.noConflict(true);
+</script>
+
+<script type="text/javascript">
+
+    $j(document).ready(function () {
+
+        $j("#Reject").click(function () {
+            if (confirm('Are you sure you want to Reject this Vendor PO?')) {
+                // Save it!
+                var PO_No = $j('#po_no').val();
+                var CommentFor = $j('#Comment').val();
+                $j.ajax({
+                    url: "../VendorPurchaseOrderApproval/RejectVendorPO",
+                    type: "POST",
+                    dataType: "json",
+                    data: { PONo: PO_No, Comment: CommentFor},
+                    success: function (data) {
+                        alert(data);
+                        parent.$j.fancybox.close();
+                    }
+                });
+            } else {
+                // Do nothing!
+            }
+        });
+
+        $j("#Approve").click(function () {
+
+            if (confirm('Are you sure you want to Approve this Vendor PO?')) {
+                // Save it!
+                var PO_No = $j('#po_no').val();
+                var CommentFor = $j('#Comment').val();
+                $j.ajax({
+                    url: "../VendorPurchaseOrderApproval/ApproveVendorPO",
+                    type: "POST",
+                    dataType: "json",
+                    data: { PONo: PO_No, Comment: CommentFor },
+                    success: function (data) {
+                        alert(data);
+                        parent.$j.fancybox.close();
+                    }
+                });
+            } else {
+                // Do nothing!
+            }
+        });
+
+
+        $j("#Download").click(function () {
+            //pdf download start
+            var div = document.getElementById("printpdf");
+            //alert(div);
+            div.style.display = "block";
+            var doc = new jsPDF('p', 'mm', [600, 500]);
+            doc.addHTML($j('#printpdf')[0], 10, 10, {
+                'background': '#fff',
+            }, function () {
+                doc.save('VendorPO.pdf');
+            });
+
+            //div.style.display = "none";
+            //pdf download complete
+        });
+
+
+    });
+
+</script>
+

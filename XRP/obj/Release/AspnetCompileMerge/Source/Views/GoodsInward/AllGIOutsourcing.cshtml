@@ -1,0 +1,61 @@
+﻿@model XRP.Models.Paged_ssmtbl_GoodsInwardModel
+<div class="container-fluid animatedParent animateOnce">
+    <div class="tab-content my-3" id="v-pills-tabContent">
+        <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+            <div class="row my-3">
+                <div class="col-md-12">
+                    <div class="card r-0 shadow">
+                        <div class="table-responsive">
+                            @*<div class="row">
+                                <div class="col-md-12">*@
+                                    <!-- START DEFAULT DATATABLE -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="col-md-4">
+                                                <a class="nav-link" href='@Url.Action("GIOutsourcing", "GoodsInward")'><i class="icon icon-plus-circle"></i> New Goods Inward</a>
+                                                @*<input type="button" class="btn btn-info" value="New Goods Inward" onclick="location.href = '@Url.Action("GIOutsourcing", "GoodsInward")    '" />*@
+                                            </div>
+                                        </div>
+                                        <div class="panel-body panel-body-table">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-hover r-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>GIN Number</th>
+                                                            <th>Name</th>
+                                                            <th>Date Of Arrival</th>
+                                                            <th>Invoice No</th>
+                                                            <th>Challan No</th>
+                                                            <th>Type</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var data in Model.ssmtbl_GoodsInwardModelList)
+                                                        {
+                                                            <tr>
+                                                                <td>@data.gin_number</td>
+                                                                <td>@data.vendor_name</td>
+                                                                <td>@data.date_of_arrival.Date.ToString("dd-MMM-yyyy")</td>
+                                                                <td>@data.invoice_no</td>
+                                                                <td>@data.challan_no</td>
+                                                                <td>@data.inward_type</td>
+                                                                <td><a href="@Url.Action("UpdateGIOutsourcing", "GoodsInward", new { @id = data.gin_number })" class="" title="Edit Good Inwards"><span class="icon-pencil"></span></a></td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                @*</div>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        

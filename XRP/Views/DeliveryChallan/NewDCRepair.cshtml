@@ -1,0 +1,448 @@
+﻿@model XRP.Models.ssmtbl_DeliveryChallanModel
+@using XRP.Models;
+@{
+    ViewBag.Title = "Repair";
+    ViewBag.Active = "Stock";
+    ViewBag.Active1 = "Delivery Challan";
+    ViewBag.Active2 = "Repair";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+}
+
+
+
+
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
+
+@using (@Html.BeginForm("NewDCRepair", "DeliveryChallan", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+
+
+        <div class="@ViewBag.HideClass" style="text-align:center">
+            @ViewBag.Message
+        </div>
+
+        <!-- PAGE TITLE -->
+
+        @Html.HiddenFor(model => model.dispatch_char, new { @id = "dispatch_char" })
+        @Html.HiddenFor(model => model.dispatch_id, new { @id = "dispatch_id" })
+        <header class="blue accent-3 relative">
+            <div class="container-fluid text-white">
+                @*<div class="row p-t-b-10 ">
+                    <div class="col">*@
+                        <h4>
+                            <i class="icon-database"></i>
+                            Repair
+                        </h4>
+                    @*</div>
+                </div>*@
+                <div class="row justify-content-between">
+                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
+                        <li>
+                            <a class="nav-link" href='@Url.Action("AllDeliveryChallan", "DeliveryChallan")'><i class="icon icon-home2"></i>All Delivery Challan</a>
+
+                        </li>
+                        <li class="float-right">
+                            <a class="nav-link active" href='#'><i class="icon icon-plus-circle"></i> Add New Delivery Challan</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid animatedParent animateOnce">
+            <div class="animated fadeInUpShort">
+                <form action="#">
+                    <div class="card no-b  no-r">
+                        <div class="card-body">
+                            <div class="form-row mt-1">
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.dispatch_no, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.dispatch_no, null, new { @class = "form-control r-0 light s-12", id = "dispatch_no", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.dispatch_no, null, new { @class = "alert-danger" })
+
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.part_description, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.part_description, null, new { @class = "form-control r-0 light s-12", id = "part_description" })
+                                    @Html.ValidationMessageFor(model => model.part_description, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.expected_report_date, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.expected_report_date, "{0:dd-MMM-yyyy}", new { @class = "date-time-picker form-control r-0 light s-12", id = "expected_report_date" })
+                                    @Html.ValidationMessageFor(model => model.expected_report_date, null, new { @class = "alert-danger" })
+                                </div>
+                               
+                            </div>
+                            <div class="form-row mt-1">
+                                <div class="form-group col-4 m-0">
+                                    @Html.LabelFor(model => model.vendor_name, new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.vendor_name, null, new { @class = "form-control r-0 light s-12", id = "vendor_name" })
+                                    @Html.HiddenFor(model => model.vendor_id, new { @id = "vendor_id" })
+                                    @Html.ValidationMessageFor(model => model.vendor_name, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-4 m-0">
+                                    @Html.Label("Remark", new { @class = "Label" })
+
+                                    @Html.TextBoxFor(model => model.remark, null, new { @class = "form-control r-0 light s-12 ", id = "remark" })
+                                    @Html.ValidationMessageFor(model => model.remark, null, new { @class = "alert-danger" })
+                                </div>
+                                <div class="form-group col-4 m-0">
+
+                                </div>
+                            </div>
+
+                            <div class="card-body" id="btnDiv">
+                                <div class="form-row mt-1">
+                                    <div class="form-group col-10 m-0">
+
+                                    </div>
+
+                                    <div class="form-group col-2 m-0 custom-control-inline">
+                                        <div id="submitDiv" align="right">
+                                            <button type="submit" class="btn btn-primary btn-sm" id="btnSubmit"><i class="icon-save mr-2"></i>Save</button>
+                                        </div>&nbsp;&nbsp;
+                                        <div id="loaderDiv" style="display:none;">
+                                            <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                                        </div>
+
+                                        <button type="reset" class="btn btn-success btn-sm" id="Reset"><i class="icon-refresh mr-2"></i>Reset</button>
+
+                                    </div>
+                                </div>
+                                @*<div class="col-md-3">
+                <div class="col-md-6" id="submitDiv">
+                    <input type="button" name="Save" value="Save" class="btn btn-success btn-default" id="btnSubmit" />
+                </div>
+                <div class="col-md-6" id="loaderDiv" style="display:none;">
+                    <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewDCJobDispatch", "DeliveryChallan")    '" />
+            </div>*@
+                            </div>
+
+                        </div>
+                    </div>
+                    </form>
+                </div>
+        </div>
+
+                    @*<div class="col-md-12">
+                        <div class="panel panel-default">
+
+                            <div class="panel-body">
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <div class="col-md-4 control-label">
+                                            @Html.LabelFor(model => model.dispatch_no, new { @class = "Label" })
+
+                                            @Html.TextBoxFor(model => model.dispatch_no, null, new { @class = "form-control NoStar", id = "dispatch_no", @readonly = "readonly" })
+                                            @Html.ValidationMessageFor(model => model.dispatch_no, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-4 control-label">
+                                            @Html.LabelFor(model => model.part_description, new { @class = "Label" })
+
+                                            @Html.TextBoxFor(model => model.part_description, null, new { @class = "form-control NoStar ", id = "part_description" })
+                                            @Html.ValidationMessageFor(model => model.part_description, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-md-4 control-label">
+                                            @Html.LabelFor(model => model.remark, new { @class = "Label" })
+
+                                            @Html.TextBoxFor(model => model.remark, null, new { @class = "form-control NoStar ", id = "remark" })
+                                            @Html.ValidationMessageFor(model => model.remark, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-md-4 control-label">
+                                            @Html.LabelFor(model => model.vendor_name, new { @class = "Label" })
+
+                                            @Html.TextBoxFor(model => model.vendor_name, null, new { @class = "form-control NoStar", id = "vendor_name" })
+                                            @Html.HiddenFor(model => model.vendor_id, new { @id = "vendor_id" })
+                                            @Html.ValidationMessageFor(model => model.vendor_name, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-md-4 control-label">
+                                            @Html.LabelFor(model => model.expected_date, new { @class = "Label" })
+
+                                            @Html.TextBoxFor(model => model.expected_date, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", id = "expected_date" })
+                                            @Html.ValidationMessageFor(model => model.expected_date, null, new { @class = "alert-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+                    @*<div class="row" id="btnDiv">
+                        <div class="col-md-12">
+
+
+                            <div class="form-group" style="text-align:center">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="col-md-6" id="submitDiv">
+                                        <input type="button" name="Save" value="Save" class="btn btn-success btn-default" id="btnSubmit" />
+                                    </div>
+                                    <div class="col-md-6" id="loaderDiv" style="display:none;">
+                                        <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 ">
+                                    <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("NewDCRepair", "DeliveryChallan")    '" />
+                                </div>
+                                <div class="col-md-3">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>*@
+                  
+    </fieldset>
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+    <script>
+        var $j = jQuery.noConflict(true);
+
+        $j(document).ready(function () {
+            $(function () {
+                $('.date-time-picker').datetimepicker({
+                    format: 'd-M-Y',
+                    timepicker: false
+                });
+            });
+
+
+            $j("#vendor_name").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
+                    $j.ajax({
+                        url: "../VendorPurchaseOrder/getVendorName",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: request.term },
+                        success: function (data) {
+                            response($j.map(data, function (item) {
+                                return {
+                                    label: item.Text,
+                                    Id: item.Value
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    $(this).val(ui.item.label);
+
+                    $j('#vendor_id').val(ui.item.Id);
+
+                    $j.ajax({
+                        url: "../DeliveryChallan/getVendoretails",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Id: ui.item.Id },
+                        success: function (data) {
+                            //console.log(data);
+                            $('#vendor_name').val(data.Name);
+                            $('#vendor_email').val(data.Email_ID);
+                            $('#vendor_mobile').val(data.Mobile_No);
+                            $('#vendor_id').val(data.Id);
+                            $('#GSTIN').val(data.GSTIN);
+                            $('#PAN').val(data.PAN);
+                        }
+                    });
+
+                    $j.ajax({
+                        url: "../VendorPurchaseOrder/getVendorContactPerson",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Prefix: ui.item.Id },
+                        success: function (data) {
+                            // console.log(data);
+
+                            var select = document.getElementById("contact_person_email");
+                            var length = select.options.length;
+                            for (i = 0; i < length; i++) {
+                                select.options[i] = null;
+                            }
+
+                            var selectmob = document.getElementById("contact_person_mobile");
+                            var length = selectmob.options.length;
+                            for (i = 0; i < length; i++) {
+                                selectmob.options[i] = null;
+                            }
+
+                            var selectcp = document.getElementById("contact_person");
+                            var length = selectcp.options.length;
+                            for (i = 0; i < length; i++) {
+                                selectcp.options[i] = null;
+                            }
+
+
+                            for (var i = 0; i < data.length; i++) {
+
+                                var optcp = new Option(data[i].contactpersonname, data[i].contactpersonname);
+                                $('#contact_person').append(optcp);
+
+                                var optcp = new Option(data[i].email, data[i].email);
+                                $('#contact_person_email').append(optcp);
+
+                                var optcp = new Option(data[i].mob, data[i].mob);
+                                $('#contact_person_mobile').append(optcp);
+                            }
+                        }
+                    });
+                }
+            });
+
+
+        });
+
+        
+
+        function alertInnerHTML(e) {
+            e = e || window.event;//IE
+            alert(this.innerHTML);
+        }
+
+
+
+
+        function getAllDCJobDispatchData() {
+            var data = [];
+            //var dt = ($j('#expected_report_date').val());
+            //var d = dt.toDateString();
+            //var mnth = d.getMonth() + 1;
+            //if (mnth.length==1)
+            //    var n = d.getDate() + "/" + mnth + "/" + d.getFullYear();
+            //document.getElementById("demo").innerHTML = n;
+            var alldata = {
+                'dispatch_char': $j('#dispatch_char').val(),
+                'dispatch_id': $j('#dispatch_id').val(),
+                'dispatch_no': $j('#dispatch_no').val(),
+                'delivery_challan_type': $j('#delivery_challan_type').val(),
+                'vendor_name': $j('#vendor_name').val(),
+                'vendor_id': $j('#vendor_id').val(),
+                'part_description': $j('#part_description').val(),
+                'remark': $j('#remark').val(),
+                'process': $j('#process').val(),
+                'vendor_po_no': $j('#vendor_po_no').val(),
+                'expected_date': $j('#expected_report_date').val(),
+                'po_qty': $j('#po_qty').val(),
+                'HSNCode': $j('#HSNCode').val(),
+                'Customer_part_no': $j('#Customer_part_no').val(),
+                'total': $j('#total').val(),
+                'cgst_perc': $j('#cgst_perc').val(),
+                'cgst_amt': $j('#cgst_amt').val(),
+                'sgst_perc': $j('#sgst_perc').val(),
+                'sgst_amt': $j('#sgst_amt').val(),
+                'igst_perc': $j('#igst_perc').val(),
+                'igst_amt': $j('#igst_amt').val(),
+                'grand_total': $j('#grand_total').val()
+            }
+            //data.push(alldata);
+            //console.log(alldata);
+            return alldata;
+        }
+        
+
+        $("#btnSubmit").click(function (e) {
+
+
+            if ($j('#dispatch_no').val()) {
+                if ($j('#part_description').val()) {
+
+                    if ($j('#remark').val()) {
+
+                        if ($j('#vendor_name').val()) {
+                            if ($j('#expected_report_date').val()) {
+
+                                var newdispatch_no = $j('#dispatch_no').val();
+                                var newUrl = '@Url.Action("EditDCRepair", "DeliveryChallan")?DispatchNo=' + newdispatch_no + '&successmsg=success';
+                                console.log(newUrl);
+
+                                var datas = JSON.stringify(getAllDCJobDispatchData());
+
+                                $j('#submitDiv').hide();
+                                $j('#loaderDiv').show();
+                                $.ajax({
+                                    url: '@Url.Action("NewDCRepair", "DeliveryChallan")',
+                                    type: 'POST',
+                                    data: JSON.stringify({ 'dcjobdispatch': datas }),
+                                    dataType: 'json',
+                                    contentType: 'application/json; charset=utf-8',
+                                    success: function (sdata) {
+                                        if (sdata.result == "Delivery Challan Created Successfully!") {
+                                            window.location.href = newUrl;
+                                        }
+                                        else {
+                                            alert(sdata.result);
+                                            $j('#submitDiv').show();
+                                            $j('#loaderDiv').hide();
+                                        }
+                                    },
+                                    error: function () {
+                                        alert("Error while inserting data");
+                                        $j('#submitDiv').show();
+                                        $j('#loaderDiv').hide();
+                                    }
+                                });
+
+                            }
+                            else {
+                                alert('Please enter Expected  Date!');
+                            }
+                        }
+                        else {
+                            alert('Please enter Vendor Name!');
+                        }
+                    }
+                    else {
+                        alert('Please enter Remarks!');
+                    }
+                }
+                else {
+                    alert('Please enter Part Description!');
+                }
+            }
+            else {
+                alert('Please enter Dispatch No.!');
+            }
+        });
+
+
+    </script>
+
+}
+
