@@ -264,6 +264,7 @@
     <Content Include="assets\asset\css\plugins\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\asset\css\plugins\font-awesome\HELP-US-OUT.txt" />
     <Content Include="assets\asset\css\style.css" />
+    <Content Include="assets\asset\css\style1.css" />
     <Content Include="assets\asset\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\asset\images\1.Basic_uploader.png" />
     <Content Include="assets\asset\images\2.File_parsed.png" />

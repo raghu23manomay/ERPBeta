@@ -16,7 +16,7 @@
         <ul class="nav nav-tabs" id="myTabs" role="tablist">
             <li role="presentation" class="active"><a href="#EnquiryList" aria-controls="EnquiryList" role="tab" data-toggle="tab">Enquiry List</a></li>
             <li role="presentation">
-                <a href="@Url.Action("NewInquiry", "Inquiry")" class="" title="New Enquiry"> New Enquiry</a> 
+                <a href="@Url.Action("NewInquiry", "Inquiry")" class=""> New Enquiry</a> 
             </li>
         </ul>
         <div class="tab-content">
@@ -24,55 +24,57 @@
                 @using (Html.BeginForm("AllInquiry", "Inquiry", FormMethod.Get, new { @class = " form-horizontal", role = "form", enctype = "multipart/form-data" }))
                 {
 
-                    <div class="clearfix  ">
-                        <div class="btn-toolbar pull-left" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group" role="group" aria-label="First group">
-                                <div class="btn btn-default">
-                                    <div class="form-check height20Pixel">
-                                        <input class="form-check-input" id="selectAll" type="checkbox">
-                                        <label class="form-check-label verticalAlignTop" for="selectAll">1</label>
-                                    </div>
-                                </div>
-                                <button class="btn btn-default" type="button"><i class="fa fa-ban" aria-hidden="true"></i> Disqualify</button>
-
-                                <button class="btn btn-default" type="button"><i class="fa fa-tag" aria-hidden="true"></i> Add tags</button>
-                                <div class="btn-group">
-                                    <button class="btn btn-default dropdown-toggle" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i> More <!--span class="caret"></span--></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li class="divider" role="separator"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                    </ul>
+                <div class="clearfix  ">
+                   
+                    <div class="btn-toolbar pull-left" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group" role="group" aria-label="First group">
+                            <div class="btn btn-default" style="    padding-bottom: 11px;">
+                                <div class="form-check height20Pixel">
+                                    <input class="form-check-input" id="selectAll" type="checkbox">
+                                    <label class="form-check-label verticalAlignTop" for="selectAll">1</label>
                                 </div>
                             </div>
-                        </div>
+                            <button class="btn btn-default" type="button"><i class="fa fa-ban" aria-hidden="true"></i> Disqualify</button>
 
-                        <div class="btn-group pull-right">
-                            <button class="btn btn-default dropdown-toggle" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown"><i class="fa fa-window-maximize" aria-hidden="true"></i> <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider" role="separator"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
+                            <button class="btn btn-default" type="button"><i class="fa fa-tag" aria-hidden="true"></i> Add tags</button>
+                            <div class="btn-group">
+                                <button class="btn btn-default dropdown-toggle" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i> More <!--span class="caret"></span--></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider" role="separator"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <a class="btn btn-primary dropdown-toggle pull-right marginRight15px" href='@Url.Action("NewInquiry", "Inquiry")'><i class="fa fa-plus" aria-hidden="true"></i>  Enquiry</a>
-
                     </div>
+
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-default dropdown-toggle" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown"><i class="fa fa-window-maximize" aria-hidden="true"></i> <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider" role="separator"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                     
+                    <a class="btn btn-primary dropdown-toggle pull-right"><i class="fa fa-plus" aria-hidden="true"></i>  Enquiry</a>
+
+                </div>
                     
                         <table class="table table-bordered table-striped Pad0" id="tbl_inquiry">
                             <thead>
                                  <tr>
-                                    <td>#</td>
-                                    <td>Customer </td>
-                                    <td>Die No  </td>
-                                    <td>Quotation  </td>
-                                    <td>Purchase Order  </td>
-                                    <td>Status  </td>
-                                    <td>Action </td>
+                                    <th class="thHeader" style=" background-color: #e5ebef !important;">#</th>
+                                    <th style="display:none;" >Customer </th>
+                                    <th style=" background-color: #e5ebef !important;">Die No  </th>
+                                    <th style=" background-color: #e5ebef !important;">Quotation  </th>
+                                    <th style=" background-color: #e5ebef !important;">Purchase Order  </th>
+                                    <th style=" background-color: #e5ebef !important;">Status  </th>
+                                    <th style=" background-color: #e5ebef !important;">Action </th>
                                 </tr> 
                             </thead>
                             <tbody>
@@ -81,7 +83,7 @@
 
                                 <tr>
                                     <th><input class="form-check-input" type="checkbox" id="one"></th>
-                                    <td>
+                                    <td style="display:none;">
                                         @data.customerName.Trim() <br />
 
                                         <small>@data.InquiryDate.Date.ToString("dd-MMM-yyyy")</small>
