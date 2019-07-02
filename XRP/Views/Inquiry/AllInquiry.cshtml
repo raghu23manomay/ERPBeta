@@ -28,6 +28,8 @@
                    
                     <div class="btn-toolbar pull-left" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group" role="group" aria-label="First group">
+
+                             
                             <div class="btn btn-default" style="    padding-bottom: 11px;">
                                 <div class="form-check height20Pixel">
                                     <input class="form-check-input" id="selectAll" type="checkbox">
@@ -69,7 +71,7 @@
                             <thead>
                                  <tr>
                                     <th class="thHeader" style=" background-color: #e5ebef !important;">#</th>
-                                    <th style="display:none;" >Customer </th>
+                                    <th style=" background-color: #e5ebef !important;">Customer </th>
                                     <th style=" background-color: #e5ebef !important;">Die No  </th>
                                     <th style=" background-color: #e5ebef !important;">Quotation  </th>
                                     <th style=" background-color: #e5ebef !important;">Purchase Order  </th>
@@ -82,14 +84,14 @@
                                 {
 
                                 <tr>
-                                    <th><input class="form-check-input" type="checkbox" id="one"></th>
-                                    <td style="display:none;">
-                                        @data.customerName.Trim() <br />
+                                    <th style="width:5px; "><input class="form-check-input" type="checkbox" id="one"></th>
+                                    <td  >
+                                        @data.customerName.Trim()  <br />
 
-                                        <small>@data.InquiryDate.Date.ToString("dd-MMM-yyyy")</small>
+                                        <small>@data.InquiryDate.Date.ToString("dd-MMM-yyyy")</small> 
                                     </td>
-                                    <td><strong>@data.DieNumber</strong></td>
-                                    <td>
+                                    <td style="width:20px; "><strong>@data.DieNumber</strong></td>
+                                    <td style="width:30px;">
                                         @if (data.Status == InquiryStatus.InquiryNew || data.Status == InquiryStatus.FeasibilityDone)
                                         {
                                             <div>
@@ -112,7 +114,7 @@
 
                                         }
                                     </td>
-                                    <td>
+                                    <td style="width:20px;">
                                         @if (@data.FilePath != "")
                                         {
                                             <a href="@data.FilePath" class="" title="PO Download" target="_blank">@data.customerPONo</a>
@@ -122,7 +124,7 @@
                                             @data.customerPONo
                                         }
                                     </td>
-                                    <td>
+                                    <td style="width:40px;">
                                         <small>@data.Status</small>
                                     </td>
                                         @*@if (data.Status == InquiryStatus.POApproved)
