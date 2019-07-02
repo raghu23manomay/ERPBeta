@@ -1,6 +1,8 @@
 ﻿@model XRP.Models.Paged_ssmtbl_CustomerModel
 @using XRP.Global;
 @{
+    /**/
+
     ViewBag.Title = "AllCustomer";
     ViewBag.Active = "Master";
     ViewBag.Feature = "Customer";
@@ -8,114 +10,196 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
     //Layout = Session["layout"].ToString();
 }
+<style>
+    table, td, th {
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+
+    .pading0 {
+        padding-left: 20px;
+    }
+
+    .container-fluid {
+        max-width: 1400px;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 8px;
+        padding-right: 15px;
+    }
+
+    .table-responsive {
+        min-height: .01%;
+        overflow-x: auto;
+        margin-top: -12px;
+    }
+
+    .col-xs-12 {
+        margin: auto;
+        width: 100%;
+    }
+</style>
 
 @using (Html.BeginForm("AllCustomer", "Customer", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data", }))
 {
-    @Html.ValidationSummary(true)
+
    
-    <fieldset>
 
-        <!-- PAGE TITLE -->
-        <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                <div class="row p-t-b-10 ">
-                    <div class="col">
-                        <h4>
-                            <i class="icon-database"></i>
-                            Customer
-                        </h4>
-                    </div>
-                </div>
-                <div class="row justify-content-between">
-                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                        <li>
-                            <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>Customer List</a>
-                        </li>
-                        @*<li>
-                                <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
-                            </li>*@
-                        <li class="float-right">
-                            <a class="nav-link newADD" href='@Url.Action("NewCustomer", "Customer")'><i class="icon icon-plus-circle"></i>New Customer</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <ul class="nav nav-tabs" id="myTabs" role="tablist" style="margin-top:10px; padding-left:30px">
+                <li role="presentation" class="active"><a href="#CustomersList" aria-controls="CustomersList" role="tab" data-toggle="tab"><b>Customers</b></a></li>
+                <li role="presentation">
+                    <a href="@Url.Action("NewCustomer", "Customer")" class=""><b>New Customer</b></a>
+                </li>
+            </ul>
 
-        </header>
-        <div class="container-fluid animatedParent animateOnce">
-            <div class="tab-content my-3" id="v-pills-tabContent">
-                <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
-                    <div class="row my-3">
-                        <div class="col-md-12">
-                            <div class="card r-0 shadow">
-                                <div class="table-responsive">
-                                    <form action="">
-                                        @{ int rowNo = 0; }<br />
-                                        <table class="table table-striped table-hover" style="width:100%" id="tbl_AllEditCustomer" cellspacing="0">
+            <div class="container-fluid animatedParent animateOnce">
+                <div class="tab-content my-3" id="v-pills-tabContent">
+                    <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                        <div class="row my-3">
+                            <div class="col-md-12">
+                                <div class="card r-0 shadow">
+                                    <div class="table-responsive">
+
+                                        @*@{ int rowNo = 0; }*@<br />
+
+
+
+                                        <div class="clearfix pull-right-container " style="padding-bottom:10px">
+
+                                            <div class="btn-toolbar pull-left" role="toolbar" aria-label="Toolbar with button groups">
+                                                <div class="btn-group" role="group" aria-label="First group">
+                                                    <div class="btn btn-default" style="padding-top: 11px;">
+                                                        <div class="form-check height20Pixel">
+                                                            <input class="form-check-input" id="selectAll" type="checkbox">
+                                                            <label class="form-check-label verticalAlignTop" for="selectAll">1</label>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-default" type="button"><i class="fa fa-ban" aria-hidden="true"></i> Disqualify</button>
+
+                                                    <button class="btn btn-default" type="button"><i class="fa fa-tag" aria-hidden="true"></i> Add tags</button>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-default dropdown-toggle" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i> More <!--span class="caret"></span--></button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">Action</a></li>
+                                                            <li><a href="#">Another action</a></li>
+                                                            <li><a href="#">Something else here</a></li>
+                                                            <li class="divider" role="separator"></li>
+                                                            <li><a href="#">Separated link</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*@<div class="btn-group pull-right">
+                                                    <button class="btn btn-default dropdown-toggle" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i><!--span class="caret"></span--></button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#">Action</a></li>
+                                                        <li><a href="#">Another action</a></li>
+                                                        <li><a href="#">Something else here</a></li>
+                                                        <li class="divider" role="separator"></li>
+                                                        <li><a href="#">Separated link</a></li>
+                                                    </ul>
+                                                </div>*@
+                                            <div class="btn-group pull-right">
+                                                <button class="btn btn-default dropdown-toggle" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown"><i class="fa fa-window-maximize" aria-hidden="true"></i> <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Name</a></li>
+                                                    <li><a href="#">Telephone</a></li>
+                                                    <li><a href="#">ADDRESS</a></li>
+                                                    <li><a href="#">GST NO</a></li>
+                                                    <li><a href="#">PAN NO</a></li>
+                                                    <li class="divider" role="separator"></li>
+                                                    <li><a href="#">Separated link</a></li>
+                                                </ul>
+                                            </div>
+
+                                            <a class="btn btn-primary dropdown-toggle pull-right"><i class="fa fa-plus" aria-hidden="true"></i>  Customer</a>
+
+                                        </div>
+
+
+                                        <table class="table table-striped table-hover pading0" style="width:150%; position:relative" id="tbl_AllEditCustomer" cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <th style="display:none;">
-                                                        ID
-                                                    </th>
-                                                    <th>#</th>
-                                                    <th>
-                                                      
-                                                        NAME
-                                                    </th>
-                                                    <th>
-                                                        ADDRESS
-                                                    </th>
+                                                    <th style="display:none;"> ID </th>
+                                                    <th class="thHeader" style=" background-color: #e5ebef !important;">#</th>
+                                                    <th style=" background-color: #e5ebef !important;">NAME </th>
+                                                    <th style=" background-color: #e5ebef !important;">Telephone</th>
+                                                    <th style=" background-color: #e5ebef !important;">ADDRESS</th>
+                                                    <th style=" background-color: #e5ebef !important;">GST NO</th>
+                                                    <th style=" background-color: #e5ebef !important;">PAN NO</th>
 
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                
-                                                    @foreach (var data in Model.ssmtbl_CustomerModel)
-                                                    {
 
-                                                        <tr class="mosurhandsymbol">
-                                                            <td style="display:none">
-                                                                @data.ID
-                                                            </td>
-                                                            <td>@(rowNo += 1)</td>
-                                                           
-                                                            <td>
-                                                                <div class="avatar avatar-md mr-3 mt-1 float-left">
+                                            <tbody>
+
+                                                @foreach (var data in Model.ssmtbl_CustomerModel)
+                                                {
+
+                                                    <tr class="mosurhandsymbol">
+                                                        <td style="display:none">
+                                                            @data.ID
+                                                        </td>
+                                                        @*<td>@(rowNo += 1)</td>*@
+
+                                                        <td>  <input class="form-check-input" type="checkbox" id="three"></td>
+                                                        <td>
+                                                            @*<div class="avatar avatar-md mr-3 mt-1 float-left">
 
                                                                     <span class="avatar-letter avatar-letter-@data.Name.ToLower().First() avatar-md circle"></span>
-                                                                </div>
-                                                                <div>
-                                                                    <div>
-                                                                        <strong>@data.Name</strong>
-                                                                    </div>
-                                                                    <small>@data.Telephone_No</small>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                @data.Address
-                                                            </td>
+                                                                </div>*@
 
-                                                        </tr>
+                                                            <div>
 
-                                                    }
-                                                   
-                                                </tbody>
+                                                                @data.Name
+                                                            </div>
+
+                                                        </td>
+                                                        <td>@data.Telephone_No</td>
+                                                        <td>
+                                                            @data.Address
+                                                        </td>
+                                                        <td>@data.GSTNo</td>
+                                                        <td>@data.PANNo</td>
+                                                    </tr>
+
+                                                }
+
+                                            </tbody>
                                         </table>
-
-                                    </form>
+                                    </div>
                                 </div>
+
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-       
-    </fieldset>
-    
+
+
+      
+
+
+    @*@Html.ValidationSummary(true)*@
+
+
+
+
+
+
+
+
+
     <style>
         .mosurhandsymbol {
             cursor: pointer;
@@ -125,33 +209,35 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Content/Validations/JqueryUi.js"></script>
     <script>
+
+
         var $j = jQuery.noConflict(true);
         //$("tr").not(':first').hover(
         //  function () {
-              
+
         //  }
-     
+
         //);
-        function dispin(ids)
-        {
-          
+        function dispin(ids) {
+
             var currentRow = $(ids).closest("tr");
             var id = currentRow.find("td:eq(0)").text();
-           
-            
+
+
         }
-        function dispout()
-        {
-            
+        function dispout() {
+
         }
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#tbl_AllEditCustomer').DataTable({
-                
+
                 "ordering": false,
                 "info": false
             });
+
+
             $('#tbl_AllEditCustomer tr').click(function () {
                 var currentRow = $(this).closest("tr");
                 var id = currentRow.find("td:eq(0)").text();

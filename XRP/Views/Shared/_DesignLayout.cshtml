@@ -40,16 +40,17 @@
             <!-- Sidebar -->
             <nav id="sidebar">
                 <ul class="list-unstyled components marginTop60 paddingTop15">
-                    <li><a href="#"><div><i class="fa fa-dashboard" aria-hidden="true"></i></div>Dashboard</a></li>
-                    <li><a href="#"><div><i class="fa fa-gift" aria-hidden="true"></i></div>Sales</a></li>
-                    <li><a href="#about"><div><i class="fa fa-shopping-basket" aria-hidden="true"></i></div>Purchase</a></li>
-                    <li><a href="#contact"><div><i class="fa fa-tasks" aria-hidden="true"></i></div>Planning</a></li>
-                    <li><a href="#about"><div><i class="fa fa-industry" aria-hidden="true"></i></div>Production</a></li>
-                    <li><a href="#contact"><div><i class="fa  fa-bars" aria-hidden="true"></i></div>Stock</a></li>
-                    <li><a href="#"><div><i class="fa fa-check" aria-hidden="true"></i></div>My Approvals</a></li>
-                    <li><a href="#about"><div><i class="fa fa-cog" aria-hidden="true"></i></div>Setting</a></li>
-                    <li><a href="#contact"><div><i class="fa fa-file" aria-hidden="true"></i></div>Reports</a></li>
-                     
+                    <li class="MenuItem" id="Dashboard"><a href="#"><div><i class="fa fa-dashboard" aria-hidden="true"></i></div>Dashboard</a></li>
+                    <li class="MenuItem" id="Marketing"><a href="#"><div><i class="fa fa-dashboard" aria-hidden="true"></i></div>Marketing</a></li>
+                    <li class="MenuItem" id="Master"><a href="#"><div><i class="fa fa-universal-access" aria-hidden="true"></i></div>Master</a></li>
+                    <li class="MenuItem" id="Purchase"><a href="#"><div><i class="fa fa-shopping-basket" aria-hidden="true"></i></div>Purchase</a></li>
+                    <li class="MenuItem" id="Planning"><a href="#"><div><i class="fa fa-tasks" aria-hidden="true"></i></div>Planning</a></li>
+                    <li class="MenuItem" id="Production"><a href="#"><div><i class="fa fa-industry" aria-hidden="true"></i></div>Production</a></li>
+                    <li class="MenuItem" id="Stock"><a href="#"><div><i class="fa  fa-bars" aria-hidden="true"></i></div>Stock</a></li>
+                    <li class="MenuItem" id="Approvals"><a href="#"><div><i class="fa fa-check" aria-hidden="true"></i></div>My Approvals</a></li>
+                    <li class="MenuItem" id="User"><a href="#"><div><i class="fa fa-user" aria-hidden="true"></i></div>User</a></li>
+                    <li class="MenuItem" id="Reports"><a href="#c"><div><i class="fa fa-file" aria-hidden="true"></i></div>Reports</a></li>
+
 
                 </ul>
             </nav>
@@ -58,24 +59,11 @@
     <div class="paddingRight15 marginLeft100 marginTop60">
         <div class="row">
             <div class="col-xs-12">
-                <div id="enqFilter">
-                    <div>
-                        <ul class="list-unstyledEnqFiter components marginTop20 paddingLeft15">
-                            <li><a href="../Inquiry/AllInquiry"><i class="fa fa-envelope"></i></i>   New Enquiry </a></li>
-                            <li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></i>   Feasibility </a></li>
-                            <li><a href="#"><i class="fa fa-quote-left" aria-hidden="true"></i>   Quotation </a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>   Purchase Orders </a></li>
 
-                        </ul>
-                    </div>
-                    <div class="divTopBorder">
-                        <ul class="list-unstyledEnqFiter components marginTop20 paddingLeft15">
-                            <li><div></div>New Enquiry</a></li>
-
-
-                        </ul>
-                    </div>
+                <div class="slide" id="enqFilter">
+                @Html.Partial("../Home/ManuBar")
                 </div>
+            
                 <div class="tablecontent"> 
                      
                         @RenderBody()
@@ -84,26 +72,76 @@
             </div>
         </div>
     </div>
+
 </body>
+</html>
 <script src="../assets/js/app.js"></script>
 <script src="~/NewCssAndTheme/js/BackToTop.js"></script>
 <script src="~/assets/js/UserAccess.js"></script>
 <script>
+    $(document).ready(function () {
+        $(".slide").hide();
+    });
+    $(document).ready(function () {
+     
+        $(".MenuItem").on("click", function () {
+
+            $(".slide").show();
+            var id = this.id;
+            $(".mnu").hide(); 
+            if (id == "Dashboard") {
+                $("#mnuDashaboard").show();
+            }
+         else   if (id == "Marketing") {
+                $("#mnuMarketing").show();   
+            }
+            else if (id == "Master") {
+                $("#mnuMaster").show();
+            }
+            else if (id == "Purchase") {
+                $("#mnuPurchase").show();
+            }
+            else if (id == "Planning") {
+                $("#mnuPlanning").show();
+            }
+            else if (id == "Production") {
+                $("#mnuProduction").show();
+            }
+            else if (id == "Stock") {
+                $("#mnuStock").show();
+            }
+            else if (id == "Approvals") {
+                $("#mnuMyApprovals").show();
+            }
+            else if (id == "User") {
+                $("#mnuUser").show();
+            }
+            else if (id == "Reports") {
+                $("#mnuReports").show();
+            }
+
+        
+        });
+        
+    });
+</script>
+@*<script>
         $(document).ready(function ()
         {
-           // var userID1 = '@Request.RequestContext.HttpContext.Session["userid"]';
+
+            var userID1 = '@Request.RequestContext.HttpContext.Session["userid"]';
             var userID1=$("#hdnUserID").val();
 
             if (userID1== " " ||userID1== null) {
-               // window.location = "../Auth/Login";
+               window.location = "../Auth/Login";
             }else {
                 var userid=userID1;
 
             setaccesscontrol(userid,"@ViewBag.Feature","1","@ViewBag.FeatureAdd");
             if ("@Session["username"]" == "" || "@Session["username"]" == null)
-            {
-                @*location.href="@Url.Action("Auth", "Login")";*@
-              //  window.location = "../Auth/Login";
+           
+               location.href="@Url.Action("Auth", "Login")";
+               window.location = "../Auth/Login";
             }
             else {
                 var id = 0;
@@ -115,9 +153,9 @@
              
         });
 
-</script>
+</script>*@
 
-<script>
+@*<script>
         function MenuBind()
         {
             $("#ul_mainstartmenu").empty();
@@ -275,6 +313,5 @@
             }
         });
     }
-</script>
+</script>*@
  
-</html>

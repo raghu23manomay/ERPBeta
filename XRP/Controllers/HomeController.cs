@@ -42,5 +42,9 @@ namespace XRP.Controllers
             }
             return Json(s, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult ManuBar()
+        {
+            return View();
+        }
     }
 }

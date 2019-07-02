@@ -1387,6 +1387,7 @@
     <Content Include="Views\Report\Reports.cshtml" />
     <Content Include="Views\Auth\AllUser.cshtml" />
     <Content Include="Views\Auth\NewUser.cshtml" />
+    <Content Include="Views\Home\ManuBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
