@@ -247,7 +247,7 @@ namespace XRP.DataModel
             try
             {
                 //string sqlstr = "select InquiryNo,customerName, InquiryDate,Status,PartName,PartNo,CustomerDrgNo,FrequencyRepearOrder,Qty,HSNCode From ssmtbl_Inquiry where InquiryNo=@InquiryNo Order By InquiryNo";
-                string sqlstr = "select InquiryNo,customerName, InquiryDate,Status,ssmtbl_Inquiry.PartName,PartNo,CustomerDrgNo,FrequencyRepearOrder,Qty,HSNCode,Remark,DieDescription.DieNo From ssmtbl_Inquiry left join DieDescription on ssmtbl_Inquiry.DieDescID=DieDescription.Id where InquiryNo=@InquiryNo Order By InquiryNo";
+                string sqlstr = "select ID,InquiryNo,customerName, InquiryDate,Status,ssmtbl_Inquiry.PartName,PartNo,CustomerDrgNo,FrequencyRepearOrder,Qty,HSNCode,Remark,DieDescription.DieNo From ssmtbl_Inquiry left join DieDescription on ssmtbl_Inquiry.DieDescID=DieDescription.Id where InquiryNo=@InquiryNo Order By InquiryNo";
                 var connection = gConnection.Connection();
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(sqlstr, connection);
@@ -266,7 +266,8 @@ namespace XRP.DataModel
                     objInq.Qty = Convert.ToInt32(sdr["Qty"].ToString());
                     objInq.HSN = (sdr["HSNCode"].ToString());
                     objInq.DieNumber = (sdr["DieNo"].ToString());
-                    objInq.Remark = (sdr["Remark"].ToString());                    
+                    objInq.Remark = (sdr["Remark"].ToString());
+                    objInq.DieID= (Convert.ToInt32(sdr["ID"].ToString()));
                 }
                 connection.Close();
             }

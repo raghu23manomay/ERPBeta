@@ -1,7 +1,88 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<form role="form">
 
-<p>Use this area to provide additional information.................</p>
+    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <label for="DieNumber">Die Number :</label>
+        @Html.TextBoxFor(model => model.DieNumber, null, new { @class = "form-control r-0 light s-12 " })
+        @Html.ValidationMessageFor(model => model.DieNumber, null, new { @class = "alert-danger" })
+    </div>
+    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
+    </div>
+    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <label for="customerName">Customer Name :</label>
+        @Html.TextBoxFor(model => model.customerName, null, new { @class = "form-control r-0 light s-12", @id = "customerName", @required = "required" })
+        @Html.ValidationMessageFor(model => model.customerName, null, new { @class = "alert-danger" })
+
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <label for="PartName">Part Name</label>
+        @Html.TextBoxFor(model => model.PartName, null, new { @class = "form-control r-0 light s-12 " })
+        @Html.ValidationMessageFor(model => model.PartName, null, new { @class = "alert-danger" })
+    </div>
+    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
+    </div>
+    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <label for="PartNumber">Part Number</label>
+        @Html.TextBoxFor(model => model.PartNo, null, new { @class = "form-control r-0 light s-12 " })
+        @Html.ValidationMessageFor(model => model.PartNo, null, new { @class = "alert-danger" })
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <label for="EnquiryDate">Enquiry Date</label>
+        @Html.TextBoxFor(model => model.InquiryDate, "{0:dd/MM/yyyy}", new { @class = "date-time-picker form-control r-0 light s-12" })
+        @Html.ValidationMessageFor(model => model.InquiryDate, null, new { @class = "alert-danger" })
+
+    </div>
+    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
+    </div>
+    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <label for="DrawingNumber">Customer Drawing Number</label>
+        @Html.TextBoxFor(model => model.CustomerDrgNo, null, new { @class = "form-control r-0 light s-12 " })
+        @Html.ValidationMessageFor(model => model.CustomerDrgNo, null, new { @class = "alert-danger" })
+
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <label for="Quantity">Quantity</label>
+        @Html.TextBoxFor(model => model.Qty, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+        @Html.ValidationMessageFor(model => model.Qty, null, new { @class = "alert-danger" })
+
+    </div>
+    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
+    </div>
+    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <label for="OrderFrequency">Order Frequency</label>
+        @Html.DropDownListFor(model => model.FrequencyRepearOrder, ViewData["FreqRepeatOrder"] as IEnumerable<SelectListItem>,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = "form-control r-0 light s-12 .chzn-select", @required = "required" })
+        @Html.ValidationMessageFor(model => model.FrequencyRepearOrder, null, new { @class = "alert-danger" })
+
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <label for="HSNCode">HSN / SAC Code</label>
+        @Html.TextBoxFor(model => model.HSN, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+        @Html.ValidationMessageFor(model => model.HSN, null, new { @class = "alert-danger" })
+
+    </div>
+    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
+    </div>
+    <div class="form-group col-xs-45 col-sm-5 col-md-5 col-lg-5">
+        <label for="Comment">Comment</label>
+
+        @Html.TextBoxFor(model => model.Remark, null, new { @class = "form-control r-0 light s-12 " })
+        @Html.ValidationMessageFor(model => model.Remark, null, new { @class = "alert-danger" })
+
+    </div>
+    <div class="clearfix"></div>
+
+
+
+    <div class="modal-footer">
+
+        <button type="submit" class="btn btn-primary" id="btnSubmit" onclick="preventMultipleSubmissions()"><i class="icon-save mr-2"></i>Save</button>
+        <button type="reset" class="btn btn-success btn-sm" id="btnReset"><i class="icon-refresh mr-2"></i>Reset</button>
+
+
+    </div>
+
+</form>

@@ -11,7 +11,7 @@
 
 
      
-    <div class="paddingLeft15 paddingTop15">
+    <div class= "paddingTop15">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" id="myTabs" role="tablist">
             <li role="presentation" class="active"><a href="#EnquiryList" aria-controls="EnquiryList" role="tab" data-toggle="tab">Enquiry List</a></li>
@@ -53,6 +53,7 @@
                     </div>
 
                     <div class="btn-group pull-right">
+                       
                         <button class="btn btn-default dropdown-toggle" aria-expanded="false" aria-haspopup="true" type="button" data-toggle="dropdown"><i class="fa fa-window-maximize" aria-hidden="true"></i> <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action</a></li>
@@ -63,7 +64,7 @@
                         </ul>
                     </div>
                      
-                    <a class="btn btn-primary dropdown-toggle pull-right"><i class="fa fa-plus" aria-hidden="true"></i>  Enquiry</a>
+                    <a class="btn btn-primary dropdown-toggle pull-right" href="@Url.Action("NewInquiry", "Inquiry")"><i class="fa fa-plus" aria-hidden="true"></i>  Enquiry</a>
 
                 </div>
                     
@@ -126,67 +127,8 @@
                                     </td>
                                     <td style="width:40px;">
                                         <small>@data.Status</small>
-                                    </td>
-                                        @*@if (data.Status == InquiryStatus.POApproved)
-        {
-            <td style="color:darkgreen">
-                <span class="   " style="color:black;font-size:90%"><b>@data.Status</b></span>
-
-            </td>
-        }
-        else if (data.Status == InquiryStatus.PORejected)
-        {
-            <td style="color:red">
-                <span class=" " style="color:white;font-size:90%"><b>@data.Status</b></span>
-            </td>
-        }
-        else if (data.Status == InquiryStatus.QuotationRejected)
-        {
-            <td style="color:red">
-                <span class=" " style="color:black;font-size:90%"><b>@data.Status</b></span>
-            </td>
-        }
-        else if (data.Status == InquiryStatus.InquiryNew)
-        {
-            <td style="color:red">
-                <span class=" " style="color:black;font-size:90%"><b>@data.Status</b></span>
-            </td>
-        }
-        else if (data.Status == InquiryStatus.FeasibilityDone)
-        {
-            <td style="color:red">
-                <span style="color:black;font-size:90%"><b>@data.Status</b></span>
-            </td>
-        }
-        else if (data.Status == InquiryStatus.QuotationPendingForApproval)
-        {
-            <td style="color:red">
-                <span style="color:black;font-size:90%"><b>@data.Status</b></span>
-            </td>
-        }
-        else if (data.Status == InquiryStatus.QuotationApproved)
-        {
-            <td style="color:red">
-                <span style="color:white;font-size:90%"><b>@data.Status</b></span>
-            </td>
-        }
-        else if (data.Status == InquiryStatus.POPendingForApproval)
-        {
-            <td style="color:red">
-                <span class="r-3 badge badge1 badge-info" style="color:white;font-size:90%"><b>@data.Status</b></span>
-            </td>
-        }
-
-        else if (data.Status == InquiryStatus.InquiryClosed)
-        {
-            <td style="color:red">
-                <span class="r-3 badge badge1 badge-danger" style="color:white;font-size:90%"><b>@data.Status</b></span>
-            </td>
-        }
-        else
-        {
-            <td><span class="r-3 badge badge1 badge-primary" style="color:white;font-size:90%"><b>@data.Status</b></span></td>
-        }*@
+                                    </td> 
+        
 
 <td>
                                         <span class="r-3 badge2 badge1 badge-primary">

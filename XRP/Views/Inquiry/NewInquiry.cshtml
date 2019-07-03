@@ -4,7 +4,7 @@
     ViewBag.Active = "Marketing";
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
-
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
 
 <style>
     #btnSubmit {
@@ -19,13 +19,13 @@
         right: 2%;
     }
 </style>
-@using (Html.BeginForm("NewInquiry", "Inquiry", FormMethod.Get, new { @class = "form-horizontal form-horizontal1", role = "form", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("NewInquiry", "Inquiry", FormMethod.Post, new { @class = "form-horizontal form-horizontal1", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
 
     @Html.HiddenFor(model => model.DieID, new { @id = "hdn_diedescid" })
     @Html.HiddenFor(model => model.InquiryNo, new { @id = "InquiryNo" })
-    <div class="paddingLeft15 paddingTop15">
+    <div class="  paddingTop15">
 
         <ul class="nav nav-tabs" id="myTabs" role="tablist">
             <li role="presentation">
@@ -39,96 +39,180 @@
                 <div class="@ViewBag.HideClass" style="text-align:center">
                     @ViewBag.Message
                 </div>
+                @using (Html.BeginForm("AllInquiry", "Inquiry", FormMethod.Post, new { @class = " form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                {
 
-                <form role="form">
+                    <div class="row my-3">
+                        <div class="col-md-12">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>Enquiry</h5>
+                                </div>
+                                <div class="ibox-content">
 
-                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <label for="DieNumber">Die Number :</label>
-                        @Html.TextBoxFor(model => model.DieNumber, null, new { @class = "form-control r-0 light s-12 " })
-                        @Html.ValidationMessageFor(model => model.DieNumber, null, new { @class = "alert-danger" })
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                Die Number :
+                                            </span>
+
+                                            <div class="input-group bootstrap-touchspin">
+                                                <span class="input-group-btn">
+                                                    @Html.TextBoxFor(model => model.DieNumber, null, new { @class = "form-control r-0 light s-12 " })
+                                                    @Html.ValidationMessageFor(model => model.DieNumber, null, new { @class = "alert-danger" })
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                Customer Name :
+                                            </span>
+                                            <div class="input-group ">
+                                                <span class="input-group-btn">
+                                                    @Html.TextBoxFor(model => model.customerName, null, new { @class = "form-control r-0 light s-12", @id = "customerName", @required = "required" })
+                                                    @Html.ValidationMessageFor(model => model.customerName, null, new { @class = "alert-danger" })
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                @Html.LabelFor(model => model.PartName, new { @class = "Label" })
+                                            </span>
+
+                                            <div class="input-group bootstrap-touchspin">
+                                                <span class="input-group-btn">
+
+                                                    @Html.TextBoxFor(model => model.PartName, null, new { @class = "form-control r-0 light s-12 " })
+                                                    @Html.ValidationMessageFor(model => model.PartName, null, new { @class = "alert-danger" })
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                @Html.LabelFor(model => model.PartNo, new { @class = "Label" })
+                                            </span>
+
+                                            <div class="input-group bootstrap-touchspin">
+                                                <span class="input-group-btn">
+
+                                                    @Html.TextBoxFor(model => model.PartNo, null, new { @class = "form-control r-0 light s-12 " })
+                                                    @Html.ValidationMessageFor(model => model.PartNo, null, new { @class = "alert-danger" })
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                @Html.LabelFor(model => model.InquiryDate, new { @class = "Label" })
+                                            </span>
+
+                                            <div class="input-group bootstrap-touchspin">
+                                                <span class="input-group-btn">
+
+                                                    @Html.TextBoxFor(model => model.InquiryDate, "{0:dd/MM/yyyy}", new { @class = "date-time-picker form-control r-0 light s-12" })
+                                                    @Html.ValidationMessageFor(model => model.InquiryDate, null, new { @class = "alert-danger" })
+
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                @Html.LabelFor(model => model.CustomerDrgNo, new { @class = "Label" })
+                                            </span>
+                                            <div class="input-group ">
+                                                <span class="input-group-btn">
+
+                                                    @Html.TextBoxFor(model => model.CustomerDrgNo, null, new { @class = "form-control r-0 light s-12 " })
+                                                    @Html.ValidationMessageFor(model => model.CustomerDrgNo, null, new { @class = "alert-danger" })
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                @Html.LabelFor(model => model.Qty, new { @class = "Label" })
+                                            </span>
+                                            <div class="input-group ">
+                                                <span class="input-group-btn">
+
+                                                    @Html.TextBoxFor(model => model.Qty, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+                                                    @Html.ValidationMessageFor(model => model.Qty, null, new { @class = "alert-danger" })
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                @Html.LabelFor(model => model.FrequencyRepearOrder, new { @class = "Label" })
+                                            </span>
+                                            <div class="input-group ">
+                                                <span class="input-group-btn">
+
+                                                    @Html.DropDownListFor(model => model.FrequencyRepearOrder, ViewData["FreqRepeatOrder"] as IEnumerable<SelectListItem>,
+      XRP.Global.DropDownSelection.DropDownSelect, new { @class = "form-control r-0 light s-12 .chzn-select", @required = "required" })
+                                                    @Html.ValidationMessageFor(model => model.FrequencyRepearOrder, null, new { @class = "alert-danger" })
+
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                @Html.LabelFor(model => model.HSN, new { @class = "Label" })
+                                            </span>
+                                            <div class="input-group ">
+                                                <span class="input-group-btn">
+
+                                                    @Html.TextBoxFor(model => model.HSN, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
+                                                    @Html.ValidationMessageFor(model => model.HSN, null, new { @class = "alert-danger" })
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="font-bold">
+                                                Remark
+                                            </span>
+                                            <div class="input-group ">
+                                                <span class="input-group-btn">
+
+
+                                                    @Html.TextBoxFor(model => model.Remark, null, new { @class = "form-control r-0 light s-12 " })
+                                                    @Html.ValidationMessageFor(model => model.Remark, null, new { @class = "alert-danger" })
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-4 col-sm-offset-2">
+                                                <button class="btn btn-white" type="button">Cancel</button>
+                                                <button class="btn btn-primary" type="submit">Save changes</button>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                    </div>
-                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <label for="customerName">Customer Name :</label>
-                        @Html.TextBoxFor(model => model.customerName, null, new { @class = "form-control r-0 light s-12", @id = "customerName", @required = "required" })
-                        @Html.ValidationMessageFor(model => model.customerName, null, new { @class = "alert-danger" })
-
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <label for="PartName">Part Name</label>
-                        @Html.TextBoxFor(model => model.PartName, null, new { @class = "form-control r-0 light s-12 " })
-                        @Html.ValidationMessageFor(model => model.PartName, null, new { @class = "alert-danger" })
-                    </div>
-                    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                    </div>
-                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <label for="PartNumber">Part Number</label>
-                        @Html.TextBoxFor(model => model.PartNo, null, new { @class = "form-control r-0 light s-12 " })
-                        @Html.ValidationMessageFor(model => model.PartNo, null, new { @class = "alert-danger" })
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <label for="EnquiryDate">Enquiry Date</label>
-                        @Html.TextBoxFor(model => model.InquiryDate, "{0:dd/MM/yyyy}", new { @class = "date-time-picker form-control r-0 light s-12" })
-                        @Html.ValidationMessageFor(model => model.InquiryDate, null, new { @class = "alert-danger" })
-
-                    </div>
-                    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                    </div>
-                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <label for="DrawingNumber">Customer Drawing Number</label>
-                        @Html.TextBoxFor(model => model.CustomerDrgNo, null, new { @class = "form-control r-0 light s-12 " })
-                        @Html.ValidationMessageFor(model => model.CustomerDrgNo, null, new { @class = "alert-danger" })
-
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <label for="Quantity">Quantity</label>
-                        @Html.TextBoxFor(model => model.Qty, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
-                        @Html.ValidationMessageFor(model => model.Qty, null, new { @class = "alert-danger" })
-
-                    </div>
-                    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                    </div>
-                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <label for="OrderFrequency">Order Frequency</label>
-                        @Html.DropDownListFor(model => model.FrequencyRepearOrder, ViewData["FreqRepeatOrder"] as IEnumerable<SelectListItem>,
-                                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = "form-control r-0 light s-12 .chzn-select", @required = "required" })
-                        @Html.ValidationMessageFor(model => model.FrequencyRepearOrder, null, new { @class = "alert-danger" })
-
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <label for="HSNCode">HSN / SAC Code</label>
-                        @Html.TextBoxFor(model => model.HSN, null, new { @class = "form-control r-0 light s-12 ", @required = "required" })
-                        @Html.ValidationMessageFor(model => model.HSN, null, new { @class = "alert-danger" })
-
-                    </div>
-                    <div class="form-group col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                    </div>
-                    <div class="form-group col-xs-45 col-sm-5 col-md-5 col-lg-5">
-                        <label for="Comment">Comment</label>
-
-                        @Html.TextBoxFor(model => model.Remark, null, new { @class = "form-control r-0 light s-12 " })
-                        @Html.ValidationMessageFor(model => model.Remark, null, new { @class = "alert-danger" })
-
-                    </div>
-                    <div class="clearfix"></div>
-
-
-
-                    <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-primary" id="btnSubmit" onclick="preventMultipleSubmissions()"><i class="icon-save mr-2"></i>Save</button>
-                        <button type="reset" class="btn btn-success btn-sm" id="btnReset"><i class="icon-refresh mr-2"></i>Reset</button>
-
-
-                    </div>
-
-                </form>
-            </div>
+                }
+                </div>
         </div>
     </div>
 
