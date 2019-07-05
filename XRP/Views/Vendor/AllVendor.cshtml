@@ -11,39 +11,24 @@
 @using (Html.BeginForm("AllVendor", "Vendor", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
-
-
     <fieldset>
-
-        <!-- PAGE TITLE -->
         <header class="blue accent-3 relative">
             <div class="container-fluid text-white">
-                @*<div class="row p-t-b-10 ">
-                    <div class="col">*@
                         <h4>
                             <i class="icon-database"></i>
                             Vendor
                         </h4>
-                    @*</div>
-                </div>*@
                 <div class="row justify-content-between">
                     <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
                         <li>
                             <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>Vendor List</a>
                         </li>
-                        @*<li>
-                            <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
-                        </li>*@
                         <li class="float-right">
                             <a class="nav-link newADD" href='@Url.Action("NewVendor", "Vendor")'><i class="icon icon-plus-circle"></i>New Vendor</a>
                         </li>
                     </ul>
                 </div>
             </div>
-
         </header>
         <div class="container-fluid animatedParent animateOnce">
             <div class="tab-content my-3" id="v-pills-tabContent">
@@ -65,7 +50,6 @@
                                                     <th>
                                                         NAME
                                                     </th>
-                                                   
                                                     <th>
                                                         Type
                                                     </th>
@@ -75,11 +59,9 @@
                                                     <th></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-
+                                            <tbody> 
                                                 @foreach (var data in Model.ssmtbl_CustomerModel)
-                                                {
-                                                   
+                                                { 
                                                         <tr class="mosurhandsymbol">
                                                             <td style="display:none">
                                                                 @data.ID
@@ -99,14 +81,7 @@
                                                             </td>
                                                           
                                                             <td width="40%">
-                                                                @*<span class="r-15 badge badge-primary" style="width:22%;color:white;font-size:90%"><b>@data.tag.Split(',')[0].ToString()</b></span>
-                                                                <span class="r-15 badge badge-warning" style="width:22%;color:white;font-size:90%"><b>@data.tag.Split(',')[1].ToString()</b></span>
-                                                                <span class="r-15 badge badge-success" style="width:22%;color:white;font-size:90%"><b>@data.tag.Split(',')[2].ToString()</b></span>
-                                                                <span class="r-15 badge badge-dark" style="width:22%;color:white;font-size:90%"><b>@data.tag.Split(',')[3].ToString()</b></span>*@
-                                                                @data.tag
-                                                               
-                                                                
-                                                              
+                                                                @data.tag  
                                                             </td>
                                                             <td width="5%">
                                                                 @if (data.flag == true)
@@ -114,18 +89,14 @@
                                                                     <div class="custom-control custom-checkbox">
                                                                         <input type="checkbox" class="custom-control-input" id=@data.ID checked value=" @data.ID" disabled>
                                                                         <label class="custom-control-label" for=@data.ID></label>
-                                                                    </div>
-
+                                                                    </div> 
                                                                 }
                                                                 else
-                                                                {
-
-
+                                                                { 
                                                                     <div class="custom-control custom-checkbox">
                                                                         <input type="checkbox" class="custom-control-input" id=@data.ID value=" @data.ID" disabled>
                                                                         <label class="custom-control-label" for=@data.ID></label>
-                                                                    </div>
-
+                                                                    </div> 
                                                                 }
                                                             </td>
                                                             <td>
@@ -134,24 +105,17 @@
                                                                 </a>
                                                                 <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(169px, 98px, 0px);">
                                                                     <a class="dropdown-item mosurhandsymbol"  onclick="vendoractive(@data.ID)">
-                                                                        Active
-
+                                                                        Active 
                                                                     </a>
                                                                     <a class="dropdown-item mosurhandsymbol"  onclick="vendordeactive(@data.ID)">
-                                                                        Deactive
-
-                                                                    </a>
-
-
-
+                                                                        Deactive 
+                                                                    </a> 
                                                                 </div>
                                                             </td>
-                                                        </tr>
-                                                    
+                                                        </tr> 
                                                 }
                                             </tbody>
-                                        </table>
-
+                                        </table> 
                                     </form>
                                 </div>
                             </div>
@@ -159,11 +123,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-                   
-
+        </div> 
     </fieldset>
     <style>
         .mosurhandsymbol {
@@ -177,8 +137,7 @@
         var $j = jQuery.noConflict(true);
     </script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            
+        $(document).ready(function () { 
             $('#tbl_AllEditCustomer').DataTable({
 
                 "ordering": false,

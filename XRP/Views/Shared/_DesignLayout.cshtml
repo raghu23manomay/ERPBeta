@@ -65,11 +65,11 @@
                 </div>
             </div>
             <div class="col-xs-10">
-                @*<div class="tablecontent">*@
+               
 
                     @RenderBody()
 
-                @*</div>*@
+               
             </div>
         </div>
     </div>
@@ -80,13 +80,19 @@
 <script src="~/NewCssAndTheme/js/BackToTop.js"></script>
 <script src="~/assets/js/UserAccess.js"></script>
 <script>
+    
     $(document).ready(function () {
-        $(".slide").hide();
-    });
-    $(document).ready(function () {
-     
+        var url = window.location.pathname.split("/");
+        var action = url[1];
+        $(".mnu").hide();
+        if (action == "Inquiry") {
+            $("#mnuMarketing").show();
+        }
+        else if (action == "Customer" || action == "Vendor" || action == "GradeOfMaterial" || action == "Section" || action == "DieDescription" || action == "Auth" ) {
+            $("#mnuMaster").show();
+        }
         $(".MenuItem").on("click", function () {
-
+            
             $(".slide").show();
             var id = this.id;
             $(".mnu").hide(); 
@@ -123,7 +129,7 @@
 
         
         });
-        
+      
     });
 </script>
 @*<script>
