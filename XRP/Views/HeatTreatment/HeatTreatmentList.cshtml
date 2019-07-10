@@ -4,28 +4,6 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 
-
-
-<style>
-    .icon:hover, .trDelivery:hover {
-        cursor: pointer;
-    }
-</style>
-<style>
-    .btnGenerateWO {
-        position: absolute;
-        bottom: 25px;
-        right: 20px;
-    }
-
-    .btnGenerateCuttingSlip {
-        position: absolute;
-        bottom: 25px;
-        left: 20px;
-    }
-</style>
-
-<link rel="stylesheet" href="~/assets/css/app.css">
 <link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
 @using (Html.BeginForm("ForgingList", "Forging", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
@@ -59,7 +37,7 @@
                                     <div class="slimScroll" style="position:relative;overflow:hidden;height:initial">
                                         <div class="slimScroll" style="">
                                             <div class="tab-content " id="v-pills-tabContent">
-                                                <div class="tab-pane fade show active slimScroll" id="w2-tab1" role="tabpanel"
+                                                <div class="tab-pane show active slimScroll" id="w2-tab1" role="tabpanel"
                                                      aria-labelledby="w2-tab1">
                                                     <ul class="list-unstyled trDelivery" id="ullslistbind"></ul>
 

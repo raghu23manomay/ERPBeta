@@ -21,299 +21,242 @@
         <div class="@ViewBag.HideClass" style="text-align:center">
             @ViewBag.Message
         </div>
-        <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                <div class="row p-t-b-10 ">
-                    <div class="col">
-                        <h4>
-                            <i class="icon-database"></i>
-                            Vendor Purchase Order
-                        </h4>
-                    </div>
-                </div>
-                <div class="row justify-content-between">
-                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                        <li>
-                            <a class="nav-link" href='@Url.Action("AllVendorPurchaseOrder","VendorPurchaseOrder")'><i class="icon icon-home2"></i>All Vendor Purchase Order</a>
-
-                        </li>
-                        @*<li>
-                                <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
-                            </li>*@
-                        <li class="float-right">
-                            <a class="nav-link active" href='#'><i class="icon icon-plus-circle"></i> Edit Consuambles Vendor Purchase Order</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </header>
+        
         @Html.HiddenFor(model => model.po_char, new { @id = "po_char" })
         @Html.HiddenFor(model => model.po_id, new { @id = "po_id" })
         @Html.HiddenFor(model => model.file_path, new { @id = "file_path" })
-        <div class="container-fluid animatedParent animateOnce">
-            <div class="animated fadeInUpShort">
-                <div class="row my-3">
+       
+           
+                
                     <div class="col-md-12">
                         <form action="#">
-                            <div class="card no-b  no-r">
-                                <div class="card-body">
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
+
+                            <div class="ibox">
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class=" col-md-4">
                                             @Html.LabelFor(model => model.po_no, new { @class = "Label" })
-                                            @Html.TextBoxFor(model => model.po_no, null, new { @class = "form-control r-0 light s-12", id = "po_no", @readonly = "readonly" })
+                                            @Html.TextBoxFor(model => model.po_no, null, new { @class = "form-control", id = "po_no", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.po_no, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-md-4">
                                             @Html.LabelFor(model => model.quotation_ref_no, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.quotation_ref_no, null, new { @class = "form-control r-0 light s-12", id = "quotation_ref_no" })
                                             @Html.ValidationMessageFor(model => model.quotation_ref_no, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-md-4">
                                             @Html.LabelFor(model => model.quotation_ref_date, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.quotation_ref_date, "{0:dd-MM-yyyy}", new { @class = "date-time-picker form-control r-0 light s-12", id = "quotation_ref_date" })
                                             @Html.ValidationMessageFor(model => model.quotation_ref_date, null, new { @class = "alert-danger" })
                                         </div>
 
                                     </div>
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
+                                    <div class=" row">
+                                        <div class=" col-md-4">
                                             @Html.LabelFor(model => model.po_date, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.po_date, "{0:dd-MM-yyyy}", new { @class = "date-time-picker form-control r-0 light s-12", id = "po_date" })
                                             @Html.ValidationMessageFor(model => model.po_date, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-md-4">
                                             @Html.LabelFor(model => model.valid_date, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.valid_date, "{0:dd-MM-yyyy}", new { @class = "date-time-picker form-control r-0 light s-12", id = "valid_date" })
                                             @Html.ValidationMessageFor(model => model.valid_date, null, new { @class = "alert-danger" })
 
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-md-4">
                                             @Html.LabelFor(model => model.file_path, new { @class = "Label" })
                                             <input type="file" id="myfile" name="myfile" />
                                         </div>
 
                                     </div>
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
+                                    <div class="row">
+                                        <div class=" col-md-4">
                                             @Html.LabelFor(model => model.vendor_name, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.vendor_name, null, new { @class = "form-control r-0 light s-12", id = "vendor_name", onchange = "clearvendordetails();", onkeyup = "this.onchange();", onpaste = "this.onchange();", oninput = "this.onchange();" })
                                             @Html.HiddenFor(model => model.vendor_id, new { @id = "vendor_id" })
                                             @Html.ValidationMessageFor(model => model.vendor_name, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-md-4">
                                             @Html.LabelFor(model => model.vendor_email, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.vendor_email, null, new { @class = "form-control r-0 light s-12 ", id = "vendor_email", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.vendor_email, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-md-4">
                                             @Html.LabelFor(model => model.vendor_mobile, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.vendor_mobile, null, new { @class = "form-control r-0 light s-12", id = "vendor_mobile", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.vendor_mobile, null, new { @class = "alert-danger" })
 
                                         </div>
                                     </div>
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
+                                    <div class="row">
+                                        <div class="col-md-4">
                                             @Html.LabelFor(model => model.GSTIN, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.GSTIN, null, new { @class = "form-control r-0 light s-12 ", id = "GSTIN", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.GSTIN, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class="col-md-4">
                                             @Html.LabelFor(model => model.PAN, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.PAN, null, new { @class = "form-control r-0 light s-12 ", id = "PAN", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.PAN, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class="col-md-4">
                                             @Html.LabelFor(model => model.contact_person, new { @class = "Label" })
                                             @Html.HiddenFor(model => model.contact_person_id, new { @id = "contact_person_id" })
-                                            @Html.TextBoxFor(model => model.contact_person, new { @class = "form-control r-0 light s-12 ", id = "contact_person",@readonly="readonly" })
+                                            @Html.TextBoxFor(model => model.contact_person, new { @class = "form-control r-0 light s-12 ", id = "contact_person", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.contact_person, null, new { @class = "alert-danger" })
                                         </div>
                                     </div>
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
+                                    <div class="row">
+                                        <div class="col-md-4">
                                             @Html.LabelFor(model => model.contact_person_email, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.contact_person_email, new { @class = "form-control r-0 light s-12 ", id = "contact_person_email", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.contact_person_email, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class="col-md-4">
                                             @Html.LabelFor(model => model.contact_person_mobile, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.contact_person_mobile, new { @class = "form-control r-0 light s-12 ", id = "contact_person_mobile", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.contact_person_mobile, null, new { @class = "alert-danger" })
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Item Code</th>
-                                            <th>Description</th>
-                                            <th>Qty</th>
-                                            <th>Rate/Per</th>
-                                            <th>Rate</th>
-                                            <th>Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <input type="text" name="ItemCodeM" class="form-control r-0 light s-12 " id="ItemCodeM" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="ItemDescriptionM" class="form-control r-0 light s-12 " id="ItemDescriptionM" readonly="readonly" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="QtyM" class="form-control r-0 light s-12 " id="QtyM" value="0" />
-                                            </td>
-                                            <td>
-                                                @Html.DropDownList("RatePerM", @ViewBag.RatePer as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", id = "RatePerM" })
-                                            </td>
-                                            <td>
-                                                <input type="text" name="RateM" class="form-control r-0 light s-12 " id="RateM" value="0" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="AmountM" class="form-control r-0 light s-12" id="AmountM" readonly="readonly" value="0" />
-                                            </td>
-                                            <td>
-                                                <button type="button" id="btnAdd" class="btn-sm btn-primary classAdd"><i class="icon-add"></i></button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            </div>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Item Code</th>
+                                        <th>Description</th>
+                                        <th>Qty</th>
+                                        <th>Rate/Per</th>
+                                        <th>Rate</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="text" name="ItemCodeM" class="form-control r-0 light s-12 " id="ItemCodeM" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="ItemDescriptionM" class="form-control r-0 light s-12 " id="ItemDescriptionM" readonly="readonly" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="QtyM" class="form-control r-0 light s-12 " id="QtyM" value="0" />
+                                        </td>
+                                        <td>
+                                            @Html.DropDownList("RatePerM", @ViewBag.RatePer as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", id = "RatePerM" })
+                                        </td>
+                                        <td>
+                                            <input type="text" name="RateM" class="form-control r-0 light s-12 " id="RateM" value="0" />
+                                        </td>
+                                        <td>
+                                            <input type="text" name="AmountM" class="form-control r-0 light s-12" id="AmountM" readonly="readonly" value="0" />
+                                        </td>
+                                        <td>
+                                            <button type="button" id="btnAdd" class="btn-primary">Add</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                                <table class="table table-striped table-hover" id="maintable">
+                            <table class="table table-striped table-hover" id="maintable">
 
-                                    <tbody>
-                                        @foreach (var data in Model.ssmtbl_VendorPurchaseOrder_DetailsModel)
-                                        {
-                                            <tr class="data-contact-person">
-                                                <td>
-                                                    <input type="text" name="ItemCodeM" class="form-control r-0 light s-12  i_code01" id="ItemCodeM" value="@data.item_code" readonly="readonly" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="ItemDescriptionM" class="form-control r-0 light s-12  i_desc01" id="ItemDescriptionM" readonly="readonly" value="@data.item_description" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="QtyM" class="form-control r-0 light s-12  qty01" id="QtyM" value="@data.qty" readonly="readonly" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="RatePerM" class="form-control r-0 light s-12  rate_per01" id="RatePerM" value="@data.rate_per" readonly="readonly" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="RateM" class="form-control r-0 light s-12  rate01" id="RateM" value="@data.rate" readonly="readonly" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="AmountM" class="form-control r-0 light s-12  amount01" id="AmountM" readonly="readonly" value="@data.amount" />
-                                                </td>
-                                                <td>
-                                                    <button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-sm" onclick="Remove(this);"><i class="icon-remove"></i></button>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                                <div class="card-body">
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-2 m-0">
+                                <tbody>
+                                    @foreach (var data in Model.ssmtbl_VendorPurchaseOrder_DetailsModel)
+                                    {
+                                        <tr class="data-contact-person">
+                                            <td>
+                                                <input type="text" name="ItemCodeM" class="form-control r-0 light s-12  i_code01" id="ItemCodeM" value="@data.item_code" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="ItemDescriptionM" class="form-control r-0 light s-12  i_desc01" id="ItemDescriptionM" readonly="readonly" value="@data.item_description" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="QtyM" class="form-control r-0 light s-12  qty01" id="QtyM" value="@data.qty" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="RatePerM" class="form-control r-0 light s-12  rate_per01" id="RatePerM" value="@data.rate_per" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="RateM" class="form-control r-0 light s-12  rate01" id="RateM" value="@data.rate" readonly="readonly" />
+                                            </td>
+                                            <td>
+                                                <input type="text" name="AmountM" class="form-control r-0 light s-12  amount01" id="AmountM" readonly="readonly" value="@data.amount" />
+                                            </td>
+                                            <td>
+                                                <button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-sm" onclick="Remove(this);"><i class="icon-remove"></i></button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="ibox">
+                                <div class="ibox-content">
+                                    <div class="row">
+                                        <div class="col-md-2">
                                             @Html.LabelFor(model => model.cgst_perc, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.cgst_perc, null, new { @class = "form-control r-0 light s-12 ", id = "cgst_perc" })
                                             @Html.ValidationMessageFor(model => model.cgst_perc, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-2 m-0">
+                                        <div class="col-md-2">
                                             @Html.Label("T", new { @class = "Label", @style = "color:white" })
                                             @Html.TextBoxFor(model => model.cgst_amt, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly", id = "cgst_amt" })
                                             @Html.ValidationMessageFor(model => model.cgst_amt, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-2 m-0">
+                                        <div class="col-md-2">
                                             @Html.LabelFor(model => model.sgst_perc, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.sgst_perc, null, new { @class = "form-control r-0 light s-12 ", id = "sgst_perc" })
                                             @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-2 m-0">
+                                        <div class="col-md-2">
                                             @Html.Label("Total", new { @class = "Label", @style = "color:white" })
                                             @Html.TextBoxFor(model => model.sgst_amt, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", id = "sgst_amt" })
                                             @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-2 m-0">
+                                        <div class="col-md-2">
                                             @Html.LabelFor(model => model.igst_perc, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.igst_perc, null, new { @class = "form-control r-0 light s-12 ", id = "igst_perc" })
                                             @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-2 m-0">
+                                        <div class="col-md-2">
                                             @Html.Label("Total", new { @class = "Label", @style = "color:white" })
                                             @Html.TextBoxFor(model => model.igst_amt, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly", id = "igst_amt" })
                                             @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class="col-md-2">
                                             @Html.LabelFor(model => model.total, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.total, null, new { @class = "form-control r-0 light s-12 ", @readonly = "readonly", id = "total" })
                                             @Html.ValidationMessageFor(model => model.total, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="form-group col-4 m-0">
+                                        <div class="col-md-2">
                                             @Html.LabelFor(model => model.grand_total, new { @class = "Label" })
                                             @Html.TextBoxFor(model => model.grand_total, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly", id = "grand_total" })
                                             @Html.ValidationMessageFor(model => model.grand_total, null, new { @class = "alert-danger" })
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                            &nbsp;
-                            <div class="card-body" align="right" id="btnDiv">
-                                <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-sm "><i class="icon-amused-face"></i>Terms & Condition</a>
-                                @*<a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn-sm btn-warning "> <i class="icon-sad-face">Terms & Condition</i></a>*@
-                                @if (Model.vendor_po_status != VendorPurchaseOrderStatus.VPOPendingForApproval || Model.vendor_po_status != VendorPurchaseOrderStatus.VPOApproved)
-                                {
-                                    <input type="button" name="Save" value="Update" class="btn btn-sm btn-primary" id="btnSubmit">
-                                }
-                                <a href="@Url.Action("VPOConsumablesPDF", "VendorPurchaseOrder", new { PONo = Model.po_no, _target = "blank" })" class="btn btn-sm btn-secondary"><i class="icon-arrow-circle-down">Download</i></a>
 
-                            </div>
-                            @*<div class="row" id="btnDiv">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <div class="col-md-4">
-                                                <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn-sm btn-warning "> <i class="icon-sad-face">Terms & Condition</i></a>
-                                            </div>
-                                            <div class="col-md-4" id="Download">
-                                                <a href="@Url.Action("VPOConsumablesPDF", "VendorPurchaseOrder", new { PONo = Model.po_no, _target = "blank" })" class="btn-sm btn-secondary"><i class="icon-arrow-circle-down">Download</i></a>
-                                            </div>
-                                            @if (Model.vendor_po_status == VendorPurchaseOrderStatus.VPOPendingForApproval)
-                                            {
-                                                <div class="col-md-4">
-                                                    <div class="col-md-6" id="submitDiv">
-                                                        <input type="button" name="Save" value="Update" class="btn-sm btn-primary" id="btnSubmit"><i class="icon-document"></i><button></button>
-                                                    </div>
-                                                    <div class="col-md-6" id="loaderDiv" style="display:none;">
-                                                        <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
-                                                    </div>
-                                                </div>
-                                            }
+                                    <div class="card-body" align="right" id="btnDiv">
+                                        <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-sm "><i class="icon-amused-face"></i>Terms & Condition</a>
+                                        @*<a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn-sm btn-warning "> <i class="icon-sad-face">Terms & Condition</i></a>*@
+                                        @if (Model.vendor_po_status != VendorPurchaseOrderStatus.VPOPendingForApproval || Model.vendor_po_status != VendorPurchaseOrderStatus.VPOApproved)
+                                        {
+                                            <input type="button" name="Save" value="Update" class="btn btn-sm btn-primary" id="btnSubmit">
+                                        }
+                                        <a href="@Url.Action("VPOConsumablesPDF", "VendorPurchaseOrder", new { PONo = Model.po_no, _target = "blank" })" class="btn btn-sm btn-secondary"><i class="icon-arrow-circle-down">Download</i></a>
 
-                                        </div>
                                     </div>
-                                </div>*@
-                            &nbsp;
-
-
+                                </div>
+                                </div> 
 
 
                         </form>
                     </div>
-                </div>
-            </div>
+                
 
-            &nbsp;
-
-            <!-- MODAL TERMS AND CONDITION-->
+             
             <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- MODAL TERMS AND CONDITION CONTENT-->
+                <div class="modal-dialog"> 
+                  
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">TERMS AND CONDTION</h5>
@@ -328,8 +271,7 @@
                                         @Html.Hidden("TotalTermsNcondition", (ViewData["VPOTermsAndConditionEdit"] as List<ssmtbl_LKP_TermsAndConditionModel>).Count());
                                     }
                                     @foreach (var item in ViewData["VPOTermsAndConditionEdit"] as List<ssmtbl_LKP_TermsAndConditionModel>)
-                                    {
-                                        //<tr class="tandc-data">
+                                    { 
                                         <tr>
                                             @if (@item.flag==true)
                                             {
@@ -352,466 +294,14 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
-                    </div>
-
+                    </div> 
                 </div>
             </div>
             <div id="divwarn" class="warning">
                 <label id="lbl_validation"></label>
             </div>
-        </div>
-
-    </fieldset>
-    @*<fieldset>
-
-            <div class="@ViewBag.HideClass" style="text-align:center">
-                @ViewBag.Message
-            </div>
-
-            <!-- PAGE TITLE -->
-            <div class="page-title">
-                <h2><span class="fa fa-arrow-circle-o-left"></span>EDIT CONSUMABLES</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-
-                    <div class="col-md-9"></div>
-                    <div class="col-md-3">
-                        <div class="form-group" style="text-align:center">
-                            <input type="button" class="btn btn-info" value="All Vendor Purchase Order" onclick="location.href = '@Url.Action("AllVendorPurchaseOrder", "VendorPurchaseOrder")'" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @Html.HiddenFor(model => model.po_char, new { @id = "po_char" })
-            @Html.HiddenFor(model => model.po_id, new { @id = "po_id" })
-            @Html.HiddenFor(model => model.file_path, new { @id = "file_path" })
-
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h2>Purchase Order Details</h2></div>
-                    <div class="panel-body">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.po_no, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.po_no, null, new { @class = "form-control NoStar", id = "po_no", @readonly = "readonly" })
-                                    @Html.ValidationMessageFor(model => model.po_no, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.quotation_ref_no, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.quotation_ref_no, null, new { @class = "form-control NoStar", id = "quotation_ref_no" })
-                                    @Html.ValidationMessageFor(model => model.quotation_ref_no, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.quotation_ref_date, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.quotation_ref_date, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", id = "quotation_ref_date" })
-                                    @Html.ValidationMessageFor(model => model.quotation_ref_date, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.po_date, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.po_date, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", id = "po_date" })
-                                    @Html.ValidationMessageFor(model => model.po_date, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.valid_date, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.valid_date, "{0:dd-MMM-yyyy}", new { @class = "form-control NoStar datepicker", id = "valid_date" })
-                                    @Html.ValidationMessageFor(model => model.valid_date, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.file_path, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="file" id="myfile" name="myfile" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h2>Vendor Details</h2></div>
-                    <div class="panel-body">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.vendor_name, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.vendor_name, null, new { @class = "form-control NoStar", id = "vendor_name", onchange = "clearvendordetails();", onkeyup = "this.onchange();", onpaste = "this.onchange();", oninput = "this.onchange();" })
-                                    @Html.HiddenFor(model => model.vendor_id, new { @id = "vendor_id" })
-                                    @Html.ValidationMessageFor(model => model.vendor_name, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.vendor_email, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.vendor_email, null, new { @class = "form-control NoStar", id = "vendor_email" })
-                                    @Html.ValidationMessageFor(model => model.vendor_email, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.vendor_mobile, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.vendor_mobile, null, new { @class = "form-control NoStar", id = "vendor_mobile" })
-                                    @Html.ValidationMessageFor(model => model.vendor_mobile, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.GSTIN, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.GSTIN, null, new { @class = "form-control NoStar", id = "GSTIN" })
-                                    @Html.ValidationMessageFor(model => model.GSTIN, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.PAN, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.PAN, null, new { @class = "form-control NoStar", id = "PAN" })
-                                    @Html.ValidationMessageFor(model => model.PAN, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.contact_person, new { @class = "Label" })
-                                    @Html.HiddenFor(model => model.contact_person_id, new { @id = "contact_person_id" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.DropDownListFor(model => model.contact_person, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control NoStar", id = "contact_person" })
-                                    @Html.ValidationMessageFor(model => model.contact_person, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.contact_person_email, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.DropDownListFor(model => model.contact_person_email, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control NoStar", id = "contact_person_email" })
-                                    @Html.ValidationMessageFor(model => model.contact_person_email, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.contact_person_mobile, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.DropDownListFor(model => model.contact_person_mobile, @ViewBag.NotAvailable as IEnumerable<SelectListItem>, new { @class = "form-control NoStar", id = "contact_person_mobile" })
-                                    @Html.ValidationMessageFor(model => model.contact_person_mobile, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h2>Item Details</h2></div>
-                    <div class="panel-body">
-
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Item Code</th>
-                                            <th>Description</th>
-                                            <th>Qty</th>
-                                            <th>Rate/Per</th>
-                                            <th>Rate</th>
-                                            <th>Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <input type="text" name="ItemCodeM" class="form-control " id="ItemCodeM" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="ItemDescriptionM" class="form-control " id="ItemDescriptionM" readonly="readonly" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="QtyM" class="form-control " id="QtyM" value="0" />
-                                            </td>
-                                            <td>
-                                                @Html.DropDownList("RatePerM", @ViewBag.RatePer as IEnumerable<SelectListItem>, XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control ", id = "RatePerM" })
-                                            </td>
-                                            <td>
-                                                <input type="text" name="RateM" class="form-control " id="RateM" value="0" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="AmountM" class="form-control " id="AmountM" readonly="readonly" value="0" />
-                                            </td>
-                                            <td>
-                                                <button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd"><span class="fa fa-arrows"></span></button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="row" style="max-height:150px; overflow:scroll;" id="processing">
-                            <div class="col-md-12">
-
-                                <table class="table" id="maintable">
-
-                                    <tbody>
-                                        @foreach (var data in Model.ssmtbl_VendorPurchaseOrder_DetailsModel)
-                                        {
-                                        <tr class="data-contact-person">
-                                            <td>
-                                                <input type="text" name="ItemCodeM" class="form-control i_code01" id="ItemCodeM" value="@data.item_code" readonly="readonly" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="ItemDescriptionM" class="form-control i_desc01" id="ItemDescriptionM" readonly="readonly" value="@data.item_description" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="QtyM" class="form-control qty01" id="QtyM" value="@data.qty" readonly="readonly" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="RatePerM" class="form-control rate_per01" id="RatePerM" value="@data.rate_per" readonly="readonly" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="RateM" class="form-control rate01" id="RateM" value="@data.rate" readonly="readonly" />
-                                            </td>
-                                            <td>
-                                                <input type="text" name="AmountM" class="form-control amount01" id="AmountM" readonly="readonly" value="@data.amount" />
-                                            </td>
-                                            <td>
-                                                <button type="button" id="btnDelete" class="deleteContact btn btn btn-danger btn-xs" onclick="Remove(this);"><span class="fa fa-arrows-h"></span></button>
-                                            </td>
-                                        </tr>
-                                        }
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h2>Item Details Total</h2></div>
-                    <div class="panel-body">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.cgst_perc, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.TextBoxFor(model => model.cgst_perc, null, new { @class = "form-control NoStar", id = "cgst_perc" })
-                                    @Html.ValidationMessageFor(model => model.cgst_perc, null, new { @class = "alert-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.TextBoxFor(model => model.cgst_amt, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "cgst_amt" })
-                                    @Html.ValidationMessageFor(model => model.cgst_amt, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.sgst_perc, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.TextBoxFor(model => model.sgst_perc, null, new { @class = "form-control NoStar", id = "sgst_perc" })
-                                    @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.TextBoxFor(model => model.sgst_amt, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "sgst_amt" })
-                                    @Html.ValidationMessageFor(model => model.sgst_perc, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.igst_perc, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.TextBoxFor(model => model.igst_perc, null, new { @class = "form-control NoStar", id = "igst_perc" })
-                                    @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
-                                </div>
-                                <div class="col-md-4">
-                                    @Html.TextBoxFor(model => model.igst_amt, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "igst_amt" })
-                                    @Html.ValidationMessageFor(model => model.igst_perc, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.total, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.total, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "total" })
-                                    @Html.ValidationMessageFor(model => model.total, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-4 control-label">
-                                    @Html.LabelFor(model => model.grand_total, new { @class = "Label" })
-                                </div>
-                                <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.grand_total, null, new { @class = "form-control NoStar", @readonly = "readonly", id = "grand_total" })
-                                    @Html.ValidationMessageFor(model => model.grand_total, null, new { @class = "alert-danger" })
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            &nbsp;
-            <div class="row" id="btnDiv">
-                <div class="col-md-12">
-                    <div class="form-group" style="text-align:center">
-                        <div class="col-md-3 ">
-                            <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-primary "> Terms & Condition</a>
-                        </div>
-                        <div class="col-md-3" id="Download">
-                            <a href="@Url.Action("VPOConsumablesPDF", "VendorPurchaseOrder", new { PONo = Model.po_no, _target = "blank" })" class=" btn btn-default btn-info">Download</a>
-                        </div>
-                        @if (Model.vendor_po_status == VendorPurchaseOrderStatus.VPOPendingForApproval)
-                        {
-                            <div class="col-md-3">
-                                <div class="col-md-6" id="submitDiv">
-                                    <input type="button" name="Save" value="Update" class="btn btn-success btn-default" id="btnSubmit" />
-                                </div>
-                                <div class="col-md-6" id="loaderDiv" style="display:none;">
-                                    <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
-                                </div>
-                            </div>
-                        }
-                        <div class="col-md-3 ">
-                            <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" onclick="location.href = '@Url.Action("Consumables", "VendorPurchaseOrder")    '" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            &nbsp;
-
-
-            <!-- MODAL TERMS AND CONDITION-->
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- MODAL TERMS AND CONDITION CONTENT-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h3 class="modal-title">TERMS AND CONDTIION</h3>
-                        </div>
-                        <div class="modal-body table-responsive ">
-                            <table class="table table-hover" id="tblCustomers">
-
-                                <tbody>
-                                    @{
-
-                                        @Html.Hidden("TotalTermsNcondition", (ViewData["QuotaionTermsAndCondition"] as List<ssmtbl_LKP_TermsAndConditionModel>).Count());
-                                    }
-
-                                    @foreach (var item in Model.ssmtbl_TermsNCondtionModel)
-                                        {
-                                            //<tr class="tandc-data">
-                                        <tr>
-
-                                            <td class=""><input type="hidden" name="chkitemID" class="chkitemID" value="@item.id" /></td>
-                                            @if (item.TermsNConditionID != 0)
-                                                {
-                                                <td class=""><input type="checkbox" name="chkitem" class="chkitem" checked="checked" /></td>
-                                                }
-                                                else
-                                                {
-                                                <td class=""><input type="checkbox" name="chkitem" class="chkitem" /></td>
-                                                }
-                                            <td class=""><input type="text" value="@item.TermsNConditionContent" name="txtbox" class="txtbox form-control" /></td>
-                                        </tr>
-                                        }
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-        </fieldset>*@
-
+       
+    </fieldset> 
 
                                         <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
 

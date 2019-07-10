@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> - @ViewBag.Title</title>
+    <title>  @ViewBag.Title</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img src="E:\Recruitee18Dec2018\Recruitee\images\erplogo.png" alt="" style="width:50px;"></a>
+                <a class="navbar-brand" href="#"><img src="#" alt="" style="width:50px;"></a>
 
             </div>
             <div id="navbar" class="collapse navbar-collapse">
@@ -36,8 +36,7 @@
                 </ul>
             </div>
         </div>
-        <div class="wrapper">
-            <!-- Sidebar -->
+        <div class="wrapper"> 
             <nav id="sidebar">
                 <ul class="list-unstyled components marginTop60 paddingTop15">
                     <li class="MenuItem" id="Dashboard"><a href="#"><div><i class="fa fa-dashboard" aria-hidden="true"></i></div>Dashboard</a></li>
@@ -51,7 +50,6 @@
                     <li class="MenuItem" id="User"><a href="#"><div><i class="fa fa-user" aria-hidden="true"></i></div>User</a></li>
                     <li class="MenuItem" id="Reports"><a href="#c"><div><i class="fa fa-file" aria-hidden="true"></i></div>Reports</a></li>
 
-
                 </ul>
             </nav>
         </div>
@@ -59,28 +57,21 @@
     <div class="paddingRight15 marginLeft100 marginTop60">
         <div class="row">
             <div class="col-xs-2">
-
                 <div class="slide" id="enqFilter">
                     @Html.Partial("../Home/ManuBar")
                 </div>
             </div>
             <div class="col-xs-10">
-               
-
-                    @RenderBody()
-
-               
+                @RenderBody()
             </div>
         </div>
     </div>
-
 </body>
 </html>
 <script src="../assets/js/app.js"></script>
 <script src="~/NewCssAndTheme/js/BackToTop.js"></script>
 <script src="~/assets/js/UserAccess.js"></script>
 <script>
-    
     $(document).ready(function () {
         var url = window.location.pathname.split("/");
         var action = url[1];
@@ -90,9 +81,23 @@
         }
         else if (action == "Customer" || action == "Vendor" || action == "GradeOfMaterial" || action == "Section" || action == "DieDescription" || action == "Auth" ) {
             $("#mnuMaster").show();
+        } else if (action == "PORequisition" || action == "PurchaseOrder" || action == "VendorPurchaseOrder" ) {
+            $("#mnuPurchase").show();
         }
+        else if (action == "Workorder" || action == "Workorder" || action == "Workorder") {
+            $("#mnuPlanning").show();
+        }
+        else if (action == "Cutting" || action == "Forging" || action == "HeatTreatment") {
+            $("#mnuProduction").show();
+        }
+        else if (action == "GoodsInward" || action == "GoodsIssued" || action == "DeliveryChallan" || action == "DCForRMTest")  {
+            $("#mnuStock").show();
+        }
+        else if (action == "QuotationApproval" || action == "DieRequisitionApproval" || action == "PurchaseOrderApproval" || action == "RMRequisitionApproval" || action == "VendorPurchaseOrderApproval") {
+            $("#mnuMyApprovals").show();
+        }
+        
         $(".MenuItem").on("click", function () {
-            
             $(".slide").show();
             var id = this.id;
             $(".mnu").hide(); 
@@ -126,199 +131,9 @@
             else if (id == "Reports") {
                 $("#mnuReports").show();
             }
-
-        
         });
       
     });
 </script>
-@*<script>
-        $(document).ready(function ()
-        {
 
-            var userID1 = '@Request.RequestContext.HttpContext.Session["userid"]';
-            var userID1=$("#hdnUserID").val();
-
-            if (userID1== " " ||userID1== null) {
-               window.location = "../Auth/Login";
-            }else {
-                var userid=userID1;
-
-            setaccesscontrol(userid,"@ViewBag.Feature","1","@ViewBag.FeatureAdd");
-            if ("@Session["username"]" == "" || "@Session["username"]" == null)
-           
-               location.href="@Url.Action("Auth", "Login")";
-               window.location = "../Auth/Login";
-            }
-            else {
-                var id = 0;
-                NotificationBind(id);
-                MenuBind();
-            }
-            }
-
-             
-        });
-
-</script>*@
-
-@*<script>
-        function MenuBind()
-        {
-            $("#ul_mainstartmenu").empty();
-            var userid = '@Request.RequestContext.HttpContext.Session["userid"]';
-            $.ajax({
-                type: "POST",
-                url: "../Auth/MenuBind",
-                data: JSON.stringify({ UserID: ' ' + userid + '' }),
-                contentType: "application/json;charset=utf-8",
-                success: function (data) {
-
-                    var items = [];
-                    for (var i = 0; i < data.length; i++) {
-
-                        items.push('<li class="treeview"><a href="#"><i class="'+data[i].MenuIconClass+'"></i>'+data[i].MenuName+'</a><ul class="treeview-menu" id="'+data[i].MenuId+'"></ul></li>');
-
-                    }
-
-                    var uniqueNames = [];
-                    $.each(items, function(i, el){
-                        if($.inArray(el, uniqueNames) === -1)
-                        {
-                            uniqueNames.push(el);
-                        }
-
-                    });
-                    $('#ul_mainstartmenu').append(uniqueNames.join(''));
-                    $('#ul_mainstartmenu li').each(function(i)
-                    {
-                        var text=$(this).text();
-                        for (var j = 0; j < data.length; j++) {
-                            if (text==data[j].MenuName) {
-
-                                $("#"+data[j].MenuId).append('<li><a href="../' + data[j].Controller + '/' + data[j].Action + '"><i class="icon icon-circle-o light-blue-text sm-12"></i>'+data[j].SubmenuName+'</a></li>');
-                            }
-                        }
-
-
-
-                    });
-
-                    }
-
-            });
-        }
-        function NotificationBind(id) {
-            $.ajax({
-                type: "POST",
-                url: "../Auth/NotificationBind",
-                // data: params,
-                data: JSON.stringify({ id: ' ' + id + '' }),
-                contentType: "application/json;charset=utf-8",
-                // dataType: "json",
-                success: function (data) {
-
-                    var items = [];
-                    for (var i = 0; i < data.length; i++) {
-                        if (data[i].IsRead==1) {
-                            items.push('<li onclick="setUnread(' + data[i].NotificationID + ')"><a href=' + data[i].ActionLink + '><i class="icon icon-data_usage text-success"></i>' + data[i].Description + '</a></li>');
-                        }
-                        else {
-                            items.push('<li onclick="setUnread(' + data[i].NotificationID + ')"><a href=' + data[i].ActionLink + '><i class="icon icon-data_usage text-danger"></i>' + data[i].Description + '</a></li>');
-                        }
-
-
-                        $("#spn_notificationcount").text(data[i].Cnt);
-                        $("#spn_totalnotification").text(data[i].Cnt);
-
-                    }
-                    $('#ulnotificationbind').append(items.join(''));
-                },
-                error: function (err) {
-                    //alert('Error occured');
-
-                }
-            });
-        }
-        function setUnread(NotificationID)
-        {
-            $.ajax({
-                type: "POST",
-                url: "../Auth/setUnreadMsg",
-                // data: params,
-                data: JSON.stringify({ NotificationID: ' ' + NotificationID + '' }),
-                contentType: "application/json;charset=utf-8",
-                // dataType: "json",
-                success: function (data) {
-
-                },
-                error: function (err) {
-                    alert('Error occured');
-
-                }
-            });
-        }
-        function getQuotationApprovalCount() {
-            $.ajax({
-                type: "GET",
-                url: "../Quotation/GetApprovalCount",
-                success: function (data) {
-                    if (data == "") {
-
-                        $("#countQuotation").text("0");
-                    } else {
-                        $("#countQuotation").text(data[0].Total);
-                    }
-                }
-
-
-
-            });
-        }
-</script>
-<script>
-    function getCustPOCount() {
-        $.ajax({
-            type: "GET",
-            url: "../PurchaseOrder/GetApprovalCount",
-            success: function (data) {
-                $("#countCustPO").text(data);
-            }
-        });
-    }
-</script>
-<script>
-    function getVPOCount() {
-        $.ajax({
-            type: "GET",
-            url: "../VendorPurchaseOrderApproval/GetApprovalCount",
-            success: function (data) {
-
-                $("#countVPO").text(data);
-            }
-        });
-    }
-</script>
-<script>
-    function getRMCount() {
-        $.ajax({
-            type: "GET",
-            url: "../RMRequisitionApproval/GetApprovalCount",
-            success: function (data) {
-                $("#countRM").text(data);
-            }
-        });
-    }
-</script>
-<script>
-    function getDieCount() {
-        $.ajax({
-            type: "GET",
-            url: "../DieRequisitionApproval/GetApprovalCount",
-            success: function (data) {
-                $("#countDie").text(data);
-            }
-        });
-    }
-</script>*@
  

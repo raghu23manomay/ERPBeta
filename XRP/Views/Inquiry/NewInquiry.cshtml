@@ -6,19 +6,7 @@
 }
 <link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
 
-<style>
-    #btnSubmit {
-        position: absolute;
-        bottom: 4%;
-        right: 10%;
-    }
 
-    #btnReset {
-        position: absolute;
-        bottom: 4%;
-        right: 2%;
-    }
-</style>
 @using (Html.BeginForm("NewInquiry", "Inquiry", FormMethod.Post, new { @class = "form-horizontal form-horizontal1", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
@@ -45,9 +33,7 @@
                     <div class="row my-3">
                         <div class="col-md-12">
                             <div class="ibox">
-                                <div class="ibox-title">
-                                    <h5>Enquiry</h5>
-                                </div>
+                                 
                                 <div class="ibox-content">
 
                                     <div class="row">

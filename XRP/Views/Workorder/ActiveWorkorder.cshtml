@@ -5,24 +5,7 @@
     ViewBag.Active = "Marketing";
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
-<style>
-    .btnGenerateWO {
-        position: absolute;
-        bottom: 25px;
-        right: 20px;
-    }
-    /*.btnShowWO{
-        position: absolute;
-        bottom: 25px;
-        left: 20px;
-    }*/
-    .btnGenerateCuttingSlip {
-        position: absolute;
-        bottom: 25px;
-        left: 20px;
-    }
-</style>
-<link rel="stylesheet" href="~/assets/css/app.css">
+
 @using (Html.BeginForm("AllPO", "Workorder", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
@@ -30,30 +13,8 @@
     <input type="hidden" id="woPOID" />
     <input type="hidden" id="hdnGrossWeight" />
 
-    @*<div class="btn btn-warning btn-lg toast-action"
-             data-title="Alert !"
-             data-message="Plan Qty must be less than Balance Qty"
-             data-type="success"
-             data-position-class="toast-bottom-right" style="display:none" id="divAlert" align="center">
-
-        </div>*@
     <fieldset>
-        <style>
-            .icon:hover, .trDelivery:hover {
-                cursor: pointer;
-            }
-
-            /*.table-wrapper-scroll-y {
-                display: block;
-                max-height: 600px;
-                overflow-y: auto;
-                -ms-overflow-style: -ms-autohiding-scrollbar;
-            }*/
-        </style>
-        <link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
-        <!-- PAGE TITLE -->
-
-
+        
         <div class="row">
             <div class="col-md-12">
 
@@ -70,7 +31,6 @@
                                                 <a class="nav-link p-3 active show" id="w2--tab1" data-toggle="tab" href="#w2-tab1" style="height:auto">
                                                     <input type="text" class="" id="txt_search" style="display:none;" /><br />
                                                      <i class="icon icon-document s-18 text-success"></i>Active Workorders
-                                                  
                                                     <i class="icon-search" onclick="search();"></i>
                                                 </a>
                                             </li>
@@ -81,48 +41,35 @@
                                     <div class="slimScroll" style="position:relative;overflow:hidden;height:initial">
                                         <div class="slimScroll" style="">
                                             <div class="tab-content " id="v-pills-tabContent">
-                                                <div class="tab-pane fade show active slimScroll" id="w2-tab1" role="tabpanel"
+                                                <div class="tab-pane show active slimScroll" id="w2-tab1" role="tabpanel"
                                                      aria-labelledby="w2-tab1">
                                                     <ul class="list-unstyled trDelivery" id="ullslistbind">
 
                                                         @foreach (var data in Model.ssmtbl_WorkorderModel)
                                                         {
-
-
                                                             <li style="display:none" class="WoNo"><input type="hidden" value="@data.WorkorderNo" id="hdnwono" /></li>
 
                                                             <li class="media p-3 b-b has-hover liPOS" onclick="fetchWO(@data.WorkorderID)">
-
                                                                 <div type="hidden" value="@data.WorkorderID" class="WorkorderID" />
                                                                 <div>
                                                                     <div class="avatar avatar-md mr-3 mt-1 float-left">
-                                                                        <img src="~/NewCssAndTheme/img/imageWOs.jpg" class="s-128" />
-                                                                       
+                                                                        <img src="~/NewCssAndTheme/img/imageWOs.jpg" class="s-128" /> 
                                                                     </div>
                                                                     <div class="media-body text-truncate">
-
                                                                         <h6 class="mt-0 mb-1 font-weight-normal">@data.WorkorderNo </h6>
-
-
                                                                         <small title="Plan Qty"> @data.PlanQty&nbsp;</small>
                                                                         <small title="Created Date"> | &nbsp; @data.CreatedDate.Date.ToString("dd-MM-yyyy")&nbsp;</small>
                                                                         <small title="Target Date"> | &nbsp;@data.TargetDate.Date.ToString("dd-MM-yyyy")</small>
                                                                     </div>
-
                                                                 </div>
                                                             </li>
-
                                                         }
                                                     </ul>
-
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="col-md-6 tab-pane animated fadeInUpShort" id="PODetailsDiv" style="height:auto">
 
                                     <div class="m-md-1">
@@ -199,22 +146,19 @@
                                         <div class="card b-0 m-2">
                                             <div class="card-body" style="height:600px">
 
-                                                <div class="form-row">
-                                                    <div class="form-group col-12 m-0 float-right">
+                                                <div class="row">
+                                                    <div class="col-md-12">
                                                         <span class="col-form-label s-12 float-right">
                                                             WO # <strong id="lblWorkorderno" class="Label">  </strong>
                                                         </span>
                                                     </div>
 
-                                                    <div class="form-group col-12 m-0">
+                                                    <div class="col-md-12">
                                                         <h6 class="mt-0 font-weight-normal" id="lblcustomerName1"><label title="Customer Name"></label></h6>
 
                                                         <span>
                                                             <label>PO # </label>&nbsp;<strong id="lblpono1" class="Label"></strong>
                                                         </span>
-
-
-                                                        <br /><br />
                                                         <div>
                                                             <p style="line-height: 1">
                                                                 Die #&nbsp; <label id="lblDieNo1" class="Label"></label><br />
@@ -231,34 +175,19 @@
                                                             </p>
 
                                                         </div>
-                                                        @*<div class="form-row">
+                                                         
+                                                        <div class="row">
 
-                                                            <div class="form-group col-12 m-0" id="divbtnGenerateReq">
-                                                                <i class="float-left"><label style="font-size:11px">RM Availability :</label>&nbsp;<label id="RMAvailability" style="font-size:11px" class="Label"></label></i>
-                                                                <button type="button" value="Save" class="btn btn-success btn-xs float-right" id="btnGenerateReq" href="#modalGenerateRequisition" data-toggle="modal" data-target="#modalGenerateRequisition" title="Generate Raw Material Requisition"><i class="icon-input"></i>  </button>
-
-                                                            </div>
-
-
-                                                            <div class="form-group col-12 m-0" id="divbtnGenerateDieReq">
-                                                                <i class="float-left"><label style="font-size:11px">Die Availability :</label>&nbsp;<label id="DieAvailability" style="font-size:11px" class="Label"></label></i>
-                                                                <button type="button" value="Save" class="btn btn-primary btn-xs float-right" id="btnGenerateDieReq" href="#modalGenerateDieRequisition" data-toggle="modal" data-target="#modalGenerateDieRequisition" title="Generate Die Requisition"><i class="icon-input"></i>  </button>
-
-                                                            </div>
-                                                        </div>*@
-
-                                                        <div class="form-row">
-
-                                                            <div class="form-group col-6 m-0">
+                                                            <div class="col-md-6">
                                                                 <label for="txtTargetDate" class="col-form-label s-12">  Target Date:</label>
                                                                 <input id="txtTargetDate" class="date-time-picker form-control r-0 light s-12 " type="text" readonly="readonly">
                                                                 <i class="float-left"><label style="font-size:11px">Dispatched Qty:</label>&nbsp;<label id="lblTotalDispatchQty" style="font-size:11px" class="Label"></label></i>
                                                             </div>
 
-                                                            <div class="form-group col-6 m-0">
-                                                                <label for="txtPlanQty" class="col-form-label s-12">Plan Qty:</label>
+                                                            <div class="col-md-6">
+                                                                <label for="txtPlanQty" class="Label">Plan Qty:</label>
 
-                                                                <input id="txtPlanQty" class="form-control r-0 light s-12 Float-Number" type="text" oninput="isGreaterThanPOQty()" readonly>
+                                                                <input id="txtPlanQty" class="form-control" type="text" oninput="isGreaterThanPOQty()" readonly>
                                                                 <i class="float-right"><label style="font-size:11px">Balance Qty:</label>&nbsp;<label id="lblBalancedQty" style="font-size:11px" class="Label"></label></i>
 
                                                             </div>
@@ -272,16 +201,11 @@
                                                 </div>
 
                                             </div>
-                                        </div>
-
-
-
-
+                                        </div> 
                                     </div>
                                 </div>
                             </div>
-
-                            @* Modal POP Up *@
+                             
                             <div class="modal fade" id="modalGenerateRequisition" tabindex="-1" role="dialog" aria-labelledby="modalGenerateRequisition" aria-hidden="true" style="display:none;">
                                 <div class="modal-dialog modal-md" role="document">
                                     <div class="modal-content b-0">
@@ -293,18 +217,17 @@
                                             <div class="card-body">
                                                 <form class="needs-validation" novalidate="">
                                                     <div class="form-row">
-                                                        <div class="col-md-4 mb-3">
+                                                        <div class="col-md-4">
                                                             <label for="validationCustom01">Requisition Type</label>
                                                             <input type="text" class="form-control r-0 light s-12" id="txtRequisitionType" value="Raw Material" readonly="readonly">
-
-
+ 
                                                         </div>
-                                                        <div class="col-md-4 mb-3">
+                                                        <div class="col-md-4">
                                                             <label for="validationCustom02">Customer name</label>
                                                             <input type="text" class="form-control r-0 light s-12" id="txtCustomerName" readonly="readonly">
 
                                                         </div>
-                                                        <div class="col-md-4 mb-3">
+                                                        <div class="col-md-4">
                                                             <label for="validationCustomUsername">Part Name</label>
                                                             <div class="input-group">
 
@@ -313,42 +236,28 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-row">
-
-                                                        <div class="col-md-4 mb-3">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
                                                             <label for="validationCustom04">Raw Material</label>
                                                             <input type="text" class="form-control r-0 light s-12" id="txtRMRawMaterial" readonly="readonly">
-
                                                         </div>
-                                                        <div class="col-md-4 mb-3">
+                                                        <div class="col-md-4">
                                                             <label for="validationCustom05">Section</label>
                                                             <input type="text" class="form-control r-0 light s-12" id="txtRMSection" readonly="readonly">
 
                                                         </div>
-                                                        <div class="col-md-4 mb-3">
+                                                        <div class="col-md-4">
                                                             <label for="validationCustom03">Quantity (Pieces)</label>
                                                             <input type="text" class="form-control r-0 light s-12" id="txtRMQuantity">
-
                                                         </div>
-                                                    </div>
-                                                    @*<div class="form-row">
-                                                            <div class="col-md-12 mb-3">
-                                                                <label for="validationCustom03">Part Description</label>
-
-                                                                <textarea id="txtPartDescription" class="form-control r-0 light s-12 "></textarea>
-                                                            </div>
-                                                        </div>*@
-                                                    <div class="form-row">
-                                                        <div class="col-md-12 mb-3">
+                                                    </div> 
+                                                    <div class="row">
+                                                        <div class="col-md-12">
                                                             <label for="validationCustom03">Remark</label>
-
-                                                            <textarea id="txtRMRemark" class="form-control r-0 light s-12 "></textarea>
+                                                            <textarea id="txtRMRemark" class="form-control"></textarea>
                                                         </div>
                                                     </div>
-
                                                 </form>
-
-
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -369,46 +278,7 @@
                                         </div>
                                         <div class="modal-body no-p no-b">
                                             <div class="card-body">
-                                                <form class="needs-validation" novalidate="">
-                                                    @*<div class="form-row">
-                                                            <div class="col-md-4 mb-3">
-                                                                <label for="validationCustom01">Requisition Type</label>
-                                                                <input type="text" class="form-control r-0 light s-12" id="txtRequisitionType" value="Raw Material" readonly="readonly">
-
-
-                                                            </div>
-                                                            <div class="col-md-4 mb-3">
-                                                                <label for="validationCustom02">Customer name</label>
-                                                                <input type="text" class="form-control r-0 light s-12" id="txtCustomerName">
-
-                                                            </div>
-                                                            <div class="col-md-4 mb-3">
-                                                                <label for="validationCustomUsername">Part Name</label>
-                                                                <div class="input-group">
-
-                                                                    <input type="text" class="form-control r-0 light s-12" id="txtPartName">
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-row">
-
-                                                            <div class="col-md-4 mb-3">
-                                                                <label for="validationCustom04">Raw Material</label>
-                                                                <input type="text" class="form-control r-0 light s-12" id="txtRawMaterial">
-
-                                                            </div>
-                                                            <div class="col-md-4 mb-3">
-                                                                <label for="validationCustom05">Section</label>
-                                                                <input type="text" class="form-control r-0 light s-12" id="txtSection">
-
-                                                            </div>
-                                                            <div class="col-md-4 mb-3">
-                                                                <label for="validationCustom03">Quantity</label>
-                                                                <input type="text" class="form-control r-0 light s-12" id="txtQuantity">
-
-                                                            </div>
-                                                        </div>*@
+                                                <form class="needs-validation" novalidate=""> 
                                                     <div class="form-row">
                                                         <div class="col-md-12 mb-3">
                                                             <label for="txtDieDescription">Description</label>
@@ -423,10 +293,7 @@
                                                             <textarea id="txtDieRemark" class="form-control r-0 light s-12 "></textarea>
                                                         </div>
                                                     </div>
-
                                                 </form>
-
-
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -456,11 +323,7 @@
                                         <div class="modal-body no-p no-b">
                                             <div class="card-body">
                                                 <div class="form-group col-12 m-0">
-                                                    @*<span class="float-right">
-                                                            Cutting Slip # <strong id="lblCuttingSlipNo">
-                                                            CS-00001
-                                                            </strong>
-                                                        </span><br />*@
+                                                   
                                                     <div>
 
                                                         <span class="float-right">
@@ -490,34 +353,7 @@
 
                                                 </div>
                                                 <br />
-                                                @*<form class="needs-validation" novalidate="">*@
-                                                @*<div class="form-row">
-                                                        <div class="col-md-3 mb-3">
-                                                            <label for="lblCutRMGrade">RM Grade:</label>
-                                                            <label id="lblCutRMGrade"></label>
-
-
-                                                        </div>
-                                                        <div class="col-md-3 mb-3">
-                                                            <label for="lblCutSection">Section:</label>
-                                                            <label id="lblCutSection"></label>
-
-                                                        </div>
-                                                        <div class="col-md-3 mb-3">
-                                                            <label for="lblCutInternalCutWt" >Cut Weight:</label>
-                                                            <label id="lblCutInternalCutWt"></label>
-
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <label for="lblCutlength">Cut Length:</label>
-
-                                                            <label id="lblCutlength"></label>
-
-
-
-                                                        </div>
-                                                    </div>*@
+                                               
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-3">
                                                         <label for="txtCutQuantity">Quantity:</label>
@@ -529,41 +365,15 @@
                                                         <input type="text" class="Label" id="txtCutTotalWt" readonly="readonly" style="border:none">
 
                                                     </div>
-                                                    @*<div class="col-md-4 mb-3">
-                                                            <label for="validationCustom05">Section</label>
-                                                            <input type="text" class="form-control r-0 light s-12" id="txtSection">
-
-                                                        </div>
-                                                        <div class="col-md-4 mb-3">
-                                                            <label for="validationCustom03">Quantity</label>
-                                                            <input type="text" class="form-control r-0 light s-12" id="txtQuantity">
-
-                                                        </div>*@
+                                                    
                                                 </div>
-                                                @*<div class="form-row">
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="validationCustom03">Part Description</label>
-
-                                                            <textarea id="txtPartDescription" class="form-control r-0 light s-12 "></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="col-md-12 mb-3">
-                                                            <label for="validationCustom03">Remark</label>
-
-                                                            <textarea id="txtRemark" class="form-control r-0 light s-12 "></textarea>
-                                                        </div>
-                                                    </div>*@
-
-                                                @*</form>*@
+                                                
 
 
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            @*<button class="btn btn-primary l-s-1 s-12 text-uppercase" onclick="generateCuttingSlip();">
-                                                    Send
-                                                </button>*@
+                                            
                                             <button class="btn btn-primary l-s-1 s-12 text-uppercase">
                                                 Send
                                             </button>

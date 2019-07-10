@@ -12,95 +12,45 @@
     @Html.ValidationSummary(true)
 
 
-    <fieldset>
-        @*<header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-              
-                        <h4>
-                            <i class="icon-database"></i>
-                             Goods Inward
-                        </h4>
-                 
-                <div class="row justify-content-between">
-                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                        <li>
-                            <a class="nav-link" href='#tab-first' role="tab" data-toggle="tab"><i class="icon icon-list"></i>Consumables</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href='#tab-second' role="tab" data-toggle="tab"><i class="icon icon-list"></i> Raw Material</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href='#tab-third' role="tab" data-toggle="tab"><i class="icon icon-list"></i>Outsourcing</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href='#tab-fourth' role="tab" data-toggle="tab"><i class="icon icon-list"></i>Repair</a>
-                        </li>
-                        <li class="float-right">
-                            <a class="nav-link" href='#tab-fifth' role="tab" data-toggle="tab"><i class="icon icon-list"></i>Maintanance Spares</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="">
 
-        </header>*@
-        <!-- PAGE TITLE -->
-       
-
-        @*<div class="page-content-wrap">*@
-
-            <div class="form-row mt-1">
-                <div class="form-group col-12 m-0">
-
-                    <form>
-
-                        <div class="panel panel-default tabs">
-                            @*<ul class="nav nav-tabs" role="tablist">
-                                <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Consumables</a></li>
-                                <li><a href="#tab-second" role="tab" data-toggle="tab">Raw Material</a></li>
-                                <li><a href="#tab-third" role="tab" data-toggle="tab">Outsourcing</a></li>
-                                <li><a href="#tab-fourth" role="tab" data-toggle="tab">Repair</a></li>
-                                <li><a href="#tab-fifth" role="tab" data-toggle="tab">Maintenance Spares</a></li>
-                            </ul>*@
-                            <div class="panel-body tab-content">
-                                <div class="tab-pane active" id="tab-first">
-                                    @Html.Action("AllGIConsumables")
-                                </div>
-                                <div class="tab-pane" id="tab-second">
-                                    @Html.Action("AllGIRawMaterial")
-                                </div>
-                                <div class="tab-pane" id="tab-third">
-                                    @Html.Action("AllGIOutsourcing")
-                                </div>
-                                <div class="tab-pane" id="tab-fourth">
-                                    @Html.Action("AllGIRepair")
-                                </div>
-                                <div class="tab-pane" id="tab-fifth">
-                                    @Html.Action("AllGIMaintenanceRepair")
-                                </div>
+        <div class="row">
+             
+                <form>
+                                      
+                        <div class="panel-body tab-content">
+                            <div class="tab-pane active" id="tab-first">
+                                @Html.Action("AllGIConsumables")
+                            </div>
+                            <div class="tab-pane" id="tab-second">
+                                @Html.Action("AllGIRawMaterial")
+                            </div>
+                            <div class="tab-pane" id="tab-third">
+                                @Html.Action("AllGIOutsourcing")
+                            </div>
+                            <div class="tab-pane" id="tab-fourth">
+                                @Html.Action("AllGIRepair")
+                            </div>
+                            <div class="tab-pane" id="tab-fifth">
+                                @Html.Action("AllGIMaintenanceRepair")
                             </div>
                         </div>
+                    
+                </form>
 
-                    </form>
+             
+        </div>
+        </div>
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Content/Validations/JqueryUi.js"></script>
+        <script>
 
-                </div>
-            </div>
+            $(".nav-link").click(function () {
 
-        @*</div>*@
+                window.scrollBy(0, 50); //for scroll top
+                window.scrollBy(0, -50); //for scroll down
+            });
+        </script>
 
-    </fieldset>
-    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-
-    <script src="~/Content/Validations/JqueryUi.js"></script>
-    <script>
-        
-        $(".nav-link").click(function () {
-         
-            window.scrollBy(0, 50); //for scroll top
-            window.scrollBy(0, -50); //for scroll down
-        });
-    </script>
-
-
-}
+    }

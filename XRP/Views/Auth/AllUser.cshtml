@@ -6,124 +6,71 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 
-<fieldset>
-    <header class="blue accent-3 relative">
-        <div class="container-fluid text-white">
-            <div class="row p-t-b-10 ">
-                <div class="col">
-                    <h4>
-                        <i class="icon-database"></i>
-                        User
-                    </h4>
-                </div>
-            </div>
-            <div class="row justify-content-between">
-                <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                    <li>
-                        <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>User List</a>
-                    </li>
-                    @*<li>
-                            <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
-                        </li>*@
-                    <li class="float-right">
-                        <a class="nav-link newADD" href='@Url.Action("NewUser", "Auth")'><i class="icon icon-plus-circle"></i>New User</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<div class="paddingTop15">
 
-    </header>
-    <div class="container-fluid animatedParent animateOnce">
-        <div class="tab-content my-3" id="v-pills-tabContent">
-            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
-                <div class="row my-3">
-                    <div class="col-md-12">
-                        <div class="card r-0 shadow">
-                            <div class="table-responsive">
-                                <form action="">
-                                  
-                                    <table class="table table-striped table-hover" style="width:100%" id="" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th style="display:none;">
-                                                    ID
-                                                </th>
-                                                <th>#</th>
-                                                <th>
-                                                    NAME
-                                                </th>
-                                                <th>
-                                                   USER ROLL
-                                                </th>
-                                                <th>
-                                                    DEPARTMENT
-                                                </th>
-                                                <th>
-                                                    CONTACT NUMBER
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="tbodyUser">
 
-                                           
-
-                                        </tbody>
-                                    </table>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="">
+        <table class="table table-striped table-hover" >
+            <thead>
+                <tr>
+                    <th style="display:none;">
+                        ID
+                    </th>
+                    <th>#</th>
+                    <th>
+                        NAME
+                    </th>
+                    <th>
+                        USER ROLL
+                    </th>
+                    <th>
+                        DEPARTMENT
+                    </th>
+                    <th>
+                        CONTACT NUMBER
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="tbodyUser"></tbody>
+        </table>
     </div>
-
-</fieldset>
-<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Content/Validations/JqueryUi.js"></script>
-
-<script type="text/javascript">
-    var $j = jQuery.noConflict(true);
-</script>
-<script>
-    $(document).ready(function () {
-        bindUsers();
-        
-        
-    });
-</script>
-<script>
-
-    function bindUsers() {
-
-        $.ajax({
-            type: "GET",
-            url: "../Auth/getUsers",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (getfdata1) {
-                $("#tbodyUser").empty();
-                var tr = '';
-                $.each(getfdata1, function (ij) {
-
-                    tr = $('<tr/>');
-                    tr.append("<td style='display:none;'>" + getfdata1[ij].UserId + "</td>");
-                    tr.append("<td>" + (ij + 1) + "</td>");
-                    tr.append("<td>" + getfdata1[ij].Name + "</td>");
-                    tr.append("<td>" + getfdata1[ij].UserType + "</td>");
-                    tr.append("<td>" + getfdata1[ij].DepartmentName + "</td>");
-                    tr.append("<td>" + getfdata1[ij].ContactNumber + "</td>");
-                    $("#tbodyUser").append(tr);
-
-                });
+</div>
 
 
-            }
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/Validations/JqueryUi.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            bindUsers();
+
         });
-    }
-</script>
+    </script>
+    <script>
+
+        function bindUsers() {
+
+            $.ajax({
+                type: "GET",
+                url: "../Auth/getUsers",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (getfdata1) {
+                    $("#tbodyUser").empty();
+                    var tr = '';
+                    $.each(getfdata1, function (ij) {
+
+                        tr = $('<tr/>');
+                        tr.append("<td style='display:none;'>" + getfdata1[ij].UserId + "</td>");
+                        tr.append("<td>" + (ij + 1) + "</td>");
+                        tr.append("<td>" + getfdata1[ij].Name + "</td>");
+                        tr.append("<td>" + getfdata1[ij].UserType + "</td>");
+                        tr.append("<td>" + getfdata1[ij].DepartmentName + "</td>");
+                        tr.append("<td>" + getfdata1[ij].ContactNumber + "</td>");
+                        $("#tbodyUser").append(tr);
+                    });
+                }
+            });
+        }
+    </script>

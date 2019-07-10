@@ -4,72 +4,11 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 
-<fieldset>
-    <link href="~/NewCssAndTheme/css/jquery/jquery-ui.min.css" rel="stylesheet" />
-    <style>
-        .ui-tabs-vertical {
-            width: 55em;
-            height: 100%;
-        }
-
-            .ui-tabs-vertical .ui-tabs-nav {
-                padding: 2em .1em .2em .2em;
-                float: left;
-                width: auto;
-                height: 600px;
-            }
-
-                .ui-tabs-vertical .ui-tabs-nav li {
-                    clear: left;
-                    width: 100%;
-                    border-bottom-width: 1px !important;
-                    border-right-width: 0 !important;
-                    margin: 0 -1px .2em 0;
-                }
-
-                    .ui-tabs-vertical .ui-tabs-nav li a {
-                        display: block;
-                    }
-
-                    .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
-                        padding-bottom: 0;
-                        padding-right: .1em;
-                        border-right-width: 1px;
-                    }
-
-            .ui-tabs-vertical .ui-tabs-panel {
-                padding: 1em;
-                float: right;
-                width: 40em;
-            }
-    </style>
-    <style>
-        .icon:hover, .trUserRole:hover {
-            cursor: pointer;
-        }
-
-        /*.table-wrapper-scroll-y {
-                display: block;
-                max-height: 600px;
-                overflow-y: auto;
-                -ms-overflow-style: -ms-autohiding-scrollbar;
-            }*/
-    </style>
-
-    <!-- PAGE TITLE -->
-    @*<div id="tabs" class="nav flex-column nav-pills">
-            <ul id="rollul">
-
-            </ul>
-
-        </div>*@
+<div class=" ">
     <input type="hidden" id="hdn_userid" />
     <div class="row">
         <div class="col-md-12">
-
             <div class="panel panel-default">
-
-
                 <div class="container-fluid animatedParent animateOnce p-0">
                     <div class="animated fadeInUpShort">
                         <div class="row no-gutters">
@@ -81,158 +20,66 @@
                                             <a class="nav-link p-3 active show" id="w2--tab1" data-toggle="tab" href="#w2-tab1" style="height:auto">
                                                 <input type="text" class="" id="txt_search" style="display:none;" /><br />
                                                 <i class="icon icon-user-circle s-18 text-primary"></i>User Role
-
-
                                             </a>
                                         </li>
-
                                     </ul>
                                 </div>
-
-                                @*<div class="slimScroll" style="position:relative;overflow:hidden;height:initial">
-
-                                    <div class="tab-content " id="v-pills-tabContent">
-                                        <div class="tab-pane fade show active slimScroll" id="w2-tab1" role="tabpanel"
-                                             aria-labelledby="w2-tab1">
-                                            <div class="nav flex-column nav-pills" id="rollul" role="tablist" aria-orientation="vertical">
-                                               
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>*@
                                 <div class="slimScroll" style="position:relative;overflow:hidden;height:initial">
-
                                     <div class="tab-content " id="v-pills-tabContent">
-                                        <div class="tab-pane fade show active slimScroll" id="w2-tab1" role="tabpanel" aria-labelledby="w2-tab1">
-                                            <div class="tab-pane fade show active slimScroll" id="" role="tablist" aria-orientation="vertical">
+                                        <div class="tab-pane show active slimScroll" id="w2-tab1" role="tabpanel" aria-labelledby="w2-tab1">
+                                            <div class="tab-pane show active slimScroll" id="" role="tablist" aria-orientation="vertical">
                                                 <table class="table table-bordered table-hover">
                                                     <tbody id="rollul"></tbody>
                                                 </table>
                                             </div>
                                         </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                            @*<div class="col-md-9" id="div_userpermissiondetails">
-                                <div class="card r-0 shadow">
-                                    <div class="">
-                                        <form action="">
-                                            <br />
-                                            <div class="card-header white">
-                                                <i class="icon-apps blue-text"></i>
-                                                <strong><span id="spn_rollname"></span></strong>
-                                            </div>
-                                            <div class="card-body p-t-0 slimScroll" data-height="550" style="overflow: hidden; width: auto; height: 550px;">
-                                                <table class="table table-striped" id="tbl_userrole" cellspacing="0">
-                                                    <thead id="tblthead">
-                                                        <tr>
-                                                            <th style="display:none;">
-                                                                SubMenuID
-                                                            </th>
-                                                            <th>#</th>
-                                                            <th>
-                                                                Feature
-                                                            </th>
-                                                            <th>
-                                                                Add
-                                                            </th>
-                                                            <th>
-                                                                Edit
-                                                            </th>
-                                                            <th>Delete</th>
-                                                            <th>View</th>
-                                                            <th>Approval</th>
-                                                            <th>Print</th>
-                                                            <th>Download</th>
-                                                            <th>Send Mail</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="featuretbody"></tbody>
-                                                </table>
-
-                                                <div class="card-body" align="right">
-                                                    <button type="button" class="btn btn-primary btn-sm btn_Save" id="btnSubmit"><i class="icon-save mr-2"></i>Save</button>
-
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>*@
-
-                            <div class="col-md-9"  id="div_userpermissiondetails">
-                                <div class="card r-0 shadow">
-                                    <div class="">
-                                        <form action="">
-                                            <br />
-                                            <div class="card-header white">
-                                                <i class="icon-apps blue-text"></i>
-                                                <strong><span id="spn_rollname"></span></strong>
-                                            </div>
-                                            <div>
-                                                <table class="table table-striped table-hover p-b-0" id="" cellspacing="0" width="100%" style="margin-bottom:0">
-                                                    <thead id="tblthead" width="100%">
-                                                        <tr>
-                                                            <th style="display:none;">
-                                                                ID
-                                                            </th>
-                                                            <th>#</th>
-                                                            <th width="30%" align="right">
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                                                &nbsp;&nbsp; Feature Name
-                                                            </th>
-
-                                                            <th>
-                                                                Add
-                                                            </th>
-                                                            <th>
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;Edit
-                                                            </th>
-                                                            <th>&nbsp;&nbsp;&nbsp;&nbsp;Delete</th>
-                                                            <th>&nbsp;&nbsp;&nbsp;&nbsp;View</th>
-                                                            <th>Approval</th>
-                                                            <th>Print</th>
-                                                            <th>&nbsp;&nbsp;Download</th>
-                                                            <th>Send Mail</th>
-                                                        </tr>
-                                                    </thead>
-                                                    @*<tbody id="featuretbody" class="sticky"></tbody>*@
-                                                </table>
-                                            </div>
-                                            <div class="card-body p-t-0 slimScroll" data-height="450" style="overflow: hidden; width: 100%; height: 450px; margin-top:0px; padding:0px">
-                                                <table class="table table-striped table-hover" id="tbl_userrole" cellspacing="0" width="100%" style="margin-top:-5px">
-
-                                                    <tbody id="featuretbody" class="" style="margin-top:0px; border-top:none"></tbody>
-                                                </table>
-
-                                                <div class="card-body" align="right">
-                                                    <button type="button" class="btn btn-primary btn-sm btn_Save" id="btnSubmit"><i class="icon-save mr-2"></i>Save</button>
-
-                                                </div>
-                                            </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="col-md-9" id="div_userpermissiondetails"> 
+                                <form action=""> 
+                                    <div class="" data-height="450" style="overflow: hidden; width: 100%; height:500px; margin-top:0px; padding:0px">
+                                        <div class="slimScroll" style="position:relative;overflow:hidden;height:initial">
+                                            <table class="table table-striped table-hover" id="tbl_userrole">
+                                                <thead id="tblthead" width="100%" >
+                                                    <tr>
+                                                        <th style="display:none;">
+                                                            ID
+                                                        </th>
+                                                        <th>#</th>
+                                                        <th width="30%" align="right">
+                                                            Feature
+                                                        </th>
+                                                        <th>
+                                                            Add
+                                                        </th>
+                                                        <th>
+                                                            Edit
+                                                        </th>
+                                                        <th> Delete</th>
+                                                        <th> View</th>
+                                                        <th>Approval</th>
+                                                        <th>Print</th>
+                                                        <th> Download</th>
+                                                        <th> Mail</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="featuretbody" class="" style="margin-top:0px; border-top:none"></tbody>
+                                            </table>
+                                            <div class="card-body" align="right">
+                                                <button type="button" class="btn btn-primary btn-sm btn_Save" id="btnSubmit"><i class="icon-save mr-2"></i>Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form> 
+                            </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>
     </div>
-</fieldset>
-
+</div>
 <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Content/Validations/JqueryUi.js"></script>
@@ -246,7 +93,7 @@
         document.body.style.overflow = 'hidden';
         $('#btnSubmit').click(function () {
             var UserId = $("#hdn_userid").text();
-           
+
             var i = 1;
             $("#tbl_userrole TBODY TR").each(function () {
                 var row = $(this);
@@ -288,7 +135,7 @@
                     url: "../Auth/savedatapermission",
                     data: JSON.stringify({
                         UserId, submenuid, isaddcheck, add, iseditcheck, edit, isdelcheck, del, isviewcheck, view,
-                        isapprovalcheck, approval, isprintcheck, print, isdownloadcheck, download, issendmailcheck,sendmail
+                        isapprovalcheck, approval, isprintcheck, print, isdownloadcheck, download, issendmailcheck, sendmail
                     }),
                     contentType: "application/json;charset=utf-8",
                     success: function (status) {
@@ -297,7 +144,7 @@
                     error: function (err) {
                     }
                 });
-              
+
                 i++;
             });
         });
@@ -305,7 +152,6 @@
 
     });
     function setulandli() {
-
         $.ajax({
             type: "GET",
             url: "../Auth/getRolls",
@@ -317,11 +163,9 @@
                     $("#rollul").append('<tr class="trUserBind' + data1[i].UserId + '"><td><h6 class="font-weight-normal"><a onclick="return RolltableBind(\'' + data1[i].UserId + '\',\'' + data1[i].UserName + '\')" class="nav-link r-20" data-toggle="pill" role="tab" style="color:grey" aria-controls="v-pills-home" href="#tabs-' + data1[i].UserId + '">' + data1[i].UserName + '</a></h6></td><tr>');
 
                 });
-
             }
         });
     }
-
 
     function RolltableBind(UserId, UserName) {
         $(".trUserBind" + UserId).addClass("p-3 b-b light border-right border-primary");
@@ -338,7 +182,7 @@
                 $("#featuretbody").empty();
                 var tr = '';
                 $.each(getfdata1, function (ij) {
-                
+
                     tr = $('<tr/>');
                     tr.append("<td style='display:none;'>" + getfdata1[ij].SubMenuID + "</td>");
                     tr.append("<td>" + (ij + 1) + "</td>");
@@ -397,14 +241,14 @@
 
                 });
 
-   
+
                 var UserId = $("#hdn_userid").text();
 
                 $("#tbl_userrole TBODY TR").each(function () {
                     var row = $(this);
                     var submenuid = row.find("TD").eq(0).text();
                     var srno = row.find("TD").eq(1).text();
-               
+
                     $.ajax({
                         type: "POST",
                         url: "../Auth/getpermission",
@@ -414,8 +258,7 @@
                         contentType: "application/json;charset=utf-8",
                         success: function (status) {
                             for (var i = 0; i < status.length; i++) {
-                                if (status[i].ActionID == 1 && status[i].IsAction == 1)
-                                {
+                                if (status[i].ActionID == 1 && status[i].IsAction == 1) {
                                     $("#addonly_" + srno).attr('checked', 'checked');
                                 }
                                 if (status[i].ActionID == 2 && status[i].IsAction == 1) {
@@ -439,16 +282,16 @@
                                 if (status[i].ActionID == 8 && status[i].IsAction == 1) {
                                     $("#sendmailonly_" + srno).attr('checked', 'checked');
                                 }
-                                
+
                             }
-                          
+
                         },
                         error: function (err) {
                         }
-                         
+
                     });
 
-                  
+
                 });
             }
         });

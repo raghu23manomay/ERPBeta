@@ -4,323 +4,316 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 
-<div class="col-sm-11" style="" align="center" id="divprint">
+<div class="col-sm-12" style="" align="center" id="divprint">
+    <div class="ibox">
+        <div class="ibox-content">
+            <table style="color:gray;" align="center">
+                <tbody>
+                    <tr>
 
-    <table style="color:gray;" align="center">
-        <tbody>
-            <tr>
-                <td><img src="~/NewCssAndTheme/img/SSMlogoNew.png" height="60" width="60" alt=""></td>
-                <td>
-                    <center>
-                        <font size="4">
-                            <b>Shree Siddheshwari Metal Forging Pvt. Ltd.</b>
-                        </font><br>
-                        <font size="1">
-                            PLOT NO. 489 &amp; 490, 'J' BLOCK M.I.D.C. BHOSARI, PUNE-411026<br>
-                            PHONE NO. : (020) 27130120 EMAIL: scm@ssmforge.com
-                        </font>
-                    </center>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-
-    <center>
-
-        <u><b><font size="4"> DELIVERY CHALLAN FOR RAW MATERIAL TESTING</font></b></u><br>
-
-    </center>
+                        <td><img src="~/assets/img/ErpLogo.png" height="60" width="60" alt=""></td>
+                        <td>
+                            <center>
+                                <font size="4">
+                                    <b>Shree Siddheshwari Metal Forging Pvt. Ltd.</b>
+                                </font><br>
+                                <font size="1">
+                                    PLOT NO. 489 &amp; 490, 'J' BLOCK M.I.D.C. BHOSARI, PUNE-411026<br>
+                                    PHONE NO. : (020) 27130120 EMAIL: scm@ssmforge.com
+                                </font>
+                            </center>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
 
-    <table class="table border-bottom" style="width:100%">
-        <tbody>
-            <tr>
-                <td valign="top" style="width:50%">
-                    &nbsp;To,<br>
-                    &nbsp;<span id="name"></span><br>
-                    &nbsp;<span id="address"></span>
-                </td>
-                <td style="width:50%">
-                    &nbsp;Date:&nbsp;<span id="spn_date"></span> | Challan No:&nbsp;<span id="spn_challanno"></span><br>
+            <center>
 
-                    &nbsp;Material Grade:&nbsp;<span id="spn_gm"></span> | Section:&nbsp;<span id="spn_section"></span><br>
-                    &nbsp;Heat Code:&nbsp;<span id="spn_hc"></span> | Heat Number:&nbsp;<span id="spn_hn"></span><br>
-                    &nbsp;Qty:&nbsp;<span id="spn_qtyTonne"></span>&nbsp;Tonne
-                    &nbsp; | Mode Of Transport:&nbsp;<span id="spn_mot"></span>/<span id="spn_mott"></span>
+                <u><b><font size="4"> DELIVERY CHALLAN FOR RAW MATERIAL TESTING</font></b></u><br>
+
+            </center>
 
 
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            <table class="table border-bottom" style="width:100%">
+                <tbody>
+                    <tr>
+                        <td valign="top" style="width:50%">
+                            &nbsp;To,<br>
+                            &nbsp;<span id="name"></span><br>
+                            &nbsp;<span id="address"></span>
+                        </td>
+                        <td style="width:50%">
+                            &nbsp;Date:&nbsp;<span id="spn_date"></span> | Challan No:&nbsp;<span id="spn_challanno"></span><br>
+
+                            &nbsp;Material Grade:&nbsp;<span id="spn_gm"></span> | Section:&nbsp;<span id="spn_section"></span><br>
+                            &nbsp;Heat Code:&nbsp;<span id="spn_hc"></span> | Heat Number:&nbsp;<span id="spn_hn"></span><br>
+                            &nbsp;Qty:&nbsp;<span id="spn_qtyTonne"></span>&nbsp;Tonne
+                            &nbsp; | Mode Of Transport:&nbsp;<span id="spn_mot"></span>/<span id="spn_mott"></span>
 
 
-    <table class="table table-condensed table-bordered m-0" cellspacing="0">
-        <tbody>
-            <tr>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-                <td rowspan="2" align="center" style="padding:0">
-                    <b>1.</b>
-                </td>
-                <td><b>Chemical Analysis:</b></td>
-                <td colspan="3">
-                    <input type="text" id="txt_chemnooftestpcs" class="form-control r-0 light s-12" placeholder="No. of Test Pieces"  />
-                </td>
-                <td colspan="3">
-                    <input type="text" id="txt_chemnooftestpcskg" class="form-control r-0 light s-12" placeholder="No. of Test Pieces (kg)"  />
-                </td>
-                <td colspan="3">
-                    <input type="text" id="txt_suppliergrade" class="form-control r-0 light s-12" placeholder="Supplier Grade"  />
-                </td>
-                <td colspan="3">
-                    <input type="text" id="txt_heatno" class="form-control r-0 light s-12" placeholder="Challan Number" />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table m-0">
-        <tbody>
-            <tr>
-                <td>Parameters:</td>
-                <td>C%</td>
-                <td>Mn%</td>
-                <td>P%</td>
-                <td>S%</td>
-                <td>Si%</td>
-                <td>Al%</td>
-                <td>Cr%</td>
-                <td>Mo%</td>
-                <td>Ni%</td>
-                <td>Cu%</td>
-                <td>V%</td>
-                <td>Pb%</td>
 
-            </tr>
-            <tr>
-                <td>Required:</td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="1" id="1a" required="">
-                        <label class="custom-control-label" for="1a"></label>
-                    </div>
-              
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="2" id="2a" required="">
-                        <label class="custom-control-label" for="2a"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="3" id="3a" required="">
-                        <label class="custom-control-label" for="3a"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="4" id="4a" required="">
-                        <label class="custom-control-label" for="4a"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="5" id="5a" required="">
-                        <label class="custom-control-label" for="5a"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="6" id="6a" required="">
-                        <label class="custom-control-label" for="6a"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="7" id="7a" required="">
-                        <label class="custom-control-label" for="7a"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="8" id="8a" required="">
-                        <label class="custom-control-label" for="8a"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="9" id="9a" required="">
-                        <label class="custom-control-label" for="9a"></label>
-                    </div>
-               
-                </td>
+            <table class="table table-condensed table-bordered m-0" cellspacing="0">
+                <tbody>
+                    <tr>
 
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="11" id="11a" required="">
-                        <label class="custom-control-label" for="11a"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="12" id="12a" required="">
-                        <label class="custom-control-label" for="12a"></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="custom-control custom-checkbox mb-3" align="right">
-                        <input type="checkbox" class="custom-control-input" name="chk_vendor" value="13" id="13a" required="">
-                        <label class="custom-control-label" for="13a"></label>
-                    </div>
-                </td>
+                        @*<td rowspan="2" align="center" style="padding:0">
+                            <b>1.</b>
+                        </td>*@
+                        <td><b>Chemical Analysis:</b></td>
+                        <td colspan="3">
+                            <input type="text" id="txt_chemnooftestpcs" class="form-control r-0 light s-12" placeholder="No. of Test Pieces" />
+                        </td>
+                        <td colspan="3">
+                            <input type="text" id="txt_chemnooftestpcskg" class="form-control r-0 light s-12" placeholder="No. of Test Pieces (kg)" />
+                        </td>
+                        <td colspan="3">
+                            <input type="text" id="txt_suppliergrade" class="form-control r-0 light s-12" placeholder="Supplier Grade" />
+                        </td>
+                        <td colspan="3">
+                            <input type="text" id="txt_heatno" class="form-control r-0 light s-12" placeholder="Challan Number" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table m-0">
+                <tbody>
+                    <tr>
+                        <td>Parameters:</td>
+                        <td>C%</td>
+                        <td>Mn%</td>
+                        <td>P%</td>
+                        <td>S%</td>
+                        <td>Si%</td>
+                        <td>Al%</td>
+                        <td>Cr%</td>
+                        <td>Mo%</td>
+                        <td>Ni%</td>
+                        <td>Cu%</td>
+                        <td>V%</td>
+                        <td>Pb%</td>
 
-            </tr>
-        </tbody>
-    </table>
-    <table width="100%" class="table-condensed table-bordered">
+                    </tr>
+                    <tr>
+                        <td>Required:</td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="1" id="1a" required="">
+                                <label class="custom-control-label" for="1a"></label>
+                            </div>
 
-        <tr>
-            <td rowspan="2" align="center" style="padding:0"><b>2.</b></td>
-            <td colspan="3" rowspan="2" align="center" style="min-width:50px"><b>Metallography Analysis</b></td>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="2" id="2a" required="">
+                                <label class="custom-control-label" for="2a"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="3" id="3a" required="">
+                                <label class="custom-control-label" for="3a"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="4" id="4a" required="">
+                                <label class="custom-control-label" for="4a"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="5" id="5a" required="">
+                                <label class="custom-control-label" for="5a"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="6" id="6a" required="">
+                                <label class="custom-control-label" for="6a"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="7" id="7a" required="">
+                                <label class="custom-control-label" for="7a"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="8" id="8a" required="">
+                                <label class="custom-control-label" for="8a"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="9" id="9a" required="">
+                                <label class="custom-control-label" for="9a"></label>
+                            </div>
 
-            <td>I</td>
-            <td>Micro</td>
-            <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtmicro" /></td>
-            <td>III</td>
-            <td>Inclusion</td>
-            <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtinclusion" /></td>
+                        </td>
 
-        </tr>
-        <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="11" id="11a" required="">
+                                <label class="custom-control-label" for="11a"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="12" id="12a" required="">
+                                <label class="custom-control-label" for="12a"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                <input type="checkbox" class="custom-control-input" name="chk_vendor" value="13" id="13a" required="">
+                                <label class="custom-control-label" for="13a"></label>
+                            </div>
+                        </td>
 
-            <td>II</td>
-            <td>Macro</td>
-            <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtmacro" /></td>
-            <td>IV</td>
-            <td>Grainsize</td>
-            <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtgrainsize" /></td>
-        </tr>
-    </table>
-    <br />
-    <table cellspacing="0" class="table-condensed table-bordered" width="100%" >
-        <tr>
-            <td rowspan="2" align="center" style="padding:0"><b>3.</b></td>
-            <td colspan="3" align="center" style="min-width:50px"><b>Mechanical Analysis</b></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table width="100%" class="table-condensed table-bordered">
 
-            @*<td colspan="1" style="min-width:50px" align="center"><b>No. of Test Pieces</b></td>*@
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mechnoofpcs" placeholder="No. of Test Pieces"></td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mechnoofpcskg" placeholder="No. of Test Pieces (kg)"></td>
+                <tr>
+                    @*<td rowspan="2" align="center" style="padding:0"><b>2.</b></td>*@
+                    <td colspan="3" rowspan="2" align="center" style="min-width:50px"><b>Metallography Analysis</b></td>
 
-        </tr>
-        <tr>
+                    @*<td>I</td>*@
+                    <td>Micro</td>
+                    <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtmicro" /></td>
+                    <td>III</td>
+                    <td>Inclusion</td>
+                    <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtinclusion" /></td>
 
-            <td align="right"><b>Specification</b></td>
-            <td style="min-width:50px" align="center"><b>Min.</b></td>
-            <td style="min-width:50px" align="center"><b>Max.</b></td>
-            <td style="min-width:50px" colspan="2" rowspan="8"></td>
+                </tr>
+                <tr>
 
-        </tr>
-        <tr>
-            <td>I</td>
-            <td style="min-width:50px">Impact</td>
-            <td style="min-width:50px" align="center"><input class="form-control r-0 light s-12" type="text" id="txt_minimpact"></td>
-            <td style="min-width:50px" align="center"><input class="form-control r-0 light s-12" type="text" id="txt_maximpact"></td>
-            @*<td style="min-width:50px"></td>
-                <td style="min-width:50px"></td>*@
-        </tr>
-        <tr>
-            <td>II</td>
-            <td colspan="3" style="min-width:50px">Tensile</td>
-            @*<td style="min-width:50px" align="center"></td>
-                <td style="min-width:50px" align="center"></td>*@
-            @*<td style="min-width:50px"></td>
-                <td style="min-width:50px"></td>*@
-        </tr>
-        <tr>
-            <td>a</td>
-            <td align="right" style="min-width:50px">UTS</td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_utsmintensile"></td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_utsmaxtensile"></td>
-            @*<td style="min-width:50px"></td>
-                <td style="min-width:50px"></td>*@
-        </tr>
-        <tr>
-            <td>b</td>
-            <td align="right" style="min-width:50px">YS</td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_ysmintensile"></td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_ysmaxtensile"></td>
-            @*<td style="min-width:50px"></td>
-                <td style="min-width:50px"></td>*@
-        </tr>
-        <tr>
-            <td>c</td>
-            <td align="right" style="min-width:50px">Reduction</td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_reductionmintensile"></td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_reductionmaxtensile"></td>
-            @*<td style="min-width:50px"></td>
-                <td style="min-width:50px"></td>*@
-        </tr>
-        <tr>
-            <td>III</td>
-            <td style="min-width:50px">Charpy (at 46<sup>0</sup> C)</td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mincharpy"></td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_maxcharpy"></td>
-            @*<td style="min-width:50px"></td>
-                <td style="min-width:50px"></td>*@
-        </tr>
-        <tr>
-            <td>IV</td>
-            <td style="min-width:50px">Jominy</td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_minjominy"></td>
-            <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_maxjominy"></td>
-            @*<td style="min-width:50px"></td>
-                <td style="min-width:50px"></td>*@
-        </tr>
-    </table>
+                    @*<td>II</td>*@
+                    <td>Macro</td>
+                    <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtmacro" /></td>
+                    <td>IV</td>
+                    <td>Grainsize</td>
+                    <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtgrainsize" /></td>
+                </tr>
+            </table>
+            <br />
+            <table cellspacing="0" class="table-condensed table-bordered" width="100%">
+                <tr>
+                    <td rowspan="2" align="center" style="padding:0"><b></b></td>
+                    <td colspan="3" align="center" style="min-width:50px"><b>Mechanical Analysis</b></td>
 
-    <table id="tbl_notes" align="left" class="border-bottom" width="100%">
-        <thead>
-            <tr>
-                <td> <b>Notes:&nbsp;Test Pieces should be return to us after testing.</b></td>
+                    @*<td colspan="1" style="min-width:50px" align="center"><b>No. of Test Pieces</b></td>*@
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mechnoofpcs" placeholder="No. of Test Pieces"></td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mechnoofpcskg" placeholder="No. of Test Pieces (kg)"></td>
 
-            </tr>
-        </thead>
+                </tr>
+                <tr>
 
-    </table>
-    <table width="100%">
+                    <td align="right"><b>Specification</b></td>
+                    <td style="min-width:50px" align="center"><b>Min.</b></td>
+                    <td style="min-width:50px" align="center"><b>Max.</b></td>
+                    <td style="min-width:50px" colspan="2" rowspan="8"></td>
 
-        <tbody>
-            <tr>
-                <td align="left">
-                    <b> Remarks:<input type="text" class="form-control r-0 light s-12" id="txt_remarks"></b><br />
-                    <br>
-                    Receiver's Signature
-                </td>
-                <td align="right">
-                    <b>For Shree Siddheshwari Metal Forging Pvt. Ltd.</b><br>
-                    Authorised Signatory<br><br>
+                </tr>
+                <tr>
+                    @*<td>I</td>*@
+                    <td style="min-width:50px">Impact</td>
+                    <td style="min-width:50px" align="center"><input class="form-control r-0 light s-12" type="text" id="txt_minimpact"></td>
+                    <td style="min-width:50px" align="center"><input class="form-control r-0 light s-12" type="text" id="txt_maximpact"></td>
+                    
+                </tr>
+                <tr>
+                    @*<td>II</td>*@
+                    <td colspan="3" style="min-width:50px">Tensile</td>
+                    
+                </tr>
+                <tr>
+                    @*<td>a</td>*@
+                    <td align="right" style="min-width:50px">UTS</td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_utsmintensile"></td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_utsmaxtensile"></td>
+                    
+                </tr>
+                <tr>
+                    @*<td>b</td>*@
+                    <td align="right" style="min-width:50px">YS</td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_ysmintensile"></td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_ysmaxtensile"></td>
+                    
+                </tr>
+                <tr>
+                    @*<td>c</td>*@
+                    <td align="right" style="min-width:50px">Reduction</td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_reductionmintensile"></td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_reductionmaxtensile"></td>
+                     
+                </tr>
+                <tr>
+                    @*<td>III</td>*@
+                    <td style="min-width:50px">Charpy (at 46<sup>0</sup> C)</td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mincharpy"></td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_maxcharpy"></td>
+                    
+                </tr>
+                <tr>
+                    @*<td>IV</td>*@
+                    <td style="min-width:50px">Jominy</td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_minjominy"></td>
+                    <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_maxjominy"></td>
+                    
+                </tr>
+            </table>
 
-                    <b>This document is autogenerated</b>
-                </td>
-            </tr>
+            <table id="tbl_notes" align="left" class="border-bottom" width="100%">
+                <thead>
+                    <tr>
+                        <td> <b>Notes:&nbsp;Test Pieces should be return to us after testing.</b></td>
 
-        </tbody>
-    </table>
+                    </tr>
+                </thead>
 
-    <div align="right">
-        @*<button class="btn btn-primary btn-sm" type="button" onclick="printDiv('divprint')"><i class="icon-mail">Print</i></button>*@
-        <button type="button" id="btn_save" class="btn btn-sm btn-primary" onclick="save()">Save</button>
+            </table>
+            <table width="100%">
+
+                <tbody>
+                    <tr>
+                        <td align="left">
+                            <b> Remarks:<input type="text" class="form-control r-0 light s-12" id="txt_remarks"></b><br />
+                            <br>
+                            Receiver's Signature
+                        </td>
+                        <td align="right">
+                            <b>For Shree Siddheshwari Metal Forging Pvt. Ltd.</b><br>
+                            Authorised Signatory<br><br>
+
+                            <b>This document is autogenerated</b>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div align="right"> 
+                <button type="button" id="btn_save" class="btn btn-sm btn-primary" onclick="save()">Save</button>
+            </div>
+        </div>
     </div>
 </div>
-
-<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Content/Validations/JqueryUi.js"></script>
-<script>
-        var $j = jQuery.noConflict(true);
-</script>
-<script type="text/javascript">
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Content/Validations/JqueryUi.js"></script>
+        <script>
+            var $j = jQuery.noConflict(true);
+        </script>
+        <script type="text/javascript">
     function save() {
         unsaved = false;
         var chemicalpara = "";
@@ -556,17 +549,17 @@
 
         return dat;
     }
-</script>
-<script type="text/javascript">   
-        var unsaved = false;
-        $j(":input").change(function(){ //trigers change in all input fields including text type
-            unsaved = true;           
-        });
+        </script>
+        <script type="text/javascript">
+            var unsaved = false;
+            $j(":input").change(function () { //trigers change in all input fields including text type
+                unsaved = true;
+            });
 
-        function unloadPage() {           
-            if (unsaved) {               
-                return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+            function unloadPage() {
+                if (unsaved) {
+                    return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                }
             }
-        }
-        window.onbeforeunload = unloadPage;
-</script>
+            window.onbeforeunload = unloadPage;
+        </script>

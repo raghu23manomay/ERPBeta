@@ -1,6 +1,6 @@
 ﻿@model XRP.Models.Paged_ssmtbl_LKP_ColorCodeModel
 @using XRP.Global;
-@{
+@{ 
     ViewBag.Title = "AllGradeOfMaterial";
     ViewBag.Active = "Master";
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
@@ -10,143 +10,101 @@
 {
     @Html.ValidationSummary(true)
 
-      <fieldset>
-          <input id="hdn_srno" type="hidden" />
-        <!-- PAGE TITLE -->
-        <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                @*<div class="row p-t-b-10 ">
-                    <div class="col">*@
-                        <h4>
-                            <i class="icon-database"></i>
-                            Grade Of Material
-                        </h4>
-                    @*</div>
-                </div>*@
-                <div class="row justify-content-between">
-                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                        <li>
-                            <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>All Grade Of Material</a>
-                        </li>
-                      
-                    </ul>
-                </div>
-            </div>
+<div class="paddingTop15">
+   
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active paddingTop15" id="EnquiryList">
+            @using (Html.BeginForm("AllInquiry", "Inquiry", FormMethod.Get, new { @class = " form-horizontal", role = "form", enctype = "multipart/form-data" }))
+            {
 
-        </header>
-        <div class="container-fluid animatedParent animateOnce">
-            <div class="tab-content my-3" id="v-pills-tabContent">
-                <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
-                    <div class="row my-3">
-                        <div class="col-md-12">
-                            <div class="card r-0 shadow">
-                                <div class="table-responsive">
-                                    <form action="">
-                                    
-                                                <table class="table table-striped table-hover r-0" id="tbl_gradeogmaterial">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>
-                                                                <label class="Label" for="MaterialGrade">Material Grade</label>
-                                                            </td>
-                                                            <td>
-                                                                <input id="txt_grade" type="text" class="form-control r-0 light s-12" style="width:150px;" />
-                                                            </td>
-                                                           
-                                                            <td>
-                                                                <label class="Label" for="ColorCode">Color Code</label>
-                                                            </td>
-                                                            <td>
-                                                                <input id="txt_colorcode" type="text" class="form-control r-0 light s-12" style="width:150px;" />
-                                                            </td>
+                <table class="table table-striped table-hover r-0" id="tbl_gradeogmaterial">
+                    <thead>
+                        <tr>
+                            <td>
+                                <label class="Label" for="MaterialGrade">Material Grade</label>
+                            </td>
+                            <td>
+                                <input id="txt_grade" type="text" class="form-control"   />
+                            </td>
 
-                                                            <td>
-                                                                <input type="button" name="Save" value="Save" class="btn btn-primary btn-sm" id="btn_Save" />
+                            <td>
+                                <label class="Label" for="ColorCode">Color Code</label>
+                            </td>
+                            <td>
+                                <input id="txt_colorcode" type="text" class="form-control r-0 light s-12" style="width:150px;" />
+                            </td>
 
-                                                            </td>
-                                                            <td width="35%"></td>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
-                                            
-                                           
-                                       
-                                        <table class="table table-striped table-hover" id="tbl_gm" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr. No. </th>
-                                                    <th>Material Grade</th>
-                                                    <th>Color Code</th>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var data in Model.ssmtbl_LKP_ColorCodeModel)
-                                                {
-                                                    <tr>
-                                                        <td>@data.SrNo</td>
-                                                        <td>@data.Materialgrade</td>
-                                                        <td>@data.Colorcode</td>
+                            <td>
+                                <input type="button" name="Save" value="Save" class="btn btn-primary btn-sm" id="btn_Save" />
+                            </td>
+                            <td width="35%"></td>
+                        </tr>
+                    </thead>
+                </table>
 
 
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-
-                   
-
-    </fieldset>
-    
-    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Content/Validations/JqueryUi.js"></script>
-
-    <script type="text/javascript">
-    $('#tbl_gm tbody').on('click', 'td', function () {
-
-        var currentRow = $(this).closest("tr");
-        var srno = currentRow.find("td:eq(0)").text();       
-        var material = currentRow.find("td:eq(1)").text();
-        var cc = currentRow.find("td:eq(2)").text();
-        $("#btn_Save").val("Update");
-        $("#txt_grade").val(material);
-        $("#txt_colorcode").val(cc);
-        $("#hdn_srno").text(srno);   
-    });
-        
-    $("#btn_Save").click(function () {
-        SaveData();
-    });
-    function SaveData() {
-        if ($('#btn_Save').val() == "Update") {
-            if (($("#txt_grade").val() == "") || ($("#txt_colorcode").val() == "")) {
-                alert("Please fill all fields");               
-                return false;
+                <table class="table table-striped table-hover" id="tbl_gm" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Sr. No. </th>
+                            <th>Material Grade</th>
+                            <th>Color Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in Model.ssmtbl_LKP_ColorCodeModel)
+                        {
+                            <tr>
+                                <td>@data.SrNo</td>
+                                <td>@data.Materialgrade</td>
+                                <td>@data.Colorcode</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             }
-            else {
+        </div>
+        </div>
+    </div> 
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Content/Validations/JqueryUi.js"></script>
 
-                var gof = ($("#txt_grade").val());
-                var colorcode = $("#txt_colorcode").val();
-                var srno = $("#hdn_srno").text();
-                $.ajax
+        <script type="text/javascript">
+            $('#tbl_gm tbody').on('click', 'td', function () {
+
+                var currentRow = $(this).closest("tr");
+                var srno = currentRow.find("td:eq(0)").text();
+                var material = currentRow.find("td:eq(1)").text();
+                var cc = currentRow.find("td:eq(2)").text();
+                $("#btn_Save").val("Update");
+                $("#txt_grade").val(material);
+                $("#txt_colorcode").val(cc);
+                $("#hdn_srno").text(srno);
+            });
+
+            $("#btn_Save").click(function () {
+                SaveData();
+            });
+            function SaveData() {
+                if ($('#btn_Save').val() == "Update") {
+                    if (($("#txt_grade").val() == "") || ($("#txt_colorcode").val() == "")) {
+                        alert("Please fill all fields");
+                        return false;
+                    }
+                    else {
+
+                        var gof = ($("#txt_grade").val());
+                        var colorcode = $("#txt_colorcode").val();
+                        var srno = $("#hdn_srno").text();
+                        $.ajax
                             ({
                                 type: "POST",
                                 url: "../GradeOfMaterial/UpdateGradeOfMaterial",
                                 data: JSON.stringify({ srno: '' + srno + '', gof: '' + gof + '', colorcode: '' + colorcode + '' }),
                                 contentType: "application/json;charset=utf-8",
                                 dataType: "json",
-                                success: function (status) {                                   
+                                success: function (status) {
                                     alert("Data Updated Successfully");
                                     $("#txt_grade").val("");
                                     $("#txt_colorcode").val("");
@@ -159,21 +117,21 @@
                                 }
                             });
 
-            }
+                    }
 
-        }
-        else {
-            //alert("save");
-            var un = $("#UN").val();
+                }
+                else {
+                    //alert("save");
+                    var un = $("#UN").val();
 
-            if (($("#txt_grade").val() == "") || ($("#txt_colorcode").val() == "")) {
-                alert("Please fill all fields");               
-                return false;
-            }
-            else {
-                var gof = ($("#txt_grade").val());
-                var colorcode = $("#txt_colorcode").val();
-                $.ajax
+                    if (($("#txt_grade").val() == "") || ($("#txt_colorcode").val() == "")) {
+                        alert("Please fill all fields");
+                        return false;
+                    }
+                    else {
+                        var gof = ($("#txt_grade").val());
+                        var colorcode = $("#txt_colorcode").val();
+                        $.ajax
                             ({
                                 type: "POST",
                                 url: "../GradeOfMaterial/InsertGradeOfMaterial",
@@ -181,7 +139,7 @@
                                 data: JSON.stringify({ gof: ' ' + gof + '', colorcode: ' ' + colorcode + '' }),
                                 contentType: "application/json;charset=utf-8",
                                 dataType: "json",
-                                success: function (status) {                                    
+                                success: function (status) {
                                     alert("Data Inserted Successfully");
                                     //$("#divwarn").css('display', 'none');
                                     $("#txt_grade").val("");
@@ -195,20 +153,20 @@
                                 }
                             });
 
+                    }
+                }
+
             }
-        }
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#tbl_gm').DataTable({
 
-    }
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#tbl_gm').DataTable({
+                    "ordering": false,
+                    "info": false
+                });
 
-                "ordering": false,
-                "info": false
+
             });
-           
-
-        });
-    </script>
-}
+        </script>
+    }

@@ -1,28 +1,6 @@
 ﻿@model XRP.Models.Paged_ssmtbl_VendorPurchaseOrderModel
 
-<style>
-    .icon:hover, td:hover {
-        cursor: pointer;
-    }
-
-    #btnSubmit {
-        position: absolute;
-        bottom: 4%;
-        right: 5%;
-    }
-
-    #btnPrintDC {
-        position: absolute;
-        bottom: 6%;
-        right: 3%;
-    }
-
-    #btnViewPrint {
-        position: absolute;
-        bottom: 10%;
-        left: 35%;
-    }
-</style>
+ 
 <link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
 
 @Html.HiddenFor(model => model.ginNumber, new { @id = "hdnGINNumber" })
@@ -31,19 +9,16 @@
 <input type="hidden" id="hdnOrderQty" />
 <input type="hidden" id="hdnginStatus" />
 <input type="hidden" id="hdntotalReceivedQty" />
-<div class="panel panel-default">
-
+<div class="panel panel-default"> 
     <header class="blue accent-3 relative">
-        <div class="container-fluid text-white">
-
+        <div class="container-fluid text-white"> 
         </div>
     </header>
     <div class="container-fluid">
         <div class="card shadow b-0">
             <div class="row no-gutters">
                 <div class="col-md-3 d-none d-md-block text-truncate white b-r white sticky" style="">
-                    <div class="slimScroll" data-height="600">
-                        @*<div class="slimScroll" data-height="600">*@
+                    <div class="slimScroll" data-height="600"> 
                         <ul class="list-unstyled">
                             <li>
                                 <table class="table table-bordered table-hover">
@@ -86,166 +61,168 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var data in Model.ssmtbl_VendorPurchaseOrderModelList)
+                                        @if (Model.ssmtbl_VendorPurchaseOrderModelList != null)
                                         {
-                                            <tr class="trDelivery">
-                                                <td style="display:none" class="ftd"><input type="hidden" value="@data.vpo_id" class="poid" /></td>
-                                                <td style="display:none" class="ftd"><input type="hidden" value="@data.cstpo_id" class="poid" /></td>
-                                                <td style="display:none" class="ftd1"><input type="hidden" value="@data.vendor_po_type" class="DeliveryChallanType" /></td>
-                                                <td style="display:none" class="partyType"><input type="hidden" value="@data.PartyTYpe" class="PartyTYpe" /></td>
+                                            foreach (var data in Model.ssmtbl_VendorPurchaseOrderModelList)
+                                            {
+                                                <tr class="trDelivery">
+                                                    <td style="display:none" class="ftd"><input type="hidden" value="@data.vpo_id" class="poid" /></td>
+                                                    <td style="display:none" class="ftd"><input type="hidden" value="@data.cstpo_id" class="poid" /></td>
+                                                    <td style="display:none" class="ftd1"><input type="hidden" value="@data.vendor_po_type" class="DeliveryChallanType" /></td>
+                                                    <td style="display:none" class="partyType"><input type="hidden" value="@data.PartyTYpe" class="PartyTYpe" /></td>
 
-                                                <td>
-                                                    @*<a href="@Url.Action("AllDCJobDispatch", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="Delivery Challan">*@
-                                                    @*<a href="javascript:myFunction($(dispatchid1).val())">*@
-                                                    @if (@data.PartyTYpe == "V")
-                                                    {
-                                                        <div>
-                                                            @if (@data.vendor_po_type == "Consumables")
-                                                            {
-                                                                <div class="avatar avatar-md mr-3 mt-1 float-left">
+                                                    <td>
 
-                                                                    <span class="avatar-letter avatar-letter-v avatar-md circle" style="background-color:#FCCE54"></span>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6>
-
-                                                                </div>
-                                                            }
-                                                            else if (@data.vendor_po_type == "Raw Material")
-                                                            {
-                                                                <div class="avatar avatar-md mr-3 mt-1 float-left">
-
-                                                                    <span class="avatar-letter avatar-letter-v avatar-md circle" style="background-color:#6c757d"></span>
-                                                                </div>
-                                                                <div>
-
-                                                                    <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6>
-                                                                </div>
-                                                            }
-                                                            else if (@data.vendor_po_type == "Maintainance Spares")
-                                                            {
-                                                                <div class="avatar avatar-md mr-3 mt-1 float-left">
-
-                                                                    <span class="avatar-letter avatar-letter-v avatar-md circle" style="background-color:#03a9f4"></span>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6>
-
-                                                                </div>
-                                                            }
-                                                            else if (@data.vendor_po_type == "Outsourcing")
-                                                            {
-                                                                <div class="avatar avatar-md mr-3 mt-1 float-left">
-
-                                                                    <span class="avatar-letter avatar-letter-v avatar-md circle" style="background-color:#7dc855"></span>
-                                                                </div>
-                                                                <div>
-                                                                    <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6>
-
-                                                                </div>
-                                                            }
-
-                                                            else { }
-                                                            @if (@data.vendor_po_type == "Consumables")
-                                                            {
-
-                                                                if (@data.po_no != "")
+                                                        @if (@data.PartyTYpe == "V")
+                                                        {
+                                                            <div>
+                                                                @if (@data.vendor_po_type == "Consumables")
                                                                 {
+                                                                    <div class="avatar avatar-md mr-3 mt-1 float-left">
 
-                                                                    <small style="color:grey" title="Approval Date">@data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
-                                                                    <small style="color:grey" title="VPO No"> | &nbsp; @data.po_no</small>
+                                                                        <span class="avatar-letter avatar-letter-v avatar-md circle" style="background-color:#FCCE54"></span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6>
+
+                                                                    </div>
+                                                                }
+                                                                else if (@data.vendor_po_type == "Raw Material")
+                                                                {
+                                                                    <div class="avatar avatar-md mr-3 mt-1 float-left">
+
+                                                                        <span class="avatar-letter avatar-letter-v avatar-md circle" style="background-color:#6c757d"></span>
+                                                                    </div>
+                                                                    <div>
+
+                                                                        <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6>
+                                                                    </div>
+                                                                }
+                                                                else if (@data.vendor_po_type == "Maintainance Spares")
+                                                                {
+                                                                    <div class="avatar avatar-md mr-3 mt-1 float-left">
+
+                                                                        <span class="avatar-letter avatar-letter-v avatar-md circle" style="background-color:#03a9f4"></span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6>
+
+                                                                    </div>
+                                                                }
+                                                                else if (@data.vendor_po_type == "Outsourcing")
+                                                                {
+                                                                    <div class="avatar avatar-md mr-3 mt-1 float-left">
+
+                                                                        <span class="avatar-letter avatar-letter-v avatar-md circle" style="background-color:#7dc855"></span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h6 class="mt-0 mb-1 font-weight-normal">@data.vendor_name</h6>
+
+                                                                    </div>
                                                                 }
 
-                                                                else
+                                                                else { }
+                                                                @if (@data.vendor_po_type == "Consumables")
                                                                 {
 
-                                                                    <small style="color:grey" title="Approval Date">@data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
-                                                                    <small style="color:grey" title="VPO No"> | &nbsp; NA</small>
+                                                                    if (@data.po_no != "")
+                                                                    {
+
+                                                                        <small style="color:grey" title="Approval Date">@data.po_date.ToString("dd-MMM-yyyy")  </small>
+                                                                        <small style="color:grey" title="VPO No"> |   @data.po_no</small>
+                                                                    }
+
+                                                                    else
+                                                                    {
+
+                                                                        <small style="color:grey" title="Approval Date">@data.po_date.ToString("dd-MMM-yyyy")  </small>
+                                                                        <small style="color:grey" title="VPO No"> |   NA</small>
+                                                                    }
                                                                 }
-                                                            }
 
 
-                                                            else if (@data.vendor_po_type == "Raw Material")
-                                                            {
-                                                                if (@data.po_no != "")
+                                                                else if (@data.vendor_po_type == "Raw Material")
                                                                 {
+                                                                    if (@data.po_no != "")
+                                                                    {
 
-                                                                    <small style="color:grey" title="Approval Date">@data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
-                                                                    <small style="color:grey" title="VPO No"> | &nbsp; @data.po_no</small>
+                                                                        <small style="color:grey" title="Approval Date">@data.po_date.ToString("dd-MMM-yyyy")  </small>
+                                                                        <small style="color:grey" title="VPO No"> |   @data.po_no</small>
+                                                                    }
+
+                                                                    else
+                                                                    {
+
+                                                                        <small style="color:grey" title="Approval Date">  @data.po_date.ToString("dd-MMM-yyyy")  </small>
+                                                                        <small style="color:grey" title="VPO No"> |  NA</small>
+                                                                    }
+
                                                                 }
-
-                                                                else
+                                                                else if (@data.vendor_po_type == "Maintainance Spares")
                                                                 {
+                                                                    if (@data.po_no != "")
+                                                                    {
 
-                                                                    <small style="color:grey" title="Approval Date">  @data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
-                                                                    <small style="color:grey" title="VPO No"> | &nbsp;NA</small>
+                                                                        <small style="color:grey" title="Approval Date"> @data.po_date.ToString("dd-MMM-yyyy")  </small>
+                                                                        <small style="color:grey" title="VPO No"> |   @data.po_no</small>
+                                                                    }
+
+                                                                    else
+                                                                    {
+
+                                                                        <small style="color:grey" title="Approval Date"> @data.po_date.ToString("dd-MMM-yyyy")  </small>
+                                                                        <small style="color:grey" title="VPO No"> |   NA</small>
+                                                                    }
+
                                                                 }
-
-                                                            }
-                                                            else if (@data.vendor_po_type == "Maintainance Spares")
-                                                            {
-                                                                if (@data.po_no != "")
+                                                                else if (@data.vendor_po_type == "Outsourcing")
                                                                 {
+                                                                    if (@data.po_no != "")
+                                                                    {
 
-                                                                    <small style="color:grey" title="Approval Date"> @data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
-                                                                    <small style="color:grey" title="VPO No"> | &nbsp; @data.po_no</small>
+                                                                        <small style="color:grey" title="Approval Date">@data.po_date.ToString("dd-MMM-yyyy")  </small>
+                                                                        <small style="color:grey" title="VPO No"> |  @data.po_no</small>
+                                                                    }
+
+                                                                    else
+                                                                    {
+
+                                                                        <small style="color:grey" title="Approval Date"> @data.po_date.ToString("dd-MMM-yyyy")  </small>
+                                                                        <small style="color:grey" title="VPO No"> |  NA</small>
+                                                                    }
                                                                 }
 
-                                                                else
-                                                                {
 
-                                                                    <small style="color:grey" title="Approval Date"> @data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
-                                                                    <small style="color:grey" title="VPO No"> | &nbsp; NA</small>
-                                                                }
-
-                                                            }
-                                                            else if (@data.vendor_po_type == "Outsourcing")
-                                                            {
-                                                                if (@data.po_no != "")
-                                                                {
-
-                                                                    <small style="color:grey" title="Approval Date">@data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
-                                                                    <small style="color:grey" title="VPO No"> | &nbsp;@data.po_no</small>
-                                                                }
-
-                                                                else
-                                                                {
-
-                                                                    <small style="color:grey" title="Approval Date"> @data.po_date.ToString("dd-MMM-yyyy") &nbsp;</small>
-                                                                    <small style="color:grey" title="VPO No"> | &nbsp;NA</small>
-                                                                }
-                                                            }
-
-
-                                                            else { }
-                                                        </div>
-
-                                                    }
-
-                                                    else
-                                                   if (@data.PartyTYpe == "C")
-                                                    {
-
-                                                        <div>
-                                                            <div class="avatar avatar-md mr-3 mt-1 float-left">
-
-                                                                <span class="avatar-letter avatar-letter-c avatar-md circle" style="background-color:#FCCE54"></span>
+                                                                else { }
                                                             </div>
-                                                            <div class="text-truncate">
 
-                                                                <h6 class="mt-0 font-weight-normal">@data.customerName</h6>
+                                                        }
+
+                                                        else
+                                               if (@data.PartyTYpe == "C")
+                                                        {
+
+                                                            <div>
+                                                                <div class="avatar avatar-md mr-3 mt-1 float-left">
+
+                                                                    <span class="avatar-letter avatar-letter-c avatar-md circle" style="background-color:#FCCE54"></span>
+                                                                </div>
+                                                                <div class="text-truncate">
+
+                                                                    <h6 class="mt-0 font-weight-normal">@data.customerName</h6>
+                                                                </div>
+                                                                <small style="color:grey" title="Dia Number">@data.dia_no  </small>
+                                                                <small style="color:grey" title="Customer PO No"> |   @data.po_no</small>
                                                             </div>
-                                                            <small style="color:grey" title="Dia Number">@data.dia_no &nbsp;</small>
-                                                            <small style="color:grey" title="Customer PO No"> | &nbsp; @data.po_no</small>
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
+                                                        }
+                                                        else
+                                                        {
 
-                                                    }
-                                                </td>
-                                            </tr>
+                                                        }
+                                                    </td>
+                                                </tr>
 
+                                            }
                                         }
                                     </tbody>
 
@@ -294,14 +271,12 @@
 
                             <div class="card-body no-p">
                                 <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="w3-tab1" role="tabpanel" aria-labelledby="w3-tab1" data-height="100%">
-                                        @*<div class="card-body  chat-widget p-3">*@
+                                    <div class="tab-pane show active" id="w3-tab1" role="tabpanel" aria-labelledby="w3-tab1" data-height="100%">
+                                     
                                         <div class="w-body w-scroll ">
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    @*@Html.HiddenFor(model => model.dispatch_char, new { @id = "dispatch_char" })
-                                            @Html.HiddenFor(model => model.dispatch_id, new { @id = "dispatch_id" })*@
-                                                    @* New DC Job Dispatch *@
+                                                    
                                                     <div id="#message1">
                                                         <div class="container-fluid animatedParent animateOnce" id="divVendor" style="display:none;">
                                                             <div class="">
@@ -313,7 +288,7 @@
 
                                                                                     <div class="media">
                                                                                         <div class="float-left">
-                                                                                            @*<img class="d-flex mr-3 height-50" src="~/assets/img/dummy/u1.png" alt="Generic placeholder image">*@
+
                                                                                             <i class="icon icon-inbox-document-text  blue-text s-48 mr-2"></i>
 
                                                                                         </div>
@@ -322,13 +297,10 @@
 
                                                                                             <h6 class="mt-0 mb-1 font-weight-normal" title="Vendor Name" id="vendorName"></h6>
 
-
-
-
                                                                                             <span style="padding-bottom:0">
-                                                                                                <label>Purchase Order #</label>  <strong id="pono" class="Label"></strong> &nbsp;
-                                                                                                <label>| Date :</label>  <strong id="poDate" class="Label"></strong> &nbsp;
-                                                                                                <label> | Grade:</label> &nbsp;<label id="lblGrade" class="Label" title="Grade"></label>&nbsp;
+                                                                                                <label>Purchase Order #</label>  <strong id="pono" class="Label"></strong>  
+                                                                                                <label>| Date :</label>  <strong id="poDate" class="Label"></strong>  
+                                                                                                <label> | Grade:</label>  <label id="lblGrade" class="Label" title="Grade"></label> 
 
                                                                                                 <label> | Section :</label>  <label id="lblSection" class="Label" title="Section"></label><br />
                                                                                                 <label>GIN No:</label> <label class="Label" id="ginNo"></label> |
@@ -340,7 +312,6 @@
                                                                                         </div>
                                                                                         <div class="float-right">
                                                                                             <i class="icon icon-paperclip2 s-48 mr-2" id="attchment" title="Attach your files here..."></i>
-                                                                                            @*<i class="icon icon-attach_file s-48 mr-2" id="attchment" title="Attach your files here..."></i>*@
                                                                                         </div>
                                                                                     </div>
 
@@ -349,28 +320,21 @@
 
 
 
-                                                                                <div class="form-row mt-1 m-2">
-                                                                                    @*<div class="form-group col-2 m-0">
+                                                                                <div class="row">
 
-                                                                                Heat Code:
-                                                                            </div>
-                                                                            <div class="form-group col-2 m-0">
-                                                                                <input type="text" class="form-control r-0 light s-12" id="txtheatcode" />
-                                                                            </div>*@
-                                                                                    <div class="form-group col-3 m-0">
+                                                                                    <div class="col-md-3">
                                                                                         Challan No:
-
                                                                                     </div>
-                                                                                    <div class="form-group col-3 m-0">
+                                                                                    <div class="col-md-3">
                                                                                         <input type='text' class='form-control r-1 light s-12' id="challanNo" />
 
                                                                                     </div>
 
-                                                                                    <div class="form-group col-3 m-0">
+                                                                                    <div class="col-md-3">
                                                                                         Invoice No:
 
                                                                                     </div>
-                                                                                    <div class="form-group col-3 m-0">
+                                                                                    <div class="col-md-3">
                                                                                         <input type="text" class="form-control r-1 light s-12" id="invoiceNo" />
 
                                                                                     </div>
@@ -378,93 +342,64 @@
 
                                                                                 </div>
 
-                                                                                <div class="form-row mt-1 m-2">
-
-
+                                                                                <div class="row">
 
                                                                                 </div>
-                                                                                <div class="form-row mt-1 m-2">
-                                                                                    <div class="form-group col-3 m-0">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-3">
                                                                                         Mode Of Transport:
 
                                                                                     </div>
-                                                                                    <div class="form-group col-6 m-0">
-                                                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="">
                                                                                             <input type="radio" name="ModeOfTransport" id="ModRoad" class="custom-control-input" value="Road" />
-                                                                                            <label class="custom-control-label m-0 Label" for="ModRoad">Road</label>
-                                                                                        </div>
-                                                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                                                            <label class="Label" for="ModRoad">Road</label>
+                                                                                         
                                                                                             <input type="radio" class="custom-control-input" name="ModeOfTransport" id="ModCourier" value="Courier" />
-                                                                                            <label class="custom-control-label m-0 Label" for="ModCourier">Courier</label>
-                                                                                        </div>
-                                                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                                                            <label class="Label" for="ModCourier">Courier</label>
+                                                                                        
                                                                                             <input type="radio" class="custom-control-input" name="ModeOfTransport" id="ModHandCarriedBy" value="By Hand" />
-                                                                                            <label class="custom-control-label m-0 Label" for="ModHandCarriedBy">By Hand</label>
+                                                                                            <label class="Label" for="ModHandCarriedBy">By Hand</label>
                                                                                         </div>
                                                                                     </div>
 
-                                                                                    <div class="form-group col-3 m-0" id="vehicleNo" style="display:none">
+                                                                                    <div class="col-md-3" id="vehicleNo" style="display:none">
                                                                                         <input type="text" class="form-control r-1 light s-12" id="txtvehicleNo" placeholder="Vehicle No." />
 
                                                                                     </div>
 
-                                                                                    <div class="form-group col-3 m-0" style="display:none" id="courierTrackerId">
+                                                                                    <div class="col-md-3" style="display:none" id="courierTrackerId">
                                                                                         <input type="text" class="form-control r-1 light s-12" id="txtcourierTrackerId" placeholder="Courier Tracker Id" />
 
                                                                                     </div>
 
-                                                                                    <div class="form-group col-3 m-0" id="personName" style="display:none">
+                                                                                    <div class="col-md-3" id="personName" style="display:none">
                                                                                         <input type="text" class="form-control r-1 light s-12" id="txtpersonName" placeholder="Person Name" />
 
                                                                                     </div>
 
 
                                                                                 </div>
-                                                                                @*<div class="form-row mt-1 m-2" id="divModeOfTransport">
-                                                                            <div class="form-group col-3 m-0" id="lblvehicleNo" style="display:none">
-                                                                                Vehicle No.:
 
-                                                                            </div>
-                                                                            <div class="form-group col-3 m-0" id="vehicleNo" style="display:none">
-                                                                                <input type="text" class="form-control r-0 light s-12" id="txtvehicleNo" placeholder="Vehicle No." />
 
-                                                                            </div>
-                                                                            <div class="form-group col-3 m-0" id="lblcourierTrackerId" style="display:none">
-                                                                                Courier Tracker Id:
+                                                                                <div class="row">
 
-                                                                            </div>
-                                                                            <div class="form-group col-3 m-0" style="display:none" id="courierTrackerId">
-                                                                                <input type="text" class="form-control r-0 light s-12" id="txtcourierTrackerId" />
-
-                                                                            </div>
-                                                                            <div class="form-group col-3 m-0" id="lblpersonName" style="display:none">
-                                                                                Person Name:
-
-                                                                            </div>
-                                                                            <div class="form-group col-3 m-0" id="personName" style="display:none">
-                                                                                <input type="text" class="form-control r-0 light s-12" id="txtpersonName" />
-
-                                                                            </div>
-                                                                        </div>*@
-
-                                                                                <div class="form-row mt-1 m-0">
-
-                                                                                    <div class="form-group col-12 m-0">
+                                                                                    <div class="col-md-12">
                                                                                         Item Details:
-                                                                                        <div class="card-body p-0 bg-light slimScroll" data-height="150" style="overflow: hidden; width: auto; height: 150px;">
+                                                                                        <div class="slimScroll" data-height="150" style="overflow: hidden; width: auto; height: 150px;">
                                                                                             <div class="table-responsive">
-                                                                                                <table class="table table-bordered table-condensed">
+                                                                                                <table class="table table-bordered ">
                                                                                                     <thead>
                                                                                                         <tr>
                                                                                                             <th>Description</th>
-                                                                                                            <th>Ordered&nbsp;Qty (Kgs)</th>
-                                                                                                            <th>Ordered&nbsp;Qty (Tonnes)</th>
-                                                                                                            <th>Challan&nbsp;Qty (Tonnes)</th>
-                                                                                                            <th>Received&nbsp;Qty (Tonnes)</th>
-                                                                                                            <th style='display:none'>Accepted&nbsp;Qty (Tonnes)</th>
+                                                                                                            <th>Ordered Qty (Kgs)</th>
+                                                                                                            <th>Ordered Qty (Tonnes)</th>
+                                                                                                            <th>Challan Qty (Tonnes)</th>
+                                                                                                            <th>Received Qty (Tonnes)</th>
+                                                                                                            <th style='display:none'>Accepted Qty (Tonnes)</th>
                                                                                                             <th>Remark</th>
-                                                                                                            <th>Heat&nbsp;Code</th>
-                                                                                                            <th>Heat&nbsp;No</th>
+                                                                                                            <th>Heat Code</th>
+                                                                                                            <th>Heat No</th>
                                                                                                         </tr>
                                                                                                     </thead>
                                                                                                     <tbody id="tbodymaintable"></tbody>
@@ -475,33 +410,22 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                @*<div class="form-row mt-1 m-0" style="max-height:150px; overflow:hidden;" id="processing">
-                                                                            <div class="col-md-12">
-
-                                                                                <table class="table table-bordered" id="maintable">
 
 
-                                                                                </table>
-
-                                                                            </div>
-
-                                                                        </div>*@
-
-                                                                                <div class="form-row mt-1 m-2">
-                                                                                    <div class="form-group col-3 m-0">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-3">
                                                                                         Documents Received:
-
                                                                                     </div>
-                                                                                    <div class="form-group col-9 m-0">
+                                                                                    <div class="col-md-9">
                                                                                         <select class="select2" name="GIDocReceived[]" multiple="multiple" id="GINDOCReceived">
                                                                                             @for (int i = 0; i < Model.ssmtbl_GoodsInward_DocReceivedModel.Count; i++)
-                                                                                        {
+                                                                                            {
 
                                                                                                 <option value="@Model.ssmtbl_GoodsInward_DocReceivedModel[i].doc_id" class="form-control r-0 light s-12">
                                                                                                     @Model.ssmtbl_GoodsInward_DocReceivedModel[i].doc_name
                                                                                                 </option>
 
-                                                                                        }
+                                                                                            }
 
                                                                                         </select>
 
@@ -509,20 +433,14 @@
 
                                                                                 </div>
 
-                                                                                <div class="form-row mt-1 m-2">
-                                                                                    <div class="form-group col-3 m-0">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-3">
                                                                                         Comment:
-
                                                                                     </div>
-                                                                                    <div class="form-group col-9 m-0">
-                                                                                        <textarea id="txtComment" class="form-control r-0 light s-12 "></textarea>
-
-                                                                                    </div>
-
-                                                                                </div>
-
-
-
+                                                                                    <div class="col-md-9">
+                                                                                        <textarea id="txtComment" class="form-control"></textarea> 
+                                                                                    </div> 
+                                                                                </div> 
                                                                             </div>
                                                                         </div>
 
@@ -534,22 +452,18 @@
                                                         <div class="container-fluid animatedParent animateOnce" id="divCustomer" style="display:none;">
                                                             <div class="">
                                                                 <form action="#">
-                                                                    <br />
-                                                                    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                                                                    GIN No: &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                                                                    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                                                                         
+                                                                    GIN No:                  
+                                                                                  
                                                                     <label class="Label" id="ginNo1"></label>
                                                                     <div class="card no-b  no-r">
                                                                         <div class="card-body">
                                                                             <div class="form-row mt-1 m-2">
-
-
                                                                                 <div class="form-group col-3 m-0">
                                                                                     PO No:
 
                                                                                 </div>
-                                                                                @*@Html.HiddenFor(model => model.customer_id, new { @class = "customer_id" })*@
-                                                                                <div class="form-group col-3 m-0">
+                                                                                    <div class="form-group col-3 m-0">
 
                                                                                     <label id="Customerpono" class="Label"></label>
                                                                                 </div>
@@ -602,30 +516,10 @@
                                                                                 </div>
                                                                                 <div class="form-group col-3 m-0">
                                                                                     <input type="text" id="txt_customerreceivedquantity" class="form-control r-1 light s-12 Float-Number" />
-                                                                                    @*<label class="Label" id="cstTask"></label>*@
-
+                                                                                   
                                                                                 </div>
                                                                             </div>
-                                                                            @*<div class="form-row mt-1 m-2">
-                                                                        <div class="form-group col-3 m-0">
-                                                                            Part Description:
-
-                                                                        </div>
-                                                                        <div class="form-group col-3 m-0">
-
-                                                                            <label class="Label" id="partDescription"></label>
-                                                                        </div>
-                                                                        <div class="form-group col-3 m-0">
-                                                                            Dispatch Quantity:
-
-                                                                        </div>
-                                                                        <div class="form-group col-3 m-0">
-                                                                            <input type="text" class="form-control r-0 light s-12" id="dispatch_qty" />
-
-                                                                        </div>
-
-
-                                                                    </div>*@
+                                                                             
 
 
 
@@ -643,10 +537,7 @@
                                             </ul>
                                         </div>
                                     </div>
-
-                                    @*</div>*@
-
-                                    <div class="tab-pane fade text-center" id="w3-tab2" role="tabpanel" aria-labelledby="w3-tab2">
+                                    <div class="tab-pane text-center" id="w3-tab2" role="tabpanel" aria-labelledby="w3-tab2">
                                         <div class="page" id="printpdf">
 
                                             <div class="container">
@@ -680,127 +571,36 @@
                                                                     Uploaded Files:
                                                                 </label>
                                                                 <br />
-                                                                <div>
-
-                                                                    <div class="entry input-group col-xs-3" id="">
-                                                                        @*<div class="table-responsive">*@
+                                                                <div> 
+                                                                    <div class="entry input-group col-xs-3" id=""> 
                                                                         <table class="table table-condensed">
-                                                                            <thead>
-                                                                                @*<tr>
-                                                                            <th>Sr. No.</th>
-                                                                            <th>File</th>
-
-
-                                                                        </tr>*@
+                                                                            <thead> 
                                                                             </thead>
                                                                             <tbody id="tbodyFileUploaded"></tbody>
                                                                         </table>
-
-                                                                        @*</div>*@
-
-                                                                    </div>
-
+                                                                    </div> 
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    @*<ul class="mailbox-attachments clearfix">
-                                                <li>
-                                                    <span class="mailbox-attachment-icon">
-                                                        <i class="icon-document-file-pdf text-danger"></i>
-                                                    </span>
-                                                    <div class="mailbox-attachment-info">
-                                                        <a href="#" class="mailbox-attachment-name">
-                                                            <i class="icon-paperclip"></i>
-                                                            Sep2014-report.pdf
-                                                        </a>
-                                                        <a href="#" class="btn btn-success btn-xs float-right r-3"><i class="icon-cloud-download"></i></a>
-                                                        <span class="mailbox-attachment-size">
-                                                            1,245 KB
-                                                        </span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <span class="mailbox-attachment-icon">
-                                                        <i class="icon-document-file-doc text-primary"></i>
-                                                    </span>
-                                                    <div class="mailbox-attachment-info">
-                                                        <a href="#" class="mailbox-attachment-name">
-                                                            <i class="icon-paperclip"></i>
-                                                            App Description.docx
-                                                        </a>
-                                                        <a href="#" class="btn btn-warning btn-xs float-right r-3"><i class="icon-cloud-download"></i></a>
-                                                        <span class="mailbox-attachment-size">1,245 KB</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <span class="mailbox-attachment-icon has-img">
-                                                        <img src="~/assets/img/demo/portfolio/p1.jpg"
-                                                             alt="Attachment">
-                                                    </span>
-                                                    <div class="mailbox-attachment-info">
-                                                        <a href="#" class="mailbox-attachment-name">
-                                                            <i class="icon-camera"></i>
-                                                            photo1.png
-                                                        </a>
-                                                        <a href="#" class="btn btn-primary btn-xs float-right r-3"><i class="icon-cloud-download"></i></a>
-                                                        <span class="mailbox-attachment-size">2.67 MB</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <span class="mailbox-attachment-icon has-img">
-                                                        <img src="~/assets/img/demo/portfolio/p2.jpg"
-                                                             alt="">
-                                                    </span>
-                                                    <div class="mailbox-attachment-info">
-                                                        <a href="#" class="mailbox-attachment-name">
-                                                            <i class="icon-camera"></i>
-                                                            photo2.png
-                                                        </a>
-                                                        <a href="#" class="btn btn-danger btn-xs float-right r-3"><i class="icon-cloud-download"></i></a>
-                                                        <span class="mailbox-attachment-size">1.9 MB</span>
-                                                    </div>
-                                                </li>
-                                            </ul>*@
-                                                </div>
-
-
+                                                    </div> 
+                                                </div> 
                                             </div>
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-
-
-                            </div>
-
+                                        </div> 
+                                    </div> 
+                                </div> 
+                            </div> 
                         </div>
-                        <div class="" id="btnDiv">
-
-                            @*<div id="divPrintView" class="custom-control-inline float-left">
-                        <button type="button" class="btn btn-primary btn-sm" id="btnViewPrint" value="Update"><i class="icon-eye mr-2"></i>View</button>
-                    </div>*@
+                        <div  id="btnDiv"> 
                             <div id="submitDiv" class="custom-control-inline float-right">
                                 <button type="button" class="btn btn-primary btn-sm" id="btnSubmit" value="Update"><i class="icon-save mr-2"></i>Generate</button>
-                                @*<button type="button" class="btn btn-primary btn-sm" id="btnSubmitc" value="Update"><i class="icon-save mr-2"></i>Generate</button>*@
                             </div>
                             <div id="loaderDiv" style="display:none;" class="custom-control-inline float-right m-3">
                                 <img src="~/NewCssAndTheme/img/ajax-loader.gif" />
-                            </div>
-
-
-                        </div>
-
+                            </div> 
+                        </div> 
                     </div>
                 </div>
-            </div>
-
-
-            @*</div>
-                </div>*@
+            </div>  
         </div>
     </div>
 </div>
@@ -982,17 +782,17 @@
                                           }
                                           else if (vendor_po_type == "Raw Material") {
                                               var element = document.getElementById("spnChallanType");
-                                              element.className = "r-3 badge badge-secondary";
+                                            //  element.className = "r-3 badge badge-secondary";
                                               $j('#spnChallanType').text("Raw Material");
                                           }
                                           else if (vendor_po_type == "Outsourcing") {
                                               var element = document.getElementById("spnChallanType");
-                                              element.className = "r-3 badge badge-success";
+                                            //  element.className = "r-3 badge badge-success";
                                               $j('#spnChallanType').text("Outsourcing");
                                           }
                                           else if (vendor_po_type == "Maintainance Spares") {
                                               var element = document.getElementById("spnChallanType");
-                                              element.className = "r-3 badge badge-primary";
+                                             // element.className = "r-3 badge badge-primary";
                                               $j('#spnChallanType').text("Maintainance Spares");
                                           } else if (vendor_po_type == "") {
                                               var element = document.getElementById("spnChallanType");

@@ -7,106 +7,59 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 <link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
-@*@using (Html.BeginForm("AllDeliveryChallan", "DeliveryChallan", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-{*@
+
     @Html.ValidationSummary(true)
 
 
-    <fieldset>
-       
-        <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                @*<div class="row p-t-b-10 ">*@
-                    @*<div class="col">*@
-                        <h4>
-                            <i class="icon-database"></i>
-                           Delivery Challan
-                        </h4>
-                    @*</div>*@
-                @*</div>*@
-                <div class="row justify-content-between">
-                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                        <li>
-                            <a class="nav-link active" href='#tab-first' role="tab" data-toggle="tab"><i class="icon icon-home2"></i>Delivery Challan List</a>
-                        </li>
-                        @*<li>
-                            <a class="nav-link active" href='#tab-first' role="tab" data-toggle="tab"><i class="icon icon-airport_shuttle"></i>Job Dispatch</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href='#tab-second' role="tab" data-toggle="tab"><i class="icon icon-rv_hookup"></i> Outsourcing</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href='#tab-third' role="tab" data-toggle="tab"><i class="icon icon-done_all"></i>Lab Testing</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href='#tab-fourth' role="tab" data-toggle="tab"><i class="icon icon-wrench"></i>Repair</a>
-                        </li>*@
-                       
-                    </ul>
-                </div>
-            </div>
-          
-        </header>
-        <div class="container-fluid animatedParent animateOnce">
-            <div class="tab-content my-3" id="v-pills-tabContent">
-                <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
-                    <div class="row my-3">
-                        <div class="col-md-12">
-                            <div class="card r-0 shadow">
-                                <div class="table-responsive">
-                                  
-                                        <!-- PAGE TITLE -->
-                                        
+<div class="paddingLeft15 paddingTop15">
+    <div class="container-fluid animatedParent animateOnce">
+        <div class="tab-content my-3" id="v-pills-tabContent">
+            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                <div class="row my-3">
+                    <div class="col-md-12">
+                        <div class="card r-0 shadow">
+                            <div class="table-responsive">
 
-                                        <div class="page-content-wrap">
+                                <!-- PAGE TITLE -->
 
-                                            @*<div class="row">
-                                                <div class="col-md-12">*@
 
-                                                    <form class="form-horizontal">
+                                <div class="page-content-wrap">
 
-                                                        <div class="panel panel-default tabs">
-                                                            @*<ul class="nav nav-tabs" role="tablist">
-                                                                <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Job Dispatch</a></li>
-                                                                <li><a href="#tab-second" role="tab" data-toggle="tab">Outsourcing</a></li>
-                                                                <li><a href="#tab-third" role="tab" data-toggle="tab">Lab Testing</a></li>
-                                                                <li><a href="#tab-fourth" role="tab" data-toggle="tab">Repair</a></li>
-                                                            </ul>*@
-                                                            <div class="panel-body tab-content">
-                                                                <div class="tab-pane active" id="tab-first">
-                                                                   
-                                                                    @Html.Action("AllDCJobDispatch")
-                                                                    @*@Html.Action("AllDCJobDispatch", "DeliveryChallan", new {DispatchNo = DispatchNo })*@
-                                                                </div>
-                                                                <div class="tab-pane" id="tab-second">
-                                                                    @Html.Action("AllDCOutsourcing")
-                                                                </div>
-                                                                <div class="tab-pane" id="tab-third">
-                                                                    @Html.Action("AllDCLabTesting")
-                                                                </div>
-                                                                <div class="tab-pane" id="tab-fourth">
-                                                                    @Html.Action("AllDCRepair")
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
-                                                    </form>
 
-                                                @*</div>
-                                            </div>*@
+                                    <form class="form-horizontal">
 
+                                        <div class="panel panel-default tabs">
+
+                                            <div class="panel-body tab-content">
+                                                <div class="tab-pane active" id="tab-first">
+
+                                                    @Html.Action("AllDCJobDispatch")
+                                                </div>
+                                                <div class="tab-pane" id="tab-second">
+                                                    @Html.Action("AllDCOutsourcing")
+                                                </div>
+                                                <div class="tab-pane" id="tab-third">
+                                                    @Html.Action("AllDCLabTesting")
+                                                </div>
+                                                <div class="tab-pane" id="tab-fourth">
+                                                    @Html.Action("AllDCRepair")
+                                                </div>
+                                            </div>
                                         </div>
-
-                                  
+                                    </form>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-    </fieldset>
+    </div>
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -116,8 +69,7 @@
         var $j = jQuery.noConflict(true);
         $j(document).ready(function () {
             var Dispatchno = "DC-0718-1";
-            //var Dispatchno = getUrlVars()["DispatchNo"];
-            @*location.href = '@Url.Action("AllDCJobDispatch", "DeliveryChallan")?DispatchNo='+Dispatchno;*@
+
             location.href = '@Url.Action("AllDCJobDispatch", "DeliveryChallan")';
         });
         function getUrlVars() {
@@ -130,4 +82,4 @@
     </script>
 
 
-@*}*@
+    @*}*@

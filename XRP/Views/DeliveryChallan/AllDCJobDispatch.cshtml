@@ -62,30 +62,10 @@
 <!-- START DEFAULT DATATABLE -->
 
 <div class="panel panel-default">
-    @*<div class="panel-heading">
-            <div class="col-md-4">
-                <a class="nav-link" href='@Url.Action("NewDCJobDispatch", "DeliveryChallan")'><i class="icon icon-list"></i> New Delivery Challan</a>
-            </div>
-        </div>*@
+   
     <header class="blue accent-3 relative">
         <div class="container-fluid text-white">
-            @*<div class="row p-t-b-10 ">
-                <div class="col">*@
-            @*<h4>
-                    <i class="icon-database"></i>
-                    Delivery Challans
-                </h4>*@
-            @*</div>
-                </div>*@
-            @*<div class="row justify-content-between">
-                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                        <li>
-                            <a class="nav-link" href='@Url.Action("AllDeliveryChallan", "DeliveryChallan")'><i class="icon icon-home2"></i>All Delivery Challan</a>
-
-                        </li>
-
-                    </ul>
-                </div>*@
+            
         </div>
     </header>
     <input type="hidden" id="hdnDispatchNo" />
@@ -97,16 +77,14 @@
                     <div class="slimScroll">
                         <ul class="list-unstyled">
                             <li>
-                                @*<div class="panel-body panel-body-table">*@
-                                @*<div class="table-responsive">*@
-                                @*<table class="table datatable header-fixed">*@
+                               
                                 <table class="table table-bordered table-hover">
-                                    @*<thead style="position:fixed" id="myHeader">*@
+                                   
                                     <thead>
                                         <tr>
-                                            @*<th>DIE No</th>*@
+                                           
                                             <th>
-                                                @*<h4><strong>Delivery Challans</strong> </h4>*@
+                                          
                                                 <font size="4px">Delivery Challans</font>
 
                                                 <input type="text" class="" id="txt_search" style="display:none;width:20%;height:5%" />
@@ -133,17 +111,18 @@
 
 
                                             </th>
-                                            @*<th>Type</th>*@
-                                            @*<th>PO QTY</th>
-                                                <th>DATE</th>*@
+                                          
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
+
+                                        @if (Model.ssmtbl_DeliveryChallanModelList != null)
                                         {
+                                            foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
+                                            {
                                             <tr class="trDelivery">
-                                                @*<tr>*@
+                                                
                                                 <td style="display:none" class="ftd"><input type="hidden" value="@data.dispatch_id" class="dispatchid1" /></td>
                                                 <td style="display:none" class="ftd"><input type="hidden" value="@data.customer_id" class="customerid" /></td>
                                                 <td style="display:none" class="ftd12"><input type="hidden" value="@data.auto_id" class="dcRMTestID" /></td>
@@ -156,9 +135,7 @@
                                                 <td style="display:none" class="ftd6"><input type="hidden" value="@ViewBag.dispatch_no1" class="dispatch_number" /></td>
 
                                                 <td>
-                                                    @*<a href="@Url.Action("AllDCJobDispatch", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="Delivery Challan">*@
-                                                    @*<a href="javascript:myFunction($(dispatchid1).val())">*@
-
+                                                  
                                                     @if (@data.type != "vendor")
                                                     {
                                                         <div>
@@ -171,14 +148,7 @@
                                                                 <div>
                                                                     <h6 class="mt-0 mb-1 font-weight-normal">@data.delivery_challan_type</h6>
 
-                                                                    @*<div class="media-body text-truncate">
-                                                                            <small class="float-right">
-                                                                                <a href="#" class="mr-2 ml-2">
-                                                                                    <i class="icon-paperclip"></i>
-                                                                                </a>
-                                                                            </small>
-
-                                                                        </div>*@
+                                                                   
                                                                 </div>
 
                                                             }
@@ -189,7 +159,6 @@
                                                                     <span class="avatar-letter avatar-letter-c avatar-md circle" style="background-color:#6c757d"></span>
                                                                 </div>
                                                                 <div>
-                                                                    @*<strong style="color:black">@data.customer_name</strong>*@
                                                                     <h6 class="mt-0 mb-1 font-weight-normal">@data.delivery_challan_type</h6>
                                                                 </div>
 
@@ -238,7 +207,6 @@
 
                                                                 <small style="color:grey" title="Section">@data.section &nbsp;  </small>
                                                                 <small style="color:grey" title="Grade Of Material "> |   &nbsp;  @data.material_grade &nbsp;</small>
-                                                                @*<small style="color:grey" title="Created Date"> |   &nbsp; @data.expected_date.ToString("dd-MMM-yyyy") &nbsp;</small>*@
                                                                 <small style="color:grey" title="Heat Code"> | &nbsp; @data.heat_code</small>
 
                                                             }
@@ -331,19 +299,18 @@
                                                     else
                                                     {
                                                     }
-                                                    @*</a>*@
+                                                    
 
                                                 </td>
                                             </tr>
 
+                                            }
                                         }
                                     </tbody>
 
 
                                 </table>
-                                @*</div>*@
-                                @*</div>*@
-
+                        
                             </li>
                         </ul>
                     </div>
@@ -383,15 +350,13 @@
 
                         <div class="card-body no-p">
                             <div class="tab-content">
-                                @*<div class="tab-pane fade show active" id="w3-tab1" role="tabpanel" aria-labelledby="w3-tab1" data-height="600">*@
                                 <div class="tab-pane fade show active" id="w3-tab1" role="tabpanel" aria-labelledby="w3-tab1">
-                                    @*<div class="card-body  chat-widget p-3">*@
                                     <div class="w-body w-scroll ">
                                         <ul class="list-unstyled">
                                             <li>
                                                 @Html.HiddenFor(model => model.dispatch_char, new { @id = "dispatch_char" })
                                                 @Html.HiddenFor(model => model.dispatch_id, new { @id = "dispatch_id" })
-                                                @* New DC Job Dispatch *@
+                                               
                                                 <div class="container-fluid animatedParent animateOnce" id="divNewDCJobDispatch" style="display:none">
                                                     <div class="">
                                                         <form action="#">

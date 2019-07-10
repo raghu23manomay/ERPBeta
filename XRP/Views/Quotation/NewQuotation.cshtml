@@ -34,20 +34,15 @@
 </style>
 @using (Html.BeginForm("CreateQuotation", "Quotation", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {@Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-
+    @Html.ValidationSummary(true) 
+    <fieldset> 
         <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                @*<div class="row p-t-b-10 ">
-                    <div class="col">*@
+            <div class="container-fluid text-white"> 
                 <h4>
                     <i class="icon-database"></i>
                     Quotation
                 </h4>
-                @*</div>
-                    </div>*@
+                
                 <div class="row justify-content-between">
                     <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
                         <li>
@@ -105,21 +100,19 @@
             @Html.HiddenFor(model => model.chk_NewQuotation)
             @Html.HiddenFor(model => model.InitialDieCost, new { @id = "hdn_initialdiecost" })
             <input type="hidden" id="hdnForgeConversionCost" />
-        </header>
-
-        <!-- PAGE TITLE -->
+        </header> 
         <div class="container-fluid animatedParent animateOnce">
             <div class="animated fadeInUpShort">
-                <div class="row my-3">
+                <div class="row">
                     <div class="col-md-12">
-                        <form action="#">
-                            <div class="card no-b  no-r">
-                                @*<div class="card-body">*@
+                        
+                            
+                                
                                 <div class="row row-eq-height">
-                                    <!-- Daily Sale Report-->
+                                   
                                     <div class="col-md-12">
-                                        <div class="card my-3 no-b" style="padding-bottom:0px;">
-                                            <div class="card-header white b-0 p-3">
+                                         
+                                            <div class="card-header white">
                                                 <div class="card-handle">
                                                     <small class="card-subtitle mb-2 text-muted">Version : @Html.DisplayFor(m => m.new_Version_No) |</small>
                                                     <span class="badge r-3 badge-success "> @Html.DisplayFor(m => m.FileStatus)</span>
@@ -144,36 +137,29 @@
                                                             <label class="Label">@Html.Label(item.VendorName),</label>
 
                                                         }
-                                                    </span>
-                                               
-
-
-
-                                                  
+                                                    </span> 
                                                     <p></p>
-                                                    <div class="custom-control-inline">
-                                                        @*<strong> <u>Raw Material Cost Details:-</u> </strong>*@
+                                                    <div > 
                                                         @if (ViewData["NatureofWork"].ToString() == "201")
                                                         {
                                                             <span>Steel Rate Per Kg:&nbsp; &nbsp;  </span>
-                                                                @Html.TextBoxFor(model => model.SteelCost, new { @class = "form-control r-0 light s-12 form-control-sm", @readonly = "readonly", @style = "width:70px;background:#F5F8FA;", @oninput = "return CalcRawMaterialTotal();" })
+                                                                @Html.TextBoxFor(model => model.SteelCost, new { @class = "form-control", @readonly = "readonly", @oninput = "return CalcRawMaterialTotal();" })
                                                         }
                                                         else
                                                         {
                                                             <span>Steel Rate Per Kg:&nbsp; &nbsp;  </span>
-                                                                @Html.TextBoxFor(model => model.SteelCost, new { @class = "form-control r-0 light s-12 form-control-sm", @style = "width:70px;background:#F5F8FA;", @oninput = "return CalcRawMaterialTotal();" })
+                                                                @Html.TextBoxFor(model => model.SteelCost, new { @class = "form-control", @oninput = "return CalcRawMaterialTotal();" })
                                                         }
                                                         &nbsp; &nbsp; <span>Transportation:  </span>&nbsp;&nbsp;  @Html.TextBoxFor(model => model.Transportation, new { @class = "form-control r-0 light s-12 form-control-sm", @oninput = "return CalcRawMaterialTotal();", @style = "width:70px;background:#F5F8FA;" })
                                                         &nbsp; &nbsp; <span>Total RawMaterial Cost: </span>&nbsp;&nbsp;  @Html.TextBoxFor(model => model.TotalRowMaterialCost, new { @class = "form-control r-0 light s-12 form-control-sm", @readonly = "readonly", @style = "width:70px;" })
                                                     </div>
                                                 </div>
-                                            </div>
+                                            
 
-                                                <div class="form-row col-md-12" style="padding-top:0px;">
-                                                    <div class="col-md-4 mb-3">
+                                                <div class="row col-md-12">
+                                                    <div class="col-md-4">
                                                         @Html.LabelFor(model => model.ForgingCostBased, new { @class = "Label" })
-                                                        <br>
-
+                                                       
                                                         <div class="custom-control custom-radio custom-control-inline">
                                                             <input type="radio" id="GrossWt" name="ForgingCostBased" class="custom-control-input" value="Gross Wt" onclick="CalcForging2();">
                                                             <label class="custom-control-label m-0" for="GrossWt">Gross Wt</label>
@@ -189,7 +175,7 @@
 
 
                                                     </div>
-                                                    <div class="col-md-4 mb-3">
+                                                    <div class="col-md-4">
 
                                                         <div class="col-md-4" style="display:none" id="divGrossWt">
 
@@ -207,10 +193,8 @@
                                                             @Html.HiddenFor(m => m.NetWeight)
                                                             @Html.DisplayFor(m => m.NetWeight, new { @class = "form-control r-0 light s-12", @disabled = "disabled" })
                                                         </div>
-
-
                                                     </div>
-                                                    <div class="col-md-4 mb-3">
+                                                    <div class="col-md-4">
                                                         @Html.LabelFor(m => m.MPICostBasedOn, new { @class = "Label" })<br />
                                                         <div class="custom-control custom-radio custom-control-inline">
                                                             <input type="radio" id="NetWtMPI" name="MPICostBasedOn" class="custom-control-input" value="Net Wt" onclick="CalcMPI2();">
@@ -222,12 +206,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-row col-md-12">
+                                                <div class="row col-md-12">
                                                     @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
                                                     {
                                                         if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
                                                         {
-                                                            <div class="form-group col-3 m-0">
+                                                            <div class="form-group col-md-3">
                                                                 <div>@Html.Label("Cutting", new { @class = "label" })</div>
                                                                 <div class="custom-control-inline">
 
@@ -239,7 +223,7 @@
                                                         }
                                                         if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
                                                         {
-                                                            <div class="form-group col-3 m-0">
+                                                            <div class="form-group col-md-3">
                                                                 <div>  @Html.Label("Forging", new { @class = "label" })</div>
                                                                 <div class="custom-control-inline">
 
@@ -251,7 +235,7 @@
                                                         }
                                                         if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
                                                         {
-                                                            <div class="form-group col-3 m-0">
+                                                            <div class="form-group col-md-3"> 
                                                                 <div><label>Heat Treatment Cost</label></div>
                                                                 <div class="custom-control-inline">
 
@@ -263,7 +247,7 @@
                                                         }
                                                         if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
                                                         {
-                                                            <div class="form-group col-3 m-0">
+                                                           <div class="form-group col-md-3"> 
                                                                 <div><label>Shot Blasting</label></div>
                                                                 <div class="custom-control-inline">
 
@@ -276,90 +260,89 @@
                                                         }
                                                         if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
                                                         {
-                                                            <div class="form-group col-3 m-0">
+                                                            <div class="form-group col-md-3">
                                                                 <div><label>MPI</label></div>
                                                                 <div class="custom-control-inline">
-
-                                                                    @Html.TextBoxFor(model => model.MPI1, new { @class = "form-control r-0 light s-12", oninput = "CalcMPI2()", @placeholder = "" })
+                                                                    @Html.TextBoxFor(model => model.MPI1, new { @class = "form-control", oninput = "CalcMPI2()", @placeholder = "" })
                                                                     &nbsp;&nbsp;
-                                                                    @Html.TextBoxFor(model => model.MPI2, new { @class = "form-control r-0 light s-12", @readonly = "readonly", @placeholder = "Amount" })
+                                                                    @Html.TextBoxFor(model => model.MPI2, new { @class = "form-control", @readonly = "readonly", @placeholder = "Amount" })
                                                                 </div>
                                                             </div>
                                                         }
                                                         if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
                                                         {
-                                                            <div class="form-group col-3 m-0">
+                                                           <div class="form-group col-md-3">
                                                                 <div><label>Grinding</label></div>
                                                                 <div class="custom-control-inline">
 
-                                                                    @Html.TextBoxFor(model => model.Grinding1, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)", @placeholder = "Per Piece" })
+                                                                    @Html.TextBoxFor(model => model.Grinding1, new { @class = "form-control", oninput = "CalcForPerPiece(this)", @placeholder = "Per Piece" })
                                                                     &nbsp;&nbsp;
-                                                                    @Html.TextBoxFor(model => model.Grinding2, new { @class = "form-control r-0 light s-12", @readonly = "readonly", @placeholder = "Amount" })
+                                                                    @Html.TextBoxFor(model => model.Grinding2, new { @class = "form-control", @readonly = "readonly", @placeholder = "Amount" })
                                                                 </div>
                                                             </div>
                                                         }
                                                         if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
                                                         {
-                                                            <div class="form-group col-3 m-0">
+                                                           <div class="form-group col-md-3">
                                                                 <div><label>Cold Coining</label></div>
                                                                 <div class="custom-control-inline">
 
-                                                                    @Html.TextBoxFor(model => model.ColdCoining1, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)", @placeholder = "Per Piece" })
+                                                                    @Html.TextBoxFor(model => model.ColdCoining1, new { @class = "form-control", oninput = "CalcForPerPiece(this)", @placeholder = "Per Piece" })
                                                                     &nbsp;&nbsp;
-                                                                    @Html.TextBoxFor(model => model.ColdCoining2, new { @class = "form-control r-0 light s-12", @readonly = "readonly", @placeholder = "Amount" })
+                                                                    @Html.TextBoxFor(model => model.ColdCoining2, new { @class = "form-control", @readonly = "readonly", @placeholder = "Amount" })
                                                                 </div>
                                                             </div>
                                                         }
                                                         if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
                                                         {
-                                                            <div class="form-group col-3 m-0">
+                                                           <div class="form-group col-md-3">
                                                                 <div><label>Machaining</label></div>
                                                                 <div class="custom-control-inline">
 
-                                                                    @Html.TextBoxFor(model => model.Machining1, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)", @placeholder = "Per Piece" })
+                                                                    @Html.TextBoxFor(model => model.Machining1, new { @class = "form-control", oninput = "CalcForPerPiece(this)", @placeholder = "Per Piece" })
                                                                     &nbsp;&nbsp;
-                                                                    @Html.TextBoxFor(model => model.Machining2, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)", @readonly = "readonly", @placeholder = "Amount" })
+                                                                    @Html.TextBoxFor(model => model.Machining2, new { @class = "form-control", oninput = "CalcForPerPiece(this)", @readonly = "readonly", @placeholder = "Amount" })
                                                                 </div>
                                                             </div>
                                                         }
                                                     }
-                                                    <div class="form-group col-3 m-0">
-                                                        <div><label>Die Maintaince Cost    </label></div>
-                                                        <div class="custom-control-inline">
+                                                           <div class="form-group col-md-3">
+                                                               <div><label>Die Maintaince Cost    </label></div>
+                                                               <div class="custom-control-inline">
 
-                                                            @Html.TextBoxFor(model => model.DieMaintenance1, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)", @placeholder = "Per Piece" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.DieMaintenance2, new { @class = "form-control r-0 light s-12", @readonly = "readonly", @placeholder = "Amount" })
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-3 m-0">
-                                                        <div>
-                                                            <label>Total Conversion Cost</label> &nbsp;
-                                                            <label>Initial Die Cost    </label>
-                                                        </div>
-                                                        <div class="custom-control-inline">
+                                                                   @Html.TextBoxFor(model => model.DieMaintenance1, new { @class = "form-control", oninput = "CalcForPerPiece(this)", @placeholder = "Per Piece" })
+                                                                   &nbsp;&nbsp;
+                                                                   @Html.TextBoxFor(model => model.DieMaintenance2, new { @class = "form-control", @readonly = "readonly", @placeholder = "Amount" })
+                                                               </div>
+                                                           </div>
+                                                           <div class="form-group col-md-3">
+                                                               <div>
+                                                                   <label>Total Conversion Cost</label> &nbsp;
+                                                                   <label>Initial Die Cost    </label>
+                                                               </div>
+                                                               <div class="custom-control-inline">
 
-                                                            @Html.TextBoxFor(model => model.TotalConverstionCost, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.InitialDieCost, new { @class = "form-control r-0 light s-12", @onblur = "setDeafult();" })
+                                                                   @Html.TextBoxFor(model => model.TotalConverstionCost, new { @class = "form-control", @readonly = "readonly" })
+                                                                   &nbsp;&nbsp;
+                                                                   @Html.TextBoxFor(model => model.InitialDieCost, new { @class = "form-control", @onblur = "setDeafult();" })
 
-                                                        </div>
+                                                               </div>
 
 
-                                                    </div>
-                                                    <div class="form-group col-3 m-0">
-                                                        <div>
-                                                            <label>ICC & Overhead on RM</label> &nbsp;
+                                                           </div>
+                                                           <div class="form-group col-md-3">
+                                                               <div>
+                                                                   <label>ICC & Overhead on RM</label> &nbsp;
 
-                                                        </div>
-                                                        <div class="custom-control-inline">
+                                                               </div>
+                                                               <div class="custom-control-inline">
 
-                                                            @Html.TextBoxFor(model => model.iccoverhadrm, new { @class = "form-control r-0 light s-12", @id = "txt_iccoverhadrm", @oninput = "caliccoverhead();", @placeholder = "%" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.totaliccoverhadrm, new { @class = "form-control r-0 light s-12", @onblur = "setDeafult();", @readonly = "readonly", @id = "txt_totaliccoverhadrm", @placeholder = "Amount" })
-                                                        </div>
+                                                                   @Html.TextBoxFor(model => model.iccoverhadrm, new { @class = "form-control r-0 light s-12", @id = "txt_iccoverhadrm", @oninput = "caliccoverhead();", @placeholder = "%" })
+                                                                   &nbsp;&nbsp;
+                                                                   @Html.TextBoxFor(model => model.totaliccoverhadrm, new { @class = "form-control r-0 light s-12", @onblur = "setDeafult();", @readonly = "readonly", @id = "txt_totaliccoverhadrm", @placeholder = "Amount" })
+                                                               </div>
 
-                                                    </div>
+                                                           </div>
 
                                                     <div class="form-group col-3 m-0">
                                                         <div>
@@ -419,226 +402,18 @@
                                                     @Html.CheckBox("ChkNewQuotation", true, new { @ID = "chk_NewQuotation" })
                                                     New Quotation
 
-                                                </div>
-                                                @*<div class="card my-3 no-b">*@
-                                                    @*<div class="form-row col-md-12">
-                                                            <div class="form-group col-4 m-0">
-                                                                @Html.LabelFor(model => model.SteelCost, new { @class = "Label" })
-                                                                @if (ViewData["NatureofWork"].ToString() == "201")
-                                                                {
-                                                                    @Html.TextBoxFor(model => model.SteelCost, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                }
-                                                                else
-                                                                {
-                                                                    @Html.TextBoxFor(model => model.SteelCost, new { @class = "form-control r-0 light s-12", @oninput = "return CalcRawMaterialTotal();" })
-                                                                }
-                                                            </div>
-                                                            <div class="form-group col-4 m-0">
-                                                                @Html.LabelFor(model => model.TotalRowMaterialCost, new { @class = "Label" })
-                                                                @Html.TextBoxFor(model => model.TotalRowMaterialCost, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                            </div>
-                                                            <div class="form-group col-2 m-0">
-                                                                @Html.LabelFor(model => model.Transportation, new { @class = "Label" })
-                                                                @Html.TextBoxFor(model => model.Transportation, new { @class = "form-control r-0 light s-12", @oninput = "return CalcRawMaterialTotal();" })
-                                                            </div>
-                                                            <div class="form-group col-2 m-0">
-                                                                @Html.LabelFor(model => model.Total, new { @class = "Label" })
-                                                                @Html.TextBoxFor(model => model.Total, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                            </div>
-                                                        </div>*@
-                                                    @*</div>*@
-
-
-
-                                                    @*</div>
-
-                                                        <div class="form-group col-4 m-0">Conversion Rate Details</div>
-
-                                                        <div class="card-body">*@
-                                                    @*<div class="form-row mt-1">
-                                                            <div class="form-group col-4 m-0">
-                                                                @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
-                                                                {
-
-
-                                                                    if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
-                                                                    {
-                                                                        <div class="form-group col-8 m-0">
-                                                                            @Html.Label("Cutting(Sq Per Inch)", new { @class = "label" })
-                                                                        </div>
-                                                                            <div class="form-group col-8 m-0 custom-control-inline">
-                                                                                @Html.TextBoxFor(model => model.CuttingSquare1, new { @class = "form-control r-0 light s-12", oninput = "return CalcForCuttingSq();" })
-                                                                                &nbsp;&nbsp;
-                                                                                @Html.TextBoxFor(model => model.CuttingSquare2, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                            </div>
-
-                                                                    }
-
-                                                                    if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
-                                                                    {
-                                                                        <div class="form-group col-8 m-0">
-                                                                            @Html.Label("Forging", new { @class = "label" })
-                                                                        </div>
-                                                                            <div class="form-group col-8 m-0 custom-control-inline">
-                                                                                @Html.TextBoxFor(model => model.Forging1, new { @class = "form-control r-0 light s-12", oninput = "CalcForging2()" })
-                                                                                &nbsp;&nbsp;
-                                                                                @Html.TextBoxFor(model => model.Forging2, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                            </div>
-                                                                    }
-                                                                    if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
-                                                                    {
-                                                                        <div class="form-group col-8 m-0">
-                                                                            <label>Heat Treatment Cost<br>(Per KG Of Net Wt):</label>
-                                                                        </div>
-                                                                            <div class="form-group col-8 m-0 custom-control-inline">
-                                                                                @Html.TextBoxFor(model => model.HeatTreatment1, new { @class = "form-control r-0 light s-12", @oninput = "return CalcForNetWeight(this);" })
-                                                                                &nbsp;&nbsp;
-                                                                                @Html.TextBoxFor(model => model.HeatTreatment2, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                            </div>
-
-                                                                    }
-                                                                    if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
-                                                                    {
-                                                                        <div class="form-group col-8 m-0">
-                                                                            <label>Shot Blasting(Net Wt)</label>
-                                                                        </div>
-                                                                            <div class="form-group col-8 m-0 custom-control-inline">
-                                                                                @Html.TextBoxFor(model => model.ShotBlasting1, new { @class = "form-control r-0 light s-12", @oninput = "return CalcForNetWeight(this);" })
-                                                                                &nbsp;&nbsp;
-                                                                                @Html.TextBoxFor(model => model.ShotBlasting2, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                            </div>
-
-                                                                    }
-                                                                    if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
-                                                                    {
-                                                                        <div class="form-group col-8 m-0">
-                                                                            <label>MPI</label>
-                                                                        </div>
-                                                                            <div class="form-group col-8 m-0 custom-control-inline">
-                                                                                @Html.TextBoxFor(model => model.MPI1, new { @class = "form-control r-0 light s-12", oninput = "CalcMPI2()" })
-                                                                                &nbsp;&nbsp;
-                                                                                @Html.TextBoxFor(model => model.MPI2, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                            </div>
-
-                                                                    }
-                                                                    if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
-                                                                    {
-                                                                        <div class="form-group col-8 m-0">
-                                                                            <label>Grinding(Per Piece)</label>
-                                                                        </div>
-                                                                            <div class="form-group col-8 m-0 custom-control-inline">
-                                                                                @Html.TextBoxFor(model => model.Grinding1, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)" })
-                                                                                &nbsp;&nbsp;
-                                                                                @Html.TextBoxFor(model => model.Grinding2, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                            </div>
-                                                                    }
-                                                                    if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
-                                                                    {
-                                                                        <div class="form-group col-8 m-0">
-                                                                            <label>Cold Coining(Per Piece)</label>
-                                                                        </div>
-                                                                            <div class="form-group col-8 m-0 custom-control-inline">
-                                                                                @Html.TextBoxFor(model => model.ColdCoining1, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)" })
-                                                                                &nbsp;&nbsp;
-                                                                                @Html.TextBoxFor(model => model.ColdCoining2, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                            </div>
-
-                                                                    }
-                                                                    if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
-                                                                    {
-                                                                        <div class="form-group col-8 m-0">
-                                                                            <label>Machaining(Per Piece)</label>
-                                                                        </div>
-                                                                            <div class="form-group col-8 m-0 custom-control-inline">
-                                                                                @Html.TextBoxFor(model => model.Machining1, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)" })
-                                                                                &nbsp;&nbsp;
-                                                                                @Html.TextBoxFor(model => model.Machining2, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)", @readonly = "readonly" })
-                                                                            </div>
-
-                                                                    }
-
-                                                                }
-                                                                <div class="form-group col-8 m-0">
-                                                                    <label>Die Maintaince Cost(Per Piece):    </label>
-                                                                </div>
-                                                                <div class="form-group col-8 m-0 custom-control-inline">
-                                                                    @Html.TextBoxFor(model => model.DieMaintenance1, new { @class = "form-control r-0 light s-12", oninput = "CalcForPerPiece(this)" })
-                                                                    &nbsp;&nbsp;
-                                                                    @Html.TextBoxFor(model => model.DieMaintenance2, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                </div>
-
-                                                            </div>
-
-                                                            @*<div class="form-group col-4 m-0">
-                                                                    <label>Die Maintaince Cost(Per Piece):    </label>
-                                                                    @Html.TextBoxFor(model => model.DieMaintenance1, new { @class = "form-control", oninput = "CalcForPerPiece(this)" })
-                                                                    @Html.TextBoxFor(model => model.DieMaintenance2, new { @class = "form-control", @readonly = "readonly" })
-                                                                </div>
-
-
-                                                            <div class="form-group col-4 m-0">
-                                                                <label>Total Conversion Cost</label>
-                                                                @Html.TextBoxFor(model => model.TotalConverstionCost, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                <label>Total Component Cost</label>
-                                                                @Html.TextBoxFor(model => model.TotalComponentCost, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                                                <label>Initial Die Cost    </label>
-                                                                @Html.TextBoxFor(model => model.InitialDieCost, new { @class = "form-control r-0 light s-12", @onblur = "setDeafult();" })
-                                                            </div>
-                                                        </div>*@
-
-                                                    @*</div>*@
-                                                    @*<div class="form-group col-4 m-0">Creation / Approval Details</div>*@
-                                                    @*<div class="card-body">
-                                                            <div class="form-row mt-1">
-                                                                <div class="form-group col-3 m-0">
-                                                                    @Html.LabelFor(model => model.Createdby, new { @class = "Label" })<br />
-                                                                    @Html.DisplayFor(model => model.Createdby, new { @class = "form-control r-0 light s-12" })
-                                                                </div>
-                                                                <div class="form-group col-3 m-0">
-                                                                    @Html.LabelFor(model => model.ApprovedBy, new { @class = "Label" })<br />
-                                                                    @Html.DisplayFor(model => model.ApprovedBy, new { @class = "form-control r-0 light s-12" })
-                                                                </div>
-                                                                <div class="form-group col-3 m-0">
-                                                                    @Html.LabelFor(model => model.CreatedOn, new { @class = "Label" })<br />
-                                                                    @Html.DisplayFor(model => model.CreatedOn, new { @class = "form-control r-0 light s-12" })
-                                                                </div>
-                                                                <div class="form-group col-3 m-0">
-                                                                    @Html.LabelFor(model => model.ApprovalDate, new { @class = "Label" })<br />
-                                                                    @Html.DisplayFor(model => model.ApprovalDate, new { @class = "form-control r-0 light s-12" })
-                                                                </div>
-                                                            </div>
-
-                                                        </div>*@
-
-                                                    @*<div class="form-group col-4 m-0">Quotation Comment</div>*@
-                                                    @*<div class="card-body">
-                                                            <div class="form-row mt-1">
-                                                                <div class="form-group col-8 m-0">
-                                                                    @Html.LabelFor(model => model.UserComment, new { @class = "Label" })<br />
-                                                                    @Html.TextAreaFor(model => model.UserComment, new { @class = "form-control" })
-                                                                </div>
-                                                                <div class="form-group col-4 m-0">
-                                                                    <label class="Label" for="ChkNewQuotation"></label><br />
-                                                                    @Html.CheckBox("ChkNewQuotation", true, new { @ID = "chk_NewQuotation" })
-                                                                    New Quotation
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>*@
+                                                </div> 
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="form-row mt-1">
                                                         <div class="col-6 m-0">
                                                             <button type="button" id="QuotationViewForDownload" class="editVaccin btn btn-primary btn-sm" style="display:none" onclick="location.href = '@Url.Action("QuotationViewForApproval", "QuotationApproval", new { QuotationId =Model.id })'"><i class="icon-view_array mr-2"></i>Quotation View</button>
                                                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><i class="icon-list-ul mr-2"></i>Terms & Condition</button>
-                                                            @*<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal2"><i class="icon-eye mr-2"></i>View All Version</button>*@
-
+                                                           
                                                         </div>
                                                         <div class="col-3 m-0"></div>
                                                         <div class="col-3 m-0 custom-control-inline" align="right">
                                                             <div id="div_btn_save">
-                                                                @*<input type="submit" name="Save" value="Save" class="btn btn-success btn-default" id="Save" />*@
                                                                 <button type="button" name="Save" value="Save" class="btn btn-primary btn-sm pull-right" id="Save" onclick="return submitQuotation();"><i class="icon-save mr-2"></i>Save</button>
                                                             </div>
                                                             &nbsp;
@@ -651,287 +426,48 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                @*<div class="col-md-2 ">
-                                                        <a href="@Url.Action("QuotationViewForDownload", "Quotation", new { QuotationId =Model.id })" class="editVaccin btn btn-default btn-info "> Quotation View </a>
-                                                    </div>
-                                                    <div class="col-md-3 ">
-                                                        <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-primary "> Terms & Condition</a>
-                                                    </div>
-                                                    <div class="col-md-3 ">
-                                                        <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal2" class="btn btn-success btn-primary "> View All Version</a>
-                                                    </div>
-                                                    <div class="col-md-2 " id="div_btn_save">
-                                                        <input type="submit" name="Save" value="Save" class="btn btn-success btn-default" id="Save" />
-                                                    </div>
-                                                    <div class="col-md-2 " id="div_btn_update">
-                                                        <input type="submit" name="Save" value="Update" class="btn btn-success btn-default" id="Save" />
-                                                    </div>
-                                                    <div class="col-md-2 ">
-                                                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" id="Reset" onclick="location.href = '@Url.Action("NewQuotation", "Quotation", new { id = Model.InquiryNo })'" />
-                                                    </div>*@
-
-                                            </div>
-                                                @*</div>*@
-                                            </div>
-
-                                        </form>
+                                                </div> 
+                                            </div> 
+                                            
+                                         
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        @*<div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h2>Conversion Rate Details</h2></div>
-                                    <div class="panel-body">
-
-                                        <div class="col-md-6">
-
-                                            @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
-                                            {
-
-
-                                                if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="col-md-4 control-label">
-                                                            <label>Cutting(Sq Per Inch)</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-
-                                                            @Html.TextBoxFor(model => model.CuttingSquare1, new { @class = "form-control", oninput = "CalcForCuttingSq()" })
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.CuttingSquare2, new { @class = "form-control", @readonly = "readonly" })
-                                                        </div>
-
-                                                    </div>
-                                                }
-
-                                                if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="col-md-4 control-label">
-                                                            <label>Forging</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-
-                                                            @Html.TextBoxFor(model => model.Forging1, new { @class = "form-control", oninput = "CalcForging2()" })
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.Forging2, new { @class = "form-control", @readonly = "readonly" })
-                                                        </div>
-
-                                                    </div>
-                                                }
-                                                if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="col-md-4 control-label">
-                                                            <label>Heat Treatment Cost<br>(Per KG Of Net Wt):</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-
-                                                            @Html.TextBoxFor(model => model.HeatTreatment1, new { @class = "form-control", @oninput = "return CalcForNetWeight(this);" })
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.HeatTreatment2, new { @class = "form-control", @readonly = "readonly" })
-                                                        </div>
-
-                                                    </div>
-                                                }
-                                                if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="col-md-4 control-label">
-                                                            <label>Shot Blasting(Net Wt)</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-
-                                                            @Html.TextBoxFor(model => model.ShotBlasting1, new { @class = "form-control", @oninput = "return CalcForNetWeight(this);" })
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.ShotBlasting2, new { @class = "form-control", @readonly = "readonly" })
-                                                        </div>
-
-                                                    </div>
-                                                }
-                                                if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="col-md-4 control-label">
-                                                            <label>MPI</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-
-                                                            @Html.TextBoxFor(model => model.MPI1, new { @class = "form-control", oninput = "CalcMPI2()" })
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.MPI2, new { @class = "form-control", @readonly = "readonly" })
-                                                        </div>
-
-                                                    </div>
-                                                }
-                                                if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="col-md-4 control-label">
-                                                            <label>Grinding(Per Piece)</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-
-                                                            @Html.TextBoxFor(model => model.Grinding1, new { @class = "form-control", oninput = "CalcForPerPiece(this)" })
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.Grinding2, new { @class = "form-control", @readonly = "readonly" })
-                                                        </div>
-
-                                                    </div>
-                                                }
-                                                if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="col-md-4 control-label">
-                                                            <label>Cold Coining(Per Piece)</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-
-                                                            @Html.TextBoxFor(model => model.ColdCoining1, new { @class = "form-control", oninput = "CalcForPerPiece(this)" })
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.ColdCoining2, new { @class = "form-control", @readonly = "readonly" })
-                                                        </div>
-
-                                                    </div>
-                                                }
-                                                if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
-                                                {
-                                                    <div class="form-group">
-                                                        <div class="col-md-4 control-label">
-                                                            <label>Machaining(Per Piece)</label>
-                                                        </div>
-                                                        <div class="col-md-4">
-
-                                                            @Html.TextBoxFor(model => model.Machining1, new { @class = "form-control", oninput = "CalcForPerPiece(this)" })
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            @Html.TextBoxFor(model => model.Machining2, new { @class = "form-control", @readonly = "readonly" })
-                                                        </div>
-
-                                                    </div>
-                                                }
-
-                                            }
-
-                                            <div class="form-group">
-                                                <div class="col-md-4 control-label">
-                                                    <label>Die Maintaince Cost(Per Piece):    </label>
-
-                                                    @Html.TextBoxFor(model => model.DieMaintenance1, new { @class = "form-control", oninput = "CalcForPerPiece(this)" })
-
-                                                    @Html.TextBoxFor(model => model.DieMaintenance2, new { @class = "form-control", @readonly = "readonly" })
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                <div class="col-md-4 control-label">
-                                                    <label>Total Conversion Cost</label>
-                                                    @Html.TextBoxFor(model => model.TotalConverstionCost, new { @class = "form-control", @readonly = "readonly" })
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-4 control-label">
-                                                    <label>Total Component Cost</label>
-                                                    @Html.TextBoxFor(model => model.TotalComponentCost, new { @class = "form-control", @readonly = "readonly" })
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-4 control-label">
-                                                    <label>Initial Die Cost    </label>
-                                                    @Html.TextBoxFor(model => model.InitialDieCost, new { @class = "form-control", @onblur = "setDeafult();" })
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>*@
-
-                                                    @*<div class="row">
-                                                            <div class="col-md-12 ">
-                                                                <div class="form-group" style="text-align:center">
-                                                                    <div class="col-md-2 ">
-                                                                        <a href="@Url.Action("QuotationViewForDownload", "Quotation", new { QuotationId =Model.id })" class="editVaccin btn btn-default btn-info "> Quotation View </a>
-                                                                    </div>
-                                                                    <div class="col-md-3 ">
-                                                                        <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-primary "> Terms & Condition</a>
-                                                                    </div>
-                                                                    <div class="col-md-3 ">
-                                                                        <a href="@Url.Action(" "," ")" data-toggle="modal" data-target="#myModal2" class="btn btn-success btn-primary "> View All Version</a>
-                                                                    </div>
-                                                                    <div class="col-md-2 " id="div_btn_save">
-                                                                        <input type="submit" name="Save" value="Save" class="btn btn-success btn-default" id="Save" />
-                                                                    </div>
-                                                                    <div class="col-md-2 " id="div_btn_update">
-                                                                        <input type="submit" name="Save" value="Update" class="btn btn-success btn-default" id="Save" />
-                                                                    </div>
-                                                                    <div class="col-md-2 ">
-                                                                        <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" id="Reset" onclick="location.href = '@Url.Action("NewQuotation", "Quotation", new { id = Model.InquiryNo })'" />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>*@
-        <!-- MODAL TERMS AND CONDITION-->
                                                     <div class="modal fade" id="myModal" role="dialog">
                                                         <div class="modal-dialog">
 
-                                                            <!-- MODAL TERMS AND CONDITION CONTENT-->
-                                                            <div class="modal-content">
+                                                          <div class="modal-content">
                                                                 <div class="card-header white">
                                                                     Terms And Condition
-                                                                    @*<h3 class="modal-title">Terms And Condition</h3>*@
+                                                                    
                                                                     <button type="button" class="close" data-dismiss="modal">
                                                                         &times;
                                                                     </button>
-                                                                </div>
-                                                                @*<div class="modal-body table-responsive ">*@
-
-                                                                <table class="table table-hover display" id="tbl_termcondition">
-
+                                                                </div>  
+                                                                <table class="table table-hover display" id="tbl_termcondition"> 
                                                                     <tbody id="tbltbody_termcondition">
                                                                         @{
 
                                                                             @Html.Hidden("TotalTermsNcondition", (ViewData["QuotaionTermsAndCondition"] as List<ssmtbl_LKP_TermsAndConditionModel>).Count());
                                                                         }
                                                                         @foreach (var item in ViewData["QuotaionTermsAndCondition"] as List<ssmtbl_LKP_TermsAndConditionModel>)
-                                                                        {
-
-                                                                            <tr>
-                                                                                @*<td style="display:none">@Html.Hidden("chkitemID" + item.id, item.id)</td>*@
+                                                                        { 
+                                                                            <tr> 
                                                                                 <td style="width:5px">
                                                                                     @if (item.flag == true)
                                                                                     {
-                                                                                        @*<input type='checkbox' id='chk_termcondition_" +item.id+ "' name='chk_termcondition' value='"+item.id+ "' checked />*@
                                                                                         @Html.CheckBox("chk_termcondition", new { @id = "chk_termcondition_" + item.id, @value = item.id, @checked = "checked" })
                                                                                     }
                                                                                     else
                                                                                     {
-                                                                                        @*<input type='checkbox' id='chk_termcondition_" + item.id + "' name='chk_termcondition' value='"+item.id+ "' />*@
                                                                                         @Html.CheckBox("chk_termcondition", new { @id = "chk_termcondition_" + item.id, @value = item.id })
                                                                                     }
 
                                                                                 </td>
                                                                                 <td>
                                                                                     @Html.TextArea("txt_termcondition", item.description, new { @class = "form-control r-0 light s-12", @Rows = "2", @id = "txt_termcondition_" + item.id })
-                                                                                    @*<textarea style='width:100%;' id='txt_termcondition_" + item.id+ "' name='txt_termcondition' value=item.description></textarea>*@
                                                                                 </td>
                                                                             </tr>
 
@@ -939,20 +475,13 @@
 
                                                                     </tbody>
 
-                                                                </table>
-
-                                                                @*</div>*@
+                                                                </table> 
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                                 </div>
-                                                            </div>
-
+                                                            </div> 
                                                         </div>
-                                                    </div>
-
-
-
-
+                                                    </div> 
 
                                                     <div class="panel-body">
                                                         <div class="modal fade" id="myModal2" role="dialog" aria-hidden="true">
@@ -963,10 +492,7 @@
                                                                     <div class="card-header white">
                                                                         Quotation File-Version
                                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                        @*<h3 class="modal-title">Quotation File-Version </h3>*@
-                                                                    </div>
-
-                                                                    @*<div class="modal-body table-responsive ">*@
+                                                                    </div> 
 
                                                                     <table id="myTable1" class="table table-hover display">
                                                                         <thead>
@@ -1000,11 +526,11 @@
                                                                         </thead>
                                                                         <tbody id="tbodyid1">
 
-                                                                            @foreach (var item in ViewData["Allversion"] as List<ssmtbl_QuotationModel>
-)
+                                                                            @if (ViewData["Allversion"] != null)
                                                                             {
-                                                                                <tr>
-
+                                                                                foreach(var item in ViewData["Allversion"] as List<ssmtbl_QuotationModel>)
+                                                                                {
+                                                                                <tr> 
                                                                                     <td>@item.id</td>
                                                                                     <td>@item.FileStatus</td>
                                                                                     <td>@item.Comment</td>
@@ -1012,16 +538,14 @@
                                                                                     <td>@item.CreatedOn</td>
                                                                                     <td>@item.ApprovedBy</td>
                                                                                     <td>@item.ApprovalDate</td>
-                                                                                    <td><a href="@Url.Action("QuotationPDF", "Quotation", new { QuotationId = item.id, _target="blank" })" class="btnSelect">Download</a></td>
+                                                                                    <td><a href="@Url.Action("QuotationPDF", "Quotation", new { QuotationId = item.id, _target = "blank" })" class="btnSelect">Download</a></td>
                                                                                     <td style="display:none;"><a href="#" class="btnviewSelect">View</a></td>
                                                                                 </tr>
+                                                                                }
                                                                             }
                                                                         </tbody>
                                                                     </table>
-                                                                    @*</div>*@
-                                                                    @*<div class="modal-footer">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                        </div>*@
+                                                                   
                                                                 </div>
 
 

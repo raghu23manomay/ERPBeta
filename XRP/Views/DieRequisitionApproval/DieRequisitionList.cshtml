@@ -8,40 +8,19 @@
 
 @using (Html.BeginForm("WorkorderApprovalList", "WorkorderApproval", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
-    @Html.ValidationSummary(true)
-
-
+    @Html.ValidationSummary(true)  
     <fieldset>
         <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                @*<div class="row p-t-b-10 ">
-                        <div class="col">
-                            <h4>
-                                <i class="icon-database"></i>
-                                Workorder
-                            </h4>
-                        </div>
-                    </div>*@
+            <div class="container-fluid text-white"> 
                 <div class="row justify-content-between">
                     <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
                         <li>
                             <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i> Die List For Approval</a>
-                        </li>
-                        @*<li>
-                                <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
-                            </li>*@
-                        @*<li class="float-right">
-                                <a class="nav-link" href='@Url.Action("NewCustomer", "Customer")'><i class="icon icon-plus-circle"></i> Add New Customer</a>
-                            </li>*@
+                        </li> 
                     </ul>
                 </div>
-            </div>
-
-        </header>
-        <!-- PAGE TITLE -->
+            </div> 
+        </header> 
         <div class="container-fluid animatedParent animateOnce">
             <div class="tab-content my-3" id="v-pills-tabContent">
                 <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
@@ -49,15 +28,11 @@
                         <div class="col-md-12">
                             <div class="card r-0 shadow">
                                 <div class="">
-                                    <form action="">
-
-
+                                    <form action=""> 
                                         <div class="row">
-                                            <div class="col-md-12">
-                                                <!-- START DEFAULT DATATABLE -->
+                                            <div class="col-md-12"> 
                                                 <div class="panel panel-default">
-                                                    <div class="panel-heading">
-
+                                                    <div class="panel-heading"> 
                                                     </div>
                                                     <div class="panel-body">
                                                         <div class="">
@@ -67,8 +42,7 @@
                                                                         <th style="display:none;">#</th>
                                                                         <th>Workorder No</th>
                                                                         <th>Die No</th>
-                                                                        <th>Requisition Date</th>
-                                                                     
+                                                                        <th>Requisition Date</th> 
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -79,8 +53,6 @@
                                                                             <td>@data.WorkorderNo</td>
                                                                             <td>@data.DieNumber</td>
                                                                             <td>@data.DieReqDate.Date.ToString("dd-MMM-yyyy")</td>
-                                                                          
-
                                                                         </tr>
                                                                     }
                                                                 </tbody>
@@ -98,9 +70,7 @@
                 </div>
             </div>
         </div>
-
     </fieldset>
-
     <style>
         .mosurhandsymbol {
             cursor: pointer;

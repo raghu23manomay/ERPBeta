@@ -5,20 +5,7 @@
     ViewBag.Active = "Stock";
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
-<style>
-    .btnGenerateWO {
-        position: absolute;
-        bottom: 25px;
-        right: 20px;
-    }
 
-    .btnGenerateCuttingSlip {
-        position: absolute;
-        bottom: 25px;
-        left: 20px;
-    }
-</style>
-<link rel="stylesheet" href="~/assets/css/app.css">
 <link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
 @using (Html.BeginForm("AllGoodsIssued", "GoodsIssued", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
@@ -28,18 +15,11 @@
     <input type="hidden" id="hdnGrossWeight" />
     <input type="hidden" id="hdnpoid" />
     <input type="hidden" id="hdn_poidcnt" />
-    <style>
-        .icon:hover, .trDelivery:hover {
-            cursor: pointer;
-        }
-    </style>
 
 
 
-    <fieldset>
+    <div class="paddingLeft15 paddingTop15">
 
-
-        <!-- PAGE TITLE -->
 
 
         <div class="row">
@@ -70,9 +50,7 @@
                                             <div class="tab-content " id="v-pills-tabContent">
                                                 <div class="tab-pane fade show active slimScroll" id="w2-tab1" role="tabpanel"
                                                      aria-labelledby="w2-tab1">
-                                                    <ul class="list-unstyled table table-bordered table-hover trDelivery" id="ullslistbind">
-
-                                                    </ul>
+                                                    <ul class="list-unstyled table table-bordered table-hover trDelivery" id="ullslistbind"></ul>
                                                 </div>
                                             </div>
                                         </div>
@@ -197,7 +175,7 @@
             </div>
         </div>
 
-    </fieldset>
+    </div>
 
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -368,9 +346,9 @@
         function jsondateformatconvert1(jsondate) {
             var MyDate_String_Value = jsondate;
             var value = new Date
-            (
-            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
-            );
+                (
+                parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+                );
             var date = value.getDate();
             if (date < 10) {
                 date = "0" + date;
@@ -402,9 +380,9 @@
         function jsondateformatconvert(jsondate) {
             var MyDate_String_Value = jsondate;
             var value = new Date
-            (
-            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
-            );
+                (
+                parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+                );
             var date = value.getDate();
 
             if (date < 10) {
