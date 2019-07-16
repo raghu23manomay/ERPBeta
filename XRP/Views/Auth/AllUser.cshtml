@@ -5,72 +5,80 @@
     ViewBag.FeatureAdd = "newADD";
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
-
+ 
 <div class="paddingTop15">
 
+    <ul class="nav nav-tabs" id="myTabs" role="tablist">
+        <li role="presentation" class="active"><a href="#UserList" aria-controls="EnquiryList" role="tab" data-toggle="tab">User List</a></li>
+        <li role="presentation">
+            <a href="@Url.Action("NewUser", "Auth")" class=""> New User</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active paddingTop15" id="EnquiryList">
 
-    <div class="">
-        <table class="table table-striped table-hover" >
-            <thead>
-                <tr>
-                    <th style="display:none;">
-                        ID
-                    </th>
-                    <th>#</th>
-                    <th>
-                        NAME
-                    </th>
-                    <th>
-                        USER ROLL
-                    </th>
-                    <th>
-                        DEPARTMENT
-                    </th>
-                    <th>
-                        CONTACT NUMBER
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="tbodyUser"></tbody>
-        </table>
+            <div class="">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th style="display:none;">
+                                ID
+                            </th>
+                            <th>#</th>
+                            <th>
+                                NAME
+                            </th>
+                            <th>
+                                USER ROLL
+                            </th>
+                            <th>
+                                DEPARTMENT
+                            </th>
+                            <th>
+                                CONTACT NUMBER
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyUser"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+            <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Content/Validations/JqueryUi.js"></script>
 
+            <script>
+                $(document).ready(function () {
+                    bindUsers();
 
-    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Content/Validations/JqueryUi.js"></script>
+                });
+            </script>
+            <script>
 
-    <script>
-        $(document).ready(function () {
-            bindUsers();
+                function bindUsers() {
 
-        });
-    </script>
-    <script>
+                    $.ajax({
+                        type: "GET",
+                        url: "../Auth/getUsers",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (getfdata1) {
+                            $("#tbodyUser").empty();
+                            var tr = '';
+                            $.each(getfdata1, function (ij) {
 
-        function bindUsers() {
-
-            $.ajax({
-                type: "GET",
-                url: "../Auth/getUsers",
-                contentType: "application/json;charset=utf-8",
-                dataType: "json",
-                success: function (getfdata1) {
-                    $("#tbodyUser").empty();
-                    var tr = '';
-                    $.each(getfdata1, function (ij) {
-
-                        tr = $('<tr/>');
-                        tr.append("<td style='display:none;'>" + getfdata1[ij].UserId + "</td>");
-                        tr.append("<td>" + (ij + 1) + "</td>");
-                        tr.append("<td>" + getfdata1[ij].Name + "</td>");
-                        tr.append("<td>" + getfdata1[ij].UserType + "</td>");
-                        tr.append("<td>" + getfdata1[ij].DepartmentName + "</td>");
-                        tr.append("<td>" + getfdata1[ij].ContactNumber + "</td>");
-                        $("#tbodyUser").append(tr);
+                                tr = $('<tr/>');
+                                tr.append("<td style='display:none;'>" + getfdata1[ij].UserId + "</td>");
+                                tr.append("<td>" + (ij + 1) + "</td>");
+                                tr.append("<td>" + getfdata1[ij].Name + "</td>");
+                                tr.append("<td>" + getfdata1[ij].UserType + "</td>");
+                                tr.append("<td>" + getfdata1[ij].DepartmentName + "</td>");
+                                tr.append("<td>" + getfdata1[ij].ContactNumber + "</td>");
+                                $("#tbodyUser").append(tr);
+                            });
+                        }
                     });
                 }
-            });
-        }
-    </script>
+            </script>

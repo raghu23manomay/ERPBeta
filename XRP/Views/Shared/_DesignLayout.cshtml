@@ -39,7 +39,7 @@
         <div class="wrapper"> 
             <nav id="sidebar">
                 <ul class="list-unstyled components marginTop60 paddingTop15">
-                    <li class="MenuItem" id="Dashboard"><a href="#"><div><i class="fa fa-dashboard" aria-hidden="true"></i></div>Dashboard</a></li>
+                    @*<li class="MenuItem" id="Dashboard"><a href="#"><div><i class="fa fa-dashboard" aria-hidden="true"></i></div>Dashboard</a></li>*@
                     <li class="MenuItem" id="Marketing"><a href="#"><div><i class="fa fa-dashboard" aria-hidden="true"></i></div>Marketing</a></li>
                     <li class="MenuItem" id="Master"><a href="#"><div><i class="fa fa-universal-access" aria-hidden="true"></i></div>Master</a></li>
                     <li class="MenuItem" id="Purchase"><a href="#"><div><i class="fa fa-shopping-basket" aria-hidden="true"></i></div>Purchase</a></li>
@@ -73,15 +73,17 @@
 <script src="~/assets/js/UserAccess.js"></script>
 <script>
     $(document).ready(function () {
+        
         var url = window.location.pathname.split("/");
         var action = url[1];
+        var viewname = url[2];
         $(".mnu").hide();
-        if (action == "Inquiry") {
+        if (action == "Inquiry" || action == "Feasibility" ) {
             $("#mnuMarketing").show();
         }
-        else if (action == "Customer" || action == "Vendor" || action == "GradeOfMaterial" || action == "Section" || action == "DieDescription" || action == "Auth" ) {
+        else if (action == "Customer" || action == "Vendor" || action == "GradeOfMaterial" || action == "Section" || action == "DieDescription" || action == "Auth") {
             $("#mnuMaster").show();
-        } else if (action == "PORequisition" || action == "PurchaseOrder" || action == "VendorPurchaseOrder" ) {
+        } else if (action == "PORequisition" || action == "PurchaseOrder" ) {
             $("#mnuPurchase").show();
         }
         else if (action == "Workorder" || action == "Workorder" || action == "Workorder") {
@@ -90,11 +92,16 @@
         else if (action == "Cutting" || action == "Forging" || action == "HeatTreatment") {
             $("#mnuProduction").show();
         }
-        else if (action == "GoodsInward" || action == "GoodsIssued" || action == "DeliveryChallan" || action == "DCForRMTest")  {
+        else if (action == "GoodsInward" || action == "GoodsIssued" || action == "DeliveryChallan" || action == "DCForRMTest") {
             $("#mnuStock").show();
         }
-        else if (action == "QuotationApproval" || action == "DieRequisitionApproval" || action == "PurchaseOrderApproval" || action == "RMRequisitionApproval" || action == "VendorPurchaseOrderApproval") {
+        else if (action == "QuotationApproval" || action == "DieRequisitionApproval" || action == "PurchaseOrderApproval" || action == "RMRequisitionApproval") {
             $("#mnuMyApprovals").show();
+        }
+        else if (action == "VendorPurchaseOrder" && (viewname == "AllVendorPurchaseOrder" || viewname== "EditConsumables")) {
+            $("#mnuMyApprovals").show();
+        } else if (action == "VendorPurchaseOrder") {
+            $("#mnuPurchase").show();
         }
         
         $(".MenuItem").on("click", function () {

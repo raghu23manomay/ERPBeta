@@ -10,74 +10,36 @@
 @using (Html.BeginForm("AllVendorPurchaseOrder", "VendorPurchaseOrder", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
-       <fieldset>
-                  
-        <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                <div class="row p-t-b-10 ">
-                    <div class="col">
-                        <h4>
-                            <i class="icon-database"></i>
-                            Vendor Purchase Order
-                        </h4>
-                    </div>
-                </div>
-                <div class="row justify-content-between">
-                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                        <li>
-                            <a class="nav-link" href='#tab-first' role="tab" data-toggle="tab"><i class="icon icon-list"></i>Consumables</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href='#tab-second' role="tab" data-toggle="tab"><i class="icon icon-account_circle"></i> Raw Material</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href='#tab-third' role="tab" data-toggle="tab"><i class="icon icon--cloud-sun-fog2"></i>Outsourcing</a>
-                        </li>
-                        <li class="float-right">
-                            <a class="nav-link" href='#tab-fourth' role="tab" data-toggle="tab"><i class="icon icon-map-pin"></i>Maintanance Spares</a>
-                        </li>
-                      
-                    </ul>
-                </div>
-            </div>
-
-        </header>
-           <div class="panel-body tab-content">
-               <div class="tab-pane active" id="tab-first">
-                   @Html.Action("AllVPOConsumables")
-               </div>
-               <div class="tab-pane" id="tab-second">
-                   @Html.Action("AllVPORawMaterial")
-               </div>
-               <div class="tab-pane" id="tab-third">
-                   @Html.Action("AllVPOOutsourcing")
-               </div>
-               <div class="tab-pane" id="tab-fourth">
-                   @Html.Action("AllVPOMaintananceSpares")
-               </div>
-           </div>
-
-
-                   
-
-    </fieldset>
+<div class="paddingTop15">
+   
+    <div class="panel-body tab-content">
+        <div class="tab-pane active" id="tab-first">
+            @Html.Action("AllVPOConsumables")
+        </div>
+        <div class="tab-pane" id="tab-second">
+            @Html.Action("AllVPORawMaterial")
+        </div>
+        <div class="tab-pane" id="tab-third">
+            @Html.Action("AllVPOOutsourcing")
+        </div>
+        <div class="tab-pane" id="tab-fourth">
+            @Html.Action("AllVPOMaintananceSpares")
+        </div>
+    </div>
+     
+</div>
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-
-
     <script src="~/Content/Validations/JqueryUi.js"></script>
     <script>
-        var $j = jQuery.noConflict(true);
-
+    
         function redirect(dropDownValue)
         {
             window.location.href = '/VendorPurchaseOrder/AllVendorPurchaseOrder/?_vendorPO_type=' + dropDownValue;
         }
-
         function OpenNewVPO() {
             //Determine the reference of the Row using the Button.
-            var vpo_type_data = $j('#vendor_po_type').val();
+            var vpo_type_data = $('#vendor_po_type').val();
            
             if (vpo_type_data == "Consumables") {
                 var conumables = '@Url.Action("Consumables", "VendorPurchaseOrder")';
@@ -103,7 +65,6 @@
         $(".nav-link").click(function () {
             window.scrollBy(0, 50);//for scroll top
             window.scrollBy(0,-50);//for scroll down
-           
         });
     </script>
 }

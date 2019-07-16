@@ -5,18 +5,13 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 
-@using (Html.BeginForm("NewInquiry", "Inquiry", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("VendorResponse", "PORequisition", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
-
-    <div class="paddingLeft15 paddingTop15">
-
-
-         
+    <div class="paddingLeft15 paddingTop15">                 
             <div role="tabpanel" class="tab-pane active paddingTop15" id="EnquiryList">
                 <div class="@ViewBag.HideClass" style="text-align:center">
                     @ViewBag.Message
                 </div>
-
                 <form role="form">
                     <div class="animated   go">
                         <div class="row no-gutters">
@@ -39,19 +34,10 @@
 
                                         <div>
                                             <div class="feed-activity-list">
-                                                <ul>
-                                                    <li class="feed-element" id="ullslistbind">
-
-
-                                                    </li>
-                                                </ul>
-                                               
-
-                                            </div>
-
-                                          
+                                                <div class="feed-activity-list" id="ullslistbind">
+                                                </div>
+                                            </div>                                          
                                         </div>
-
                                     </div>
                                     </div>
                                     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height:100px;">
@@ -129,7 +115,7 @@
 
                                             <div class="card-body no-p">
                                                 <div class="tab-content">
-                                                    <div class="tab-pane animated fadeIn show active go" id="v-pills-tab1" role="tabpanel" aria-labelledby="v-pills-tab1">
+                                                    <div class="tab-pane animated  show active go" id="v-pills-tab1" role="tabpanel" aria-labelledby="v-pills-tab1">
                                                         <div class="bg-primary text-white lighten-2">
                                                             <div class="chartjs-size-monitor" style="left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; visibility: hidden; position: absolute; z-index: -1; pointer-events: none;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
 
@@ -176,24 +162,22 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
                     </div>
 
 
-                    <div class="modal fade" id="modalGenerateRequisition" tabindex="-1" role="dialog" aria-labelledby="modalGenerateRequisition" aria-hidden="true" style="display:none;">
-                        <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal " id="modalGenerateRequisition" tabindex="-1" role="dialog" aria-labelledby="modalGenerateRequisition" aria-hidden="true" style="display:none;">
+                        <div class="modal-dialog" role="document" style="width:80%;padding-left:20%">
                             <div class="modal-content b-0">
                                 <div class="modal-header r-0 bg-primary">
                                     <h6 class="modal-title text-white" id="exampleModalLabel">Purchase Requisition</h6>
                                     <a href="#" data-dismiss="modal" aria-label="Close" class="paper-nav-toggle paper-nav-white active"><i></i></a>
                                 </div>
-                                <div class="modal-body no-p no-b">
-                                    <div class="card-body">
-                                     
-                                            <div class="form-row">
-                                                <div class="col-md-4 mb-0">
+                                <div class="ibox">
+                                    <div class="ibox-content">
+                                    
+                                            <div class="row">
+                                                <div class="col-md-4 ">
                                                     <label for="validationCustom01">Requisition Type</label>
 
                                                     <select class="form-control r-0 light s-12" id="drpRequisitionType" name="VPOTypeSelection[]">
@@ -201,11 +185,11 @@
                                                     </select>
 
                                                 </div>
-                                                <div class="col-md-8 mb-0">
+                                                <div class="col-md-8 ">
                                                     <label for="drpRMRawMaterial" id="lblRMRawMaterial">Material</label>
 
 
-                                                    <select class="form-control r-0 light s-12" id="drpRMRawMaterial">
+                                                    <select class="form-control" id="drpRMRawMaterial">
                                                         <option value="0">-- Select --</option>
                                                     </select>
                                                     <input type="text" class="form-control r-0 light s-12" id="drpConsumables" style="display:none" />
@@ -220,16 +204,15 @@
 
 
                                             </div>
-                                            <div class="form-row" id="divProcess" style="display:none">
-                                                <div class="col-md-12 mb-0">
+                                            <div class="row" id="divProcess" style="display:none">
+                                                <div class="col-md-12 ">
                                                     <label for="txtProcess">Process</label>
                                                     <input type="text" class="form-control r-0 light s-12" id="txtProcess" />
 
-
                                                 </div>
                                             </div>
-                                            <div class="form-row" id="divSection" style="display:none">
-                                                <div class="col-md-6 mb-0">
+                                            <div class="row" id="divSection" style="display:none">
+                                                <div class="col-md-6 ">
                                                     <label for="validationCustom05">Section</label>
 
                                                     <select class="form-control r-0 light s-12" id="drpRMSection">
@@ -237,14 +220,13 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="col-md-6 mb-0">
+                                                <div class="col-md-6 ">
                                                     <label for="DieNumber">Die Number</label>
                                                     <input id="drpDieNumber" type="text" class="form-control r-0 light s-12" onchange="fetchdiadetails(value)" />
-
-
+                                                    
                                                 </div>
                                             </div>
-                                            <div class="form-row" id="divQty">
+                                            <div class="row" id="divQty">
 
 
                                                 <div class="col-md-6 mb-3">
@@ -259,17 +241,15 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="col-md-10 mb-3">
+                                            <div class="row">
+                                                <div class="col-md-10">
                                                     <label for="validationCustom03">Remark</label>
 
-                                                    <textarea id="txtRMRemark" class="form-control r-0 light s-12 "></textarea>
+                                                    <textarea id="txtRMRemark" class="form-control"></textarea>
                                                 </div>
 
                                             </div>
-
-                                       
-
+                                        
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -900,7 +880,8 @@
                 var items = [];
                 for (var i = 0; i < data.length; i++) {
 
-                    items.push('<li class="media p-3 b-b has-hover mosurhandsymbol" onclick="fetchsinglelist(' + data[i].RfqID + ')"><img class="d-flex mr-3 height-50" src="../assets/img/dummy/u1.png" alt="Generic placeholder image"><div class="media-body text-truncate"><small class="float-right"><span>' + jsondateformatconvert(data[i].ReqDate) + '</span></small><h6 class="mt-0 mb-1 font-weight-normal">' + data[i].UserName + '</h6><span>' + data[i].VendorType + ' Purchase ... </span><br><small>Part# ' + data[i].PartName + '</small></div></li>');
+                   // items.push('<li class="media p-3 b-b has-hover mosurhandsymbol" onclick="fetchsinglelist(' + data[i].RfqID + ')"><img class="d-flex mr-3 height-50" src="../assets/img/dummy/u1.png" alt="Generic placeholder image"><div class="media-body text-truncate"><small class="float-right"><span>' + jsondateformatconvert(data[i].ReqDate) + '</span></small><h6 class="mt-0 mb-1 font-weight-normal">' + data[i].UserName + '</h6><span>' + data[i].VendorType + ' Purchase ... </span><br><small>Part# ' + data[i].PartName + '</small></div></li>');
+                    items.push('<div class="feed-element" onclick="fetchsinglelist(' + data[i].RfqID + ')"> <div> <small class="pull-right">' + jsondateformatconvert(data[i].ReqDate) + '</small> <strong>' + data[i].UserName + '</strong>  <div>' + data[i].VendorType + '</div><small>Request# ' + data[i].RfqID + '</small><span>' + data[i].VendorType + ' Purchase ... </span><br><small>Part# ' + data[i].PartName + '</div></div>');
 
                 }
                 $('#ullslistbind').append(items.join(''));
@@ -1096,6 +1077,7 @@
 </script>
 <script>
     function SendRequisition() {
+        debugger;
         var userID = $("#hdnUserID").val();
         var reqType = $('#drpRequisitionType option:selected').val();
         if (reqType == "0") {

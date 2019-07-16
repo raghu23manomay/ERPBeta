@@ -13,8 +13,8 @@
     <input type="hidden" id="woPOID" />
     <input type="hidden" id="hdnGrossWeight" />
 
-    <fieldset>
-        
+    <div class="paddingTop15">
+
         <div class="row">
             <div class="col-md-12">
 
@@ -25,18 +25,7 @@
                         <div class="animated fadeInUpShort">
                             <div class="row no-gutters">
                                 <div class="col-md-3 white sticky" style="height:auto">
-                                    <div class="sticky white">
-                                        <ul class="nav nav-tabs nav-material">
-                                            <li class="nav-item">
-                                                <a class="nav-link p-3 active show" id="w2--tab1" data-toggle="tab" href="#w2-tab1" style="height:auto">
-                                                    <input type="text" class="" id="txt_search" style="display:none;" /><br />
-                                                     <i class="icon icon-document s-18 text-success"></i>Active Workorders
-                                                    <i class="icon-search" onclick="search();"></i>
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
+                                     
 
                                     <div class="slimScroll" style="position:relative;overflow:hidden;height:initial">
                                         <div class="slimScroll" style="">
@@ -52,8 +41,8 @@
                                                             <li class="media p-3 b-b has-hover liPOS" onclick="fetchWO(@data.WorkorderID)">
                                                                 <div type="hidden" value="@data.WorkorderID" class="WorkorderID" />
                                                                 <div>
-                                                                    <div class="avatar avatar-md mr-3 mt-1 float-left">
-                                                                        <img src="~/NewCssAndTheme/img/imageWOs.jpg" class="s-128" /> 
+                                                                    <div class="avatar avatar-md  float-left">
+                                                                        <img src="~/NewCssAndTheme/img/imageWOs.jpg" class="s-128" style="height:120px;"  />
                                                                     </div>
                                                                     <div class="media-body text-truncate">
                                                                         <h6 class="mt-0 mb-1 font-weight-normal">@data.WorkorderNo </h6>
@@ -85,7 +74,7 @@
 
                                                         <div class="mr-2 float-left">
                                                             <img src="~/NewCssAndTheme/img/imageWOs.jpg" class="s-48" style="height:100px;" />
-                                                            @*<i class="icon icon-note-list text-light-blue s-48"></i>*@
+                                                            
                                                         </div>
                                                         <div class="media-body">
 
@@ -129,7 +118,7 @@
 
                                                     </div>
 
-                                                   
+
                                                 </div>
 
                                             </div>
@@ -175,7 +164,7 @@
                                                             </p>
 
                                                         </div>
-                                                         
+
                                                         <div class="row">
 
                                                             <div class="col-md-6">
@@ -201,11 +190,11 @@
                                                 </div>
 
                                             </div>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                             
+
                             <div class="modal fade" id="modalGenerateRequisition" tabindex="-1" role="dialog" aria-labelledby="modalGenerateRequisition" aria-hidden="true" style="display:none;">
                                 <div class="modal-dialog modal-md" role="document">
                                     <div class="modal-content b-0">
@@ -220,7 +209,7 @@
                                                         <div class="col-md-4">
                                                             <label for="validationCustom01">Requisition Type</label>
                                                             <input type="text" class="form-control r-0 light s-12" id="txtRequisitionType" value="Raw Material" readonly="readonly">
- 
+
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label for="validationCustom02">Customer name</label>
@@ -250,7 +239,7 @@
                                                             <label for="validationCustom03">Quantity (Pieces)</label>
                                                             <input type="text" class="form-control r-0 light s-12" id="txtRMQuantity">
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label for="validationCustom03">Remark</label>
@@ -278,7 +267,7 @@
                                         </div>
                                         <div class="modal-body no-p no-b">
                                             <div class="card-body">
-                                                <form class="needs-validation" novalidate=""> 
+                                                <form class="needs-validation" novalidate="">
                                                     <div class="form-row">
                                                         <div class="col-md-12 mb-3">
                                                             <label for="txtDieDescription">Description</label>
@@ -323,7 +312,7 @@
                                         <div class="modal-body no-p no-b">
                                             <div class="card-body">
                                                 <div class="form-group col-12 m-0">
-                                                   
+
                                                     <div>
 
                                                         <span class="float-right">
@@ -353,7 +342,7 @@
 
                                                 </div>
                                                 <br />
-                                               
+
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-3">
                                                         <label for="txtCutQuantity">Quantity:</label>
@@ -365,15 +354,15 @@
                                                         <input type="text" class="Label" id="txtCutTotalWt" readonly="readonly" style="border:none">
 
                                                     </div>
-                                                    
+
                                                 </div>
-                                                
+
 
 
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            
+
                                             <button class="btn btn-primary l-s-1 s-12 text-uppercase">
                                                 Send
                                             </button>
@@ -386,42 +375,42 @@
                 </div>
             </div>
         </div>
-    </fieldset>
+        </div>
 
-    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Content/Validations/JqueryUi.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Content/Validations/JqueryUi.js"></script>
 
-    <script type="text/javascript">
-        var $j = jQuery.noConflict(true);
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#PODetailsDiv").hide();
-            $("#WODetailsDiv").hide();
-            document.body.style.overflow = 'hidden';
-            $(function () {
-                $('.date-time-picker').datetimepicker({
-                    format: 'd/m/Y',
-                    timepicker: false,
+        <script type="text/javascript">
+            var $j = jQuery.noConflict(true);
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#PODetailsDiv").hide();
+                $("#WODetailsDiv").hide();
+                document.body.style.overflow = 'hidden';
+                $(function () {
+                    $('.date-time-picker').datetimepicker({
+                        format: 'd/m/Y',
+                        timepicker: false,
 
+                    });
                 });
             });
-        });
-    </script>
-    <script>
-        function closeDieModal() {
+        </script>
+        <script>
+            function closeDieModal() {
 
-            $('#modalGenerateDieRequisition').modal('hide');
-        }
-        function closePopup() {
+                $('#modalGenerateDieRequisition').modal('hide');
+            }
+            function closePopup() {
 
-            $('#modalGenerateRequisition').modal('hide');
+                $('#modalGenerateRequisition').modal('hide');
 
-        }
-    </script>
+            }
+        </script>
 
-    @*<script>
+        @*<script>
             function isGreaterThanPOQty() {
                 var poQty = $("#txtPoQty").text();
                 var planQty = parseFloat($("#txtPlanQty").val());
@@ -446,647 +435,647 @@
                 }
             }
         </script>*@
-    <script>
-        function SendRequisition() {
-            var reqType = $("#txtRequisitionType").val();
-            var customerName = $("#txtCustomerName").val();
-            var partName = $("#txtRMPartName").val();
-            var rawMaterial = $("#txtRMRawMaterial").val();
-            var section = $("#txtRMSection").val();
-            var quantity = $("#txtRMQuantity").val();
-            var DieDescription = "0";
-            var partDescription = $("#txtPartDescription").val();
-            var workorderNo = $("#hdnwono").val();
-            var remark = $("#txtRMRemark").val();
-            var GrossWeight = $("#hdnGrossWeight").val();
-            var totalWt = quantity * GrossWeight;
-            //alert(workorderNo);
-            $.ajax
-                                         ({
-                                             type: "POST",
-                                             url: "../Workorder/SendRequisition",
-                                             data: JSON.stringify({
-                                                 ReqType: ' ' + reqType + '', CustomerName: ' ' + customerName + '', PartName: ' ' + partName + '', RawMaterial: ' ' + rawMaterial + '', TotalWt: '' + totalWt + '',
-                                                 Section: ' ' + section + '', Quantity: ' ' + quantity + '', DieDescription: '' + DieDescription + '', PartDescription: ' ' + partDescription + '', WorkorderNo: '' + workorderNo + '', Remark: '' + remark + ''
-                                             }),
-                                             contentType: "application/json;charset=utf-8",
-                                             //dataType: "json",
-                                             success: function (rfqid) {
+        <script>
+            function SendRequisition() {
+                var reqType = $("#txtRequisitionType").val();
+                var customerName = $("#txtCustomerName").val();
+                var partName = $("#txtRMPartName").val();
+                var rawMaterial = $("#txtRMRawMaterial").val();
+                var section = $("#txtRMSection").val();
+                var quantity = $("#txtRMQuantity").val();
+                var DieDescription = "0";
+                var partDescription = $("#txtPartDescription").val();
+                var workorderNo = $("#hdnwono").val();
+                var remark = $("#txtRMRemark").val();
+                var GrossWeight = $("#hdnGrossWeight").val();
+                var totalWt = quantity * GrossWeight;
+                //alert(workorderNo);
+                $.ajax
+                    ({
+                        type: "POST",
+                        url: "../Workorder/SendRequisition",
+                        data: JSON.stringify({
+                            ReqType: ' ' + reqType + '', CustomerName: ' ' + customerName + '', PartName: ' ' + partName + '', RawMaterial: ' ' + rawMaterial + '', TotalWt: '' + totalWt + '',
+                            Section: ' ' + section + '', Quantity: ' ' + quantity + '', DieDescription: '' + DieDescription + '', PartDescription: ' ' + partDescription + '', WorkorderNo: '' + workorderNo + '', Remark: '' + remark + ''
+                        }),
+                        contentType: "application/json;charset=utf-8",
+                        //dataType: "json",
+                        success: function (rfqid) {
 
-                                                 //$j("#modalGenerateRequisition").closeModal();
-                                                 $j("#RMAvailability").text("Requisition Sent");
-                                                 $j("#btnGenerateReq").hide();
-                                                 insertRequisitionDetails(rfqid, rawMaterial, section, quantity, totalWt);
-                                                 // getRawMaterialAvailability(data[0].RawMaterial, data[0].Section);
-                                             },
-                                             error: function (err) {
+                            //$j("#modalGenerateRequisition").closeModal();
+                            $j("#RMAvailability").text("Requisition Sent");
+                            $j("#btnGenerateReq").hide();
+                            insertRequisitionDetails(rfqid, rawMaterial, section, quantity, totalWt);
+                            // getRawMaterialAvailability(data[0].RawMaterial, data[0].Section);
+                        },
+                        error: function (err) {
 
-                                             }
-                                         });
-        }
-        function insertRequisitionDetails(rfqid, rawMaterial, section, quantity, totalWt) {
-
-            $.ajax
-                                       ({
-                                           type: "POST",
-                                           url: "../Workorder/insertRequisitionDetails",
-                                           data: JSON.stringify({
-                                               RFQId: ' ' + rfqid + '', RawMaterial: ' ' + rawMaterial + '',
-                                               Section: ' ' + section + '', Quantity: ' ' + quantity + '', TotalWt: ' ' + totalWt + ''
-                                           }),
-                                           contentType: "application/json;charset=utf-8",
-                                           //dataType: "json",
-                                           success: function (data) {
-                                               closePopup();
-                                               alert("Requisition Sent Successfully!");
-                                           },
-                                           error: function (err) {
-
-                                           }
-                                       });
-
-        }
-        function SendDieRequisition() {
-            var dieDescription = $("#txtDieDescription").val();
-            var dieRemark = $("#txtDieRemark").val();
-            var dieNo = $("#lblDieNo1").text();
-            var workorderNo = $("#lblWorkorderno").text();
-            $.ajax
-                                         ({
-                                             type: "POST",
-                                             url: "../Workorder/SendDieRequisition",
-                                             data: JSON.stringify({
-                                                 DieDescription: ' ' + dieDescription + '', DieRemark: ' ' + dieRemark + '',
-                                                 WorkorderNo: ' ' + workorderNo + '', DieNo: ' ' + dieNo + ''
-                                             }),
-                                             contentType: "application/json;charset=utf-8",
-                                             //dataType: "json",
-                                             success: function (data) {
-                                                 $j("#DieAvailability").text("Requisition Sent");
-                                                 $j("#btnGenerateDieReq").hide();
-                                                 closeDieModal();
-                                                 alert(data);
-
-                                                 // getRawMaterialAvailability(data[0].RawMaterial, data[0].Section);
-                                             },
-                                             error: function (err) {
-
-                                             }
-                                         });
-        }
-    </script>
-    <script>
-        function closeModal() {
-            var targetDate = $("#txtTargetDate").val();
-            var planQty = $("#txtPlanQty").val();
-            if (targetDate == "") {
-                alert("Please select Target Date");
-                return false;
+                        }
+                    });
             }
-            if (planQty == "") {
-                alert("Please enter Plan Quantity");
-                return false;
-            }
-            $('#modalCuttingSlip').modal('show');
-            $(document).mouseup(function (e) {
-                var popup = $("#modalCuttingSlip");
+            function insertRequisitionDetails(rfqid, rawMaterial, section, quantity, totalWt) {
 
-                if (popup.is(e.target) && popup.has(e.target).length == 0) {
-                    generatewo();
+                $.ajax
+                    ({
+                        type: "POST",
+                        url: "../Workorder/insertRequisitionDetails",
+                        data: JSON.stringify({
+                            RFQId: ' ' + rfqid + '', RawMaterial: ' ' + rawMaterial + '',
+                            Section: ' ' + section + '', Quantity: ' ' + quantity + '', TotalWt: ' ' + totalWt + ''
+                        }),
+                        contentType: "application/json;charset=utf-8",
+                        //dataType: "json",
+                        success: function (data) {
+                            closePopup();
+                            alert("Requisition Sent Successfully!");
+                        },
+                        error: function (err) {
+
+                        }
+                    });
+
+            }
+            function SendDieRequisition() {
+                var dieDescription = $("#txtDieDescription").val();
+                var dieRemark = $("#txtDieRemark").val();
+                var dieNo = $("#lblDieNo1").text();
+                var workorderNo = $("#lblWorkorderno").text();
+                $.ajax
+                    ({
+                        type: "POST",
+                        url: "../Workorder/SendDieRequisition",
+                        data: JSON.stringify({
+                            DieDescription: ' ' + dieDescription + '', DieRemark: ' ' + dieRemark + '',
+                            WorkorderNo: ' ' + workorderNo + '', DieNo: ' ' + dieNo + ''
+                        }),
+                        contentType: "application/json;charset=utf-8",
+                        //dataType: "json",
+                        success: function (data) {
+                            $j("#DieAvailability").text("Requisition Sent");
+                            $j("#btnGenerateDieReq").hide();
+                            closeDieModal();
+                            alert(data);
+
+                            // getRawMaterialAvailability(data[0].RawMaterial, data[0].Section);
+                        },
+                        error: function (err) {
+
+                        }
+                    });
+            }
+        </script>
+        <script>
+            function closeModal() {
+                var targetDate = $("#txtTargetDate").val();
+                var planQty = $("#txtPlanQty").val();
+                if (targetDate == "") {
+                    alert("Please select Target Date");
+                    return false;
                 }
-            });
-        }
-
-        function generatewo() {
-            var workorderNo = $("#hdnwono").val();
-            var customerName = $("#lblcustomerName1").text();
-            var poNumber = $("#lblpono1").text();
-            var dieNo = $("#lblDieNo1").text();
-            var rawMaterial = $("#lblrawMaterial").text();
-            var heatcode = $("#txtHeatCode").val();
-            var section = $("#lblSection1").text();
-            var cutLength = $("#txtCutLength").val();
-            var dateOfIssue = $("#txtDateOfIssue").val();
-            var targetDate = $("#txtTargetDate").val();
-            var hammerNo = $("#lblHammerReq").text();
-            var dieSts = $("#txtDieSts").val();
-            var dieLife = $("#txtDieLife").val();
-            var cutWt = $("#lblCutwt1").text();
-            var poQty = $("#txtPoQty").text();
-            var productionStartDate = $("#txtProduStartDate").val();
-            var planQty = $("#txtPlanQty").val();
-            var availableRM = $("#RMAvailability").text();
-            if (availableRM == 'No') {
-                availableRM = 0;
-            } else {
-                availableRM = $("#RMAvailability").text();
-            }
-            var quantity = $("#txtQuantity").val();
-            var reqType = $("#txtRequisitionType").val();
-            var partName = $("#txtPartName").val();
-            var partDescription = $("#txtPartDescription").val();
-            var remark = $("#txtRemark").val();
-            var woPOID = $("#woPOID").val();
-            var cutLength = $("#lblCutLength").text();
-            //if (heatcode == "") {
-            //    alert("Please enter Heatcode");
-            //    return false;
-            //}
-            //if (cutLength == "") {
-            //    alert("Please enter Cut Length");
-            //    return false;
-            //}
-            if (dateOfIssue == "") {
-                alert("Please select Date Of Issue");
-                return false;
-            }
-            //if (targetDate == "") {
-            //    alert("Please select Target Date");
-            //    return false;
-            //}
-            //if (hammerNo == "") {
-            //    alert("Please select Hammer No");
-            //    return false;
-            //}
-            //if (dieSts == "") {
-            //    alert("Please enter Die Status");
-            //    return false;
-            //}
-            //if (dieLife == "") {
-            //    alert("Please enter Die Life");
-            //    return false;
-            //}
-
-            //if (productionStartDate == "") {
-            //    alert("Please select Production Start Date");
-            //    return false;
-            //}
-
-            if (planQty == "") {
-                alert("Please enter Plan Quantity");
-                return false;
-            }
-            $("#lblCutRMGrade").text(rawMaterial);
-            $("#lblCutSection").text(section);
-            $("#lblCutInternalCutWt").text(cutWt);
-            $("#lblCutlength").text(cutLength);
-            $("#txtCutTotalWt").val(cutLength);
-
-            $.ajax({
-
-                type: "POST",
-                url: "../Workorder/GenerateWorkorder",
-                data: JSON.stringify({
-                    workorderNo: ' ' + workorderNo + ' ', customerName: ' ' + customerName + ' ', poNumber: ' ' + poNumber + ' ',
-                    dieNo: ' ' + dieNo + ' ', rawMaterial: ' ' + rawMaterial + ' ', heatcode: ' ' + heatcode + ' ', section: ' ' + section + ' ',
-                    cutLength: ' ' + cutLength + ' ', dateOfIssue: ' ' + dateOfIssue + ' ', targetDate: ' ' + targetDate + ' ',
-                    hammerNo: ' ' + hammerNo + ' ', dieSts: ' ' + dieSts + ' ', dieLife: ' ' + dieLife + ' ', cutWt: ' ' + cutWt + ' ', poQty: ' ' + poQty + ' ', productionStartDate: ' ' + productionStartDate + ' ', planQty: ' ' + planQty + ' ',
-                    availableRM: ' ' + availableRM + ' ', quantity: ' ' + quantity + ' ',
-                    reqType: ' ' + reqType + ' ', partName: ' ' + partName + ' ', partDescription: ' ' + partDescription + ' ', remark: ' ' + remark + ' ', woPOID: ' ' + woPOID + ' '
-                }),
-                contentType: "application/json;charset=utf-8",
-                //dataType: "json",
-                success: function (data) {
-                    alert(data);
-                    location.href = "../Workorder/AllPO";
-                },
-                error: function (err) {
-                    // alert('Error occured');
+                if (planQty == "") {
+                    alert("Please enter Plan Quantity");
+                    return false;
                 }
+                $('#modalCuttingSlip').modal('show');
+                $(document).mouseup(function (e) {
+                    var popup = $("#modalCuttingSlip");
+
+                    if (popup.is(e.target) && popup.has(e.target).length == 0) {
+                        generatewo();
+                    }
+                });
+            }
+
+            function generatewo() {
+                var workorderNo = $("#hdnwono").val();
+                var customerName = $("#lblcustomerName1").text();
+                var poNumber = $("#lblpono1").text();
+                var dieNo = $("#lblDieNo1").text();
+                var rawMaterial = $("#lblrawMaterial").text();
+                var heatcode = $("#txtHeatCode").val();
+                var section = $("#lblSection1").text();
+                var cutLength = $("#txtCutLength").val();
+                var dateOfIssue = $("#txtDateOfIssue").val();
+                var targetDate = $("#txtTargetDate").val();
+                var hammerNo = $("#lblHammerReq").text();
+                var dieSts = $("#txtDieSts").val();
+                var dieLife = $("#txtDieLife").val();
+                var cutWt = $("#lblCutwt1").text();
+                var poQty = $("#txtPoQty").text();
+                var productionStartDate = $("#txtProduStartDate").val();
+                var planQty = $("#txtPlanQty").val();
+                var availableRM = $("#RMAvailability").text();
+                if (availableRM == 'No') {
+                    availableRM = 0;
+                } else {
+                    availableRM = $("#RMAvailability").text();
+                }
+                var quantity = $("#txtQuantity").val();
+                var reqType = $("#txtRequisitionType").val();
+                var partName = $("#txtPartName").val();
+                var partDescription = $("#txtPartDescription").val();
+                var remark = $("#txtRemark").val();
+                var woPOID = $("#woPOID").val();
+                var cutLength = $("#lblCutLength").text();
+                //if (heatcode == "") {
+                //    alert("Please enter Heatcode");
+                //    return false;
+                //}
+                //if (cutLength == "") {
+                //    alert("Please enter Cut Length");
+                //    return false;
+                //}
+                if (dateOfIssue == "") {
+                    alert("Please select Date Of Issue");
+                    return false;
+                }
+                //if (targetDate == "") {
+                //    alert("Please select Target Date");
+                //    return false;
+                //}
+                //if (hammerNo == "") {
+                //    alert("Please select Hammer No");
+                //    return false;
+                //}
+                //if (dieSts == "") {
+                //    alert("Please enter Die Status");
+                //    return false;
+                //}
+                //if (dieLife == "") {
+                //    alert("Please enter Die Life");
+                //    return false;
+                //}
+
+                //if (productionStartDate == "") {
+                //    alert("Please select Production Start Date");
+                //    return false;
+                //}
+
+                if (planQty == "") {
+                    alert("Please enter Plan Quantity");
+                    return false;
+                }
+                $("#lblCutRMGrade").text(rawMaterial);
+                $("#lblCutSection").text(section);
+                $("#lblCutInternalCutWt").text(cutWt);
+                $("#lblCutlength").text(cutLength);
+                $("#txtCutTotalWt").val(cutLength);
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "../Workorder/GenerateWorkorder",
+                    data: JSON.stringify({
+                        workorderNo: ' ' + workorderNo + ' ', customerName: ' ' + customerName + ' ', poNumber: ' ' + poNumber + ' ',
+                        dieNo: ' ' + dieNo + ' ', rawMaterial: ' ' + rawMaterial + ' ', heatcode: ' ' + heatcode + ' ', section: ' ' + section + ' ',
+                        cutLength: ' ' + cutLength + ' ', dateOfIssue: ' ' + dateOfIssue + ' ', targetDate: ' ' + targetDate + ' ',
+                        hammerNo: ' ' + hammerNo + ' ', dieSts: ' ' + dieSts + ' ', dieLife: ' ' + dieLife + ' ', cutWt: ' ' + cutWt + ' ', poQty: ' ' + poQty + ' ', productionStartDate: ' ' + productionStartDate + ' ', planQty: ' ' + planQty + ' ',
+                        availableRM: ' ' + availableRM + ' ', quantity: ' ' + quantity + ' ',
+                        reqType: ' ' + reqType + ' ', partName: ' ' + partName + ' ', partDescription: ' ' + partDescription + ' ', remark: ' ' + remark + ' ', woPOID: ' ' + woPOID + ' '
+                    }),
+                    contentType: "application/json;charset=utf-8",
+                    //dataType: "json",
+                    success: function (data) {
+                        alert(data);
+                        location.href = "../Workorder/AllPO";
+                    },
+                    error: function (err) {
+                        // alert('Error occured');
+                    }
+                });
+
+            }
+
+        </script>
+        <script>
+            function generateCuttingSlip() {
+                var quantity = $("#txtCutQuantity").val();
+                var totalWeight = $("#txtCutTotalWt").text();
+                var rmGrade = $("#lblCutRMGrade").text();
+                var section = $("#lblCutSection").text();
+                var internalCtWt = $("#lblCutInternalCutWt").text();
+                var Ctlength = $("#lblCutlength").text();
+
+            }
+        </script>
+        <script>
+            function calculateTotalWt() {
+                var qty = parseFloat($("#txtCutQuantity").val());
+                var ctwt = parseFloat($("#lblCutCTWt").text());
+                var totalWt = qty * ctwt;
+                $("#txtCutTotalWt").val(totalWt);
+            }
+        </script>
+        <script>
+
+            $(".liPOS").click(function () {
+
+                $(this).addClass("media p-3 b-b has-hover light border-right");
+                $(this).siblings().removeClass("media p-3 b-b has-hover light border-right");
+                $(this).siblings().addClass("media p-3 b-b has-hover");
             });
-
-        }
-
-    </script>
-    <script>
-        function generateCuttingSlip() {
-            var quantity = $("#txtCutQuantity").val();
-            var totalWeight = $("#txtCutTotalWt").text();
-            var rmGrade = $("#lblCutRMGrade").text();
-            var section = $("#lblCutSection").text();
-            var internalCtWt = $("#lblCutInternalCutWt").text();
-            var Ctlength = $("#lblCutlength").text();
-
-        }
-    </script>
-    <script>
-        function calculateTotalWt() {
-            var qty = parseFloat($("#txtCutQuantity").val());
-            var ctwt = parseFloat($("#lblCutCTWt").text());
-            var totalWt = qty * ctwt;
-            $("#txtCutTotalWt").val(totalWt);
-        }
-    </script>
-    <script>
-      
-        $(".liPOS").click(function () {
-
-            $(this).addClass("media p-3 b-b has-hover light border-right");
-            $(this).siblings().removeClass("media p-3 b-b has-hover light border-right");
-            $(this).siblings().addClass("media p-3 b-b has-hover");
-        });
-        function fetchWO(woID) {
+            function fetchWO(woID) {
 
 
-            var wono = $("#hdnwono").val();
-            $("#PODetailsDiv").show();
-            $("#WODetailsDiv").show();
-            //var customerName = $(el).siblings("div").val();
-            $.ajax
-                                    ({
-                                        type: "POST",
-                                        url: "../Workorder/GetWoDataByWOID",
-                                        data: JSON.stringify({ WOID: ' ' + woID + '' }),
-                                        contentType: "application/json;charset=utf-8",
-                                        //dataType: "json",
-                                        success: function (data) {
-                                            //$j('#txtCustomerName').val(customerName);
-                                            console.log(data);
-                                            $j("#woPOID").val(woID);
-                                            $j('#lblWorkorderno').text(data[0].WorkorderNo);
-                                            $j('#lblWorkorderno1').text(data[0].WorkorderNo);
-                                            $j('#lblCutWorkorderno').text(data[0].WorkorderNo);
-                                            $j('#lblcustomerName').text(data[0].customerName);
-                                            $j('#lblcustomerName1').text(data[0].customerName);
-                                            $j('#lblCutcustomerName').text(data[0].customerName);
-                                            $j('#lblApprovalDate').text(jsondateformatconvert(data[0].CreatedDate));
-                                            $j('#lblTargetDate').text(jsondateformatconvert(data[0].TargetDate));
-                                            $j('#lblCondOfSupply').text(data[0].FeasibilityConditionSupply1);
-                                            //$j('#lblOpsinvolved').text(data[0].ConditionOfSupply);
-                                            $j('#lblHeatTreatment').text(data[0].FeasibilityHeattreatment1);
-                                            $j('#lblHardnessMin').text(data[0].hardnessmin);
-                                            $j('#lblHardnessMax').text(data[0].hardnessmax);
-                                            $j('#lblHardnessUnits').text(data[0].hardnessunits);
-                                            $j("lblHeatCode").text(data[0].heatcode);
+                var wono = $("#hdnwono").val();
+                $("#PODetailsDiv").show();
+                $("#WODetailsDiv").show();
+                //var customerName = $(el).siblings("div").val();
+                $.ajax
+                    ({
+                        type: "POST",
+                        url: "../Workorder/GetWoDataByWOID",
+                        data: JSON.stringify({ WOID: ' ' + woID + '' }),
+                        contentType: "application/json;charset=utf-8",
+                        //dataType: "json",
+                        success: function (data) {
+                            //$j('#txtCustomerName').val(customerName);
+                            console.log(data);
+                            $j("#woPOID").val(woID);
+                            $j('#lblWorkorderno').text(data[0].WorkorderNo);
+                            $j('#lblWorkorderno1').text(data[0].WorkorderNo);
+                            $j('#lblCutWorkorderno').text(data[0].WorkorderNo);
+                            $j('#lblcustomerName').text(data[0].customerName);
+                            $j('#lblcustomerName1').text(data[0].customerName);
+                            $j('#lblCutcustomerName').text(data[0].customerName);
+                            $j('#lblApprovalDate').text(jsondateformatconvert(data[0].CreatedDate));
+                            $j('#lblTargetDate').text(jsondateformatconvert(data[0].TargetDate));
+                            $j('#lblCondOfSupply').text(data[0].FeasibilityConditionSupply1);
+                            //$j('#lblOpsinvolved').text(data[0].ConditionOfSupply);
+                            $j('#lblHeatTreatment').text(data[0].FeasibilityHeattreatment1);
+                            $j('#lblHardnessMin').text(data[0].hardnessmin);
+                            $j('#lblHardnessMax').text(data[0].hardnessmax);
+                            $j('#lblHardnessUnits').text(data[0].hardnessunits);
+                            $j("lblHeatCode").text(data[0].heatcode);
 
-                                            $j('#lblpono').text(data[0].PONumber);
-                                            $j('#lblpono1').text(data[0].PONumber);
-                                            $j('#lblCutPONo').text(data[0].PONumber);
-                                            $j('#txtRMPartName').val(data[0].PartName);
-                                            $j('#lblrawMaterial').text(data[0].RawMaterial);
-                                            $j('#lblCutRMGrade').text(data[0].RawMaterial);
-                                            $j('#txtRMRawMaterial').val(data[0].RawMaterial);
-                                            $j('#txtRMSection').val(data[0].Section);
-                                            $j('#lblSection').text(data[0].Section);
-                                            $j('#lblCutSection').text(data[0].Section);
-                                            $j('#lblCutwt').text(data[0].cutweight);
-                                            $j('#lblCutCTWt').text(data[0].cutweight);
-                                            $j('#lblColorCode').text(data[0].ColorCode);
-                                            $j('#lblDieNo').text(data[0].DieNumber);
-                                            $j('#lblPartName').text(data[0].PartName);
-                                            $j('#lblrawMaterial1').text(data[0].RawMaterial);
-                                            $j('#lblSection1').text(data[0].Section);
-                                            $j('#lblCutwt1').text(data[0].cutweight);
-                                            $j('#lblColorCode1').text(data[0].ColorCode);
-                                            $j('#lblDieNo1').text(data[0].DieNo);
-                                            $j('#lblCutDieNo').text(data[0].DieNo);
-                                            $j('#txtPoQty').text(data[0].QtymentionedinPO);
-                                            $j('#lblPOQty').text(data[0].PlanQty);
-                                            $j('#txtPlanQty').val(data[0].PlanQty);
-                                            $j('#txtTargetDate').val(jsondateformatconvert1(data[0].TargetDate));
-                                            $j('#lblCutPOQty').text(data[0].QtymentionedinPO);
-                                            var natureOfwork = data[0].NatureOfWork;
-                                            if (natureOfwork == '201') {
-                                                $j('#lblNatureOfWork').text('Labour job');
-                                            }
-                                            else if (natureOfwork == '202') {
-                                                $j('#lblNatureOfWork').text('With Material');
-                                            } else { }
-                                            $j("#lblCutLength").text(data[0].cutlength);
-                                            $j("#lblCutCutLength").text(data[0].cutlength);
-                                            var hammer = data[0].FeasibilityHammerRequired;
-                                            if (hammer == '401') {
-                                                $j('#lblCutHammerReq').text('3 Tonne');
-                                                $j('#lblHammerReq').text('3 Tonne');
+                            $j('#lblpono').text(data[0].PONumber);
+                            $j('#lblpono1').text(data[0].PONumber);
+                            $j('#lblCutPONo').text(data[0].PONumber);
+                            $j('#txtRMPartName').val(data[0].PartName);
+                            $j('#lblrawMaterial').text(data[0].RawMaterial);
+                            $j('#lblCutRMGrade').text(data[0].RawMaterial);
+                            $j('#txtRMRawMaterial').val(data[0].RawMaterial);
+                            $j('#txtRMSection').val(data[0].Section);
+                            $j('#lblSection').text(data[0].Section);
+                            $j('#lblCutSection').text(data[0].Section);
+                            $j('#lblCutwt').text(data[0].cutweight);
+                            $j('#lblCutCTWt').text(data[0].cutweight);
+                            $j('#lblColorCode').text(data[0].ColorCode);
+                            $j('#lblDieNo').text(data[0].DieNumber);
+                            $j('#lblPartName').text(data[0].PartName);
+                            $j('#lblrawMaterial1').text(data[0].RawMaterial);
+                            $j('#lblSection1').text(data[0].Section);
+                            $j('#lblCutwt1').text(data[0].cutweight);
+                            $j('#lblColorCode1').text(data[0].ColorCode);
+                            $j('#lblDieNo1').text(data[0].DieNo);
+                            $j('#lblCutDieNo').text(data[0].DieNo);
+                            $j('#txtPoQty').text(data[0].QtymentionedinPO);
+                            $j('#lblPOQty').text(data[0].PlanQty);
+                            $j('#txtPlanQty').val(data[0].PlanQty);
+                            $j('#txtTargetDate').val(jsondateformatconvert1(data[0].TargetDate));
+                            $j('#lblCutPOQty').text(data[0].QtymentionedinPO);
+                            var natureOfwork = data[0].NatureOfWork;
+                            if (natureOfwork == '201') {
+                                $j('#lblNatureOfWork').text('Labour job');
+                            }
+                            else if (natureOfwork == '202') {
+                                $j('#lblNatureOfWork').text('With Material');
+                            } else { }
+                            $j("#lblCutLength").text(data[0].cutlength);
+                            $j("#lblCutCutLength").text(data[0].cutlength);
+                            var hammer = data[0].FeasibilityHammerRequired;
+                            if (hammer == '401') {
+                                $j('#lblCutHammerReq').text('3 Tonne');
+                                $j('#lblHammerReq').text('3 Tonne');
 
-                                            }
-                                            else if (hammer == '402') {
-                                                $j('#lblCutHammerReq').text('1 .25 Tonne');
-                                                $j('#lblHammerReq').text('1 .25 Tonne');
-                                            }
-                                            else if (hammer == '403') {
-                                                $j('#lblCutHammerReq').text('1 Tonne');
-                                                $j('#lblHammerReq').text('1 Tonne');
-                                            }
-                                            else if (hammer == '404') {
-                                                $j('#lblCutHammerReq').text('Other');
-                                                $j('#lblHammerReq').text('Other');
-                                            }
-                                            else { }
-                                            var dieNumber = data[0].DieNo;
-                                            getRawMaterialAvailability(data[0].RawMaterial, data[0].Section, data[0].CustomerName, natureOfwork);
-                                            getDieAvailability(dieNumber);
-                                            getDispatchQty(data[0].poID);
-                                            getOpsInvolved(data[0].poID);
-                                        },
-                                        error: function (err) {
+                            }
+                            else if (hammer == '402') {
+                                $j('#lblCutHammerReq').text('1 .25 Tonne');
+                                $j('#lblHammerReq').text('1 .25 Tonne');
+                            }
+                            else if (hammer == '403') {
+                                $j('#lblCutHammerReq').text('1 Tonne');
+                                $j('#lblHammerReq').text('1 Tonne');
+                            }
+                            else if (hammer == '404') {
+                                $j('#lblCutHammerReq').text('Other');
+                                $j('#lblHammerReq').text('Other');
+                            }
+                            else { }
+                            var dieNumber = data[0].DieNo;
+                            getRawMaterialAvailability(data[0].RawMaterial, data[0].Section, data[0].CustomerName, natureOfwork);
+                            getDieAvailability(dieNumber);
+                            getDispatchQty(data[0].poID);
+                            getOpsInvolved(data[0].poID);
+                        },
+                        error: function (err) {
 
-                                        }
-                                    });
-        }
-    </script>
+                        }
+                    });
+            }
+        </script>
 
-    <script>
-        function getWOLIst(poID) {
-            $.ajax({
-                type: "POST",
-                url: "../Workorder/getWOListByPOID",
-                data: JSON.stringify({ PoID: '' + poID + '' }),
-                contentType: "application/json;charset=utf-8",
-                success: function (data) {
-                    for (var i = 0; i < data.length; i++) {
+        <script>
+            function getWOLIst(poID) {
+                $.ajax({
+                    type: "POST",
+                    url: "../Workorder/getWOListByPOID",
+                    data: JSON.stringify({ PoID: '' + poID + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        for (var i = 0; i < data.length; i++) {
 
-                        $('#drpWOList').append($("<a class='dropdown-item'>" + data[i].WorkorderNo + "</a>"))
+                            $('#drpWOList').append($("<a class='dropdown-item'>" + data[i].WorkorderNo + "</a>"))
+
+                        }
 
                     }
+                });
 
+            }
+
+        </script>
+        <script>
+
+            function getOpsInvolved(poID) {
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "../Workorder/getOpsInvolved",
+                    data: JSON.stringify({ PoID: '' + poID + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    //dataType: "json",
+                    success: function (data) {
+                        var append = new Array();
+                        for (var i = 0; i < data.length; i++) {
+
+                            append.push(data[i].operationinvolvedname);
+
+                        }
+                        append = append.toString();
+
+                        append = append.replace(/,/g, ", ");
+                        $j("#lblOpsinvolved").text(append);
+                    }
+                });
+
+            }
+        </script>
+        <script>
+            function getDispatchQty(poID) {
+                $("#woPOID").val(poID);
+                $.ajax({
+
+                    type: "POST",
+                    url: "../Workorder/getDispatchQty",
+                    data: JSON.stringify({ PoID: '' + poID + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    //dataType: "json",
+                    success: function (data) {
+                        $("#lblTotalDispatchQty").text(data[0]);
+
+                        if ((data[1]) != 0) {
+                            $("#lblBalancedQty").text(data[1]);
+                        } else {
+                            $("#lblBalancedQty").text($("#txtPoQty").text());
+                        }
+                    }
+                });
+
+            }
+        </script>
+
+
+        <script>
+            function getDieAvailability(dieNumber) {
+                $.ajax({
+                    url: "../Workorder/GetDieAvailability",
+                    type: "POST",
+                    dataType: "json",
+                    data: JSON.stringify({ DieNumber: ' ' + dieNumber + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        if (data != '') {
+                            $j('#DieAvailability').text('Yes');
+                            $j('#btnGenerateDieReq').hide();
+                        }
+                        else {
+                            $j('#DieAvailability').text('No');
+                            $j('#btnGenerateDieReq').show();
+                        }
+                    }
+                });
+
+            }
+
+
+            function getRawMaterialAvailability(RawMaterial, Section, CustomerName, natureOfwork) {
+                $j.ajax({
+                    url: "../Workorder/GetRMAvialbility",
+                    type: "POST",
+                    dataType: "json",
+                    data: JSON.stringify({ RawMaterial: '' + RawMaterial + '', Section: ' ' + Section + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        if (data != '0' || natureOfwork != "202") {
+                            //$j("#RMAvailability").text('Yes [Available Qty:' + data + ']');
+                            $j("#RMAvailability").text(data);
+                            $j("#divbtnGenerateReq").hide();
+                        } else {
+                            $j("#divbtnGenerateReq").show();
+                            $j("#RMAvailability").text('No');
+                            $j("#txtCustomerName").val(CustomerName);
+                            $j("#btn_Modal").prop('disabled', true);
+                        }
+                    }
+                });
+
+            }
+        </script>
+        <script>
+            function jsondateformatconvert(jsondate) {
+                var MyDate_String_Value = jsondate;
+                var value = new Date
+                    (
+                    parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+                    );
+                var date = value.getDate();
+                if (date < 10) {
+                    date = "0" + date;
+                } else {
+                    date = date;
                 }
+                var month = value.getMonth() + 1;
+                if (month < 10) {
+                    month = "0" + month;
+                } else {
+                    month = month;
+                }
+                var year = value.getFullYear();
+                var hrs = value.getHours();
+                var minutes = value.getMinutes();
+                var sec = value.getSeconds();
+                var day = value.getDay();
+
+                var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+                var dayName = days[value.getDay()];
+
+                //var d = new Date(dateString);
+                //var dayName = d.toString().split(' ')[0];
+
+                var dat = dayName + ", " + date + "-" + month + "-" + year;
+                return dat;
+            }
+
+            function jsondateformatconvert1(jsondate) {
+                var MyDate_String_Value = jsondate;
+                var value = new Date
+                    (
+                    parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+                    );
+                var date = value.getDate();
+                if (date < 10) {
+                    date = "0" + date;
+                } else {
+                    date = date;
+                }
+                var month = value.getMonth() + 1;
+                if (month < 10) {
+                    month = "0" + month;
+                } else {
+                    month = month;
+                }
+                var year = value.getFullYear();
+                var hrs = value.getHours();
+                var minutes = value.getMinutes();
+                var sec = value.getSeconds();
+                var day = value.getDay();
+
+                var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+                var dayName = days[value.getDay()];
+
+                //var d = new Date(dateString);
+                //var dayName = d.toString().split(' ')[0];
+
+                var dat = date + "-" + month + "-" + year;
+                return dat;
+            }
+        </script>
+        <script>
+            $(document).on("keypress", "input[type=text].Float-Number", function (event) {
+                //  $(".Float-Number").keypress(function (event) {
+                ///For Positive float
+                //if (isNaN(this.value + "" + String.fromCharCode(e.charCode)))
+                //    return false;
+                $(this).bind("cut copy paste", function (e) {
+                    e.preventDefault();
+                });
+                var value = $("#" + this.id).val();
+                //    alert(event.which);
+                var iKeyCode = (event.which) ? event.which : event.keyCode
+                if (iKeyCode != 46 && iKeyCode != 09 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57)) {
+                    //  alert("Enter Numbers Only");
+                    event.preventDefault();
+                    return false;
+                }
+                if (event.which < 45 || event.which > 58 || event.which == 47) {
+                    if (event.which != 8) {
+                        return false;
+                        event.preventDefault();
+                    }
+                } // prevent if not number/dot
+
+                if (event.which == 46 && value.indexOf('.') != -1) {
+                    return false;
+                    event.preventDefault();
+                } // prevent if already dot
+
+                if (event.which == 45 && value.indexOf('-') != -1) {
+                    return false;
+                    event.preventDefault();
+                } // prevent if already dot
+
+                if (event.which == 45 && value.length > 0) {
+                    event.preventDefault();
+                } // prevent if already -
+
+                return true;
+
+
             });
+            function search() {
+                $("#txt_search").show();
+                var search = $("#txt_search").val();
+                if (search != "") {
+                    searchbyall(search);
+                }
 
-        }
+            }
+            function searchbyall(search) {
+                $.ajax({
+                    type: "POST",
+                    url: "../Workorder/searchbyallActiveWO",
+                    // data: params,
+                    data: JSON.stringify({ search: ' ' + search + '' }),
+                    contentType: "application/json;charset=utf-8",
+                    // dataType: "json",
+                    success: function (data) {
+                        $('#ullslistbind').empty();
+                        var items = [];
+                        for (var i = 0; i < data.length; i++) {
+                            var createddate = jsondateformatconvert('' + data[i].CreatedDate + '');
+                            var targetdate = jsondateformatconvert('' + data[i].TargetDate + '');
 
-    </script>
-    <script>
+                            items.push('<li style="display:none" class="WoNo"><input type="hidden" value=' + data[i].WorkorderNo + ' id="hdnwono" /></li> <li class="media p-3 b-b has-hover liPOS" onclick="fetchWO(' + data[i].WorkorderID + ')"><div type="hidden" value=' + data[i].WorkorderID + ' class="WorkorderID" /> <div><div class="avatar avatar-md mr-3 mt-1 float-left"><img src="../NewCssAndTheme/img/imageWOs.jpg" class="s-128" /></div> <div class="media-body text-truncate">  <h6 class="mt-0 mb-1 font-weight-normal">' + data[i].WorkorderNo + '</h6><small title="Plan Qty">' + data[i].PlanQty + '&nbsp;</small><small title="Created Date"> | &nbsp; ' + createddate + '&nbsp;</small><small title="Target Date"> | &nbsp;' + targetdate + '</small></div></div></li>');
 
-        function getOpsInvolved(poID) {
-
-            $.ajax({
-
-                type: "POST",
-                url: "../Workorder/getOpsInvolved",
-                data: JSON.stringify({ PoID: '' + poID + '' }),
-                contentType: "application/json;charset=utf-8",
-                //dataType: "json",
-                success: function (data) {
-                    var append = new Array();
-                    for (var i = 0; i < data.length; i++) {
-
-                        append.push(data[i].operationinvolvedname);
+                        }
+                        $('#ullslistbind').append(items.join(''));
+                    },
+                    error: function (err) {
+                        alert('Error occured');
 
                     }
-                    append = append.toString();
+                });
+            }
+            function jsondateformatconvert(jsondate) {
 
-                    append = append.replace(/,/g, ", ");
-                    $j("#lblOpsinvolved").text(append);
+                var MyDate_String_Value = jsondate;
+                var value = new Date
+                    (
+                    parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+                    );
+                var date = value.getDate();
+                if (date < 10) {
+                    date = "0" + date;
+                } else {
+                    date = date;
                 }
-            });
-
-        }
-    </script>
-    <script>
-        function getDispatchQty(poID) {
-            $("#woPOID").val(poID);
-            $.ajax({
-
-                type: "POST",
-                url: "../Workorder/getDispatchQty",
-                data: JSON.stringify({ PoID: '' + poID + '' }),
-                contentType: "application/json;charset=utf-8",
-                //dataType: "json",
-                success: function (data) {
-                    $("#lblTotalDispatchQty").text(data[0]);
-
-                    if ((data[1]) != 0) {
-                        $("#lblBalancedQty").text(data[1]);
-                    } else {
-                        $("#lblBalancedQty").text($("#txtPoQty").text());
-                    }
+                var month = value.getMonth() + 1;
+                if (month < 10) {
+                    month = "0" + month;
+                } else {
+                    month = month;
                 }
-            });
+                var year = value.getFullYear();
+                var hrs = value.getHours();
+                var minutes = value.getMinutes();
+                var sec = value.getSeconds();
+                var day = value.getDay();
 
-        }
-    </script>
+                var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+                var dayName = days[value.getDay()];
+                //var monthlist = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+                var monthname = [value.getMonth()];
+                //var d = new Date(dateString);
+                //var dayName = d.toString().split(' ')[0];
+                var result = "";
+                var dat = date + "-" + month + "-" + year;
 
-    <script>
-        function getDieAvailability(dieNumber) {
-            $.ajax({
-                url: "../Workorder/GetDieAvailability",
-                type: "POST",
-                dataType: "json",
-                data: JSON.stringify({ DieNumber: ' ' + dieNumber + '' }),
-                contentType: "application/json;charset=utf-8",
-                success: function (data) {
-                    if (data != '') {
-                        $j('#DieAvailability').text('Yes');
-                        $j('#btnGenerateDieReq').hide();
-                    }
-                    else {
-                        $j('#DieAvailability').text('No');
-                        $j('#btnGenerateDieReq').show();
-                    }
-                }
-            });
-
-        }
-
-
-        function getRawMaterialAvailability(RawMaterial, Section, CustomerName, natureOfwork) {
-            $j.ajax({
-                url: "../Workorder/GetRMAvialbility",
-                type: "POST",
-                dataType: "json",
-                data: JSON.stringify({ RawMaterial: '' + RawMaterial + '', Section: ' ' + Section + '' }),
-                contentType: "application/json;charset=utf-8",
-                success: function (data) {
-                    if (data != '0' || natureOfwork != "202") {
-                        //$j("#RMAvailability").text('Yes [Available Qty:' + data + ']');
-                        $j("#RMAvailability").text(data);
-                        $j("#divbtnGenerateReq").hide();
-                    } else {
-                        $j("#divbtnGenerateReq").show();
-                        $j("#RMAvailability").text('No');
-                        $j("#txtCustomerName").val(CustomerName);
-                        $j("#btn_Modal").prop('disabled', true);
-                    }
-                }
-            });
-
-        }
-    </script>
-    <script>
-        function jsondateformatconvert(jsondate) {
-            var MyDate_String_Value = jsondate;
-            var value = new Date
-            (
-            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
-            );
-            var date = value.getDate();
-            if (date < 10) {
-                date = "0" + date;
-            } else {
-                date = date;
+                return dat;
             }
-            var month = value.getMonth() + 1;
-            if (month < 10) {
-                month = "0" + month;
-            } else {
-                month = month;
-            }
-            var year = value.getFullYear();
-            var hrs = value.getHours();
-            var minutes = value.getMinutes();
-            var sec = value.getSeconds();
-            var day = value.getDay();
-
-            var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-            var dayName = days[value.getDay()];
-
-            //var d = new Date(dateString);
-            //var dayName = d.toString().split(' ')[0];
-
-            var dat = dayName + ", " + date + "-" + month + "-" + year;
-            return dat;
-        }
-
-        function jsondateformatconvert1(jsondate) {
-            var MyDate_String_Value = jsondate;
-            var value = new Date
-            (
-            parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
-            );
-            var date = value.getDate();
-            if (date < 10) {
-                date = "0" + date;
-            } else {
-                date = date;
-            }
-            var month = value.getMonth() + 1;
-            if (month < 10) {
-                month = "0" + month;
-            } else {
-                month = month;
-            }
-            var year = value.getFullYear();
-            var hrs = value.getHours();
-            var minutes = value.getMinutes();
-            var sec = value.getSeconds();
-            var day = value.getDay();
-
-            var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-            var dayName = days[value.getDay()];
-
-            //var d = new Date(dateString);
-            //var dayName = d.toString().split(' ')[0];
-
-            var dat =  date + "-" + month + "-" + year;
-            return dat;
-        }
-    </script>
-    <script>
-$(document).on("keypress", "input[type=text].Float-Number", function (event) {
-        //  $(".Float-Number").keypress(function (event) {
-        ///For Positive float
-        //if (isNaN(this.value + "" + String.fromCharCode(e.charCode)))
-        //    return false;
-        $(this).bind("cut copy paste", function (e) {
-            e.preventDefault();
-        });
-        var value = $("#" + this.id).val();
-        //    alert(event.which);
-        var iKeyCode = (event.which) ? event.which : event.keyCode
-        if (iKeyCode != 46 && iKeyCode != 09 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57)) {
-          //  alert("Enter Numbers Only");
-            event.preventDefault();
-            return false;
-        }
-        if (event.which < 45 || event.which > 58 || event.which == 47) {
-            if (event.which != 8) {
-                return false;
-                event.preventDefault();
-            }
-        } // prevent if not number/dot
-
-        if (event.which == 46 && value.indexOf('.') != -1) {
-            return false;
-            event.preventDefault();
-        } // prevent if already dot
-
-        if (event.which == 45 && value.indexOf('-') != -1) {
-            return false;
-            event.preventDefault();
-        } // prevent if already dot
-
-        if (event.which == 45 && value.length > 0) {
-            event.preventDefault();
-        } // prevent if already -
-
-        return true;
-
-
-});
-function search() {
-    $("#txt_search").show();
-    var search = $("#txt_search").val();
-    if (search != "") {
-        searchbyall(search);
+        </script>
     }
-
-}
-function searchbyall(search) {
-    $.ajax({
-        type: "POST",
-        url: "../Workorder/searchbyallActiveWO",
-        // data: params,
-        data: JSON.stringify({ search: ' ' + search + '' }),
-        contentType: "application/json;charset=utf-8",
-        // dataType: "json",
-        success: function (data) {
-            $('#ullslistbind').empty();
-            var items = [];
-            for (var i = 0; i < data.length; i++) {
-                var createddate = jsondateformatconvert('' + data[i].CreatedDate + '');
-                var targetdate = jsondateformatconvert('' + data[i].TargetDate + '');
-
-                items.push('<li style="display:none" class="WoNo"><input type="hidden" value='+data[i].WorkorderNo+' id="hdnwono" /></li> <li class="media p-3 b-b has-hover liPOS" onclick="fetchWO(' + data[i].WorkorderID + ')"><div type="hidden" value=' + data[i].WorkorderID + ' class="WorkorderID" /> <div><div class="avatar avatar-md mr-3 mt-1 float-left"><img src="../NewCssAndTheme/img/imageWOs.jpg" class="s-128" /></div> <div class="media-body text-truncate">  <h6 class="mt-0 mb-1 font-weight-normal">' + data[i].WorkorderNo + '</h6><small title="Plan Qty">' + data[i].PlanQty + '&nbsp;</small><small title="Created Date"> | &nbsp; ' + createddate + '&nbsp;</small><small title="Target Date"> | &nbsp;' + targetdate + '</small></div></div></li>');
-
-            }
-            $('#ullslistbind').append(items.join(''));
-        },
-        error: function (err) {
-            alert('Error occured');
-
-        }
-    });
-}
-function jsondateformatconvert(jsondate) {
-
-    var MyDate_String_Value = jsondate;
-    var value = new Date
-    (
-    parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
-    );
-    var date = value.getDate();
-    if (date < 10) {
-        date = "0" + date;
-    } else {
-        date = date;
-    }
-    var month = value.getMonth() + 1;
-    if (month < 10) {
-        month = "0" + month;
-    } else {
-        month = month;
-    }
-    var year = value.getFullYear();
-    var hrs = value.getHours();
-    var minutes = value.getMinutes();
-    var sec = value.getSeconds();
-    var day = value.getDay();
-
-    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-    var dayName = days[value.getDay()];
-    //var monthlist = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUNE', 'JULY', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    var monthname = [value.getMonth()];
-    //var d = new Date(dateString);
-    //var dayName = d.toString().split(' ')[0];
-    var result = "";
-    var dat = date + "-" + month + "-" + year;
-
-    return dat;
-}
-    </script>
-}

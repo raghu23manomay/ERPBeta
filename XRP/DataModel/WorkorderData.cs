@@ -731,7 +731,7 @@ namespace XRP.DataModel
                 //cmd.Parameters.AddWithValue("@CustomerName", customerName.Trim());
                 cmd.Parameters.AddWithValue("@PartName", partName.Trim());
                 cmd.Parameters.AddWithValue("@RawMaterial", rawMaterial.Trim());               
-                cmd.Parameters.AddWithValue("@TotalWt", TotalWt = (TotalWt.Trim() == "NaN"|| TotalWt.Trim() == "0" || TotalWt.Trim() == "") ? ( quantity = (quantity.Trim() == "undefined" || quantity.Trim() == "0" || quantity.Trim() == "")? "0": quantity.Trim()) : TotalWt.Trim());
+                cmd.Parameters.AddWithValue("@TotalWt", TotalWt = (TotalWt.Trim() == "NaN"|| TotalWt.Trim() == "0" || TotalWt.Trim() == "undefined" || TotalWt.Trim() == "") ? ( quantity = (quantity.Trim() == "undefined" || quantity.Trim() == "0" || quantity.Trim() == "")? "0": quantity.Trim()) : TotalWt.Trim());
                 //cmd.Parameters.AddWithValue("@Quantity", quantity.Trim());
                 cmd.Parameters.AddWithValue("@PartDesc", partDescription=partDescription.Trim() == "undefined" ? " " : partDescription.Trim());
                 cmd.Parameters.AddWithValue("@PartNO", partNumber.Trim());

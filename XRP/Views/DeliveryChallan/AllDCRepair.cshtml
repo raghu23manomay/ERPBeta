@@ -24,33 +24,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
+                            @if (Model.ssmtbl_DeliveryChallanModelList != null)
                             {
-                                <tr>
-                                    <td>@data.dispatch_no</td>
-                                    <td>@data.vendor_name</td>
-                                    <td>@data.expected_date.Date.ToString("dd-MMM-yyyy")</td>
-                                    <td>@data.CreatedOn.Date.ToString("dd-MMM-yyyy")</td>
-                                    @if (data.status == true)
-                                    {
-                                        <td>@DeliveryChallanStatus.Received</td>
-                                    }
-                                    else
-                                    {
-                                        <td>@DeliveryChallanStatus.NotReceived</td>
-                                    }
-                                    @if (data.status == true)
-                                    {
-                                        <td><a href="@Url.Action("EditDCRepair", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="View Delivery Challan"><span class="icon-eye mr-3"></span></a></td>
-                                    }
-                                    else
-                                    {
-                                        <td><a href="@Url.Action("EditDCRepair", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="Edit Delivery Challan"><span class="icon-pencil"></span></a></td>
-                                    }
-                                    
-                                </tr>
+                                foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
+                                {
+                                    <tr>
+                                        <td>@data.dispatch_no</td>
+                                        <td>@data.vendor_name</td>
+                                        <td>@data.expected_date.Date.ToString("dd-MMM-yyyy")</td>
+                                        <td>@data.CreatedOn.Date.ToString("dd-MMM-yyyy")</td>
+                                        @if (data.status == true)
+                                        {
+                                            <td>@DeliveryChallanStatus.Received</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@DeliveryChallanStatus.NotReceived</td>
+                                        }
+                                        @if (data.status == true)
+                                        {
+                                            <td><a href="@Url.Action("EditDCRepair", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="View Delivery Challan"><span class="icon-eye mr-3"></span></a></td>
+                                        }
+                                        else
+                                        {
+                                            <td><a href="@Url.Action("EditDCRepair", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="Edit Delivery Challan"><span class="icon-pencil"></span></a></td>
+                                        }
+
+                                    </tr>
+                                }
                             }
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
             </div>

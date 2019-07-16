@@ -1,26 +1,18 @@
 ﻿@model XRP.Models.ssmtbl_FeasibilityModel
 @{
-    ViewBag.Title = "Feasibility";
-    ViewBag.Active = "Marketing";
-    Layout = "~/Views/Shared/_DesignLayout.cshtml";
+                /**/
+
+                ViewBag.Title = "Feasibility";
+                ViewBag.Active = "Marketing";
+                Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
-
 <link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
-<style>
-    .mosurhandsymbol {
-        cursor: pointer;
-    }
-
-    .no-search .select2-search {
-        display: none;
-    }
-</style>
 
 @using (Html.BeginForm("CreateFeasibility", "Feasibility", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
 
-    <fieldset>
+    <div class="paddingTop15">
 
         <div class="@ViewBag.HideClass" style="text-align:center; display:none">
             @ViewBag.Message
@@ -29,861 +21,642 @@
         @Html.HiddenFor(model => model.FeasibilityId)
         @Html.HiddenFor(model => model.FeasibilityToolingRequirement)
         @Html.HiddenFor(model => model.Section, new { @id = "hdnSection" })
-        <input type="hidden" id="hdnSection1" />
+        <input type="hidden" id="hdnSection1"/>  
 
-        <!-- PAGE TITLE -->
-        @*<div class="page-title">
-                <h2><span class="fa fa-arrow-circle-o-left"></span>FEASIBILITY</h2>
-            </div>
-            @Html.HiddenFor(model => model.InquiryNo)
-            @Html.HiddenFor(model => model.FeasibilityId)
-
-            <div class="row">
-                <div class="col-md-12">
-
-                    <div class="col-md-10"></div>
-                    <div class="col-md-2">
-                        <div class="form-group" style="text-align:center">
-                            <input type="button" class="btn btn-info" value="All Inquiry" onclick="location.href = '@Url.Action(" AllInquiry", "Inquiry" ) '"  />
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-        <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                @*<div class="row p-t-b-10 ">*@
-                @*<div class="col">*@
-                <h4>
-                    <i class="icon-database"></i>
-                    Feasibility
-                </h4>
-                @*</div>*@
-                @*</div>*@
-                <div class="row justify-content-between">
-                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                        <li>
-                            <a class="nav-link" href='@Url.Action("AllInquiry", "Inquiry")'><i class="icon icon-home2"></i>Enquiry List</a>
-
-                        </li>
-
-                        <li class="float-right">
-                            <a class="nav-link active"><i class="icon icon-plus-circle"></i>Feasibility</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </header>
-
-        <div class="row my-3">
+        <div class="row">
             <div class="col-md-12">
-                <form action="#">
-                    <div class="container-fluid animatedParent animateOnce">
-                        <div class="animated fadeInUpShort">
-                            @*<div class="p-5">
-                            *@
 
-                            <div class="card no-b  no-r">
-                                <div class="card-body">
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.FeasibilityConditionSupply, new { @class = "Label" })
-                                            @Html.DropDownListFor(model => model.FeasibilityConditionSupply, ViewData["FeasibilityCOS"] as IEnumerable<SelectListItem>
-                                        ,
-                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.FeasibilityConditionSupply, null, new { @class = "alert-danger" })
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Feasibility</h5>
+                    </div>
+                    <div class="ibox-content">
 
-                                        </div>
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.FeasibilityTypeofJob, new { @class = "Label" })
 
-                                            @Html.DropDownListFor(model => model.FeasibilityTypeofJob, ViewData["FeasibilityTOJ"] as IEnumerable<SelectListItem>
-                                        ,
-                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.FeasibilityTypeofJob, null, new { @class = "alert-danger" })
-                                        </div>
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.FeasibilityNatureofWork, new { @class = "Label" })
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.FeasibilityConditionSupply, new { @class = "Label" })
+                                @Html.DropDownListFor(model => model.FeasibilityConditionSupply, ViewData["FeasibilityCOS"] as IEnumerable<SelectListItem>
+                            ,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.FeasibilityConditionSupply, null, new { @class = "alert-danger" })
 
-                                            @Html.DropDownListFor(model => model.FeasibilityNatureofWork, ViewData["FeasibilityNOW"] as IEnumerable<SelectListItem>
-                                        ,
-                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.FeasibilityNatureofWork, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.FeasibilityTypeofJob, new { @class = "Label" })
 
-                                        </div>
+                                @Html.DropDownListFor(model => model.FeasibilityTypeofJob, ViewData["FeasibilityTOJ"] as IEnumerable<SelectListItem>
+                            ,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.FeasibilityTypeofJob, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.FeasibilityNatureofWork, new { @class = "Label" })
+
+                                @Html.DropDownListFor(model => model.FeasibilityNatureofWork, ViewData["FeasibilityNOW"] as IEnumerable<SelectListItem>
+                            ,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.FeasibilityNatureofWork, null, new { @class = "alert-danger" })
+
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.FeasibilityHammerRequired, new { @class = "Label" })
+                                @Html.DropDownListFor(model => model.FeasibilityHammerRequired, ViewData["FeasibilityHR"] as IEnumerable<SelectListItem>
+                            ,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.FeasibilityHammerRequired, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.LabelFor(model => model.FeasibilityToolingRequirement, new { @class = "Label" })
+                                <br>
+                                <div class="">
+                                    <input type="radio" id="Insert" name="FeasibilityToolingRequirement" class="custom-control-input">
+                                    <label class="custom-control-label m-0" for="Insert">Insert</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="DieBlock" name="FeasibilityToolingRequirement" class="custom-control-input">
+                                    <label class="custom-control-label m-0" for="DieBlock">Die Block</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <div class="col-md-3 DivInsert" style="display: none;">
+                                        @Html.Label("Dia", new { style = "display: none;", @id = "Dia", @class = "Label" })<br />
+                                        @Html.TextBoxFor(model => model.fisdiavalue, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Insert*@
                                     </div>
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.FeasibilityHammerRequired, new { @class = "Label" })
-                                            @Html.DropDownListFor(model => model.FeasibilityHammerRequired, ViewData["FeasibilityHR"] as IEnumerable<SelectListItem>
-                                        ,
-                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.FeasibilityHammerRequired, null, new { @class = "alert-danger" })
-                                        </div>
-                                        <div class="form-group col-2 m-0">
-                                            @Html.LabelFor(model => model.FeasibilityToolingRequirement, new { @class = "Label" })
-                                            <br>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="Insert" name="FeasibilityToolingRequirement" class="custom-control-input">
-                                                <label class="custom-control-label m-0" for="Insert">Insert</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="DieBlock" name="FeasibilityToolingRequirement" class="custom-control-input">
-                                                <label class="custom-control-label m-0" for="DieBlock">Die Block</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-6 m-0">
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <div class="col-md-3 DivInsert" style="display: none;">
-                                                    @Html.Label("Dia", new { style = "display: none;", @id = "Dia", @class = "Label" })<br />
-                                                    @Html.TextBoxFor(model => model.fisdiavalue, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Insert*@
-                                                </div>
-                                                <div class="col-md-3 DivInsert" style="display: none;">
-                                                    @Html.Label("Length", new { style = "display: none;", @id = "Length", @class = "Label" })<br />
-                                                    @Html.TextBoxFor(model => model.fisdialength, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Insert*@
-                                                </div>
-
-                                                <div class="col-md-3 DivDieBlock" style="display: none;">
-                                                    @Html.Label("Length", new { style = "display: none;", @id = "DieLength", @class = "Label" })<br />
-                                                    @Html.TextBoxFor(model => model.fisdiablocklength, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Die Block*@
-                                                </div>
-                                                <div class="col-md-3 DivDieBlock" style="display: none;">
-                                                    @Html.Label("Width", new { style = "display: none;", @id = "Width", @class = "Label" })<br />
-                                                    @Html.TextBoxFor(model => model.fisdiablockwidth, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Die Block*@
-                                                </div>
-                                                <div class="col-md-3 DivDieBlock" style="display: none;">
-                                                    @Html.Label("Height", new { style = "display: none;", @id = "Height", @class = "Label" })<br />
-                                                    @Html.TextBoxFor(model => model.fisdiablockheight, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Die Block*@
-                                                </div>
-                                                <div class="col-md-6 DivTotal" style="display: none;">
-                                                    @Html.Label("Aprrox Wt(Kg)", new { @id = "Total", @class = "Label" })<br />
-                                                    @*@Html.DisplayFor(model => model.fisdiatotal, new {  @class = "form-control r-0 light s-12"})*@
-                                                    @Html.LabelFor(model => model.fisdiatotal, new { id = "fisdiatotal" })
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-3 DivInsert" style="display: none;">
+                                        @Html.Label("Length", new { style = "display: none;", @id = "Length", @class = "Label" })<br />
+                                        @Html.TextBoxFor(model => model.fisdialength, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Insert*@
                                     </div>
-                                    @*<div class="form-row mt-1">
-                                            <div class="form-group col-4 m-0">
-                                                <div class="form-group col-4 m-0">
 
-                                                    @for (int i = 0; i < Model.ssmtbl_Feasibility_OperationsInvolvedModel.Count; i++)
-                                                    {
-                                                    <label class="btn btn-default form-control r-0 light s-12" style="width:100%; text-align:left">
-                                                        @Html.CheckBoxFor(m => Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved_Select, new { @class = "btn btn-default" })
-                                                        @Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved_Text
-                                                    </label>
-                                                    @Html.HiddenFor(m => Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved)
-                                                    @Html.HiddenFor(m => Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved_Text)
-                                                    }
-                                                </div>
-                                            </div>
-                                            <div class="form-group col-4 m-0">
-                                                <div class="form-group col-4 m-0">
-
-                                                </div>
-                                            </div>
-                                            <div class="form-group col-4 m-0">
-                                                <div class="form-group col-4 m-0">
-
-                                                </div>
-                                            </div>
-                                        </div>*@
-
-                                    <div class="form-row mt-1">
-                                        @*<div class="form-group col-4 m-0">
-                                                @Html.Label("Operations Involved", new { @class = "Label" })
-                                                <div style="height: 150px; overflow: scroll; overflow-x: hidden;">
-                                                    <table border="1" cellpadding="5" cellspacing="5" style="width:100%" id="grid">
-
-                                                        <tbody id="tbody">
-                                                            @for (int i = 0; i < Model.ssmtbl_Feasibility_OperationsInvolvedModel.Count; i++)
-                                                            {
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="btn btn-default form-control r-0 light s-12" style="width:100%; text-align:left">
-                                                                        @Html.CheckBoxFor(m => Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved_Select, new { @class = "btn btn-default" })
-                                                                        @Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved_Text
-                                                                    </label>
-                                                                    @Html.HiddenFor(m => Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved)
-                                                                    @Html.HiddenFor(m => Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved_Text)
-                                                                </td>
-                                                            </tr>
-                                                            }
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-
-                                            </div>*@
-
-                                        <div class="form-group col-4 m-0">
-                                            <div id="div_oprinvtag">
-                                                @Html.Label("Operations Involved", new { @class = "Label" })
-                                                <select class="select2" name="OperationsInvolved[]" multiple="multiple" id="mySelect2" data-placeholder="Select Operation Involved" dir="ltr">
-                                                    @for (int i = 0; i < Model.ssmtbl_Feasibility_OperationsInvolvedModel.Count; i++)
-                                                    {
-                                                        <option value="@Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved" class="form-control r-0 light s-12">
-
-                                                            @Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved_Text
-                                                        </option>
-
-                                                    }
-                                                </select>
-
-                                            </div>
-                                            <div id="div_oprinvlabel">
-                                                @Html.Label("Operations Involved", new { @class = "Label" })
-                                                <p class="mosurhandsymbol"><span id="spn_opinvtaglist" onclick="javascript:OprInvHidewShow();"></span></p>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group col-4 m-0">
-                                            <div id="div_rmttag">
-                                                @Html.Label("Raw Material Test", new { @class = "Label" })
-                                                <select class="select2" name="RawMaterialTest[]" multiple="multiple" data-placeholder="Select Raw Material Test" id="drp_rmt">
-                                                    @for (int i = 0; i < Model.ssmtbl_Feasibility_RawMaterialTestModel.Count; i++)
-                                                    {
-
-                                                        <option value="@Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test" class="form-control r-0 light s-12">
-                                                            @Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test_Text
-
-
-
-                                                        </option>
-
-
-                                                    }
-
-                                                </select>
-
-                                            </div>
-                                            <div id="div_rmtlist">
-                                                @Html.Label("Raw Material Test", new { @class = "Label" })
-                                                <p class="mosurhandsymbol"><span id="spn_rmtlist" onclick="javascript:RmtHidewShow();"></span></p>
-                                            </div>
-
-                                            @*@Html.HiddenFor(m => Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test_Select)
-                                                @Html.HiddenFor(m => Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test_Text)*@
-                                            @*<input type="hidden" name="programid" id="programid" class="width-500 validate[required]">*@
-                                        </div>
-                                        @*<div class="form-group col-4 m-0">
-                                                @Html.Label("Raw Material Test", new { @class = "Label" })
-
-                                                <div style="height: 150px; overflow: scroll; overflow-x: hidden;">
-                                                    <table border="1" cellpadding="5" cellspacing="5" style="width:100%" id="grid">
-
-                                                        <tbody id="tbody">
-                                                            @for (int i = 0; i < Model.ssmtbl_Feasibility_RawMaterialTestModel.Count; i++)
-                                                            {
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="btn btn-default form-control r-0 light s-12" style="width:100%; text-align:left">
-                                                                        @Html.CheckBoxFor(m => Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test_Select, new { @class = "btn btn-default" })
-                                                                        @Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test_Text
-                                                                    </label>
-                                                                    @Html.HiddenFor(m => Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test)
-                                                                    @Html.HiddenFor(m => Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test_Text)
-                                                                </td>
-                                                            </tr>
-                                                            }
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-
-                                            </div>*@
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.DieDescription, new { @class = "Label" })
-
-                                            @Html.TextBoxFor(model => model.DieDescription, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                            @Html.ValidationMessageFor(model => model.DieDescription, null, new { @class = "alert-danger" })
-
-                                        </div>
+                                    <div class="col-md-3 DivDieBlock" style="display: none;">
+                                        @Html.Label("Length", new { style = "display: none;", @id = "DieLength", @class = "Label" })<br />
+                                        @Html.TextBoxFor(model => model.fisdiablocklength, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Die Block*@
                                     </div>
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
-                                            @Html.Label("Raw Material Section", new { @class = "Label" })
-                                            @*@Html.LabelFor(model => model.Section, new { @class = "Label" })*@
-                                            @Html.DropDownListFor(model => model.Section, ViewData["Section"] as IEnumerable<SelectListItem>
-                                            ,
-                                               XRP.Global.DropDownSelection.DropDownSelect,
-                                               new { @class = ".chzn-select form-control r-0 light s-12", @id = "Section", @onchange = "CalculateCutLength(this)" })
-
-                                            @Html.ValidationMessageFor(model => model.Section, null, new { @class = "alert-danger" })
-                                        </div>
-
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.netweight, new { @class = "Label" })
-
-                                            @Html.TextBoxFor(model => model.netweight, null, new { @class = "form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.netweight, null, new { @class = "alert-danger" })
-                                        </div>
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.cutweight, new { @class = "Label" })
-                                            @Html.TextBoxFor(model => model.cutweight, null, new { @class = "form-control r-0 light s-12", @oninput = "CalculateCutLengthctwt()", @id = "cutWeight" })
-                                            @Html.ValidationMessageFor(model => model.cutweight, null, new { @class = "alert-danger" })
-                                        </div>
-
-
-
+                                    <div class="col-md-3 DivDieBlock" style="display: none;">
+                                        @Html.Label("Width", new { style = "display: none;", @id = "Width", @class = "Label" })<br />
+                                        @Html.TextBoxFor(model => model.fisdiablockwidth, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Die Block*@
                                     </div>
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.grossweight, new { @class = "Label" })
-
-                                            @Html.TextBoxFor(model => model.grossweight, null, new { @class = "form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.grossweight, null, new { @class = "alert-danger" })
-
-                                        </div>
-
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.cutlength, new { @class = "Label" })
-                                            @Html.TextBoxFor(model => model.cutlength, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                            @Html.ValidationMessageFor(model => model.cutlength, null, new { @class = "alert-danger" })
-
-                                        </div>
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.materialweights, new { @class = "Label" })
-                                            @Html.TextBoxFor(model => model.materialweights, null, new { @class = "form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.materialweights, null, new { @class = "alert-danger" })
-                                        </div>
+                                    <div class="col-md-3 DivDieBlock" style="display: none;">
+                                        @Html.Label("Height", new { style = "display: none;", @id = "Height", @class = "Label" })<br />
+                                        @Html.TextBoxFor(model => model.fisdiablockheight, new { @class = "form-control r-0 light s-12", style = "display: none;", onchange = "getDieDescriptionValue();" }) @*Die Block*@
                                     </div>
-                                    <div class="form-row mt-1">
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.FeasibilityHeattreatment, new { @class = "Label" })
-                                            @Html.DropDownListFor(model => model.FeasibilityHeattreatment, ViewData["FeasibilityHT"] as IEnumerable<SelectListItem>
-                                        ,
-                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.FeasibilityHeattreatment, null, new { @class = "alert-danger" })
-                                        </div>
-
-
-                                        @*<div class="form-group col-4 m-0">
-                                                @Html.LabelFor(model => model.MillTC, new { @class = "Label" })
-                                                @Html.TextBoxFor(model => model.MillTC, null, new { @class = "form-control r-0 light s-12" })
-                                                @Html.ValidationMessageFor(model => model.MillTC, null, new { @class = "alert-danger" })
-
-                                            </div>*@
-                                        <div class="form-group col-4 m-0">
-                                            <div id="div_pvtag">
-                                                @Html.LabelFor(model => model.MillTC, new { @class = "Label" })
-                                                @*@Html.TextBoxFor(model => model.MillTC, null, new { @class = "form-control r-0 light s-12",@placeholder="Prefered Vendor",@id="txtpreferedvendor"})
-                                                    @Html.ValidationMessageFor(model => model.MillTC, null, new { @class = "alert-danger" })*@
-                                                @*<select class="select2" name="MultiVendor[]" multiple="multiple" id="PrefferedVendor" data-placeholder="Select Prefered Vendor">
-
-                                                        @for (int i = 0; i < Model.ssmtbl_Feasibility_MultiVendorModel.Count; i++)
-                                                        {
-                                                            <option value="@Model.ssmtbl_Feasibility_MultiVendorModel[i].VendorID" class="form-control r-0 light s-12">
-                                                                @Model.ssmtbl_Feasibility_MultiVendorModel[i].VendorName
-                                                            </option>
-
-                                                        }
-
-                                                    </select>*@
-                                                <input type="text" class="form-control r-0 light s-12" id="txtpreferedvendor" value="" onchange="preferedvendorfocusout()" />
-
-                                            </div>
-                                            <div id="div_pvlist">
-                                                @Html.LabelFor(model => model.MillTC, new { @class = "Label" })
-                                                <p class="mosurhandsymbol"><span id="spn_pv" onclick="javascript:PrefvHidewShow();"></span></p>
-                                            </div>
-
-                                        </div>
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.FeasibilityMaterialGrade, new { @class = "Label" })
-                                            @Html.DropDownListFor(model => model.FeasibilityMaterialGrade, ViewData["FeasibilityMG"] as IEnumerable<SelectListItem>
-                                        ,
-                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.FeasibilityMaterialGrade, null, new { @class = "alert-danger" })
-
-                                        </div>
-
-
-                                    </div>
-                                    <div class="form-row mt-1">
-
-                                        <div class="form-group col-4 m-0">
-
-                                            @Html.LabelFor(model => model.FeasibilityLubricantPreferred, new { @class = "Label" })
-                                            @Html.DropDownListFor(model => model.FeasibilityLubricantPreferred, ViewData["FeasibilityLP"] as IEnumerable<SelectListItem>
-                                        ,
-                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.FeasibilityLubricantPreferred, null, new { @class = "alert-danger" })
-
-                                        </div>
-
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.Feasibilitystandardapplicable, new { @class = "Label" })
-                                            @Html.DropDownListFor(model => model.Feasibilitystandardapplicable, ViewData["FeasibilitySA"] as IEnumerable<SelectListItem>
-                                        ,
-                                        XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.Feasibilitystandardapplicable, null, new { @class = "alert-danger" })
-
-                                        </div>
-                                        <div class="form-group col-4 m-0">
-                                            @Html.Label("Heat Treatment Hardness", new { @class = "Label" })
-                                            <br>
-                                            <div class="custom-control-inline">
-                                                <div class="col-md-4">
-                                                    @*@Html.LabelFor(model => model.hardnessmin, new { @class = "Label" })*@
-                                                    @Html.TextBoxFor(model => model.hardnessmin, new { @class = "form-control r-0 light s-12", @placeholder = "Min" }) @*Die Block*@
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @*@Html.LabelFor(model => model.hardnessmax, new { @class = "Label" })*@
-                                                    @Html.TextBoxFor(model => model.hardnessmax, new { @class = "form-control r-0 light s-12", @placeholder = "Max" }) @*Die Block*@
-                                                </div>
-                                                <div class="col-md-4">
-                                                    @*@Html.LabelFor(model => model.hardnessunits, new { @class = "Label" })*@
-                                                    @Html.TextBoxFor(model => model.hardnessunits, new { @class = "form-control r-0 light s-12", @placeholder = "Units" }) @*Die Block*@
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row mt-1">
-
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.micro, new { @class = "Label" })
-
-                                            @Html.TextAreaFor(model => model.micro, new { @class = "form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.micro, null, new { @class = "alert-danger" })
-                                        </div>
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.FeasibilityStatutoryandregulatoryrequirement, new { @class = "Label" })
-
-                                            @Html.TextAreaFor(model => model.FeasibilityStatutoryandregulatoryrequirement, new { @class = "form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.FeasibilityStatutoryandregulatoryrequirement, null, new { @class = "alert-danger" })
-
-                                        </div>
-
-                                        <div class="form-group col-4 m-0">
-                                            @Html.LabelFor(model => model.FeasibilityRemark, new { @class = "Label" })
-
-                                            @Html.TextAreaFor(model => model.FeasibilityRemark, new { @class = "form-control r-0 light s-12" })
-                                            @Html.ValidationMessageFor(model => model.FeasibilityRemark, null, new { @class = "alert-danger" })
-
-                                        </div>
-                                    </div>
-                                    <div class="form-row mt-1">
-
-                                        <div class="form-group col-12 m-0">
-                                            <span id="spnprefvendorlist">Prefered Vendor List:</span>&nbsp;<br />
-                                            <label id="lbl_preferedvendorlist"></label>
-                                        </div>
-                                    </div>
-                                    <div class="card-body" align="right" id="divSaveBtn" style="display:none">
-
-                                        @*<button type="button" class="btn btn-primary btn-sm" value="Save" id="btn_Save" onclick="return insertVendorMill();"><i class="icon-save mr-2"></i>Save</button>*@
-                                        <button type="button" class="btn btn-primary btn-sm" value="Save" id="btn_Save" onclick="return submitFeasiblity(this.value);"><i class="icon-save mr-2"></i>Save</button>
-
-                                        <button type="reset" class="btn btn-success btn-sm" id="Reset"><i class="icon-refresh mr-2"></i>Reset</button>
-                                    </div>
-                                    <div class="card-body" align="right" id="divUpdateBtn" style="display:none">
-
-                                        <button type="button" class="btn btn-primary btn-sm" value="Update" id="btn_Save" onclick="return submitFeasiblity(this.value);"><i class="icon-pencil mr-2"></i>Update</button>
-
+                                    <div class="col-md-6 DivTotal" style="display: none;">
+                                        @Html.Label("Aprrox Wt(Kg)", new { @id = "Total", @class = "Label" })<br />
+                                        @*@Html.DisplayFor(model => model.fisdiatotal, new {  @class = "form-control r-0 light s-12"})*@
+                                        @Html.LabelFor(model => model.fisdiatotal, new { id = "fisdiatotal" })
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div id="div_oprinvtag">
+                                    @Html.Label("Operations Involved", new { @class = "Label" })
+                                    <select class="select2" name="OperationsInvolved[]" multiple="multiple" id="mySelect2" data-placeholder="Select Operation Involved" dir="ltr">
+                                        @for (int i = 0; i < Model.ssmtbl_Feasibility_OperationsInvolvedModel.Count; i++)
+                                        {
+                                            <option value="@Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved" class="form-control r-0 light s-12">
+
+                                                @Model.ssmtbl_Feasibility_OperationsInvolvedModel[i].Operations_Involved_Text
+                                            </option>
+                                        }
+                                    </select>
+                                </div>
+                                <div id="div_oprinvlabel">
+                                    @Html.Label("Operations Involved", new { @class = "Label" })
+                                    <p class="mosurhandsymbol"><span id="spn_opinvtaglist" onclick="javascript:OprInvHidewShow();"></span></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div id="div_rmttag">
+                                    @Html.Label("Raw Material Test", new { @class = "Label" })
+                                    <select class="select2" name="RawMaterialTest[]" multiple="multiple" data-placeholder="Select Raw Material Test" id="drp_rmt">
+                                        @for (int i = 0; i < Model.ssmtbl_Feasibility_RawMaterialTestModel.Count; i++)
+                                        {
+                                            <option value="@Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test" class="form-control r-0 light s-12">
+                                                @Model.ssmtbl_Feasibility_RawMaterialTestModel[i].Raw_Material_Test_Text
+                                            </option>
+                                        }
+                                    </select>
+                                </div>
+                                <div id="div_rmtlist">
+                                    @Html.Label("Raw Material Test", new { @class = "Label" })
+                                    <p class="mosurhandsymbol"><span id="spn_rmtlist" onclick="javascript:RmtHidewShow();"></span></p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.DieDescription, new { @class = "Label" })
+                                @Html.TextBoxFor(model => model.DieDescription, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.DieDescription, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-4">
+                                @Html.Label("Raw Material Section", new { @class = "Label" })
+                                @Html.DropDownListFor(model => model.Section, ViewData["Section"] as IEnumerable<SelectListItem>
+                                ,
+                                   XRP.Global.DropDownSelection.DropDownSelect,
+                                   new { @class = ".chzn-select form-control r-0 light s-12", @id = "Section", @onchange = "CalculateCutLength(this)" })
+
+                                @Html.ValidationMessageFor(model => model.Section, null, new { @class = "alert-danger" })
+                            </div>
+
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.netweight, new { @class = "Label" })
+
+                                @Html.TextBoxFor(model => model.netweight, null, new { @class = "form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.netweight, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.cutweight, new { @class = "Label" })
+                                @Html.TextBoxFor(model => model.cutweight, null, new { @class = "form-control r-0 light s-12", @oninput = "CalculateCutLengthctwt()", @id = "cutWeight" })
+                                @Html.ValidationMessageFor(model => model.cutweight, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.grossweight, new { @class = "Label" })
+                                @Html.TextBoxFor(model => model.grossweight, null, new { @class = "form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.grossweight, null, new { @class = "alert-danger" })
 
                             </div>
 
-                            @*
-                                </div>*@
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.cutlength, new { @class = "Label" })
+                                @Html.TextBoxFor(model => model.cutlength, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.cutlength, null, new { @class = "alert-danger" })
+
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.materialweights, new { @class = "Label" })
+                                @Html.TextBoxFor(model => model.materialweights, null, new { @class = "form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.materialweights, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.FeasibilityHeattreatment, new { @class = "Label" })
+                                @Html.DropDownListFor(model => model.FeasibilityHeattreatment, ViewData["FeasibilityHT"] as IEnumerable<SelectListItem>
+                            ,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.FeasibilityHeattreatment, null, new { @class = "alert-danger" })
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <div id="div_pvtag">
+                                    @Html.LabelFor(model => model.MillTC, new { @class = "Label" })
+
+                                    <input type="text" class="form-control r-0 light s-12" id="txtpreferedvendor" value="" onchange="preferedvendorfocusout()" />
+
+                                </div>
+                                <div id="div_pvlist">
+                                    @Html.LabelFor(model => model.MillTC, new { @class = "Label" })
+                                    <p class="mosurhandsymbol"><span id="spn_pv" onclick="javascript:PrefvHidewShow();"></span></p>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.FeasibilityMaterialGrade, new { @class = "Label" })
+                                @Html.DropDownListFor(model => model.FeasibilityMaterialGrade, ViewData["FeasibilityMG"] as IEnumerable<SelectListItem>
+                            ,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.FeasibilityMaterialGrade, null, new { @class = "alert-danger" })
+
+                            </div>
+
 
                         </div>
-                    </div>
-                    @*<div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group" style="text-align:center">
-                                    <input type="submit" name="Save" value="Save" class="btn btn-success btn-default" id="Save" />
-                                    <input type="button" name="Save" value="Reset" class="btn btn-warning btn-default" id="Reset" onclick="location.href = '@Url.Action(" CreateFeasibility", "Feasibility" , new { InquiryNo=Model.InquiryNo })'" />
+                        <div class="row ">
 
+                            <div class="col-md-4">
+
+                                @Html.LabelFor(model => model.FeasibilityLubricantPreferred, new { @class = "Label" })
+                                @Html.DropDownListFor(model => model.FeasibilityLubricantPreferred, ViewData["FeasibilityLP"] as IEnumerable<SelectListItem>
+                            ,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.FeasibilityLubricantPreferred, null, new { @class = "alert-danger" })
+
+                            </div>
+
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.Feasibilitystandardapplicable, new { @class = "Label" })
+                                @Html.DropDownListFor(model => model.Feasibilitystandardapplicable, ViewData["FeasibilitySA"] as IEnumerable<SelectListItem>
+                            ,
+                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.Feasibilitystandardapplicable, null, new { @class = "alert-danger" })
+
+                            </div>
+                            <div class="col-md-4">
+                                @Html.Label("Heat Treatment Hardness", new { @class = "Label" })
+                                <br>
+                                <div class="custom-control-inline">
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.hardnessmin, new { @class = "form-control r-0 light s-12", @placeholder = "Min" }) @*Die Block*@
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.hardnessmax, new { @class = "form-control r-0 light s-12", @placeholder = "Max" }) @*Die Block*@
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.hardnessunits, new { @class = "form-control r-0 light s-12", @placeholder = "Units" }) @*Die Block*@
+                                    </div>
                                 </div>
                             </div>
-                        </div>*@
-                </form>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.micro, new { @class = "Label" })
+                                @Html.TextAreaFor(model => model.micro, new { @class = "form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.micro, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.FeasibilityStatutoryandregulatoryrequirement, new { @class = "Label" })
+                                @Html.TextAreaFor(model => model.FeasibilityStatutoryandregulatoryrequirement, new { @class = "form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.FeasibilityStatutoryandregulatoryrequirement, null, new { @class = "alert-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.FeasibilityRemark, new { @class = "Label" })
+                                @Html.TextAreaFor(model => model.FeasibilityRemark, new { @class = "form-control r-0 light s-12" })
+                                @Html.ValidationMessageFor(model => model.FeasibilityRemark, null, new { @class = "alert-danger" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span id="spnprefvendorlist">Prefered Vendor List:</span>&nbsp;<br />
+                                <label id="lbl_preferedvendorlist"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card-body" align="right" id="divSaveBtn" style="display:none">
+                                <button type="button" class="btn btn-primary btn-sm" value="Save" id="btn_Save" onclick="return submitFeasiblity(this.value);"><i class="icon-save mr-2"></i>Save</button>
+                                <button type="reset" class="btn btn-success btn-sm" id="Reset"><i class="icon-refresh mr-2"></i>Reset</button>
+                            </div>
+                            <div class="card-body" align="right" id="divUpdateBtn" style="display:none">
+                                <button type="button" class="btn btn-primary btn-sm" value="Update" id="btn_Save" onclick="return submitFeasiblity(this.value);"><i class="icon-pencil mr-2"></i>Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </fieldset>
+            </div> 
 
+        <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script> 
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script> 
+        <script src="~/Content/Validations/JqueryUi.js"></script>
+        <script>
+            var pfv = "";
+            function preferedvendorfocusout() {
+                var ispresent = pfv.indexOf($("#txtpreferedvendor").val()) > -1;
 
-    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+                if (ispresent) {
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                }
+                else {
+                    pfv = pfv + ($("#txtpreferedvendor").val()) + ',';
+                    $("#lbl_preferedvendorlist").text(pfv);
 
-    <script src="~/Content/Validations/JqueryUi.js"></script>
-    <script>
-        var $j = jQuery.noConflict(true);
-    </script>
+                }
 
-
-    <script>
-        var pfv= "";
-        function preferedvendorfocusout()
-        {
-            var ispresent = pfv.indexOf($("#txtpreferedvendor").val()) > -1;
-
-            if (ispresent) {
-
+                $("#txtpreferedvendor").val("");
             }
-            else {
-                pfv=pfv + ($("#txtpreferedvendor").val())+',';
-                $("#lbl_preferedvendorlist").text(pfv);
+            function CalculateCutLengthctwt() {
+               
+                var section = ($("#Section option:selected").text());
+                var cutwt = $j("#cutWeight").val();
+                cutwt = cutwt == 0 ? 1 : $j("#cutWeight").val(); 
+            
+                var secSplit = section.split(" ")[0]; 
+                if (section.split(" ")[1] == "Dia") {
+                    var dia = section.split(" ")[0];
 
+                    var cutLength = parseFloat((cutwt * 4 / (Math.PI * dia * dia * 0.00000785))).toFixed(2);
+                    $j('#cutlength').val(cutLength);
+                } else {
+                    var rcs = section.split(" ")[0];
+                    var cutLength = parseFloat(cutwt / (rcs * rcs * 0.00000785)).toFixed(2);
+                    $j('#cutlength').val(cutLength);
+                }
             }
+        </script>
+        <script>
+            function CalculateCutLength(Section) { 
+                var cutwt = $j("#cutWeight").val();
+                cutwt = cutwt == 0 ? 1 : $j("#cutWeight").val();
 
-            $("#txtpreferedvendor").val("");
-        }
-        function CalculateCutLengthctwt() {
-            //var section = $j("#hdnSection").innerHTML;
-            //var secSplit = section.split(" ")[0];
-            //alert(secSplit);
-            //var section = $j('#hdnSection1').val();
-            var section = ($("#Section option:selected").text());
+                var section = Section.options[Section.selectedIndex].innerHTML;
+                $j("#hdnSection1").val(section);
+                var secSplit = section.split(" ")[0];
+                if (section.split(" ")[1] == "Dia") {
+                    var dia = section.split(" ")[0];
 
-            //var ctlngth = ($j('#Section').val() * $j("#cutWeight").val());
-            //$j('#cutlength').val(ctlngth.toFixed(2));
+                    var cutLength = parseFloat((cutwt * 4 / (Math.PI * dia * dia * 0.00000785))).toFixed(2);
+                    $j('#cutlength').val(cutLength);
+                } else {
+                    var rcs = section.split(" ")[0];
+                    var cutLength = (cutwt / (rcs * rcs * 0.00000785));
+                    $j('#cutlength').val(cutLength.toFixed(2));
+                } 
+            } 
+        </script>
+        <script>
+            function submitFeasiblity(val) {
+                unsaved = false;
 
-            var cutwt = $j("#cutWeight").val();
-            cutwt = cutwt == 0 ? 1 : $j("#cutWeight").val();
-
-            //var section = Section.options[Section.selectedIndex].innerHTML;
-            var secSplit = section.split(" ")[0];
-            // alert(secSplit);
-            if (section.split(" ")[1] == "Dia") {
-                var dia = section.split(" ")[0];
-
-                var cutLength = parseFloat((cutwt * 4 / (Math.PI * dia * dia * 0.00000785))).toFixed(2);
-                $j('#cutlength').val(cutLength);
-            } else {
-                var rcs = section.split(" ")[0];
-                var cutLength = parseFloat(cutwt / (rcs * rcs * 0.00000785)).toFixed(2);
-                $j('#cutlength').val(cutLength);
-            }
-        }
-    </script>
-    <script>
-        function CalculateCutLength(Section) {
-
-            var cutwt = $j("#cutWeight").val();
-            cutwt = cutwt == 0 ? 1 : $j("#cutWeight").val();
-
-            var section = Section.options[Section.selectedIndex].innerHTML;
-            $j("#hdnSection1").val(section);
-            var secSplit = section.split(" ")[0];
-            if (section.split(" ")[1] == "Dia") {
-                var dia = section.split(" ")[0];
-
-                var cutLength = parseFloat((cutwt * 4 / (Math.PI * dia * dia * 0.00000785))).toFixed(2);
-                $j('#cutlength').val(cutLength);
-            } else {
-                var rcs = section.split(" ")[0];
-                var cutLength = (cutwt / (rcs * rcs * 0.00000785));
-                $j('#cutlength').val(cutLength.toFixed(2));
-            }
-
-        }
-
-    </script>
-    <script>
-        function submitFeasiblity(val) {
-            unsaved = false;
-
-            var feasibilityId = document.getElementById('FeasibilityId').value;
-            var status = feasibilityId;
-            //updateRawMaterialTest(status);
-            //return false;
-            var InquiryNo = document.getElementById('InquiryNo').value;
-            var feasibilityConditionSupply = document.getElementById('FeasibilityConditionSupply').value;
-            if (feasibilityConditionSupply == "") {
-                alert("Please Select Condition of Supply !");
-                return false;
-            }
-            var feasibilityTypeofJob = document.getElementById('FeasibilityTypeofJob').value;
-            if (feasibilityTypeofJob=="") {
-                alert("Please Select Type Of Job !");
-                return false;
-            }
-            var feasibilityNatureofWork = document.getElementById('FeasibilityNatureofWork').value;
-            if (feasibilityNatureofWork=="") {
-                alert("Please Select Feasibility Nature of Work!");
-                return false;
-            }
-            var feasibilityHammerRequired = document.getElementById('FeasibilityHammerRequired').value;
-            if (feasibilityHammerRequired=="") {
-                alert("Please Select Feasibility Hammer Required!");
-                return false;
-            }
-            if ((document.getElementById('Insert').checked)||(document.getElementById('DieBlock').checked)) {
-
-            }
-            else {
-                alert("Please Select Tooling Requirement !");
-                return false;
-            }
-            if (document.getElementById('Insert').checked) {
-                var feasibilityToolingRequirement = 'Insert';
-                var fisdialength = document.getElementById('fisdialength').value;
-                if (fisdialength=="") {
-                    alert("Please Enter Fisibility Dia Length!");
+                var feasibilityId = document.getElementById('FeasibilityId').value;
+                var status = feasibilityId;
+               
+                var InquiryNo = document.getElementById('InquiryNo').value;
+                var feasibilityConditionSupply = document.getElementById('FeasibilityConditionSupply').value;
+                if (feasibilityConditionSupply == "") {
+                    alert("Please Select Condition of Supply !");
                     return false;
                 }
-                var fisdiavalue = document.getElementById('fisdiavalue').value;
-                if (fisdiavalue=="") {
-                    alert("Please Enter Fisibility Dia Value!");
+                var feasibilityTypeofJob = document.getElementById('FeasibilityTypeofJob').value;
+                if (feasibilityTypeofJob == "") {
+                    alert("Please Select Type Of Job !");
                     return false;
                 }
-                var fisdiatotal = $j('#fisdiatotal').text();
-
-            } else {
-                var feasibilityToolingRequirement = 'Die Block';
-                var fisdiablocklength = document.getElementById('fisdiablocklength').value;
-                if (fisdiablocklength=="") {
-                    alert("Please Enter Dia Block Length!");
+                var feasibilityNatureofWork = document.getElementById('FeasibilityNatureofWork').value;
+                if (feasibilityNatureofWork == "") {
+                    alert("Please Select Feasibility Nature of Work!");
                     return false;
                 }
-                var fisdiablockwidth = document.getElementById('fisdiablockwidth').value;
-                if (fisdiablockheight=="") {
-                    alert("Please Enter Dia Block Width!");
+                var feasibilityHammerRequired = document.getElementById('FeasibilityHammerRequired').value;
+                if (feasibilityHammerRequired == "") {
+                    alert("Please Select Feasibility Hammer Required!");
                     return false;
                 }
-                var fisdiablockheight = document.getElementById('fisdiablockheight').value;
-                if (fisdiablockheight=="") {
-                    alert("Please Enter Dia Block Height!");
+                if ((document.getElementById('Insert').checked) || (document.getElementById('DieBlock').checked)) {
+
+                }
+                else {
+                    alert("Please Select Tooling Requirement !");
                     return false;
                 }
-                var fisdiatotal = $j('#fisdiatotal').text();
-
-            }
-            //var millTC = document.getElementById('MillTC').value;
-            var dieDescription = document.getElementById('DieDescription').value;
-
-            var operationinv=document.getElementById('mySelect2').value;
-
-            if (operationinv==""&& val!="Update") {
-                alert("Please Select Operation Involved!");
-                return false;
-            }else if (operationinv==""&& $j("#spn_opinvtaglist").text()==""&& val=="Update"){
-                alert("Please Select Operation Involved!");
-                return false;
-            }
-
-            var rmtest=document.getElementById('drp_rmt').value;
-            if (rmtest=="" && val!="Update") {
-                alert("Please Select Raw Material Test!");
-                return false;
-            }else if (rmtest=="" && $j("#spn_rmtlist").text()==""&& val=="Update") {
-                alert("Please Select Raw Material Test!");
-                return false;
-            }
-
-            var section = document.getElementById('Section').value;
-            if (section=="") {
-                alert("Please Select Section!");
-                return false;
-            }
-            var netweight = document.getElementById('netweight').value;
-            if (netweight=="") {
-                alert("Please Enter Net Weight!");
-                return false;
-            }
-            var cutWeight = document.getElementById('cutWeight').value;
-            if (cutWeight=="") {
-                alert("Please Enter Cut Weight!");
-                return false;
-            }
-            var grossweight = document.getElementById('grossweight').value;
-            if (grossweight=="") {
-                alert("Please Enter Gross Weight!");
-                return false;
-            }
-            var cutlength = document.getElementById('cutlength').value;
-            if (cutlength=="") {
-                alert("Please Enter Cut Length!");
-                return false;
-            }
-            var materialweights = document.getElementById('materialweights').value;
-            if (materialweights=="") {
-                alert("Please Enter Machined Weight!");
-                return false;
-            }
-            var FeasibilityHeattreatment = document.getElementById('FeasibilityHeattreatment').value;
-            if (FeasibilityHeattreatment=="") {
-                alert("Please Select Heat Treatment!");
-                return false;
-            }
-            var FeasibilityMaterialGrade = document.getElementById('FeasibilityMaterialGrade').value;
-            if (FeasibilityMaterialGrade=="") {
-                alert("Please Enter Grade OF Material!");
-                return false;
-            }
-
-            var FeasibilityLubricantPreferred = document.getElementById('FeasibilityLubricantPreferred').value;
-            if (FeasibilityLubricantPreferred=="") {
-                alert("Please Select Lubricant Preferred!");
-                return false;
-            }
-            var Feasibilitystandardapplicable = document.getElementById('Feasibilitystandardapplicable').value;
-            if (Feasibilitystandardapplicable=="") {
-                alert("Please Select  Standard Applicable!");
-                return false;
-            }
-            var hardnessmin = document.getElementById('hardnessmin').value;
-            if (hardnessmin=="") {
-                alert("Please Enter Heat Treatment Hardness Minimum!");
-                return false;
-            }
-            var hardnessmax = document.getElementById('hardnessmax').value;
-            if (hardnessmax=="") {
-                alert("Please Enter Heat Treatment Hardness Maximum!");
-                return false;
-            }
-            var hardnessunits = document.getElementById('hardnessunits').value;
-            if (hardnessunits=="") {
-                alert("Please Enter Heat Treatment Hardness Units!");
-                return false;
-            }
-            var micro = document.getElementById('micro').value;
-
-            var FeasibilityStatutoryandregulatoryrequirement = document.getElementById('FeasibilityStatutoryandregulatoryrequirement').value;
-            var FeasibilityRemark = document.getElementById('FeasibilityRemark').value;
-            var millTC =$("#lbl_preferedvendorlist").text();
-
-
-
-            //if (VendorMill == "") {
-            //    alert("Please Select Recommended Mill !");
-            //    return false;
-            //}
-
-
-            var objfea = [];
-            var feas = [];
-            feas = {
-                FeasibilityId: ' ' + feasibilityId + '', InquiryNo: ' ' + InquiryNo + '', FeasibilityConditionSupply: ' ' + feasibilityConditionSupply + '', FeasibilityTypeofJob: ' ' + feasibilityTypeofJob + '', FeasibilityNatureofWork: ' ' + feasibilityNatureofWork + '',
-                FeasibilityHammerRequired: ' ' + feasibilityHammerRequired + '', FeasibilityToolingRequirement: ' ' + feasibilityToolingRequirement + '', fisdiablocklength: ' ' + fisdiablocklength + '', fisdiablockwidth: '' + fisdiablockwidth + '', fisdiavalue: '' + fisdiavalue + '', fisdialength: '' + fisdialength + '',
-                fisdiatotal: '' + fisdiatotal + '', fisdiablockheight: '' + fisdiablockheight + '', fisdiablockwidth: ' ' + fisdiablockwidth + '' + '', fisdiablockheight: ' ' + fisdiablockheight + '',
-                MillTC: '' + millTC + '',
-                DieDescription: '' + dieDescription + '', netweight: ' ' + netweight + '' + '', cutweight: ' ' + cutWeight + '',
-                grossweight: '' + grossweight + '', cutlength: '' + cutlength + '', Section: ' ' + section + '' + '', materialweights: ' ' + materialweights + '',
-                FeasibilityLubricantPreferred: '' + FeasibilityLubricantPreferred + '', FeasibilityMaterialGrade: '' + FeasibilityMaterialGrade + '', FeasibilityHeattreatment: ' ' + FeasibilityHeattreatment + '' + '', Feasibilitystandardapplicable: ' ' + Feasibilitystandardapplicable + '',
-                hardnessmin: '' + hardnessmin + '', hardnessmax: '' + hardnessmax + '', hardnessunits: '' + hardnessunits + '', micro: '' + micro + '', FeasibilityStatutoryandregulatoryrequirement: '' + FeasibilityStatutoryandregulatoryrequirement + '',
-                FeasibilityRemark: '' + FeasibilityRemark + ''
-                //,
-                //ssmtbl_Feasibility_OperationsInvolvedModel: '' + selValues + '', ssmtbl_Feasibility_RawMaterialTestModel: '' + rawMaterialTestValues + ''
-            };
-            objfea.push(feas);
-
-            if (val == "Save") {
-
-                $.ajax
-                       ({
-                           type: "POST",
-                           url: "../Feasibility/CreateFeasibility",
-                           contentType: "application/json;charset=utf-8",
-                           //data: JSON.stringify({ objfea }),
-
-                           data: JSON.stringify({ FeasibilityId: ' ' + feasibilityId + '', InquiryNo: ' ' + InquiryNo + '', FeasibilityConditionSupply: ' ' + feasibilityConditionSupply + '', FeasibilityTypeofJob: ' ' + feasibilityTypeofJob + '', FeasibilityNatureofWork: ' ' + feasibilityNatureofWork + '',
-                               FeasibilityHammerRequired: ' ' + feasibilityHammerRequired + '', FeasibilityToolingRequirement: ' ' + feasibilityToolingRequirement + '', fisdiablocklength: ' ' + fisdiablocklength + '', fisdiablockwidth: '' + fisdiablockwidth + '', fisdiavalue: '' + fisdiavalue + '', fisdialength: '' + fisdialength + '',
-                               fisdiatotal: '' + fisdiatotal + '', fisdiablockheight: '' + fisdiablockheight + '', fisdiablockwidth: ' ' + fisdiablockwidth + '' + '', fisdiablockheight: ' ' + fisdiablockheight + '',
-                               MillTC: '' + millTC + '',
-                               DieDescription: '' + dieDescription + '', netweight: ' ' + netweight + '' + '', cutweight: ' ' + cutWeight + '',
-                               grossweight: '' + grossweight + '', cutlength: '' + cutlength + '', Section: ' ' + section + '' + '', materialweights: ' ' + materialweights + '',
-                               FeasibilityLubricantPreferred: '' + FeasibilityLubricantPreferred + '', FeasibilityMaterialGrade: '' + FeasibilityMaterialGrade + '', FeasibilityHeattreatment: ' ' + FeasibilityHeattreatment + '' + '', Feasibilitystandardapplicable: ' ' + Feasibilitystandardapplicable + '',
-                               hardnessmin: '' + hardnessmin + '', hardnessmax: '' + hardnessmax + '', hardnessunits: '' + hardnessunits + '', micro: '' + micro + '', FeasibilityStatutoryandregulatoryrequirement: '' + FeasibilityStatutoryandregulatoryrequirement + '',
-                               FeasibilityRemark: '' + FeasibilityRemark + ''
-                           }),
-                           //dataType: "json",
-                           success: function (status) {
-                               insertFeasOperationsInvolved(status);
-                               alert("Feasibility added successfully");
-
-                           },
-                           error: function (err) {
-                               alert('Error occured');
-                           }
-                       });
-            }
-            else {
-                $.ajax
-                      ({
-                          type: "POST",
-                          url: "../Feasibility/CreateFeasibility",
-                          data: JSON.stringify({ FeasibilityId: ' ' + feasibilityId + '', InquiryNo: ' ' + InquiryNo + '', FeasibilityConditionSupply: ' ' + feasibilityConditionSupply + '', FeasibilityTypeofJob: ' ' + feasibilityTypeofJob + '', FeasibilityNatureofWork: ' ' + feasibilityNatureofWork + '',
-                              FeasibilityHammerRequired: ' ' + feasibilityHammerRequired + '', FeasibilityToolingRequirement: ' ' + feasibilityToolingRequirement + '', fisdiablocklength: ' ' + fisdiablocklength + '', fisdiablockwidth: '' + fisdiablockwidth + '', fisdiavalue: '' + fisdiavalue + '', fisdialength: '' + fisdialength + '',
-                              fisdiatotal: '' + fisdiatotal + '', fisdiablockheight: '' + fisdiablockheight + '', fisdiablockwidth: ' ' + fisdiablockwidth + '' + '', fisdiablockheight: ' ' + fisdiablockheight + '',
-                              MillTC: '' + millTC + '',
-                              DieDescription: '' + dieDescription + '', netweight: ' ' + netweight + '' + '', cutweight: ' ' + cutWeight + '',
-                              grossweight: '' + grossweight + '', cutlength: '' + cutlength + '', Section: ' ' + section + '' + '', materialweights: ' ' + materialweights + '',
-                              FeasibilityLubricantPreferred: '' + FeasibilityLubricantPreferred + '', FeasibilityMaterialGrade: '' + FeasibilityMaterialGrade + '', FeasibilityHeattreatment: ' ' + FeasibilityHeattreatment + '' + '', Feasibilitystandardapplicable: ' ' + Feasibilitystandardapplicable + '',
-                              hardnessmin: '' + hardnessmin + '', hardnessmax: '' + hardnessmax + '', hardnessunits: '' + hardnessunits + '', micro: '' + micro + '', FeasibilityStatutoryandregulatoryrequirement: '' + FeasibilityStatutoryandregulatoryrequirement + '',
-                              FeasibilityRemark: '' + FeasibilityRemark + ''
-                          }),
-                          contentType: "application/json;charset=utf-8",
-                          dataType: "json",
-                          success: function (status) {
-                             // insertFeasOperationsInvolved(status);
-                              updateFeasOperationsInvolved(status);
-
-                          },
-                          error: function (err) {
-                              alert('Error occured');
-                          }
-                      });
-            }
-        }
-
-    </script>
-    <script type="text/javascript">
-
-
-        function insertFeasOperationsInvolved(status) {
-
-            var id = status;
-            var insertFeasOpsInvolved = document.getElementsByName('OperationsInvolved[]')[0];
-            var feasOpsInvolved = [];
-            var feasOpsInvolvedWithFeas = [];
-            var feasOpsInvolvedWithFeasID = [];
-            for (i = 0; i < insertFeasOpsInvolved.length; i++) {
-                if (insertFeasOpsInvolved.options[i].selected) {
-                    feasOpsInvolved.push(insertFeasOpsInvolved.options[i].value);
-                }
-            }
-
-            if ( feasOpsInvolved.length != 0) {
-                feasOpsInvolved.forEach(function (element) {
-                    feasOpsInvolvedWithFeasID = {
-                        FeasibilityId: ' ' + parseInt(status) + '', Operations_Involved: ' ' + parseInt(element) + ''
+                if (document.getElementById('Insert').checked) {
+                    var feasibilityToolingRequirement = 'Insert';
+                    var fisdialength = document.getElementById('fisdialength').value;
+                    if (fisdialength == "") {
+                        alert("Please Enter Fisibility Dia Length!");
+                        return false;
                     }
-                    feasOpsInvolvedWithFeas.push(feasOpsInvolvedWithFeasID);
-                });
-                $.ajax({
-                    type: "POST",
-                    url: "../Feasibility/InsertFeasOperationsInvolved",
-                    data: JSON.stringify(feasOpsInvolvedWithFeas),
-                    contentType: "application/json;charset=utf-8",
-
-                    success: function (success) {
-                        if ($("#spn_rmtlist").text() =="") {
-                            insertRawMaterialTest(id);
-                        }else{
-                            updateRawMaterialTest(id);}
-                    },
-                    error: function (err) {
-                        //alert('Error occured 123');
-                        alert(err);
+                    var fisdiavalue = document.getElementById('fisdiavalue').value;
+                    if (fisdiavalue == "") {
+                        alert("Please Enter Fisibility Dia Value!");
+                        return false;
                     }
-                });
-            }else {
-                insertRawMaterialTest(id);
+                    var fisdiatotal = $j('#fisdiatotal').text();
+
+                } else {
+                    var feasibilityToolingRequirement = 'Die Block';
+                    var fisdiablocklength = document.getElementById('fisdiablocklength').value;
+                    if (fisdiablocklength == "") {
+                        alert("Please Enter Dia Block Length!");
+                        return false;
+                    }
+                    var fisdiablockwidth = document.getElementById('fisdiablockwidth').value;
+                    if (fisdiablockheight == "") {
+                        alert("Please Enter Dia Block Width!");
+                        return false;
+                    }
+                    var fisdiablockheight = document.getElementById('fisdiablockheight').value;
+                    if (fisdiablockheight == "") {
+                        alert("Please Enter Dia Block Height!");
+                        return false;
+                    }
+                    var fisdiatotal = $j('#fisdiatotal').text();
+
+                }
+                //var millTC = document.getElementById('MillTC').value;
+                var dieDescription = document.getElementById('DieDescription').value;
+
+                var operationinv = document.getElementById('mySelect2').value;
+
+                if (operationinv == "" && val != "Update") {
+                    alert("Please Select Operation Involved!");
+                    return false;
+                } else if (operationinv == "" && $j("#spn_opinvtaglist").text() == "" && val == "Update") {
+                    alert("Please Select Operation Involved!");
+                    return false;
+                }
+
+                var rmtest = document.getElementById('drp_rmt').value;
+                if (rmtest == "" && val != "Update") {
+                    alert("Please Select Raw Material Test!");
+                    return false;
+                } else if (rmtest == "" && $j("#spn_rmtlist").text() == "" && val == "Update") {
+                    alert("Please Select Raw Material Test!");
+                    return false;
+                }
+
+                var section = document.getElementById('Section').value;
+                if (section == "") {
+                    alert("Please Select Section!");
+                    return false;
+                }
+                var netweight = document.getElementById('netweight').value;
+                if (netweight == "") {
+                    alert("Please Enter Net Weight!");
+                    return false;
+                }
+                var cutWeight = document.getElementById('cutWeight').value;
+                if (cutWeight == "") {
+                    alert("Please Enter Cut Weight!");
+                    return false;
+                }
+                var grossweight = document.getElementById('grossweight').value;
+                if (grossweight == "") {
+                    alert("Please Enter Gross Weight!");
+                    return false;
+                }
+                var cutlength = document.getElementById('cutlength').value;
+                if (cutlength == "") {
+                    alert("Please Enter Cut Length!");
+                    return false;
+                }
+                var materialweights = document.getElementById('materialweights').value;
+                if (materialweights == "") {
+                    alert("Please Enter Machined Weight!");
+                    return false;
+                }
+                var FeasibilityHeattreatment = document.getElementById('FeasibilityHeattreatment').value;
+                if (FeasibilityHeattreatment == "") {
+                    alert("Please Select Heat Treatment!");
+                    return false;
+                }
+                var FeasibilityMaterialGrade = document.getElementById('FeasibilityMaterialGrade').value;
+                if (FeasibilityMaterialGrade == "") {
+                    alert("Please Enter Grade OF Material!");
+                    return false;
+                }
+
+                var FeasibilityLubricantPreferred = document.getElementById('FeasibilityLubricantPreferred').value;
+                if (FeasibilityLubricantPreferred == "") {
+                    alert("Please Select Lubricant Preferred!");
+                    return false;
+                }
+                var Feasibilitystandardapplicable = document.getElementById('Feasibilitystandardapplicable').value;
+                if (Feasibilitystandardapplicable == "") {
+                    alert("Please Select  Standard Applicable!");
+                    return false;
+                }
+                var hardnessmin = document.getElementById('hardnessmin').value;
+                if (hardnessmin == "") {
+                    alert("Please Enter Heat Treatment Hardness Minimum!");
+                    return false;
+                }
+                var hardnessmax = document.getElementById('hardnessmax').value;
+                if (hardnessmax == "") {
+                    alert("Please Enter Heat Treatment Hardness Maximum!");
+                    return false;
+                }
+                var hardnessunits = document.getElementById('hardnessunits').value;
+                if (hardnessunits == "") {
+                    alert("Please Enter Heat Treatment Hardness Units!");
+                    return false;
+                }
+                var micro = document.getElementById('micro').value;
+
+                var FeasibilityStatutoryandregulatoryrequirement = document.getElementById('FeasibilityStatutoryandregulatoryrequirement').value;
+                var FeasibilityRemark = document.getElementById('FeasibilityRemark').value;
+                var millTC = $("#lbl_preferedvendorlist").text();
+                  
+                var objfea = [];
+                var feas = [];
+                feas = {
+                    FeasibilityId: ' ' + feasibilityId + '', InquiryNo: ' ' + InquiryNo + '', FeasibilityConditionSupply: ' ' + feasibilityConditionSupply + '', FeasibilityTypeofJob: ' ' + feasibilityTypeofJob + '', FeasibilityNatureofWork: ' ' + feasibilityNatureofWork + '',
+                    FeasibilityHammerRequired: ' ' + feasibilityHammerRequired + '', FeasibilityToolingRequirement: ' ' + feasibilityToolingRequirement + '', fisdiablocklength: ' ' + fisdiablocklength + '', fisdiablockwidth: '' + fisdiablockwidth + '', fisdiavalue: '' + fisdiavalue + '', fisdialength: '' + fisdialength + '',
+                    fisdiatotal: '' + fisdiatotal + '', fisdiablockheight: '' + fisdiablockheight + '', fisdiablockwidth: ' ' + fisdiablockwidth + '' + '', fisdiablockheight: ' ' + fisdiablockheight + '',
+                    MillTC: '' + millTC + '',
+                    DieDescription: '' + dieDescription + '', netweight: ' ' + netweight + '' + '', cutweight: ' ' + cutWeight + '',
+                    grossweight: '' + grossweight + '', cutlength: '' + cutlength + '', Section: ' ' + section + '' + '', materialweights: ' ' + materialweights + '',
+                    FeasibilityLubricantPreferred: '' + FeasibilityLubricantPreferred + '', FeasibilityMaterialGrade: '' + FeasibilityMaterialGrade + '', FeasibilityHeattreatment: ' ' + FeasibilityHeattreatment + '' + '', Feasibilitystandardapplicable: ' ' + Feasibilitystandardapplicable + '',
+                    hardnessmin: '' + hardnessmin + '', hardnessmax: '' + hardnessmax + '', hardnessunits: '' + hardnessunits + '', micro: '' + micro + '', FeasibilityStatutoryandregulatoryrequirement: '' + FeasibilityStatutoryandregulatoryrequirement + '',
+                    FeasibilityRemark: '' + FeasibilityRemark + ''
+                    //,
+                    //ssmtbl_Feasibility_OperationsInvolvedModel: '' + selValues + '', ssmtbl_Feasibility_RawMaterialTestModel: '' + rawMaterialTestValues + ''
+                };
+                objfea.push(feas);
+
+                if (val == "Save") {
+
+                    $.ajax
+                        ({
+                            type: "POST",
+                            url: "../Feasibility/CreateFeasibility",
+                            contentType: "application/json;charset=utf-8",
+                            //data: JSON.stringify({ objfea }),
+
+                            data: JSON.stringify({
+                                FeasibilityId: ' ' + feasibilityId + '', InquiryNo: ' ' + InquiryNo + '', FeasibilityConditionSupply: ' ' + feasibilityConditionSupply + '', FeasibilityTypeofJob: ' ' + feasibilityTypeofJob + '', FeasibilityNatureofWork: ' ' + feasibilityNatureofWork + '',
+                                FeasibilityHammerRequired: ' ' + feasibilityHammerRequired + '', FeasibilityToolingRequirement: ' ' + feasibilityToolingRequirement + '', fisdiablocklength: ' ' + fisdiablocklength + '', fisdiablockwidth: '' + fisdiablockwidth + '', fisdiavalue: '' + fisdiavalue + '', fisdialength: '' + fisdialength + '',
+                                fisdiatotal: '' + fisdiatotal + '', fisdiablockheight: '' + fisdiablockheight + '', fisdiablockwidth: ' ' + fisdiablockwidth + '' + '', fisdiablockheight: ' ' + fisdiablockheight + '',
+                                MillTC: '' + millTC + '',
+                                DieDescription: '' + dieDescription + '', netweight: ' ' + netweight + '' + '', cutweight: ' ' + cutWeight + '',
+                                grossweight: '' + grossweight + '', cutlength: '' + cutlength + '', Section: ' ' + section + '' + '', materialweights: ' ' + materialweights + '',
+                                FeasibilityLubricantPreferred: '' + FeasibilityLubricantPreferred + '', FeasibilityMaterialGrade: '' + FeasibilityMaterialGrade + '', FeasibilityHeattreatment: ' ' + FeasibilityHeattreatment + '' + '', Feasibilitystandardapplicable: ' ' + Feasibilitystandardapplicable + '',
+                                hardnessmin: '' + hardnessmin + '', hardnessmax: '' + hardnessmax + '', hardnessunits: '' + hardnessunits + '', micro: '' + micro + '', FeasibilityStatutoryandregulatoryrequirement: '' + FeasibilityStatutoryandregulatoryrequirement + '',
+                                FeasibilityRemark: '' + FeasibilityRemark + ''
+                            }),
+                            //dataType: "json",
+                            success: function (status) {
+                                insertFeasOperationsInvolved(status);
+                                alert("Feasibility added successfully");
+
+                            },
+                            error: function (err) {
+                                alert('Error occured');
+                            }
+                        });
+                }
+                else {
+                    $.ajax
+                        ({
+                            type: "POST",
+                            url: "../Feasibility/CreateFeasibility",
+                            data: JSON.stringify({
+                                FeasibilityId: ' ' + feasibilityId + '', InquiryNo: ' ' + InquiryNo + '', FeasibilityConditionSupply: ' ' + feasibilityConditionSupply + '', FeasibilityTypeofJob: ' ' + feasibilityTypeofJob + '', FeasibilityNatureofWork: ' ' + feasibilityNatureofWork + '',
+                                FeasibilityHammerRequired: ' ' + feasibilityHammerRequired + '', FeasibilityToolingRequirement: ' ' + feasibilityToolingRequirement + '', fisdiablocklength: ' ' + fisdiablocklength + '', fisdiablockwidth: '' + fisdiablockwidth + '', fisdiavalue: '' + fisdiavalue + '', fisdialength: '' + fisdialength + '',
+                                fisdiatotal: '' + fisdiatotal + '', fisdiablockheight: '' + fisdiablockheight + '', fisdiablockwidth: ' ' + fisdiablockwidth + '' + '', fisdiablockheight: ' ' + fisdiablockheight + '',
+                                MillTC: '' + millTC + '',
+                                DieDescription: '' + dieDescription + '', netweight: ' ' + netweight + '' + '', cutweight: ' ' + cutWeight + '',
+                                grossweight: '' + grossweight + '', cutlength: '' + cutlength + '', Section: ' ' + section + '' + '', materialweights: ' ' + materialweights + '',
+                                FeasibilityLubricantPreferred: '' + FeasibilityLubricantPreferred + '', FeasibilityMaterialGrade: '' + FeasibilityMaterialGrade + '', FeasibilityHeattreatment: ' ' + FeasibilityHeattreatment + '' + '', Feasibilitystandardapplicable: ' ' + Feasibilitystandardapplicable + '',
+                                hardnessmin: '' + hardnessmin + '', hardnessmax: '' + hardnessmax + '', hardnessunits: '' + hardnessunits + '', micro: '' + micro + '', FeasibilityStatutoryandregulatoryrequirement: '' + FeasibilityStatutoryandregulatoryrequirement + '',
+                                FeasibilityRemark: '' + FeasibilityRemark + ''
+                            }),
+                            contentType: "application/json;charset=utf-8",
+                            dataType: "json",
+                            success: function (status) {
+                                // insertFeasOperationsInvolved(status);
+                                updateFeasOperationsInvolved(status);
+
+                            },
+                            error: function (err) {
+                                alert('Error occured');
+                            }
+                        });
+                }
             }
 
+        </script>
+        <script type="text/javascript">
 
-        }
 
-    </script>
-    <script>
+            function insertFeasOperationsInvolved(status) {
+
+                var id = status;
+                var insertFeasOpsInvolved = document.getElementsByName('OperationsInvolved[]')[0];
+                var feasOpsInvolved = [];
+                var feasOpsInvolvedWithFeas = [];
+                var feasOpsInvolvedWithFeasID = [];
+                for (i = 0; i < insertFeasOpsInvolved.length; i++) {
+                    if (insertFeasOpsInvolved.options[i].selected) {
+                        feasOpsInvolved.push(insertFeasOpsInvolved.options[i].value);
+                    }
+                }
+
+                if (feasOpsInvolved.length != 0) {
+                    feasOpsInvolved.forEach(function (element) {
+                        feasOpsInvolvedWithFeasID = {
+                            FeasibilityId: ' ' + parseInt(status) + '', Operations_Involved: ' ' + parseInt(element) + ''
+                        }
+                        feasOpsInvolvedWithFeas.push(feasOpsInvolvedWithFeasID);
+                    });
+                    $.ajax({
+                        type: "POST",
+                        url: "../Feasibility/InsertFeasOperationsInvolved",
+                        data: JSON.stringify(feasOpsInvolvedWithFeas),
+                        contentType: "application/json;charset=utf-8",
+
+                        success: function (success) {
+                            if ($("#spn_rmtlist").text() == "") {
+                                insertRawMaterialTest(id);
+                            } else {
+                                updateRawMaterialTest(id);
+                            }
+                        },
+                        error: function (err) { 
+                            alert(err);
+                        }
+                    });
+                } else {
+                    insertRawMaterialTest(id);
+                }
+
+
+            }
+
+        </script>
+        <script>
         function updateFeasOperationsInvolved(status)
         {
             if ($("#spn_opinvtaglist").text() =="") {
@@ -892,7 +665,7 @@
                 var id = status;
                 var insertFeasOpsInvolved = [];
                 insertFeasOpsInvolved = "@ViewData["opsInvolvedIDgetsequentially"]" ;
-                var insertFeasOpsInvolvedArray = insertFeasOpsInvolved.split(',');               
+                var insertFeasOpsInvolvedArray = insertFeasOpsInvolved.split(',');
                 var feasOpsInvolved = [];
                 var feasOpsInvolvedWithFeas = [];
                 var feasOpsInvolvedWithFeasID = [];
@@ -907,8 +680,8 @@
                         }
                         feasOpsInvolvedWithFeas.push(feasOpsInvolvedWithFeasID);
                     });
-                  
-                   
+
+
                     $.ajax({
                         type: "POST",
                         url: "../Feasibility/InsertFeasOperationsInvolved",
@@ -917,10 +690,9 @@
 
                         success: function (success) {
                             updateRawMaterialTest(id);
-                          
+
                         },
-                        error: function (err) {
-                            //alert('Error occured 123');
+                        error: function (err) { 
                             alert(err);
                         }
                     });
@@ -930,9 +702,9 @@
 
             }
         }
-    </script>
-    
-    <script type="text/javascript">
+        </script>
+
+        <script type="text/javascript">
         function updateRawMaterialTest(id) {
             //alert("Raw"+id);
             //var id = status;
@@ -940,17 +712,17 @@
                 insertRawMaterialTest(id);
             }else{
                 var rawMaterialTest = [];
-                
+
                 rawMaterialTest = "@ViewData["FisibilityRawmaterialtestIDsequentially"]" ;
                 var insertrawMaterialTestArray = rawMaterialTest.split(',');
                 var rawMaterialTestValues =[];
                 var rawMaterialTestValuesWithFeas = [];
                 var rawMaterialTestValuesWithFeasID = [];
-               
+
                 $.each(insertrawMaterialTestArray, function(index, value) {
                     rawMaterialTestValues.push(value);
                 });
-               
+
                 if ( rawMaterialTestValues.length != 0) {
                     rawMaterialTestValues.forEach(function (element) {
                         rawMaterialTestValuesWithFeasID = {
@@ -978,8 +750,8 @@
                 }
             }
         }
-    </script>
-    <script type="text/javascript">
+        </script>
+        <script type="text/javascript">
         function insertRawMaterialTest(id) {
             //alert("Raw"+id);
             var RawMaterialTest = document.getElementsByName('RawMaterialTest[]')[0];
@@ -1021,9 +793,9 @@
             }
 
         }
-    </script>
+        </script>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
         function insertVendorMill(id) {
             var vendormillid=$("#lbl_preferedvendorlist").text();
 
@@ -1096,20 +868,20 @@
 
             }
         }
-    </script>
-    @*<script>
-            var selO = document.getElementsByName('OperationsInvolved[]')[0];
-            var selValues = [];
-            for (i = 0; i < selO.length; i++) {
-                if (selO.options[i].selected) {
-                    alert(selO.options[i].value);
-                    selValues.push(selO.options[i].value);
+        </script>
+        @*<script>
+                var selO = document.getElementsByName('OperationsInvolved[]')[0];
+                var selValues = [];
+                for (i = 0; i < selO.length; i++) {
+                    if (selO.options[i].selected) {
+                        alert(selO.options[i].value);
+                        selValues.push(selO.options[i].value);
+                    }
                 }
-            }
 
-        </script>*@
+            </script>*@
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
         function OprInvHidewShow()
         {
@@ -1419,86 +1191,86 @@
         }
 
 
-    </script>
-    <script>
-        $j('#Insert').click(function () {
-            $j('#Dia').show();
-            $j('#Length').show();
-            $j('#fisdiavalue').show();
-            $j('#fisdialength').show();
-            $j('#fisdiatotal').show();
-            $j('.DivInsert').show();
-            $j('.DivTotal').show();
-            $j('#Total').show();
-            $j('.DivDieBlock').hide();
-            var dieIns = 'Dia' + $j('#fisdiavalue').val() + ' Len' + $j('#fisdialength').val();
-            $j('#DieDescription').val(dieIns);
-            $j('#DieLength').hide();
-            $j('#Width').hide();
-            $j('#Height').hide();
-            $j('#fisdiablockwidth').val(0);
-            $j('#fisdiablockheight').val(0);
-            $j('#fisdiablocklength').val(0);
-            $j('#fisdiablockwidth').hide();
-            $j('#fisdiablockheight').hide();
-            $j('#fisdiablocklength').hide();
-            getDieDescriptionValue();
-        });
-        $j('#DieBlock').click(function () {
-            $j('.DivInsert').hide();
-            $j('#Dia').hide();
-            $j('#Length').hide();
-            $j('#fisdiavalue').val(0);
-            $j('#fisdialength').val(0);
-            $j('#fisdiavalue').hide();
-            $j('#fisdialength').hide();
-            $j('#Total').show();
-            $j('#DieLength').show();
-            $j('#Width').show();
-            $j('#Height').show();
-            $j('#fisdiablockwidth').show();
-            $j('#fisdiablockheight').show();
-            $j('#fisdiablocklength').show();
-            $j('#fisdiatotal').show();
-            $j('.DivDieBlock').show();
-            // $j('#Length').show();
-            //$j('#fisdiavalue').show();
-            //$j('#fisdialength').show();
-            $j('.DivTotal').show();
-            var dieIns = 'Len' + $j('#fisdiablocklength').val() + ' Wid' + $j('#fisdiablockwidth').val() + ' Ht' + $j('#fisdiablockheight').val();
-            $j('#DieDescription').val(dieIns);
-            getDieDescriptionValue();
-        });
-    </script>
+        </script>
+        <script>
+            $j('#Insert').click(function () {
+                $j('#Dia').show();
+                $j('#Length').show();
+                $j('#fisdiavalue').show();
+                $j('#fisdialength').show();
+                $j('#fisdiatotal').show();
+                $j('.DivInsert').show();
+                $j('.DivTotal').show();
+                $j('#Total').show();
+                $j('.DivDieBlock').hide();
+                var dieIns = 'Dia' + $j('#fisdiavalue').val() + ' Len' + $j('#fisdialength').val();
+                $j('#DieDescription').val(dieIns);
+                $j('#DieLength').hide();
+                $j('#Width').hide();
+                $j('#Height').hide();
+                $j('#fisdiablockwidth').val(0);
+                $j('#fisdiablockheight').val(0);
+                $j('#fisdiablocklength').val(0);
+                $j('#fisdiablockwidth').hide();
+                $j('#fisdiablockheight').hide();
+                $j('#fisdiablocklength').hide();
+                getDieDescriptionValue();
+            });
+            $j('#DieBlock').click(function () {
+                $j('.DivInsert').hide();
+                $j('#Dia').hide();
+                $j('#Length').hide();
+                $j('#fisdiavalue').val(0);
+                $j('#fisdialength').val(0);
+                $j('#fisdiavalue').hide();
+                $j('#fisdialength').hide();
+                $j('#Total').show();
+                $j('#DieLength').show();
+                $j('#Width').show();
+                $j('#Height').show();
+                $j('#fisdiablockwidth').show();
+                $j('#fisdiablockheight').show();
+                $j('#fisdiablocklength').show();
+                $j('#fisdiatotal').show();
+                $j('.DivDieBlock').show();
+                // $j('#Length').show();
+                //$j('#fisdiavalue').show();
+                //$j('#fisdialength').show();
+                $j('.DivTotal').show();
+                var dieIns = 'Len' + $j('#fisdiablocklength').val() + ' Wid' + $j('#fisdiablockwidth').val() + ' Ht' + $j('#fisdiablockheight').val();
+                $j('#DieDescription').val(dieIns);
+                getDieDescriptionValue();
+            });
+        </script>
 
-    <script type="text/javascript" language="javascript">
-        //window.onbeforeunload = function() {
-        //    var Ans = confirm("Are you sure you want change page!");
-        //    if(Ans==true)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //};
+        <script type="text/javascript" language="javascript">
+            //window.onbeforeunload = function() {
+            //    var Ans = confirm("Are you sure you want change page!");
+            //    if(Ans==true)
+            //    {
+            //        return false;
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //};
 
-    </script>
-    <script type="text/javascript" language="JavaScript">
+        </script>
+        <script type="text/javascript" language="JavaScript">
 
-        var unsaved = false;
+            var unsaved = false;
 
-        $j(":input").change(function(){ //trigers change in all input fields including text type
-            unsaved = true;
-        });
+            $j(":input").change(function () { //trigers change in all input fields including text type
+                unsaved = true;
+            });
 
-        function unloadPage(){
-            if(unsaved){
-                return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+            function unloadPage() {
+                if (unsaved) {
+                    return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                }
             }
-        }
 
-        window.onbeforeunload = unloadPage;
-    </script>
-}
+            window.onbeforeunload = unloadPage;
+        </script>
+    }

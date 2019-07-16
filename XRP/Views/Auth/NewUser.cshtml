@@ -4,195 +4,168 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 
-<fieldset>
-    <header class="blue accent-3 relative">
-        <div class="container-fluid text-white">
-            <div class="row p-t-b-10 ">
-                <div class="col">
-                    <h4>
-                        <i class="icon-database"></i>
-                        User
-                    </h4>
-                </div>
-            </div>
-            <div class="row justify-content-between">
-                <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                    <li>
-                        <a class="nav-link" href='@Url.Action("AllUser", "Auth")'><i class="icon icon-home2"></i>User List</a>
-                    </li>
-                    @*<li>
-                            <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
-                        </li>*@
-                    <li class="float-right">
-                        <a class="nav-link active"><i class="icon icon-plus-circle"></i>New User</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<div class="paddingTop15">
 
-    </header>
-    <div class="container-fluid animatedParent animateOnce">
-        <div class="tab-content my-3" id="v-pills-tabContent">
-            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
-                <div class="row my-3">
-                    <div class="col-md-12">
-                        <div class="card r-0 shadow">
-                            <div class="table-responsive">
-                                <form action="">
+    <ul class="nav nav-tabs" id="myTabs" role="tablist">
+        <li role="presentation" ><a href="@Url.Action("AllUser", "Auth")" >User List</a></li>
+        <li role="presentation" class="active">
+            <a href=#" class="" aria-controls="EnquiryList" role="tab" data-toggle="tab"> New User</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active paddingTop15" id="EnquiryList">
 
-                                    <div class="card-body">
-                                        <div class="form-row mt-1">
-                                            <div class="form-group col-6 m-0 p-1">
-                                               <label class="Label">First Name</label> 
-                                                <input type="text" id="txtFirstName" class="form-control r-0 light s-12" />
-                                            </div>
-                                            <div class="form-group col-6 m-0 p-1">
-                                                <label class="Label">Last Name</label>
-                                                <input type="text" id="txtLastName" class="form-control r-0 light s-12" />
-                                            </div>
+           
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                        <div class="ibox">
+                            <div class="ibox-content">
 
 
-                                        </div>
-                                        <div class="form-row mt-1">
-                                            <div class="form-group col-6 m-0 p-1">
-                                                <label class="Label">Username</label>
-                                                <input type="text" id="txtUserName" class="form-control r-0 light s-12" />
-                                            </div>
-                                            <div class="form-group col-6 m-0 p-1">
-                                                <label class="Label">Password</label>
-                                                <input type="password" id="txtPassword" class="form-control r-0 light s-12" />
-                                            </div>
-
-
-                                        </div>
-                                        <div class="form-row mt-1">
-                                            <div class="form-group col-6 m-0 p-1">
-                                                <label class="Label">User Roll</label>
-                                               
-                                                <select class="form-control r-0 light s-12" id="drpUserRoll" name="UserSelection[]">
-                                                    <option value="0">-- Please Select --</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-6 m-0 p-1">
-                                                <label class="Label">Department</label>
-                                              
-
-                                               
-                                                <select class="form-control r-0 light s-12" id="drpDepartment" name="DepartmentSelection[]" >
-                                                    <option value="0">-- Please Select --</option>
-                                                </select>
-                                            </div>
-
-
-                                        </div>
-                                        <div class="form-row mt-1">
-                                            <div class="form-group col-6 m-0 p-1">
-                                                <label class="Label">Email</label>
-                                                <input type="text" id="txtEmail" class="form-control r-0 light s-12" />
-                                            </div>
-                                            <div class="form-group col-6 m-0 p-1">
-                                                <label class="Label">Contact Number</label>
-                                                <input type="text" id="txtContactNumber" class="form-control r-0 light s-12"  onkeypress = "javascript:return isNumberKey(event)"/>
-                                            </div>
-
-
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="Label">First Name</label>
+                                        <input type="text" id="txtFirstName" class="form-control r-0 light s-12" />
                                     </div>
-                                    <div class="card-body" align="right">
-                                        <button type="button" class="btn btn-primary btn-sm" id="btnSubmit" onclick="insertUser()"><i class="icon-save mr-2"></i>Save</button>
-                                        <button type="reset" class="btn btn-success btn-sm" id="btnReset"><i class="icon-refresh mr-2"></i>Reset</button>
+                                    <div class="col-md-6">
+                                        <label class="Label">Last Name</label>
+                                        <input type="text" id="txtLastName" class="form-control r-0 light s-12" />
                                     </div>
-                                </form>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="Label">Username</label>
+                                        <input type="text" id="txtUserName" class="form-control r-0 light s-12" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="Label">Password</label>
+                                        <input type="password" id="txtPassword" class="form-control r-0 light s-12" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="Label">User Role</label>
+
+                                        <select class="form-control r-0 light s-12" id="drpUserRoll" name="UserSelection[]">
+                                            <option value="0">Select Role</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="Label">Department</label>
+
+                                        <select class="form-control r-0 light s-12" id="drpDepartment" name="DepartmentSelection[]">
+                                            <option value="0">Select Department</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="Label">Email</label>
+                                        <input type="text" id="txtEmail" class="form-control r-0 light s-12" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="Label">Contact Number</label>
+                                        <input type="text" id="txtContactNumber" class="form-control r-0 light s-12" onkeypress="javascript:return isNumberKey(event)" />
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row" align="right">
+                                    <button type="button" class="btn btn-primary" id="btnSubmit" onclick="insertUser()"><i class="icon-save mr-2"></i>Save</button>
+                                    <button type="reset" class="btn btn-default" id="btnReset"><i class="icon-refresh mr-2"></i>Reset</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                
+ 
+            <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Content/Validations/JqueryUi.js"></script>
 
-</fieldset>
-<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Content/Validations/JqueryUi.js"></script>
+            <script type="text/javascript">
+                var $j = jQuery.noConflict(true);
+            </script>
+            <script>
+                $(document).ready(function () {
+                    bindDepartment();
+                    bindUserRoll();
+                });
+            </script>
+            <script>
 
-<script type="text/javascript">
-    var $j = jQuery.noConflict(true);
-</script>
-<script>
-    $(document).ready(function () {
-        bindDepartment();
-        bindUserRoll();
-    });
-</script>
-<script>
-   
-   
-</script>
-<script>
-    function insertUser(){
-       
-        var fName=$("#txtFirstName").val();
-        if (fName =="") {
-            alert("Please Enter First Name !!");
-            return false;
-        }
-        var lName=$("#txtLastName").val();
-        if (lName =="") {
-            alert("Please Enter Last Name !!");
-            return false;
-        }
-        var uName=$("#txtUserName").val();
-        if (uName =="") {
-            alert("Please Enter Username !!");
-            return false;
-        }
-        var password=$("#txtPassword").val();
-        if (password =="") {
-            alert("Please Enter Password !!");
-            return false;
-        }
-        var uType=$("#drpUserRoll").val();
-        if (uType =="0") {
-            alert("Please Select User Roll !!");
-            return false;
-        }
-        var department=$("#drpDepartment").val();
-        if (department =="0") {
-            alert("Please Select Department !!");
-            return false;
-        }
-        var email=$("#txtEmail").val();
-        if (email =="") {
-            alert("Please Enter Email !!");
-            return false;
-        }
-        var contactNumber=$("#txtContactNumber").val();
-        if (contactNumber =="") {
-            alert("Please Enter Contact Number !!");
-            return false;
-        }
-        $.ajax({
-            type: "POST",
-            url: "../Auth/insertUser",           
-            dataType: "json",
-            data: JSON.stringify({ fName, lName, uName, password, uType, department, email,contactNumber}),
-            contentType: "application/json;charset=utf-8",
-            success: function (status) {
-                alert("User Added Successfully !!");
-                window.location.href="../Auth/AllUser";
-            },
-            error: function (err) {
-                alert("Error Inserting User !!");
-            }
-        });
-    }
-</script>
 
-<script>
+            </script>
+            <script>
+                function insertUser() {
+
+                    var fName = $("#txtFirstName").val();
+                    if (fName == "") {
+                        alert("Please Enter First Name !!");
+                        return false;
+                    }
+                    var lName = $("#txtLastName").val();
+                    if (lName == "") {
+                        alert("Please Enter Last Name !!");
+                        return false;
+                    }
+                    var uName = $("#txtUserName").val();
+                    if (uName == "") {
+                        alert("Please Enter Username !!");
+                        return false;
+                    }
+                    var password = $("#txtPassword").val();
+                    if (password == "") {
+                        alert("Please Enter Password !!");
+                        return false;
+                    }
+                    var uType = $("#drpUserRoll").val();
+                    if (uType == "0") {
+                        alert("Please Select User Roll !!");
+                        return false;
+                    }
+                    var department = $("#drpDepartment").val();
+                    if (department == "0") {
+                        alert("Please Select Department !!");
+                        return false;
+                    }
+                    var email = $("#txtEmail").val();
+                    if (email == "") {
+                        alert("Please Enter Email !!");
+                        return false;
+                    }
+                    var contactNumber = $("#txtContactNumber").val();
+                    if (contactNumber == "") {
+                        alert("Please Enter Contact Number !!");
+                        return false;
+                    }
+                    $.ajax({
+                        type: "POST",
+                        url: "../Auth/insertUser",
+                        dataType: "json",
+                        data: JSON.stringify({ fName, lName, uName, password, uType, department, email, contactNumber }),
+                        contentType: "application/json;charset=utf-8",
+                        success: function (status) {
+                            alert("User Added Successfully !!");
+                            window.location.href = "../Auth/AllUser";
+                        },
+                        error: function (err) {
+                            alert("Error Inserting User !!");
+                        }
+                    });
+                }
+            </script>
+
+            <script>
     function bindDepartment(){
         var stringArray = @Html.Raw(Json.Encode(@ViewData["Department"]));
 
@@ -216,13 +189,13 @@
                }).html(data.BindType).appendTo("#drpUserRoll");
         });
     }
-</script>
-<script>
-    function isNumberKey(key) {
-        var keycode = (key.which) ? key.which : key.keyCode;
-        if (keycode > 31 && (keycode < 48 || keycode > 57) && keycode != 47) {
-            return false;
-        }
-        else return true;
-    }
-</script>
+            </script>
+            <script>
+                function isNumberKey(key) {
+                    var keycode = (key.which) ? key.which : key.keyCode;
+                    if (keycode > 31 && (keycode < 48 || keycode > 57) && keycode != 47) {
+                        return false;
+                    }
+                    else return true;
+                }
+            </script>

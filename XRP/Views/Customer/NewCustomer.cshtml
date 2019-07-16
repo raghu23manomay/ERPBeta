@@ -6,9 +6,7 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 
-<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
-
-
+<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" /> 
 @using (Html.BeginForm("NewCustomer", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
@@ -576,8 +574,8 @@
 
         </script>
         <script type="text/javascript">
-        function checkcondition() {
-
+            function checkcondition() {
+                debugger;
             var txt = $("#txt_VendName").val();
 
 

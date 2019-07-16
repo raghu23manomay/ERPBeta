@@ -10,14 +10,9 @@
 @using (Html.BeginForm("AllGoodsInward", "GoodsInward", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
-
-
-    <div class="">
-
+   
         <div class="row">
-             
-                <form>
-                                      
+                <form>            
                         <div class="panel-body tab-content">
                             <div class="tab-pane active" id="tab-first">
                                 @Html.Action("AllGIConsumables")
@@ -35,22 +30,15 @@
                                 @Html.Action("AllGIMaintenanceRepair")
                             </div>
                         </div>
-                    
                 </form>
-
-             
-        </div>
         </div>
         <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
         <script src="~/Scripts/jquery-1.10.2.min.js"></script>
         <script src="~/Content/Validations/JqueryUi.js"></script>
         <script>
-
             $(".nav-link").click(function () {
-
                 window.scrollBy(0, 50); //for scroll top
                 window.scrollBy(0, -50); //for scroll down
             });
         </script>
-
     }

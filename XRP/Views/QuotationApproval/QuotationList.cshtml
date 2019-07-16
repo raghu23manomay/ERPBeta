@@ -8,113 +8,67 @@
 @using (Html.BeginForm("QuotationList", "QuotationApproval", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
+<div class="paddingTop15">
    
-
-<div class="paddingTop15"> 
-   
-    <div class="container-fluid animatedParent animateOnce">
-        <div class="tab-content my-3" id="v-pills-tabContent">
-            <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
-                <div class="row my-3">
+    
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Quotation List</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
                     <div class="col-md-12">
-                        <div class="card r-0 shadow">
-                            @*<div class="table-responsive">*@
-                            <form action="">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <!-- START DEFAULT DATATABLE -->
-                                        <div class="panel panel-default">
-                                            @*<div class="panel-heading">
-                                                    <h3 class="panel-title">QUOTATION LIST FOR APPROVAL</h3>
 
-                                                </div>*@
-                                            <div class="panel-body panel-body-table">
-                                                <div class="table-responsive">
-                                                    <br />
-                                                    <table class="table table-striped table-hover" id="tbl_AllEditCustomer" cellspacing="0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th style="display:none;">#</th>
-                                                                @*<th>VERSION No</th>*@
-                                                                <th>CUSTOMER NAME</th>
-                                                                <th>ENQUIRY No</th>
-                                                                <th>QUOTATION No</th>
-                                                                <th>SUBMITTED BY</th>
-                                                                <th>SUBMITTED ON</th>
-                                                                @*<th>VIEW</th>*@
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tbodyQuoList">
-                                                            @foreach (var data in Model)
-                                                            {
+                        <table class="table table-striped table-hover" id="tbl_AllEditCustomer" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th style="display:none;">#</th>
+                                    <th>CUSTOMER NAME</th>
+                                    <th>ENQUIRY No</th>
+                                    <th>QUOTATION No</th>
+                                    <th>SUBMITTED BY</th>
+                                    <th>SUBMITTED ON</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyQuoList">
+                                @foreach (var data in Model)
+                                {
+                                    <tr class="editVaccin mosurhandsymbol">
+                                        <td style="display:none;">@data.id</td>
+                                        <td>@data.CustomerName</td>
+                                        <td>@data.InquiryNo</td>
+                                        <td>@data.QuotationNo</td>
+                                        <td>@data.Createdby</td>
+                                        <td>@data.CreatedOn.Date.ToString("dd-MMM-yyyy")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
 
 
-                                                                @*<tr class="editVaccin" href="../QuotationApproval/QuotationViewForApproval?QuotationId=@data.id">*@
-                                                                <tr class="editVaccin mosurhandsymbol">
-                                                                    <td style="display:none;">@data.id</td>
-                                                                    @*<td>@data.new_Version_No</td>*@
-                                                                    <td>@data.CustomerName</td>
-                                                                    <td>@data.InquiryNo</td>
-                                                                    <td>@data.QuotationNo</td>
-                                                                    <td>@data.Createdby</td>
-                                                                    <td>@data.CreatedOn.Date.ToString("dd-MMM-yyyy")</td>
-                                                                    @*<td><button onclick="getDialog();" class=" btn btn-default btn-rounded" title="View Quotation"><span class="fa fa-edit"></span></button></td>*@
-                                                                    @*<td><a class="editVaccin" href="../QuotationApproval/QuotationViewForApproval?QuotationId=@data.id" title="View Quotation"><span class="icon-eye mr-3"></span></a></td>*@
-                                                                </tr>
 
-                                                            }
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            @*</div>*@
-                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-     
-    </div>
 
+
+            </div>
+    </div>
+</div>
+     
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Content/Validations/JqueryUi.js"></script>
     <link href="~/NewCssAndTheme/FancyBox/jquery.fancybox.css" rel="stylesheet" />
     <script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
-    <script>
-        var $j = jQuery.noConflict(true);
-    </script>
-
-    <script>
-
-        //$j('tr.editVaccin').fancybox({
-        //    'width': '70%',
-        //    'height': '350',
-        //    'autoScale': false,
-        //    'transitionIn': 'none',
-        //    'transitionOut': 'none',
-        //    'type': 'iframe',
-        //    'overflow': 'auto',
-        //    afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
-        //        parent.location.reload(true);
-        //    }
-        //    //'modal': true
-        //    //'href': '/Common/Lead/GetEnquiry?Id=' + id()
-        //});
-    </script>
+     
     <script type="text/javascript">
-        $j(document).ready(function () {
+        $(document).ready(function () {
             $('#tbl_AllEditCustomer').DataTable({
 
                 "ordering": false,
                 "info": false
             });
-            $j('tr.editVaccin').click(function () {
+            $('tr.editVaccin').click(function () {
                 var currentRow = $(this).closest("tr");
                 var id = currentRow.find("td:eq(0)").text();
                 id = id.trim();

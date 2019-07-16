@@ -34,11 +34,11 @@
                 <div class="d-flex row">
                     <div class="col-md-7">
                         <div class="card mb-3 shadow no-b r-0">
-                            <div class="card-header white">
-                                <h6>Customer Details</h6>
-                            </div>
+                             
                             <div class="card-body">
+                                
                                 <form class="needs-validation" novalidate>
+                                    <h6>Customer Details</h6>
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
                                             @Html.LabelFor(model => model.Name, new { @class = "" })
@@ -72,39 +72,33 @@
                                             @Html.ValidationMessageFor(model => model.Remarks, null, new { @class = "alert-danger" })
                                         </div>
                                     </div>
-                                    @*<button class="btn btn-primary btn-sm" type="submit">Save</button>*@
+                                 
                                 </form>
-
                             </div>
                         </div>
-                        <!-- #END# Advanced Validation -->
+                      
                         <div class="card no-b">
                             <div class="card-header white pb-0">
                                 <div class="d-flex justify-content-between">
 
                                     <div class="align-self-center">
                                         <ul class="nav nav-pills mb-3" role="tablist" id="myTab">
-
                                             <li class="nav-item">
-                                                <a class="nav-link active show" id="w4--tab2" data-toggle="tab" href="#w4-tab2" role="tab" aria-controls="tab2" aria-selected="false">Address</a>
+                                                <a class="nav-link active show" id="w4-tab2" data-toggle="tab" href="#w4-tab2" role="tab" aria-controls="tab2" aria-selected="false">Address</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="w4--tab1" data-toggle="tab" href="#w4-tab1" role="tab" aria-controls="tab1" aria-expanded="true" aria-selected="true">Contact Details</a>
+                                                <a class="nav-link" id="w4-tab1" data-toggle="tab" href="#w4-tab1" role="tab" aria-controls="tab1" aria-expanded="true" aria-selected="true">Contact Details</a>
                                             </li>
-
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body no-p">
                                 <div class="tab-content">
-                                    <div class="tab-pane show " id="w4-tab1" role="tabpanel" aria-labelledby="
-                                   w4-tab1">
+                                    <div class="tab-pane" id="w4-tab1" role="tabpanel" aria-labelledby="w4-tab1">
                                         <div class="card-body">
                                             <div class="ibox">
-
                                                 <div class="ibox-content">
-
                                                     <div class="row">
                                                         <div class="form-row">
                                                             <div class="col-md-6 mb-3">
@@ -117,78 +111,66 @@
                                                                 @Html.TextBoxFor(model => model.Email_ID, null, new { @class = "form-control r-0 light s-12", @id = "txt_email" })
                                                                 @Html.ValidationMessageFor(model => model.Email_ID, null, new { @class = "alert-danger" })
                                                             </div>
-
                                                         </div>
-
                                                         <div class="form-row">
                                                             <div class="col-md-6 mb-3">
                                                                 @Html.LabelFor(model => model.Mobile_No, new { @class = "" })
                                                                 @Html.TextBoxFor(model => model.Mobile_No, null, new { @class = "form-control r-0 light s-12", @id = "txt_mob", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "10" })
                                                                 @Html.ValidationMessageFor(model => model.Mobile_No, null, new { @class = "alert-danger" })
                                                             </div>
-
                                                             <div class="custom-control custom-checkbox mb-3" align="right">
-
                                                                 <input type="checkbox" class="custom-control-input" id="chk_defaultcontact" required="">
                                                                 <label class="custom-control-label" for="chk_defaultcontact">Primary</label>
-
-
                                                             </div>
-
                                                         </div>
                                                         <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbldataaddcp();"><i class="icon-add"><font face="roboto">Add</font></i></button></div>
 
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane show active" id="w4-tab2" role="tabpanel" aria-labelledby="w4-tab2">
-                                    <div class="card-body" style="padding-top:15px;">
-                                        <div class="ibox">
 
-                                            <div class="ibox-content">
+                                    <div class="tab-pane show active" id="w4-tab2" role="tabpanel" aria-labelledby="w4-tab2">
+                                        <div class="card-body" style="padding-top:15px;">
+                                            <div class="ibox">
+                                                <div class="ibox-content">
+                                                    <div class="row">
+                                                        <div class="form-row">
+                                                            <div class="col-md-12 mb-3">
+                                                                @Html.LabelFor(model => model.Address, new { @class = "" })
+                                                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control r-0 light s-12", @id = "txt_address" })
+                                                                @Html.ValidationMessageFor(model => model.Address, null, new { @class = "alert-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="col-md-6 mb-3">
+                                                                @Html.LabelFor(model => model.PlaceofSupply, new { @class = "" })
+                                                                @Html.DropDownListFor(model => model.PlaceofSupply, ViewData["StateCodeDrpDwn"] as IEnumerable<SelectListItem>
+                                                ,
+                                                XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", @id = "drppos" })
+                                                                @Html.ValidationMessageFor(model => model.PlaceofSupply, null, new { @class = "alert-danger" })
+                                                            </div>
 
-                                                <div class="row">
-                                                    <div class="form-row">
-                                                        <div class="col-md-12 mb-3">
-                                                            @Html.LabelFor(model => model.Address, new { @class = "" })
-                                                            @Html.TextAreaFor(model => model.Address, new { @class = "form-control r-0 light s-12", @id = "txt_address" })
-                                                            @Html.ValidationMessageFor(model => model.Address, null, new { @class = "alert-danger" })
+                                                            <div class="custom-control custom-checkbox mb-3" align="right">
+
+                                                                <input type="checkbox" class="custom-control-input" id="chk_defaultaddress" required="">
+                                                                <label class="custom-control-label" for="chk_defaultaddress">Primary</label>
+
+
+                                                            </div>
                                                         </div>
 
+
+                                                        <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbladdaddress()"><i class="icon-add"><font face="roboto">Add</font></i></button></div>
 
                                                     </div>
-                                                    <div class="form-row">
-                                                        <div class="col-md-6 mb-3">
-                                                            @Html.LabelFor(model => model.PlaceofSupply, new { @class = "" })
-                                                            @Html.DropDownListFor(model => model.PlaceofSupply, ViewData["StateCodeDrpDwn"] as IEnumerable<SelectListItem>
-                                            ,
-                                            XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", @id = "drppos" })
-                                                            @Html.ValidationMessageFor(model => model.PlaceofSupply, null, new { @class = "alert-danger" })
-                                                        </div>
-
-                                                        <div class="custom-control custom-checkbox mb-3" align="right">
-
-                                                            <input type="checkbox" class="custom-control-input" id="chk_defaultaddress" required="">
-                                                            <label class="custom-control-label" for="chk_defaultaddress">Primary</label>
-
-
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbladdaddress()"><i class="icon-add"><font face="roboto">Add</font></i></button></div>
-
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>

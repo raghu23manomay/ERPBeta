@@ -31,38 +31,22 @@
     @Html.HiddenFor(m => m.DieMaintenance1)
     @Html.HiddenFor(m => m.DieMaintenance2)
     @Html.HiddenFor(m => m.FileStatus, new { @id = "hdn_FileStatus" })
-
-
      
 
-    <div class="page" id="printpdf">
-
-      
-   
-                <div class="ibox">
-
+    <div class="page" id="printpdf">  
+                <div class="ibox"> 
                     <div class="ibox-content">
                         <div class="p-5">
-                            <div id="printpdf1">
-                                <!-- title row -->
+                            <div id="printpdf1"> 
                                 <div class="row">
-                                    <div class="col-12">
-
-                                        <div class="float-right">
-                                            <div>
+                                    <div class="col-12"> 
+                                        <div class="float-right" style="float:right;">
                                                 <h4>Quotation #@Html.DisplayFor(m => m.QuotationNo)</h4>
                                                 <small>Revision Number:@Html.DisplayFor(m => m.new_Version_No) | Date:<span id="lbl_cdate"></span></small>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
+                                        </div> 
+                                    </div> 
+                                </div> 
                                 <div class="row my-3 ">
-
                                     <div class="col-sm-4">
                                         To
                                         <div>
@@ -72,18 +56,8 @@
                                             <address class="Label">@Html.DisplayFor(m => m.address)</address>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
-
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-4">
-
-                                    </div>
-                                    <!-- /.col -->
                                 </div>
-                                <!-- /.row -->
                                 <div class="row">
-
                                     <div class="col-12 table-responsive">
                                         <strong>Component Details</strong>
                                         <table class="table">
@@ -99,34 +73,13 @@
                                                         @Html.DisplayFor(m => m.hardnessmin)&nbsp; Max:&nbsp;
                                                         @Html.DisplayFor(m => m.hardnessmax) &nbsp; @Html.DisplayFor(m => m.hardnessunits)
                                                     </td>
-
-
-                                                    @*<td>
-                                                    Part Description&nbsp; </td>
-                                                        <td>@Html.DisplayFor(m => m.PartDescription)
-                                                    </td>
-                                                    <td> | Material:</td>
-                                                    <td>@Html.DisplayFor(m => m.Material)</td>
-                                                    <td>Customer Part No:</td>
-                                                    <td>@Html.DisplayFor(m => m.PartNo)</td>
-                                                    <td>
-
-                                                        Heat Treatment:
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(m => m.HeatTreatmentText)
-                                                    </td>*@
                                                 </tr>
-
-
                                             </tbody>
                                         </table>
                                     </div>
-                                    <!-- /.col -->
                                 </div>
-                                <!-- Table row -->
+                               
                                 <div class="row">
-
                                     <div class="col-12 table-responsive">
                                         <strong>Raw Material Cost Details</strong>
                                         <table class="table table-striped">
@@ -157,17 +110,14 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <!-- /.col -->
+                                  
                                 </div>
 
-
-
                                 <div class="row">
-
                                     <div class="col-12 table-responsive">
                                         <strong>Conversion Rate Details</strong>
                                         <table class="table table-striped">
-                                            @*<table cellpadding="5" cellspacing="0" style="border: 1px solid #ccc;font-size: 9pt;" width="100%">*@
+                                        
                                             <thead>
                                                 <tr>
                                                     <th width="60%">Particulars</th>
@@ -177,13 +127,11 @@
                                             </thead>
                                             <tbody>
                                                 @if (ViewData["fisopvinvseqlist"] != null)
-
                                                 {
 
                                                     foreach (System.Data.DataRow dr in (ViewData["fisopvinvseqlist"] as System.Data.DataTable).Rows)
-
-                                                    {
-                                                        if (@dr["Operations_Involved"].ToString() == "1")//for cutting
+                                                        {
+                                                         if (@dr["Operations_Involved"].ToString() == "1")//for cutting
                                                         {
                                                             <tr id="qpdf1_1" name="qpdf1_1">
                                                                 <td>Cutting</td>
@@ -292,22 +240,13 @@
                                                         <td>@Html.DisplayFor(m => m.totalpackingtransport)</td>
                                                     </tr>
                                                 }
-
-                                                @*<tr id="qpdf1_diecostinclude" name="qpdf1_diecostinclude" style="display:none">
-                                                    <td>
-                                                        <span id="spn_dcincludepdf1" style="display:none;">Initial Die Cost:</span><span id="spn_dmcincludepdf1" style="display:none;">Initial Die Cost:</span>
-                                                    </td>
-                                                    <td></td>
-                                                    <td><span id='dienetcost_pdf1'></span></td>
-                                                </tr>*@
-
                                             </tbody>
                                         </table>
                                     </div>
-                                    <!-- /.col -->
+                             
                                 </div>
                                 <div class="row">
-                                    <!-- accepted payments column -->
+                                     
                                     <div class="col-6">
                                         <strong>Terms And Conditions </strong>
                                         <div id="divtcnotes1" class="table-responsive">
@@ -317,25 +256,19 @@
                                                 {
 
                                                     foreach (var data in Model.ssmtbl_TermsNCondtionModel)
-                                                    {
-
+                                                    { 
                                                         <tr>
                                                             <td>@(rowNo += 1).</td>
-                                                            <td>@data.TermsNConditionContent</td>
-
-                                                        </tr>
-
-
+                                                            <td>@data.TermsNConditionContent</td> 
+                                                        </tr> 
                                                     }
                                                 }
                                             </table>
                                         </div>
-                                    </div>
-                                    <!-- /.col -->
+                                    </div> 
                                     <div class="col-1"></div>
                                     <div class="col-5">
-                                        <strong>Total</strong>
-
+                                        <strong>Total</strong> 
                                         <div class="table-responsive" align="right">
                                             <table class="table">
                                                 <tbody>
@@ -353,17 +286,13 @@
                                                             <th>Total Other Cost:</th>
                                                             <td>@Html.DisplayFor(m => m.totallycost)</td>
                                                         </tr>
-                                                    }
-
-
+                                                    } 
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
-                                    <!-- /.col -->
+                                    </div> 
                                 </div>
-                            </div>
-                            <!-- Modal -->
+                            </div> 
                             <div class="modal fade" id="CommentForApproval" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -377,7 +306,6 @@
                                             @Html.TextArea("Comment", null, new { @class = "form-control r-0 light s-12", @id = "Comment", @cols = "3", @rows = "5" })
                                         </div>
                                         <div class="modal-footer">
-                                            @*<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>*@
                                             <button type="button" class="btn btn-primary btn-sm" id="ConditionalApprove">Done</button>
                                         </div>
                                     </div>
@@ -405,17 +333,11 @@
                             <div class="row" id="footer">
                                 <div class="col-12">
                                     <div align="left">
-                                        @*@using (Html.BeginForm("Export", "Quotation", FormMethod.Post))
-                                        {
-                                            <input type="hidden" name="GridHtml" />
-                                            <input type="submit" name="Save" value="Download" class="btn btn-primary btn-sm btn-default" id="download" onclick="storepdfdata()" style="display:none;" />
-                                        }*@
-
+                                      
                                         <input type="button" name="Save" value="Download" class="btn btn-primary btn-sm btn-default" id="download" style="display:none;" onclick="location.href='@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" }) '" />
                                     </div>
                                     <div class="dropdown" align="right">
 
-                                        @*<a href="#" class="btn btn-sm btn-primary float-left" id="change"><i class="icon icon-change_history"></i>Change</a>*@
                                         <div class="btn-group dropup">
                                             <button type="button" class="btn btn-sm btn-primary float-left" id="change">
                                                 <i class="icon icon-change_history"></i>
@@ -424,30 +346,17 @@
                                             <button type="button" id="ToggleDropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="modal" data-target="#CommentForView" aria-haspopup="true" aria-expanded="false">
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
-                                            @*<div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#" id="" data-toggle="modal" data-target="#CommentForView">Changes</a>
-                                            </div>*@
+                                          
                                         </div>
-                                        @* <a href="@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" })" class="btn btn-primary btn-sm">Download</a>*@
                                         <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Approve
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:lightgrey;">
-                                            <a class="dropdown-item" href="#" id="Approve">Approve</a>
-                                            <a class="dropdown-item" href="#" id="" data-toggle="modal" data-target="#CommentForApproval">Conditional Approve</a>
+                                            <a class="dropdown-item" href="#" id="Approve">Approve</a><br />
+                                            <a class="dropdown-item" href="#" id="" data-toggle="modal" data-target="#CommentForApproval">Conditional Approve</a><br />
                                             <a class="dropdown-item" href="#" id="Reject">Reject</a>
                                         </div>
                                     </div>
-
-                                    @*<div class="form-group" style="text-align:center">*@
-                                    @*<input type="button" name="Save" value="View All Version" class="btn btn-primary btn-default" id="ViewAllVersion" onclick="location.href = '@Url.Action("GetAllVersionOfOneQuotation", "QuotationApproval", new { QuotationNo = Model.QuotationNo, QuotId=Model.id })'" />*@
-                                    @*<a class="editVaccin  btn btn-default btn-rounded" href="/QuotationApproval/QuotationViewForApproval?QuotationId=@data.id" title="View Quotation"><span class="fa fa-edit"></span></a>*@
-                                    @*<a href="@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" })" class=" btn btn-default btn-info">Download</a>*@
-                                    @*<input type="button" name="Save" value="Download" class="btn btn-info btn-default" onclick="location.href='@Url.Action("QuotationPDF", "Quotation", new { QuotationId = Model.id, _target = "blank" }) '" />*@
-                                    @*<input type="button" name="Save" value="Approve" class="btn btn-primary" id="Approve" />
-                                    <input type="button" name="Save" value="Reject" class="btn btn-danger btn-default" id="Reject" />*@
-                                    @*<input type="button" name="Save" value="Close" class="btn btn-warning btn-default" id="Close" />*@
-                                    @*</div>*@
                                 </div>
                             </div>
                         </div>
@@ -463,30 +372,9 @@
 <script src="~/NewCssAndTheme/FancyBox/jquery.fancybox.pack.js"></script>
 <script src="~/Content/html2canvas.js"></script>
 
-<script>
-    var $j = jQuery.noConflict(true);
-</script>
+ 
 
-<script>
-    //$j("#download").click(function () {
-    //    var GridHtml = $j("#printpdf1").html();
-
-    //    $j.ajax({
-    //        url: "../Quotation/Export",
-    //        type: "POST",
-    //        dataType: "json",
-    //        data: { GridHtml: GridHtml },
-    //        success: function (data) {
-
-
-    //        }
-    //    });
-    //});
-    //$(function () {
-    //    $("#download").click(function () {
-
-    //    });
-    //});
+<script> 
     function storepdfdata() {
         // alert($("input[name='GridHtml']").val($("#printpdf1").html()));
         $("input[name='GridHtml']").val($("#printpdf1").html());
@@ -495,68 +383,40 @@
 </script>
 <script type="text/javascript">
 
-    $j(document).ready(function () {
-        if ($j("#hdn_FileStatus").val() == "Conditional Quotation Approved") {
-            $j("#dropdownMenuButton").hide();
-            $j("#change").show();
-            $j("#ToggleDropdown").show();
+    $(document).ready(function () {
+        if ($("#hdn_FileStatus").val() == "Conditional Quotation Approved") {
+            $("#dropdownMenuButton").hide();
+            $("#change").show();
+            $("#ToggleDropdown").show();
         }
-        else if ($j("#hdn_FileStatus").val() == "Quotation Approved") {
-            $j("#dropdownMenuButton").hide();
-            $j("#change").hide();
-            $j("#ToggleDropdown").hide();
-            $j("#download").show();
+        else if ($("#hdn_FileStatus").val() == "Quotation Approved") {
+            $("#dropdownMenuButton").hide();
+            $("#change").hide();
+            $("#ToggleDropdown").hide();
+            $("#download").show();
         }
         else {
-            $j("#dropdownMenuButton").show();
-            $j("#change").hide();
-            $j("#ToggleDropdown").hide();
+            $("#dropdownMenuButton").show();
+            $("#change").hide();
+            $("#ToggleDropdown").hide();
         }
 
-        //if ($j("#CuttingSquare1").val()) {
-        //    $j("#qpdf1_1").show();
-        //}
-        //if ($j("#Forging1").val()) {
-        //    $j("#qpdf1_2").show();
-        //}
-        //if ($j("#HeatTreatment1").val()) {
-        //    $j("#qpdf1_3").show();
-        //}
-        //if ($j("#ShotBlasting1").val()) {
-        //    $j("#qpdf1_4").show();
-        //}
-        //if ($j("#MPI1").val()) {
-        //    $j("#qpdf1_5").show();
-        //}
-        //if ($j("#Grinding1").val()) {
-        //    $j("#qpdf1_6").show();
-        //}
-        //if ($j("#ColdCoining1").val()) {
-        //    $j("#qpdf1_7").show();
-        //}
-        //if ($j("#Machining1").val()) {
-        //    $j("#qpdf1_8").show();
-        //}
+        
 
-
-        var string = $j("#hdn_date").val();
+        var string = $("#hdn_date").val();
         string = string.split(" ")[0];
-        $j("#lbl_cdate").text(string);
+        $("#lbl_cdate").text(string);
 
         NewUrl = '@Url.Action("QuotationList", "QuotationApproval")';
 
-        $j("#Reject").click(function () {
-            //if (confirm('Are you sure you want to Reject this Quotation?')) {
-
-            //} else {
-
-            //}
+        $("#Reject").click(function () {
+            
             // Save it!
             var QuotNo = $j('#QuotationNo').val();
             var CommentFor = $j('#Comment').val();
             var Version = $j('#VersionNo').val();
             var InqNo = $j('#InquiryNo').val();
-            $j.ajax({
+            $.ajax({
                 url: "../QuotationApproval/RejectQuotation",
                 type: "POST",
                 dataType: "json",
@@ -568,33 +428,29 @@
             });
         });
 
-        $j("#change").click(function () {
+        $("#change").click(function () {
 
-            var InqNo = $j('#InquiryNo').val();
-
-            window.location.href = '@Url.Action("NewQuotation", "Quotation")?id=' + InqNo;
-        });
-
-
-        $j("#ConditionalView").click(function () {
-
-            var InqNo = $j('#InquiryNo').val();
+            var InqNo = $('#InquiryNo').val();
 
             window.location.href = '@Url.Action("NewQuotation", "Quotation")?id=' + InqNo;
         });
-        $j("#Approve").click(function () {
+
+
+        $("#ConditionalView").click(function () {
+
+            var InqNo = $('#InquiryNo').val();
+
+            window.location.href = '@Url.Action("NewQuotation", "Quotation")?id=' + InqNo;
+        });
+        $("#Approve").click(function () {
+            debugger;
             $('#CommentForApproval').hide();
-            //if (confirm('Are you sure you want to Approve this Quotation?')) {
-
-            //} else {
-
-            //}
-            // Save it!
-            var QuotNo = $j('#QuotationNo').val();
-            var CommentFor = $j('#Comment').val();
-            var Version = $j('#VersionNo').val();
-            var InqNo = $j('#InquiryNo').val();
-            $j.ajax({
+            
+            var QuotNo = $('#QuotationNo').val();
+            var CommentFor = $('#Comment').val();
+            var Version = $('#VersionNo').val();
+            var InqNo = $('#InquiryNo').val();
+            $.ajax({
                 url: "../QuotationApproval/ApproveQuotation",
                 type: "POST",
                 dataType: "json",
@@ -607,14 +463,14 @@
         });
 
 
-        $j("#ConditionalApprove").click(function () {
+        $("#ConditionalApprove").click(function () {
 
             $('#CommentForApproval').hide();
-            var QuotNo = $j('#QuotationNo').val();
-            var CommentFor = $j('#Comment').val();
-            var Version = $j('#VersionNo').val();
-            var InqNo = $j('#InquiryNo').val();
-            $j.ajax({
+            var QuotNo = $('#QuotationNo').val();
+            var CommentFor = $('#Comment').val();
+            var Version = $('#VersionNo').val();
+            var InqNo = $('#InquiryNo').val();
+            $.ajax({
                 url: "../QuotationApproval/ApproveConditionalQuotation",
                 type: "POST",
                 dataType: "json",
@@ -627,24 +483,7 @@
                 }
             });
 
-        });
-        //$j("#Download").click(function () {
-        //    //pdf download start
-        //    var div = document.getElementById("printpdf");
-        //    //alert(div);
-        //    div.style.display = "block";
-        //    var doc = new jsPDF('p', 'mm', [600, 500]);
-        //    doc.addHTML($j('#printpdf')[0], 10, 10, {
-        //        'background': '#fff',
-        //    }, function () {
-        //        doc.save('Quotation.pdf');
-        //    });
-
-        //    //div.style.display = "none";
-        //    //pdf download complete
-        //});
-
-
+        }); 
     });
 
 </script>

@@ -22,17 +22,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
-                            {
-                                <tr>
-                                    <td>@data.dispatch_no</td>
-                                    <td>@data.vendor_name</td>
-                                    <td>@data.expected_report_date.Date.ToString("dd-MMM-yyyy")</td>
-                                    <td>@data.CreatedOn.Date.ToString("dd-MMM-yyyy")</td>
-                                    <td><a href="@Url.Action("EditDCLabTesting", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="Edit Inquiry"><span class="icon-pencil"></span></a></td>
-                                </tr>
+                            @if (Model.ssmtbl_DeliveryChallanModelList != null)
+                            { 
+                                foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
+                                {
+                                    <tr>
+                                        <td>@data.dispatch_no</td>
+                                        <td>@data.vendor_name</td>
+                                        <td>@data.expected_report_date.Date.ToString("dd-MMM-yyyy")</td>
+                                        <td>@data.CreatedOn.Date.ToString("dd-MMM-yyyy")</td>
+                                        <td><a href="@Url.Action("EditDCLabTesting", "DeliveryChallan")?DispatchNo=@data.dispatch_no" class="" title="Edit Inquiry"><span class="icon-pencil"></span></a></td>
+                                    </tr>
+                                }
                             }
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
             </div>

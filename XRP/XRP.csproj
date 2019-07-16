@@ -359,6 +359,7 @@
     <Content Include="assets\img\dummy\un5.jpg" />
     <Content Include="assets\img\dummy\un6.jpg" />
     <Content Include="assets\img\dummy\un7.jpg" />
+    <Content Include="assets\img\ErpLogo.png" />
     <Content Include="assets\img\icon\avatar.png" />
     <Content Include="assets\img\icon\burj-al-arab.png" />
     <Content Include="assets\img\icon\icon-adn.png" />

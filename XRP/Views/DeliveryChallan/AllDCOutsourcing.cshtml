@@ -25,8 +25,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
-                            {
+                            @if (Model.ssmtbl_DeliveryChallanModelList != null)
+                            { 
+
+                                foreach (var data in Model.ssmtbl_DeliveryChallanModelList)
+                                {
                                 <tr>
                                     <td>@data.dispatch_no</td>
                                     <td>@data.vendor_name</td>
@@ -51,6 +54,7 @@
                                     }
                                     
                                 </tr>
+                                }
                             }
                         </tbody>
                     </table>

@@ -62,8 +62,8 @@ namespace XRP.DataModel
                 cmd.Parameters.AddWithValue("@FrequencyRepearOrder", objInqMod.FrequencyRepearOrder);
                 cmd.Parameters.AddWithValue("@Qty", objInqMod.Qty);
                 cmd.Parameters.AddWithValue("@Status", InquiryStatus.InquiryNew);
-                //cmd.Parameters.AddWithValue("@createdby", "Test");
-                cmd.Parameters.AddWithValue("@createdby", HttpContext.Current.Session["userid"].ToString());
+                cmd.Parameters.AddWithValue("@createdby", 1);
+               // cmd.Parameters.AddWithValue("@createdby", HttpContext.Current.Session["userid"].ToString());
                 cmd.Parameters.AddWithValue("@createddate", StandardDateTime.GetDateTime());
                 cmd.Parameters.AddWithValue("@hsncode", objInqMod.HSN);
                 cmd.Parameters.AddWithValue("@dieid", dieid);

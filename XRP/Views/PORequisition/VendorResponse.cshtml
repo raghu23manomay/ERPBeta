@@ -4,81 +4,70 @@
 @using XRP.Models;
 @{
     ViewBag.Title = "VendorResponse";
-    Layout = "~/Views/Shared/_DesignLayout.cshtml";   
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
     ViewBag.Active = "Purchase";
     ViewBag.Feature = "Vendor Response";
-    
-     }
+
+}
 @using (Html.BeginForm("PORequisitionList", "PORequisition", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-{  
+{
     @Html.ValidationSummary(true)
     <input type="hidden" id="hdn_rfqid" />
     <input type="hidden" id="hdn_tblrowindex" />
-    <fieldset>
-       
+    <fieldset> 
         <div class="animated  go">
             <div class="row no-gutters">
-                <div class="col-md-3 white sticky" style="height:570px;">
-                    
+                <div class="col-md-3 white sticky" style="height:570px;"> 
                     <div class="ibox float-e-margins">
                         <div class="ibox-content">
-                            <div class="tab-content" id="v-pills-tabContent">
-                               
-                                    <ul class="list-unstyled" id="ullslistbind"></ul>
-                                
+                            <div class="tab-content" id="v-pills-tabContent"> 
+                                <div class="feed-activity-list" id="ullslistbind"> 
+                                </div> 
                             </div>
                         </div>
-                        </div>
                     </div>
+                </div>
 
-                    <div class="col-md-9" id="div_reqdetails" style="display:none;">
-                        <div class="m-md-3">
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-content">
-                                    <div class="card b-0 m-2">
-                                        <div class="card-body" style="height:550px;">
-                                            <div data-target="#message1">
-                                                <div class="media">
-                                                    <img class="d-flex mr-3 height-50" src="../assets/img/dummy/u1.png" alt="Generic placeholder image">
+                <div class="col-md-9" id="div_reqdetails" style="display:none;">
+                    <div class="col-md-md-3">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="card b-0 m-2">
+                                    <div class="card-body" style="height:550px;">
+                                        <div data-target="#message1">
+                                            <div class="media">
+                                                <img class="d-flex mr-3 height-50" src="../assets/img/dummy/u1.png" alt="Generic placeholder image">
 
-                                                    <div class="media-body">
-                                                        <h6 class="mt-0 mb-1 font-weight-normal"><span id="spn_uname"></span></h6>
-                                                        <span id="spn_vtype"></span> |  WO # <strong><span id="spn_wono"></span></strong> | Request# <strong><span id="spn_rqno"></span></strong>
-                                                        <br>
-                                                        <small><span id="spn_reqdate"></span></small>
-                                                        <div class="collapse my-3 show" id="message1">
-                                                            <div>
-                                                                <table id="tbl_vrflist" class="table">
-
-                                                                    <tbody id="tbody_tbl_vrflist"></tbody>
-                                                                </table>
-
-
-                                                                
-                                                                <div class="float-right card-body">
-                                                                    <button type="button" value="Save" class="btn btn-primary" id="btntc" href="#" data-toggle="modal" data-target="#CommentForApproval" title="Term and Condition">
-                                                                        Add
-                                                                    </button>
-                                                                    <button type="button" value="Save" onclick="save()" class="btn btn-primary" id="btn_Save1"><i class="icon-save mr-2"></i>Send VPO</button>
-                                                                </div>
+                                                <div class="media-body">
+                                                    <h6 class="mt-0 mb-1 font-weight-normal"><span id="spn_uname"></span></h6>
+                                                    <span id="spn_vtype"></span> |  WO # <strong><span id="spn_wono"></span></strong> | Request# <strong><span id="spn_rqno"></span></strong>
+                                                    <br>
+                                                    <small><span id="spn_reqdate"></span></small>
+                                                    <didrpRequisitionTypev class="collapse my-3 show" id="message1">
+                                                        <div>
+                                                            <table id="tbl_vrflist" class="table">
+                                                                <tbody id="tbody_tbl_vrflist"></tbody>
+                                                            </table>
+                                                            
+                                                            <div class="float-right card-body">
+                                                                <button type="button" value="Save" class="btn btn-primary" id="btntc" href="#" data-toggle="modal" data-target="#CommentForApproval" title="Term and Condition">
+                                                                    Add
+                                                                </button>
+                                                                <button type="button" value="Save" onclick="save()" class="btn btn-primary" id="btn_Save1"><i class="icon-save mr-2"></i>Send VPO</button>
                                                             </div>
-
                                                         </div>
-                                                    </div>
+
+                                                    </didrpRequisitionTypev>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-                            </div>
-
-
-
-
-                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal fade" id="CommentForApproval" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -159,7 +148,7 @@
                 </div>
             </div>
         </div>
-        
+
         <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
 
         <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -175,23 +164,22 @@
                 var array = new Array();
                 array = filename.split(".");
                 var ext = (array[1]);
-              
-                if (ext=="pdf") {
-                   
+
+                if (ext == "pdf") {
+
                 }
                 else {
                     $(file).val(''); //for clearing with Jquery
                     alert("Please Upload Only PDF File");
                 }
-               
+
             }
-            function save()
-            {
+            function save() {
                 generatepo();
-               
+
             }
             function generatepo() {
-                
+
                 var rateFlag = "";
                 $('[name="rate"]').each(function () {
                     if ($(this).val() == "") {
@@ -200,15 +188,15 @@
                     }
                     else {
                         rateFlag = 1;
-                       
+
                     }
                 });
-                if (rateFlag!=1) {
+                if (rateFlag != 1) {
                     alert("Please Enter Rate Value");
                     return false;
                 }
                 // TODO: maybe you want to assign an unique id to your table element
-//                $('#tblitem  tr:not(:first)').each(function () {
+                //                $('#tblitem  tr:not(:first)').each(function () {
                 $('#tbl_vrflist  tr:not(:first)').each(function () {
                     //var id = $("#hdn_rfqid").val().trim();
                     var id = $(this).find("td").eq(0).text();
@@ -217,7 +205,7 @@
                     var qty = $(this).find("td").eq(4).text();
                     var price = $(this).find("td").eq(5).find(":text").val();
                     var unit = "KG";
-                    var amount = $(this).find("td").eq(6).text();                   
+                    var amount = $(this).find("td").eq(6).text();
                     var chk = $(this).find("td").eq(1).find(":radio").val();
                     var vendorFlag = "";
 
@@ -228,16 +216,16 @@
                     else {
                         vendorFlag = "false";
                     }
-                    var capstr = "^";                    
-                    parameters.push(id,item,itemdesc, qty, price, unit, amount,vendorFlag, capstr);
+                    var capstr = "^";
+                    parameters.push(id, item, itemdesc, qty, price, unit, amount, vendorFlag, capstr);
                 });
-              
+
                 var flag = "";
                 var tcflag = "";
                 var rfqid = $("#hdn_rfqid").val().trim();
                 if (rfqid != "") {
                     var remark = "-";
-               
+
                     var parentValueToPush = new Array();
                     $('[name="chk_vendor"]').each(function () {
                         if ($(this).prop('checked') == true) {
@@ -253,7 +241,7 @@
                     });
 
                 }
-               
+
                 if (flag != 1) {
                     alert('Please Select atleast one Vendor');
                     return false;
@@ -274,9 +262,9 @@
                     return false;
                 }
                 ////
-                
+
                 $('#tbl_vrflist tr:not(:first)').each(function () {
-                //$('#tbl_vlist tr:not(:first)').each(function () {
+                    //$('#tbl_vlist tr:not(:first)').each(function () {
                     var id = $(this).find("td").eq(0).text();
                     var chk = $(this).find("td").eq(1).find(":radio").val();
                     var flag1 = "";
@@ -305,7 +293,7 @@
                     if (tcflag1 != 1) {
                         alert('Please select At Least One Vendor');
                         return false;
-                    }       
+                    }
                 });
                 /////
                 $.ajax({
@@ -322,59 +310,57 @@
                         location.reload();
                     },
                     error: function (err) {
-                       // alert('Error occured');
+                        // alert('Error occured');
                     }
                 });
             }
-           
-            function fileupload(rfqid)
-            {
+
+            function fileupload(rfqid) {
                 //$('#tbl_vlist tr:not(:first)').each(function () {
-                $('#tbl_vrflist tr:not(:first)').each(function () {                    
+                $('#tbl_vrflist tr:not(:first)').each(function () {
                     var id = $(this).find("td").eq(0).text();
-                   
+
                     var chk = $(this).find("td").eq(1).find(":radio").val();
                     var flag = "";
-                    
-                    if ($('#' + chk).is(':checked'))
-                    {
-                        flag = "true";                       
+
+                    if ($('#' + chk).is(':checked')) {
+                        flag = "true";
                     }
                     else {
                         flag = "false";
                     }
                     var fu = $(this).find("td").eq(2).find(":file").val();
-                    if (fu=="") {
+                    if (fu == "") {
                         //alert('Please Upload All Vendor File');
                         //return false;
                     }
                     var tcflag = "";
                     $('[name="chk_vendor"]').each(function () {
-                            if ($(this).prop('checked') == true) {
-                                tcflag = 1;
-                                  }
-                            else {
-                                //flag = 0;
-                            }
-                        });
-                        if (tcflag != 1) {
-                            alert('Please select At Least One Vendor');
-                            return false;
+                        if ($(this).prop('checked') == true) {
+                            tcflag = 1;
                         }
-                        var fileUpload = $("#fu_" + chk).get(0);
-                        var files = fileUpload.files;
-              
-                    // Create FormData object  
-                        var fileData = new FormData();  
-  
-                    // Looping over all files and add it to FormData object  
-                        for (var i = 0; i < files.length; i++) {  
-                            fileData.append(files[i].name, files[i]);  
-                        }  
-                        fileData.append('VendorId', id);
-                        fileData.append('rfqid', rfqid);
-                        fileData.append('flag', flag);
-                         
+                        else {
+                            //flag = 0;
+                        }
+                    });
+                    if (tcflag != 1) {
+                        alert('Please select At Least One Vendor');
+                        return false;
+                    }
+                    var fileUpload = $("#fu_" + chk).get(0);
+                    var files = fileUpload.files;
+
+                    // Create FormData object
+                    var fileData = new FormData();
+
+                    // Looping over all files and add it to FormData object
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append(files[i].name, files[i]);
+                    }
+                    fileData.append('VendorId', id);
+                    fileData.append('rfqid', rfqid);
+                    fileData.append('flag', flag);
+
                     $.ajax({
                         type: "POST",
                         url: '../PORequisition/fileupload',
@@ -415,17 +401,17 @@
 
                 return true;
             }
-            function editritemtablerow(ids) {               
-                var indexRow = parseInt(ids.rowIndex);                
-                $('#hdn_tblrowindex').val(indexRow);               
-                var currentRow = $(ids).closest("tr");               
+            function editritemtablerow(ids) {
+                var indexRow = parseInt(ids.rowIndex);
+                $('#hdn_tblrowindex').val(indexRow);
+                var currentRow = $(ids).closest("tr");
                 $("#txtItem").val(currentRow.find("td:eq(0)").text().trim());
                 $("#txtItemDesc").val(currentRow.find("td:eq(1)").text().trim());
                 $("#txtqnt").val(currentRow.find("td:eq(2)").text().trim());
                 $("#txtrate").val(currentRow.find("td:eq(3)").text().trim());
                 $("#drpunit").val(currentRow.find("td:eq(4)").text().trim());
                 $("#txtamt").val(currentRow.find("td:eq(5)").text().trim());
-               
+
 
             }
             function calRate(textboxid) {
@@ -435,16 +421,14 @@
                 var totalamt = parseFloat(parseFloat(qty) * rate);
                 currentRow.find("td:eq(6)").text(totalamt.toFixed(2));
             }
-            function calrate()
-            {
-                var qun = parseFloat($("#txtqnt").val()).toFixed(2);  
+            function calrate() {
+                var qun = parseFloat($("#txtqnt").val()).toFixed(2);
                 var rate = parseFloat($("#txtrate").val()).toFixed(2);
                 var amt = parseFloat(qun * rate).toFixed(2);
                 $("#txtamt").val(amt);
             }
-            function itemadd()
-            {
-                var tblridx = $('#hdn_tblrowindex').val();               
+            function itemadd() {
+                var tblridx = $('#hdn_tblrowindex').val();
                 if (tblridx == "") {
 
                 }
@@ -457,7 +441,7 @@
                     return false;
                 }
                 var itmdesc = $("#txtItemDesc").val();
-              
+
                 if (itmdesc == "") {
                     alert("Please Enter Item Description");
                     return false;
@@ -491,14 +475,13 @@
 
                 $('#hdn_tblrowindex').val("");
             }
-            function clear()
-            {
-                 $("#txtItem").val("");
+            function clear() {
+                $("#txtItem").val("");
                 $("#txtItemDesc").val("");
                 $("#txtqnt").val("");
-                 $("#txtrate").val("");
-               // $("#drpunit").val();
-                 $("#txtamt").val("");
+                $("#txtrate").val("");
+                // $("#drpunit").val();
+                $("#txtamt").val("");
             }
             function GetdeleteAddData(ids) {
                 var currentRow = $(ids).closest("tr");
@@ -659,12 +642,11 @@
                 var id = 0;
                 fetchlist(id);
                 //fetchitemlist(id);
-               //fetchsinglelist(id);
+                //fetchsinglelist(id);
 
 
             });
-            function vendorbind(id)
-            {
+            function vendorbind(id) {
 
                 $.ajax({
                     type: "POST",
@@ -681,9 +663,9 @@
                             tr = $('<tr class="mosurhandsymbol"/>');
                             tr.append('<td style="display:none;">' + data[i].ID + '</td>');
                             tr.append('<td width="2%"><div class="custom-control custom-radio mb-3" align="right"><input type="radio"  class="custom-control-input"  name="chk_vendor" value="' + data[i].ID + '"  id="' + data[i].ID + '" required=""><label class="custom-control-label" for="' + data[i].ID + '"></label> </div></td>');
-                           // tr.append('<td width:20%><input type="file"  id="fu_' + data[i].ID + '" name="filename1" onchange="ValidateSize(this)"></td>');
+                            // tr.append('<td width:20%><input type="file"  id="fu_' + data[i].ID + '" name="filename1" onchange="ValidateSize(this)"></td>');
                             tr.append('<td  width="40%"><div class="custom-file"> <input type="file" class="custom-file-input r-0" id="fu_' + data[i].ID + '" name="filename1" onchange="ValidateSize(this)" style="width:5px;"><label class="custom-file-label" for="fu_' + data[i].ID + '">Choose file...</label></div></td>');
-                            tr.append('<td width="50%">'+ data[i].Name +'</td>');
+                            tr.append('<td width="50%">' + data[i].Name + '</td>');
                             $('#tbl_vlist').append(tr);
                         }
                         //fetchitemlist(id);
@@ -699,12 +681,12 @@
                 $.ajax({
                     type: "POST",
                     url: "../PORequisition/VendorResponseItemFetch",
-                  
+
                     data: JSON.stringify({ id: ' ' + id + '' }),
                     contentType: "application/json;charset=utf-8",
-                   
+
                     success: function (data) {
-                       // $("#tbody_tbl_vrflist").empty();
+                        // $("#tbody_tbl_vrflist").empty();
                         var tr = "";
                         tr = $('<tr class="mosurhandsymbol"/>');
                         tr.append('<th></th>');
@@ -714,10 +696,10 @@
                         tr.append('<th>Rate</th>');
                         tr.append('<th>Amount</th>');
                         for (var i = 0; i < data.length; i++) {
-                          
+
                             //tr.append('<th width="50%">' + data[i].ItemDesc + '<br/><input type="checkbox"/></td>');
                             $('#tbl_vrflist').append(tr);
-                            thcount = i+1;
+                            thcount = i + 1;
                         }
                         $.ajax({
                             type: "POST",
@@ -736,8 +718,7 @@
                                     tr.append('<td  width="30%"> ' + data[i].Name + '<br/><input type="file" id="fu_' + data[i].ID + '" name="filename1" onchange="ValidateSize(this)"></td>');
                                     tr.append('<td> ' + data[i].ReqTypeMaterial + ' </td>');
                                     tr.append('<td> ' + TotalWt + ' </td>');
-                                    for (var j = 0; j < thcount; j++)
-                                    {
+                                    for (var j = 0; j < thcount; j++) {
                                         //tr.append('<td><input type="text" style="width:60px;" value="0"/></td>');
                                         //tr.append('<td><input type="text" style="width:60px;" value="0"/></td>');
                                         tr.append('<td><input type="text" name="rate" class="Float-Number" id="rate' + j + '"  style="width:60px;" oninput="javascript:calRate(this);"></td>');
@@ -745,23 +726,22 @@
                                         //tr.append('<td id="amount' + j + '"><input type="text" id="amount' + j + '" name="amount" class="Float-Number" style="width:60px;" disabled></td>');
                                         tr.append('<td id="amount' + j + '"></td>');
                                     }
-                                   // tr.append('<td width="50%"><input type="text"/></td>');
+                                    // tr.append('<td width="50%"><input type="text"/></td>');
                                     //tr.append('<td width="50%"><input type="text"/></td>');
                                     $('#tbl_vrflist').append(tr);
-                                }                                
+                                }
                             },
                             error: function (err) {
                                 alert('Error occured');
                             }
-                        });                        
+                        });
                     },
                     error: function (err) {
                         alert('Error occured');
                     }
-                });                
+                });
             }
-            function hideshowbtn()
-            {
+            function hideshowbtn() {
                 var i = 0;
                 $('[name="chk_vendor"]').each(function () {
                     if ($(this).prop('checked') == true) {
@@ -777,12 +757,12 @@
                 if (i > 1) {
                     $("#div_rfq").show();
                     $("#div_gpo").hide();
-                   // $("#tblitem").hide();
+                    // $("#tblitem").hide();
                 }
                 else {
                     $("#div_rfq").hide();
                     $("#div_gpo").show();
-                   // $("#tblitem").show();
+                    // $("#tblitem").show();
                 }
             }
             function fetchitemlist(id) {
@@ -799,7 +779,7 @@
                         for (var i = 0; i < data.length; i++) {
                             tr = $('<tr class="mosurhandsymbol"/>');
                             //tr.append('<td>' + i + '</td>');
-                            tr.append('<td style="display:none;">' + data[i].RfQItemId+ '</td>');
+                            tr.append('<td style="display:none;">' + data[i].RfQItemId + '</td>');
                             tr.append('<td>' + data[i].ItemDesc + '</td>');
                             tr.append('<td>' + data[i].Quantity + '</td>');
                             //tr.append('<td>' + data[i].Rate + '</td>');
@@ -832,25 +812,25 @@
                         var tcdesc = $("#" + chkid).val();
 
                         $.ajax
-                          ({
-                              type: "POST",
-                              url: "../PORequisition/InsertTermsNCondition",
-                              // data: params,
-                              data: JSON.stringify({
+                            ({
+                                type: "POST",
+                                url: "../PORequisition/InsertTermsNCondition",
+                                // data: params,
+                                data: JSON.stringify({
 
-                                  id, tcdesc, rfqid, flag
+                                    id, tcdesc, rfqid, flag
 
-                              }),
-                              contentType: "application/json;charset=utf-8",
-                              dataType: "json",
-                              success: function (status) {
+                                }),
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "json",
+                                success: function (status) {
 
-                              },
-                              error: function (err) {
+                                },
+                                error: function (err) {
 
-                                  // alert(err.message);
-                              }
-                          });
+                                    // alert(err.message);
+                                }
+                            });
 
                     }
                 });
@@ -865,9 +845,9 @@
 
 
             }
-            
+
             function fetchsinglelist(id) {
-                 $("#tbody_tbl_vrflist").empty();
+                $("#tbody_tbl_vrflist").empty();
                 $("#div_vendorlist").show();
                 $("#div_reqdetails").show();
                 $("#hdn_rfqid").val(id);
@@ -888,9 +868,9 @@
                         $("#spn_desc").text(data[0].Description);
                         $("#spn_pdesc").text(data[0].ParrtDesc);
                         $("#spn_partno").text(data[0].PartNO);
-                       // fetchitemlist(id);
-                       vendorbind(id);
-                       rfqalldatabind(id);
+                        // fetchitemlist(id);
+                        vendorbind(id);
+                        rfqalldatabind(id);
                     },
                     error: function (err) {
                         alert('Error occured');
@@ -901,9 +881,9 @@
             function jsondateformatconvert(jsondate) {
                 var MyDate_String_Value = jsondate;
                 var value = new Date
-                (
-                parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
-                );
+                    (
+                    parseInt(MyDate_String_Value.replace(/(^.*\()|([+-].*$)/g, ''))
+                    );
                 var date = value.getDate();
                 if (date < 10) {
                     date = "0" + date;
@@ -937,11 +917,12 @@
                         //var tr = "";
                         var items = [];
                         for (var i = 0; i < data.length; i++) {
-                           // tr = $('<tr class="mosurhandsymbol dataGrid"/>');
-                           // tr.append('<td style="display:none;">' + data[i].RfqID + '</td>');
-                           // tr.append('<td><div class="avatar avatar-md mr-3 mt-1 float-left"><span class="avatar-letter avatar-letter-' + data[i].UserName.substring(0, 1).toLowerCase() + ' avatar-md circle"></span></div><div><div><strong>' + data[i].UserName + '</strong></div><span>' + data[i].Status + ' | ' + data[i].VendorType + '</span></div></td>');
+                            // tr = $('<tr class="mosurhandsymbol dataGrid"/>');
+                            // tr.append('<td style="display:none;">' + data[i].RfqID + '</td>');
+                            // tr.append('<td><div class="avatar avatar-md mr-3 mt-1 float-left"><span class="avatar-letter avatar-letter-' + data[i].UserName.substring(0, 1).toLowerCase() + ' avatar-md circle"></span></div><div><div><strong>' + data[i].UserName + '</strong></div><span>' + data[i].Status + ' | ' + data[i].VendorType + '</span></div></td>');
                             //$('#tbl_AllVpo').append(tr);
-                            items.push('<li class="media p-3 b-b has-hover mosurhandsymbol" onclick="fetchsinglelist(' + data[i].RfqID + ')"><img class="d-flex mr-3 height-50" src="../assets/img/dummy/u1.png" alt="Generic placeholder image"><div class="media-body text-truncate"><small class="float-right"><span>' + jsondateformatconvert(data[i].ReqDate) + '</span></small><h6 class="mt-0 mb-1 font-weight-normal">' + data[i].UserName + '</h6><span>' + data[i].VendorType + '</span><br><small>Request# ' + data[i].RfqID + '</small></div></li>');
+                            //items.push('<li class="media p-3 b-b has-hover mosurhandsymbol" onclick="fetchsinglelist(' + data[i].RfqID + ')"> <div class="media-body text-truncate"><small class="float-right"><span>' + jsondateformatconvert(data[i].ReqDate) + '</span></small><h6 class="mt-0 mb-1 font-weight-normal">' + data[i].UserName + '</h6><span>' + data[i].VendorType + '</span><br><small>Request# ' + data[i].RfqID + '</small></div></li>');
+                            items.push('<div class="feed-element" onclick="fetchsinglelist(' + data[i].RfqID + ')"> <div> <small class="pull-right">' + jsondateformatconvert(data[i].ReqDate) + '</small> <strong>' + data[i].UserName + '</strong>  <div>' + data[i].VendorType + '</div><small>Request# ' + data[i].RfqID + '</small></div></div>');
 
                         }
                         $('#ullslistbind').append(items.join(''));
@@ -959,6 +940,6 @@
         </script>
 
     </fieldset>
- }
+}
 
 
