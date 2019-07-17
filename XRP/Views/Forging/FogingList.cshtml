@@ -3,11 +3,6 @@
     ViewBag.Title = "FogingList";
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
-
-
-
- 
-
  
 <link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />
 @using (Html.BeginForm("ForgingList", "Forging", FormMethod.Get, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
@@ -579,6 +574,7 @@
 
             <script>
                 function fetchsinglelist(id, fid) {
+                    debugger;
                     $('#CutDetailsDiv').show();
                     $("#CuttDetailsDiv").hide();
                     $('#divrow2details').hide();

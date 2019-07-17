@@ -30,7 +30,7 @@
     <div class="paddingLeft15 paddingTop15">
 
         
-            <div  >
+            <div >
 
                 <div class="panel panel-default">
 
@@ -505,7 +505,7 @@
                             </div>
                         </div>
 
-                        <div class="modal " id="modalCuttingSlip" tabindex="-1" role="dialog" aria-labelledby="modalCuttingSlip" aria-hidden="true" style="display:none;">
+                        <div class="modal " id="modalCuttingSlip" tabindex="-1" role="dialog" aria-labelledby="modalCuttingSlip" aria-hidden="true" style="display:none;padding-left:20%;width:60%;">
                             <div class="modal-dialog modal-md" role="document">
                                 <div class="modal-content b-0">
                                     <div class="modal-header r-0 bg-primary">
@@ -522,7 +522,7 @@
                                     </div>
                                     <div class="modal-body no-p no-b">
                                         <div class="card-body">
-                                            <div class=" col-12 m-0">
+                                            <div class="col-md-12">
 
                                                 <div>
 
@@ -555,78 +555,23 @@
 
                                             </div>
                                             <br />
-                                            @*<form class="needs-validation" novalidate="">*@
-                                            @*<div class="form-row">
-                                                    <div class="col-md-3 mb-3">
-                                                        <label for="lblCutRMGrade">RM Grade:</label>
-                                                        <label id="lblCutRMGrade"></label>
-
-
-                                                    </div>
-                                                    <div class="col-md-3 mb-3">
-                                                        <label for="lblCutSection">Section:</label>
-                                                        <label id="lblCutSection"></label>
-
-                                                    </div>
-                                                    <div class="col-md-3 mb-3">
-                                                        <label for="lblCutInternalCutWt" >Cut Weight:</label>
-                                                        <label id="lblCutInternalCutWt"></label>
-
-                                                    </div>
-
-                                                    <div class="col-md-3 mb-3">
-                                                        <label for="lblCutlength">Cut Length:</label>
-
-                                                        <label id="lblCutlength"></label>
-
-
-
-                                                    </div>
-                                                </div>*@
-                                            <div class="form-row">
-                                                <div class="col-md-6 mb-3">
+                                         
+                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
                                                     <label for="txtCutQuantity">Quantity:</label>
-                                                    <input type="text" class="form-control r-0 light s-12" id="txtCutQuantity" oninput="calculateTotalWt()">
-
+                                                    <input type="text" class="form-control" id="txtCutQuantity" oninput="calculateTotalWt()">
                                                 </div>
-                                                <div class="col-md-6 mb-3">
+                                                <div class="col-md-6">
                                                     <label for="txtCutTotalWt">Total Weight (Kg):</label>
-                                                    <input type="text" class="Label" id="txtCutTotalWt" readonly="readonly" style="border:none">
+                                                    <input type="text" class="form-control" id="txtCutTotalWt" readonly="readonly" style="border:none">
 
                                                 </div>
-                                                @*<div class="col-md-4 mb-3">
-                                                        <label for="validationCustom05">Section</label>
-                                                        <input type="text" class="form-control r-0 light s-12" id="txtSection">
-
-                                                    </div>
-                                                    <div class="col-md-4 mb-3">
-                                                        <label for="validationCustom03">Quantity</label>
-                                                        <input type="text" class="form-control r-0 light s-12" id="txtQuantity">
-
-                                                    </div>*@
-                                            </div>
-                                            @*<div class="form-row">
-                                                    <div class="col-md-12 mb-3">
-                                                        <label for="validationCustom03">Part Description</label>
-
-                                                        <textarea id="txtPartDescription" class="form-control r-0 light s-12 "></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="col-md-12 mb-3">
-                                                        <label for="validationCustom03">Remark</label>
-
-                                                        <textarea id="txtRemark" class="form-control r-0 light s-12 "></textarea>
-                                                    </div>
-                                                </div>*@
-
-                                            @*</form>*@
-
-
+                                            </div> 
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-primary l-s-1 s-12 text-uppercase" onclick="generateGISNo();">
+                                        <button class="btn btn-primary text-uppercase" onclick="generateGISNo();">
                                             Send
                                         </button>
 

@@ -197,7 +197,7 @@ namespace XRP.Controllers
             return Json(null, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult getVendorname(string Prefix)
+        public JsonResult getVendorname(string Prefix="")
         {
             try
             {

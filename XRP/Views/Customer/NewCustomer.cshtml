@@ -85,13 +85,13 @@
 
                                 <div class="align-self-center">
                                     <ul class="nav nav-pills mb-3" id="myTab" role="tablist">
-                                        <li>
-                                            <a class="nav-link" id="w4--tab2" href="#w4-tab2"><i class="icon icon-home2"></i>Address</a>
+                                        <li class="nav-item">
+                                            <a class="nav-link " id="w4-tab2" data-toggle="tab" href="#w4-tab2" role="tab" aria-controls="tab2" aria-selected="false">Address</a>
                                         </li>
-
-                                        <li class="float-right">
-                                            <a class="nav-link active show" id="w4--tab1" href="#w4-tab1"><i class="icon icon-plus-circle"></i>Contact Details</a>
+                                        <li class="nav-item">
+                                            <a class="nav-link active show" id="w4-tab1" data-toggle="tab" href="#w4-tab1" role="tab" aria-controls="tab1" aria-expanded="true" aria-selected="true">Contact Details</a>
                                         </li>
+                                       
                                     </ul>
 
                                 </div>
@@ -100,91 +100,94 @@
                         <div style="width:30px"></div>
                         <div class="card-body no-p">
                             <div class="tab-content">
+                                <div class="tab-pane" id="w4-tab1" role="tabpanel" aria-labelledby="w4-tab1">
 
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <h5>Address</h5>
-                                    </div>
-                                    <div class="ibox-content">
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                @Html.LabelFor(model => model.Contact_Person, new { @class = "" })
-                                                @Html.TextBoxFor(model => model.Contact_Person, null, new { @class = "form-control r-0 light s-12", @id = "txt_cperson" })
-                                                @Html.ValidationMessageFor(model => model.Contact_Person, null, new { @class = "alert-danger" })
+
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Address</h5>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    @Html.LabelFor(model => model.Contact_Person, new { @class = "" })
+                                                    @Html.TextBoxFor(model => model.Contact_Person, null, new { @class = "form-control r-0 light s-12", @id = "txt_cperson" })
+                                                    @Html.ValidationMessageFor(model => model.Contact_Person, null, new { @class = "alert-danger" })
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    @Html.LabelFor(model => model.Email_ID, new { @class = "" })
+                                                    @Html.TextBoxFor(model => model.Email_ID, null, new { @class = "form-control r-0 light s-12", @id = "txt_email" })
+                                                    @Html.ValidationMessageFor(model => model.Email_ID, null, new { @class = "alert-danger" })
+                                                </div>
+
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                @Html.LabelFor(model => model.Email_ID, new { @class = "" })
-                                                @Html.TextBoxFor(model => model.Email_ID, null, new { @class = "form-control r-0 light s-12", @id = "txt_email" })
-                                                @Html.ValidationMessageFor(model => model.Email_ID, null, new { @class = "alert-danger" })
+
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    @Html.LabelFor(model => model.Mobile_No, new { @class = "" })
+                                                    @Html.TextBoxFor(model => model.Mobile_No, null, new { @class = "form-control r-0 light s-12", @id = "txt_mob", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "10" })
+                                                    @Html.ValidationMessageFor(model => model.Mobile_No, null, new { @class = "alert-danger" })
+                                                </div>
+
+                                                <div class="custom-control custom-checkbox mb-3" align="right" id="div_primarycontact" style="display:none;">
+
+                                                    <input type="checkbox" class="custom-control-input" id="chk_defaultcontact" required="" />
+                                                    <label class="custom-control-label" for="chk_defaultcontact" id="lbl_primarycontact">Primary</label>
+
+
+                                                </div>
+
                                             </div>
+                                            <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbldataaddcp();"> Add </button></div>
 
                                         </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                @Html.LabelFor(model => model.Mobile_No, new { @class = "" })
-                                                @Html.TextBoxFor(model => model.Mobile_No, null, new { @class = "form-control r-0 light s-12", @id = "txt_mob", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "10" })
-                                                @Html.ValidationMessageFor(model => model.Mobile_No, null, new { @class = "alert-danger" })
-                                            </div>
-
-                                            <div class="custom-control custom-checkbox mb-3" align="right" id="div_primarycontact" style="display:none;">
-
-                                                <input type="checkbox" class="custom-control-input" id="chk_defaultcontact" required="" />
-                                                <label class="custom-control-label" for="chk_defaultcontact" id="lbl_primarycontact">Primary</label>
-
-
-                                            </div>
-
-                                        </div>
-                                        <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbldataaddcp();"> Add </button></div>
-
-                                    </div>
-                                </div>
-
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <h5>Address</h5>
-                                    </div>
-                                    <div class="ibox-content">
-                                        <div class="row">
-                                            <div class="col-md-12 mb-3">
-                                                @Html.LabelFor(model => model.Address, new { @class = "" })
-                                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control r-0 light s-12", @id = "txt_address" })
-                                                @Html.ValidationMessageFor(model => model.Address, null, new { @class = "alert-danger" })
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                @Html.LabelFor(model => model.PlaceofSupply, new { @class = "" })
-                                                @Html.DropDownListFor(model => model.PlaceofSupply, ViewData["StateCodeDrpDwn"] as IEnumerable<SelectListItem>
-                                ,
-                                XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", @id = "drppos" })
-                                                @Html.ValidationMessageFor(model => model.PlaceofSupply, null, new { @class = "alert-danger" })
-                                            </div>
-
-                                            <div class="custom-control custom-checkbox mb-3" align="right" style="display:none;" id="div_primaryaddress">
-
-                                                <input type="checkbox" class="custom-control-input" id="chk_defaultaddress" required="">
-                                                <label class="custom-control-label" for="chk_defaultaddress" id="lbl_primaryaddress">Primary</label>
-
-
-                                            </div>
-                                        </div>
-
-
-                                        <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbladdaddress()"> Add </button></div>
                                     </div>
                                 </div>
+                                <div class="tab-pane show active" id="w4-tab2" role="tabpanel" aria-labelledby="w4-tab2">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Address</h5>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    @Html.LabelFor(model => model.Address, new { @class = "" })
+                                                    @Html.TextAreaFor(model => model.Address, new { @class = "form-control r-0 light s-12", @id = "txt_address" })
+                                                    @Html.ValidationMessageFor(model => model.Address, null, new { @class = "alert-danger" })
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    @Html.LabelFor(model => model.PlaceofSupply, new { @class = "" })
+                                                    @Html.DropDownListFor(model => model.PlaceofSupply, ViewData["StateCodeDrpDwn"] as IEnumerable<SelectListItem>
+                                    ,
+                                    XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", @id = "drppos" })
+                                                    @Html.ValidationMessageFor(model => model.PlaceofSupply, null, new { @class = "alert-danger" })
+                                                </div>
+
+                                                <div class="custom-control custom-checkbox mb-3" align="right" style="display:none;" id="div_primaryaddress">
+
+                                                    <input type="checkbox" class="custom-control-input" id="chk_defaultaddress" required="">
+                                                    <label class="custom-control-label" for="chk_defaultaddress" id="lbl_primaryaddress">Primary</label>
+
+
+                                                </div>
+                                            </div>
+
+
+                                            <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbladdaddress()"> Add </button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
 
                             </div>
+
+
                         </div>
-
-                    </div>
-
-
-                </div>
 
                 <div class="col-md-5">
                     <div class="card mb-3 shadow no-b r-0">

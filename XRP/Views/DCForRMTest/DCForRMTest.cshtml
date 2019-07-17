@@ -61,10 +61,7 @@
             <table class="table table-condensed table-bordered m-0" cellspacing="0">
                 <tbody>
                     <tr>
-
-                        @*<td rowspan="2" align="center" style="padding:0">
-                            <b>1.</b>
-                        </td>*@
+  
                         <td><b>Chemical Analysis:</b></td>
                         <td colspan="3">
                             <input type="text" id="txt_chemnooftestpcs" class="form-control r-0 light s-12" placeholder="No. of Test Pieces" />
@@ -183,11 +180,9 @@
             <table width="100%" class="table-condensed table-bordered">
 
                 <tr>
-                    @*<td rowspan="2" align="center" style="padding:0"><b>2.</b></td>*@
+                    
                     <td colspan="3" rowspan="2" align="center" style="min-width:50px"><b>Metallography Analysis</b></td>
-
-                    @*<td>I</td>*@
-                    <td>Micro</td>
+                     <td>Micro</td>
                     <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtmicro" /></td>
                     <td>III</td>
                     <td>Inclusion</td>
@@ -196,7 +191,7 @@
                 </tr>
                 <tr>
 
-                    @*<td>II</td>*@
+                    
                     <td>Macro</td>
                     <td><input type="text" class="form-control r-0 light s-12" style="width:200px;" id="txtmacro" /></td>
                     <td>IV</td>
@@ -208,9 +203,8 @@
             <table cellspacing="0" class="table-condensed table-bordered" width="100%">
                 <tr>
                     <td rowspan="2" align="center" style="padding:0"><b></b></td>
-                    <td colspan="3" align="center" style="min-width:50px"><b>Mechanical Analysis</b></td>
-
-                    @*<td colspan="1" style="min-width:50px" align="center"><b>No. of Test Pieces</b></td>*@
+                    <td colspan="3" align="center" style="min-width:50px"><b>Mechanical Analysis</b></td> 
+                    
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mechnoofpcs" placeholder="No. of Test Pieces"></td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mechnoofpcskg" placeholder="No. of Test Pieces (kg)"></td>
 
@@ -224,47 +218,47 @@
 
                 </tr>
                 <tr>
-                    @*<td>I</td>*@
+                    
                     <td style="min-width:50px">Impact</td>
                     <td style="min-width:50px" align="center"><input class="form-control r-0 light s-12" type="text" id="txt_minimpact"></td>
                     <td style="min-width:50px" align="center"><input class="form-control r-0 light s-12" type="text" id="txt_maximpact"></td>
                     
                 </tr>
                 <tr>
-                    @*<td>II</td>*@
+                   
                     <td colspan="3" style="min-width:50px">Tensile</td>
                     
                 </tr>
                 <tr>
-                    @*<td>a</td>*@
+                   
                     <td align="right" style="min-width:50px">UTS</td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_utsmintensile"></td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_utsmaxtensile"></td>
                     
                 </tr>
                 <tr>
-                    @*<td>b</td>*@
+                    
                     <td align="right" style="min-width:50px">YS</td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_ysmintensile"></td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_ysmaxtensile"></td>
                     
                 </tr>
                 <tr>
-                    @*<td>c</td>*@
+                    
                     <td align="right" style="min-width:50px">Reduction</td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_reductionmintensile"></td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_reductionmaxtensile"></td>
                      
                 </tr>
                 <tr>
-                    @*<td>III</td>*@
+                   
                     <td style="min-width:50px">Charpy (at 46<sup>0</sup> C)</td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_mincharpy"></td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_maxcharpy"></td>
                     
                 </tr>
                 <tr>
-                    @*<td>IV</td>*@
+                    
                     <td style="min-width:50px">Jominy</td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_minjominy"></td>
                     <td style="min-width:50px"><input class="form-control r-0 light s-12" type="text" id="txt_maxjominy"></td>
@@ -328,6 +322,7 @@
 
             }
         });
+        debugger;
         var grade    = $("#spn_gm").text();
         var section = $("#spn_section").text();
         var heatCode = $("#spn_hc").text();
@@ -467,7 +462,8 @@
             }
         });
     }
-    function getUrlVars() {
+            function getUrlVars() {
+                debugger;
         var vars = {};
         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
             vars[key] = value;

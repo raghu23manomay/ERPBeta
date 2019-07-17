@@ -142,7 +142,15 @@ namespace XRP.DataModel
                     id = Convert.ToInt64(sdr[0].ToString());
                 }
                 connection.Close();
-                result = "Quotation Created Successfully!";
+                if(id==0)
+                {
+                    result = "Error occured!";
+                }
+                else
+                {
+                    result = "Quotation Created Successfully!";
+                }
+                
             }
             catch (Exception ex)
             {

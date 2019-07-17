@@ -14,15 +14,11 @@
     @Html.ValidationSummary(true)
     <fieldset>
         <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                @*<div class="row p-t-b-10 ">
-                    <div class="col">*@
-                <h4>
-                    <i class="icon-database"></i>
+            <div class="container-fluid text-white"> 
+                <h4> 
                     Purchase Order
                 </h4>
-                @*</div>
-                    </div>*@
+                 
                 <div class="row justify-content-between">
                     <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
                         <li>
@@ -61,43 +57,39 @@
 
                 <div class="col-md-12">
                     <div class="card mb-3 shadow no-b r-0">
-                        <div class="card-header white">
-                            <div class="form-row mt-1">
-                                <div class="form-group col-2 m-0">
+                        <div class="row">
+                           
+                                <div class="col-md-2">
                                     @Html.Label("PO No", new { @class = "Label" })
-                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CustomerPONo, null, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CustomerPONo, null, new {  @class = "form-control", @style = "border:none;", @readonly = "readonly" })
                                     @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.CustomerPONo, null, new { @class = "alert-danger" })
                                 </div>
-                                <div class="form-group col-2 m-0">
+                                <div class="col-md-2">
                                     @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO, new { @class = "Label" })
-                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO, null, new { @class = "",@style = "border:none;", @readonly = "readonly" })
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO, null, new {  @class = "form-control",@style = "border:none;", @readonly = "readonly" })
                                     @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.QtymentionedinPO, null, new { @class = "alert-danger" })
-
-
+ 
                                 </div>
-                                <div class="form-group col-2 m-0">
+                                <div class="col-md-2">
                                     @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, new { @class = "Label" })
 
-                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, null, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, null, new {  @class = "form-control", @style = "border:none;", @readonly = "readonly" })
                                     @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.DieNumber, null, new { @class = "alert-danger" })
                                 </div>
-                                <div class="form-group col-2 m-0">
+                                <div class="col-md-2">
                                     <br />
 
                                     @Html.CheckBoxFor(model => model.ssmtbl_PurchaseOrderModel.POQty_Open, new { @class = " btn btn-default", @id = "POQty_Open", @readonly = "readonly",@disabled="disabled"})PO Qty Open
                                     @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.POQty_Open, null, new { @class = "alert-danger" })
                                 </div>
-                                <div class="form-group col-2 m-0">
-                                    @*@Html.Label("file", new { @class = "Label", @style = "color:#f8f9fa" })*@
-                                    <br />
-                                    @*<input type="file" id="filename1" class="">*@
+                                <div class="col-md-2"> 
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        
 
         <div class="page has-sidebar-right bg-light height-full">
 
@@ -105,11 +97,9 @@
                 <div class="d-flex row">
 
                     <div class="col-md-6">
-
-                        <!-- Basic Validation -->
+                         
                         <div class="card mb-3 shadow no-b r-0" id="div_quotationRawMaterial">
-                            <div class="card-header white">
-
+                            <div class="card-header white"> 
                                 <h6>Raw Material Cost Details Based On <label id="lbl_fbo" class="" style="font-size:14px;"></label></h6>
                             </div>
                             <div class="card-body">
@@ -133,28 +123,15 @@
                                         </div>
 
 
+ 
 
-                                    @*@Html.Label("Gross Weight:", new { @class = "Label" })
-                                     @Html.DisplayFor(model => model.ssmtbl_QuotationModel.GrossWeight, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                    &nbsp;
-                                     @Html.Label("Cut Weight:", new { @class = "Label" })
-
-                                     @Html.DisplayFor(model => model.ssmtbl_QuotationModel.CutWeight, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })
-                                     &nbsp;
-                                     @Html.Label("Net Weight:", new { @class = "Label" })
-
-                                     @Html.DisplayFor(model => model.ssmtbl_QuotationModel.NetWeight, null, new { @class = "form-control r-0 light s-12", @readonly = "readonly" })*@
-
-
-                                    </div>
-
-
+                                    </div> 
 
                                 </form>
 
                             </div>
                         </div>
-                        <!-- #END# Advanced Validation -->
+                        
                         <div class="card mb-3 shadow no-b r-0">
                             <div class="card-header white">
                                 <h6>
@@ -164,195 +141,147 @@
 
                             </div>
                             <div class="card-body pt-0 bg-light slimScroll" data-height="278" style="overflow: hidden; width: auto; height: 278px;">
-
-                                @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
-                                {
-
-                                    if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
-                                    {
-                                        <div class="form-group col-6 m-0">
-                                            @Html.Label("Cutting(Sq In)", new { @class = "Label" })
-                                        </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.CuttingSquare1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                            @*
-                                                                </div>
-                                                                <div class="form-group col-4 m-0 ">
-                                                            *@
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.CuttingSquare2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                        </div>
-                                    }
-                                    if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
+                                <div class="row">
+                                    @foreach (var item in ViewData["OperationsInvolved"] as List<ssmtbl_Feasibility_OperationsInvolvedModel>)
                                     {
 
-                                        <div class="form-group col-6 m-0">
-                                            @Html.Label("Forging", new { @class = "Label" })
-                                        </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Forging1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                            &nbsp;&nbsp;
+                                        if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
+                                        {
+                                            <div class="col-md-12">
+                                                @Html.Label("Cutting(Sq In)", new { @class = "Label" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.CuttingSquare1, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.CuttingSquare2, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+                                        }
+                                        if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
+                                        {
+                                            <div class="col-md-12">
+                                                @Html.Label("Forging", new { @class = "Label" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Forging1, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Forging2, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+                                        }
+                                        if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
+                                        {
+                                            <div class="col-md-12">
+                                                @Html.Label("Heat Treatment Cost(Net Wt):", new { @class = "Label" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.HeatTreatment1, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.HeatTreatment2, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
 
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Forging2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                        </div>
+                                            </div>
+
+                                        }
+                                        if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
+                                        {
+                                            <div class="col-md-6">
+                                                @Html.Label("Shot Blasting(Net Wt)", new { @class = "Label" })
+                                            </div>
+                                            <div class=" col-12 m-0 custom-control-inline">
+
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ShotBlasting1, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                                &nbsp;&nbsp;
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ShotBlasting2, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+
+
+                                        }
+                                        if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
+                                        {
+                                            <div class="col-md-6">
+                                                @Html.Label("MPI", new { @class = "Label" })
+                                            </div>
+                                            <div class=" col-12 m-0 custom-control-inline">
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.MPI1, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                                &nbsp;&nbsp;
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.MPI2, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+
+
+                                        }
+                                        if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
+                                        {
+                                            <div class="col-md-6">
+                                                @Html.Label("Grinding(Per Piece)", new { @class = "Label" })
+                                            </div>
+                                            <div class=" col-12 m-0 custom-control-inline">
+
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Grinding1, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                                &nbsp;&nbsp;
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Grinding2, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+
+                                        }
+                                        if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
+                                        {
+                                            <div class="col-md-6">
+                                                @Html.Label("Cold Coining(Per Piece)", new { @class = "Label" })
+                                            </div>
+                                            <div class=" col-12 m-0 custom-control-inline">
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ColdCoining1, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                                &nbsp;&nbsp;
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ColdCoining2, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+                                        }
+                                        if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
+                                        {
+                                            <div class="col-md-6">
+                                                @Html.Label("Machaining(Per Piece)", new { @class = "Label" })
+                                            </div>
+                                            <div class=" col-12 m-0 custom-control-inline">
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Machining1, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+
+                                                @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Machining2, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                            </div>
+                                        }
+
                                     }
-                                    if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
-                                    {
-                                        <div class="form-group col-12 m-0">
-                                            @Html.Label("Heat Treatment Cost(Net Wt):", new { @class = "Label" })
-                                        </div>
-                                                        <div class="form-group col-6 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.HeatTreatment1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.HeatTreatment2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
 
-                                                        </div>
+                                    <div class="col-md-12">
+                                        <label class="Label">Die Maintaince Cost(Per Piece)	</label>
 
-                                    }
-                                    if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
-                                    {
-                                        <div class="form-group col-6 m-0">
-                                            @Html.Label("Shot Blasting(Net Wt)", new { @class = "Label" })
-                                        </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.DieMaintenance1, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.DieMaintenance2, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                    </div>
 
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ShotBlasting1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ShotBlasting2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                        </div>
+                                    <div class="col-md-12">
+                                        <label class="Label">Total Conversion Cost</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.TotalConverstionCost, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="Label">Total Component Cost</label>
+                                    </div>
 
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.TotalComponentCost, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="Label">Initial Die Cost	</label>
+                                    </div>
 
-                                    }
-                                    if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
-                                    {
-                                        <div class="form-group col-6 m-0">
-                                            @Html.Label("MPI", new { @class = "Label" })
-                                        </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.MPI1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.MPI2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                        </div>
-
-
-                                    }
-                                    if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
-                                    {
-                                        <div class="form-group col-6 m-0">
-                                            @Html.Label("Grinding(Per Piece)", new { @class = "Label" })
-                                        </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Grinding1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Grinding2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                        </div>
-
-                                    }
-                                    if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
-                                    {
-                                        <div class="form-group col-6 m-0">
-                                            @Html.Label("Cold Coining(Per Piece)", new { @class = "Label" })
-                                        </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ColdCoining1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.ColdCoining2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                        </div>
-                                    }
-                                    if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
-                                    {
-                                        <div class="form-group col-6 m-0">
-                                            @Html.Label("Machaining(Per Piece)", new { @class = "Label" })
-                                        </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Machining1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-
-                                                            @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.Machining2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                                        </div>
-                                    }
-
-                                }
-
-                                <div class="form-group col-6 m-0">
-                                    <label class="Label">Die Maintaince Cost(Per Piece)	</label>
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.InitialDieCost, new { @class = "form-control", @readonly = "readonly", @style = "border:none;" })
+                                    </div>
 
                                 </div>
-
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.DieMaintenance1, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                    &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.DieMaintenance2, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                </div>
-
-                                @*<div class="form-group col-6 m-0">
-                                    <label class="Label">ICC & Overhead on RM </label>
-
-                                </div>
-
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.iccoverhadrm, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                    &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totaliccoverhadrm, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                </div>
-
-                                <div class="form-group col-6 m-0">
-                                    <label class="Label">Profit on Conversion</label>
-
-                                </div>
-
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.profitonconversion, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                    &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totalprofitonconversion, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                </div>
-                                <div class="form-group col-6 m-0">
-                                    <label class="Label">Rejection</label>
-
-                                </div>
-
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.rejection, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                    &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totalrejection, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                </div>
-                                <div class="form-group col-6 m-0">
-                                    <label class="Label">Packing,Transport</label>
-
-                                </div>
-
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.packingtransport, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                    &nbsp;  @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totalpackingtransport, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                </div>*@
-
-
-                                <div class="form-group col-6 m-0">
-                                    <label class="Label">Total Conversion Cost</label>
-                                </div>
-
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.TotalConverstionCost, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                </div>
-                                <div class="form-group col-6 m-0">
-                                    <label class="Label">Total Component Cost</label>
-                                </div>
-
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.TotalComponentCost, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                </div>
-                                <div class="form-group col-6 m-0">
-                                    <label class="Label">Initial Die Cost	</label>
-                                </div>
-
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.InitialDieCost, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                </div>
-                                @*<div class="form-group col-6 m-0">
-                                    <label class="Label">Total Other Cost	</label>
-                                </div>
-
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_QuotationModel.totallycost, new { @class = "", @readonly = "readonly", @style = "border:none;" })
-                                </div>*@
                             </div>
-
                         </div>
 
 
@@ -364,7 +293,7 @@
                         <div class="card mb-3 shadow no-b r-0" id="div_poRawMaterial">
                             <div class="card-header white">
                                 <div class="form-row mt-1">
-                                    <div class="form-group col-10 m-0" valign="top">
+                                    <div class=" col-10 m-0" valign="top">
                                         <h6>Raw Material Cost Details</h6>
                                     </div>
 
@@ -372,23 +301,23 @@
                             </div>
                             <div class="card-body">
                                 <form class="needs-validation" novalidate>
-                                    <div class="form-row" style="overflow: hidden; width: auto; height: 70px;">
-                                        <div class="col-md-4 mb-3">
+                                    <div class="row" style="overflow: hidden; width: auto; height: 70px;">
+                                        <div class="col-md-4">
                                             @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost, new { @class = "Label" })
 
-                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost, null, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost, null, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.SteelCost, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="col-md-4 mb-3">
+                                        <div class="col-md-4">
                                             @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.Transportation, new { @class = "Label" })
 
-                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Transportation, null, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Transportation, null, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.Transportation, null, new { @class = "alert-danger" })
                                         </div>
-                                        <div class="col-md-4 mb-3">
+                                        <div class="col-md-4">
                                             @Html.LabelFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost, new { @class = "Label" })
 
-                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost, null, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost, null, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.ssmtbl_PurchaseOrderModel.TotalRowMaterialCost, null, new { @class = "alert-danger" })
                                         </div>
 
@@ -403,7 +332,7 @@
                         <div class="card mb-3 shadow no-b r-0">
                             <div class="card-header white">
                                 <div class="form-row mt-1">
-                                    <div class="form-group col-10 m-0" valign="top">
+                                    <div class=" col-10 m-0" valign="top">
                                         <h6>Conversion Rate Details</h6>
                                     </div>
 
@@ -415,146 +344,143 @@
 
                                     if (item.Operations_Involved == 1 && item.Operations_Involved_Select)
                                     {
-                                        <div class="form-group col-10 m-0">
+                                        <div class="col-md-12">
                                             @Html.Label("Cutting(Rs Per Sq Inch)", new { @class = "Label" })
                                         </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare1, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                            @*
-                                                                </div>
-                                                                <div class="form-group col-4 m-0 ">
-                                                            *@
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                        </div>
+                                        <div class="col-md-12">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare1, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                        </div>
+                                        <div class="col-md-4">
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.CuttingSquare2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                        </div>
                                     }
                                     if (item.Operations_Involved == 2 && item.Operations_Involved_Select)
                                     {
 
-                                        <div class="form-group col-4 m-0">
+                                        <div class="col-md-4">
                                             @Html.Label("Forging", new { @class = "Label" })
                                         </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Forging1, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                            &nbsp;&nbsp;
-
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Forging2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Forging1, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                        </div>  
+                                        <div class="col-md-6"> 
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Forging2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                        </div>
                                     }
                                     if (item.Operations_Involved == 3 && item.Operations_Involved_Select)
                                     {
-                                        <div class="form-group col-12 m-0">
+                                        <div class=" col-12 m-0">
                                             @Html.Label("Heat Treatment Cost(Net Wt):", new { @class = "Label" })
                                         </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment1, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                        <div class=" col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment1, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.HeatTreatment2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
 
-                                                        </div>
+                                        </div>
 
                                     }
                                     if (item.Operations_Involved == 4 && item.Operations_Involved_Select)
                                     {
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-4 m-0">
                                             @Html.Label("Shot Blasting(Net Wt)", new { @class = "Label" })
                                         </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                        <div class=" col-12 m-0 custom-control-inline">
 
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting1, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                        </div>
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting1, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ShotBlasting2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                        </div>
 
 
                                     }
                                     if (item.Operations_Involved == 5 && item.Operations_Involved_Select)
                                     {
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-4 m-0">
                                             @Html.Label("MPI", new { @class = "Label" })
                                         </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.MPI1, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.MPI2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                        </div>
+                                        <div class=" col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.MPI1, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.MPI2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                        </div>
 
 
                                     }
                                     if (item.Operations_Involved == 13 && item.Operations_Involved_Select)
                                     {
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-4 m-0">
                                             @Html.Label("Grinding(Per Piece)", new { @class = "Label" })
                                         </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
+                                        <div class=" col-12 m-0 custom-control-inline">
 
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Grinding1, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Grinding2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                        </div>
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Grinding1, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Grinding2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                        </div>
 
                                     }
                                     if (item.Operations_Involved == 14 && item.Operations_Involved_Select)
                                     {
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-4 m-0">
                                             @Html.Label("Cold Coining(Per Piece)", new { @class = "Label" })
                                         </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining1, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                            &nbsp;&nbsp;
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                        </div>
+                                        <div class=" col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining1, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                            &nbsp;&nbsp;
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                        </div>
                                     }
                                     if (item.Operations_Involved == 15 && item.Operations_Involved_Select)
                                     {
-                                        <div class="form-group col-4 m-0">
+                                        <div class=" col-4 m-0">
                                             @Html.Label("Machaining(Per Piece)", new { @class = "Label" })
                                         </div>
-                                                        <div class="form-group col-12 m-0 custom-control-inline">
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Machining1, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                        <div class=" col-12 m-0 custom-control-inline">
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Machining1, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
 
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Machining2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                                        </div>
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.ColdCoining2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                            @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.Machining2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                        </div>
                                     }
 
                                 }
 
-                                <div class="form-group col-12 m-0">
+                                <div class=" col-12 m-0">
                                     <label class="Label">Die Maintaince Cost(Per Piece)	</label>
 
                                 </div>
 
-                                <div class="form-group col-12 m-0 custom-control-inline">
-                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance1, new { @class = "", @style = "border:none;", @readonly = "readonly" })
-                                    &nbsp;@Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance2, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                <div class=" col-12 m-0 custom-control-inline">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance1, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
+                                    &nbsp;@Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.DieMaintenance2, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
                                 </div>
-                                <div class="form-group col-12 m-0">
+                                <div class="col-md-12">
                                     <label class="Label">Total Conversion Cost</label>
 
                                 </div>
 
-                                <div class="form-group col-12 m-0 custom-control-inline">
+                                <div class="col-md-12">
 
-                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalConverstionCost, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalConverstionCost, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
                                 </div>
-                                <div class="form-group col-12 m-0">
+                                <div class="col-md-12">
                                     <label class="Label">Total Component Cost</label>
 
                                 </div>
 
-                                <div class="form-group col-12 m-0 custom-control-inline">
-
-                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalComponentCost, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.TotalComponentCost, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
                                 </div>
-                                <div class="form-group col-12 m-0">
+                                <div class="col-md-12">
                                     <label class="Label">Initial Die Cost	</label>
 
                                 </div>
 
-                                <div class="form-group col-12 m-0 custom-control-inline">
+                                <div class="col-md-12">
 
-                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.InitialDieCost, new { @class = "", @style = "border:none;", @readonly = "readonly" })
+                                    @Html.TextBoxFor(model => model.ssmtbl_PurchaseOrderModel.InitialDieCost, new { @class = "form-control", @style = "border:none;", @readonly = "readonly" })
                                 </div>
 
                             </div>
@@ -565,8 +491,7 @@
                 </div>
             </div>
             <div class="card-body" align="right">
-                @*<button type="submit" class="btn btn-primary btn-sm" id="Save"><i class="icon-save mr-2"></i>Save</button>
-                <button type="reset" class="btn btn-success btn-sm"><i class="icon-refresh mr-2"></i>Reset</button>*@
+                
 
             </div>
         </div>

@@ -776,7 +776,7 @@
         function checkcondition() {
             var hdn = ($("#hdn_custname").val()).trim();
             var txt = ($("#txt_VendName").val()).trim();
-
+            debugger;
             $.ajax({
                 url: "../Inquiry/getVendorname",
                 type: "POST",
@@ -784,6 +784,7 @@
                 data: { Prefix:txt},
                 success: function (data) {
                     if (txt == hdn) {
+                        debugger;
                         var cname = document.getElementById('txt_VendName').value;
 
                         var phno = document.getElementById('txt_phone').value;
@@ -852,7 +853,7 @@
                         }
                         var id = getUrlVars()["id"];
                         var type = "vendor";
-
+                        debugger;
                         $.ajax
                               ({
                                   type: "POST",
@@ -886,6 +887,7 @@
                         }
 
                         else {
+                            debugger;
                             var cname = document.getElementById('txt_VendName').value;
 
                             var phno = document.getElementById('txt_phone').value;
@@ -968,22 +970,12 @@
                                       error: function (err) {
                                           alert(err);
                                       }
-                                  });
-
-
-
+                                  }); 
                         }
-                    }
-
-
-
-
+                    } 
                 }
-            });
-
-        }
-
-
+            }); 
+        } 
 
     </script>
     <script type="text/javascript">

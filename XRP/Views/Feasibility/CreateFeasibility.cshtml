@@ -105,7 +105,6 @@
                                     </div>
                                     <div class="col-md-6 DivTotal" style="display: none;">
                                         @Html.Label("Aprrox Wt(Kg)", new { @id = "Total", @class = "Label" })<br />
-                                        @*@Html.DisplayFor(model => model.fisdiatotal, new {  @class = "form-control r-0 light s-12"})*@
                                         @Html.LabelFor(model => model.fisdiatotal, new { id = "fisdiatotal" })
                                     </div>
                                 </div>
@@ -294,15 +293,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="card-body" align="right" id="divSaveBtn" style="display:none">
-                                <button type="button" class="btn btn-primary btn-sm" value="Save" id="btn_Save" onclick="return submitFeasiblity(this.value);"><i class="icon-save mr-2"></i>Save</button>
-                                <button type="reset" class="btn btn-success btn-sm" id="Reset"><i class="icon-refresh mr-2"></i>Reset</button>
+                            <div class="col-md-12">
+                                <div class="card-body" align="right" id="divSaveBtn" style="display:none">
+                                    <button type="button" class="btn btn-primary btn-sm" value="Save" id="btn_Save" onclick="return submitFeasiblity(this.value);"><i class="icon-save mr-2"></i>Save</button>
+                                    <button type="reset" class="btn btn-sm" id="Reset"><i class="icon-refresh mr-2"></i>Reset</button>
+                                </div>
+                                <div class="card-body" align="right" id="divUpdateBtn" style="display:none">
+                                    <button type="button" class="btn btn-primary" value="Update" id="btn_Save" onclick="return submitFeasiblity(this.value);"><i class="icon-pencil mr-2"></i>Update</button>
+                                </div>
                             </div>
-                            <div class="card-body" align="right" id="divUpdateBtn" style="display:none">
-                                <button type="button" class="btn btn-primary btn-sm" value="Update" id="btn_Save" onclick="return submitFeasiblity(this.value);"><i class="icon-pencil mr-2"></i>Update</button>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -330,39 +331,39 @@
             function CalculateCutLengthctwt() {
                
                 var section = ($("#Section option:selected").text());
-                var cutwt = $j("#cutWeight").val();
-                cutwt = cutwt == 0 ? 1 : $j("#cutWeight").val(); 
+                var cutwt = $("#cutWeight").val();
+                cutwt = cutwt == 0 ? 1 : $("#cutWeight").val(); 
             
                 var secSplit = section.split(" ")[0]; 
                 if (section.split(" ")[1] == "Dia") {
                     var dia = section.split(" ")[0];
 
                     var cutLength = parseFloat((cutwt * 4 / (Math.PI * dia * dia * 0.00000785))).toFixed(2);
-                    $j('#cutlength').val(cutLength);
+                    $('#cutlength').val(cutLength);
                 } else {
                     var rcs = section.split(" ")[0];
                     var cutLength = parseFloat(cutwt / (rcs * rcs * 0.00000785)).toFixed(2);
-                    $j('#cutlength').val(cutLength);
+                    $('#cutlength').val(cutLength);
                 }
             }
         </script>
         <script>
             function CalculateCutLength(Section) { 
-                var cutwt = $j("#cutWeight").val();
-                cutwt = cutwt == 0 ? 1 : $j("#cutWeight").val();
+                var cutwt = $("#cutWeight").val();
+                cutwt = cutwt == 0 ? 1 : $("#cutWeight").val();
 
                 var section = Section.options[Section.selectedIndex].innerHTML;
-                $j("#hdnSection1").val(section);
+                $("#hdnSection1").val(section);
                 var secSplit = section.split(" ")[0];
                 if (section.split(" ")[1] == "Dia") {
                     var dia = section.split(" ")[0];
 
                     var cutLength = parseFloat((cutwt * 4 / (Math.PI * dia * dia * 0.00000785))).toFixed(2);
-                    $j('#cutlength').val(cutLength);
+                    $('#cutlength').val(cutLength);
                 } else {
                     var rcs = section.split(" ")[0];
                     var cutLength = (cutwt / (rcs * rcs * 0.00000785));
-                    $j('#cutlength').val(cutLength.toFixed(2));
+                    $('#cutlength').val(cutLength.toFixed(2));
                 } 
             } 
         </script>
@@ -413,7 +414,7 @@
                         alert("Please Enter Fisibility Dia Value!");
                         return false;
                     }
-                    var fisdiatotal = $j('#fisdiatotal').text();
+                    var fisdiatotal = $('#fisdiatotal').text();
 
                 } else {
                     var feasibilityToolingRequirement = 'Die Block';
@@ -432,7 +433,7 @@
                         alert("Please Enter Dia Block Height!");
                         return false;
                     }
-                    var fisdiatotal = $j('#fisdiatotal').text();
+                    var fisdiatotal = $('#fisdiatotal').text();
 
                 }
                 //var millTC = document.getElementById('MillTC').value;
@@ -443,7 +444,7 @@
                 if (operationinv == "" && val != "Update") {
                     alert("Please Select Operation Involved!");
                     return false;
-                } else if (operationinv == "" && $j("#spn_opinvtaglist").text() == "" && val == "Update") {
+                } else if (operationinv == "" && $("#spn_opinvtaglist").text() == "" && val == "Update") {
                     alert("Please Select Operation Involved!");
                     return false;
                 }
@@ -452,7 +453,7 @@
                 if (rmtest == "" && val != "Update") {
                     alert("Please Select Raw Material Test!");
                     return false;
-                } else if (rmtest == "" && $j("#spn_rmtlist").text() == "" && val == "Update") {
+                } else if (rmtest == "" && $("#spn_rmtlist").text() == "" && val == "Update") {
                     alert("Please Select Raw Material Test!");
                     return false;
                 }
@@ -886,9 +887,9 @@
         function OprInvHidewShow()
         {
            // alert($j("#spn_opinvtaglist").text());
-            $j("#div_oprinvtag").show();
-            $j("#div_oprinvlabel").hide();
-            $j("#spn_opinvtaglist").text("");
+            $("#div_oprinvtag").show();
+            $("#div_oprinvlabel").hide();
+            $("#spn_opinvtaglist").text("");
 
             $("#mySelect2").select2({
                 placeholder:"Select Operation Involved",
@@ -896,26 +897,26 @@
         }
         function RmtHidewShow()
         {
-            $j("#div_rmttag").show();
-            $j("#div_rmtlist").hide();
-            $j("#spn_rmtlist").text("");
+            $("#div_rmttag").show();
+            $("#div_rmtlist").hide();
+            $("#spn_rmtlist").text("");
             $("#drp_rmt").select2({
                 placeholder:"Select Raw Material Test",
             });
         }
         function PrefvHidewShow()
         {
-            $j("#div_pvtag").show();
-            $j("#div_pvlist").hide();
+            $("#div_pvtag").show();
+            $("#div_pvlist").hide();
             $("#PrefferedVendor").select2({
                 placeholder:"Select Prefered Vendor",
             });
         }
-        $j(document).ready(function () {
+        $(document).ready(function () {
 
 
 
-            $j("#txtpreferedvendor").autocomplete({
+            $("#txtpreferedvendor").autocomplete({
 
                 source: function(request, response) {
 
@@ -974,60 +975,60 @@
 
             if(opinvsq=="")
             {
-                $j("#div_oprinvtag").show();
-                $j("#div_oprinvlabel").hide();
+                $("#div_oprinvtag").show();
+                $("#div_oprinvlabel").hide();
             }
             else {
-                $j("#div_oprinvtag").hide();
-                $j("#div_oprinvlabel").show();
-                $j("#spn_opinvtaglist").text(opinvsq);
+                $("#div_oprinvtag").hide();
+                $("#div_oprinvlabel").show();
+                $("#spn_opinvtaglist").text(opinvsq);
             }
             var fisrwseq = "@ViewData["FisibilityRawmaterialtestsequentially"]";
             if(fisrwseq=="")
             {
-                $j("#div_rmttag").show();
-                $j("#div_rmtlist").hide();
+                $("#div_rmttag").show();
+                $("#div_rmtlist").hide();
             }
             else {
-                $j("#div_rmttag").hide();
-                $j("#div_rmtlist").show();
+                $("#div_rmttag").hide();
+                $("#div_rmtlist").show();
 
-                $j("#spn_rmtlist").text(fisrwseq);
+                $("#spn_rmtlist").text(fisrwseq);
             }
             var fispvseq = "@ViewData["Fisibilityprferedvendor"]";
             if(fispvseq=="")
             {
-                $j("#div_pvtag").show();
-                $j("#div_pvlist").hide();
-                $j("#spnprefvendorlist").show();
+                $("#div_pvtag").show();
+                $("#div_pvlist").hide();
+                $("#spnprefvendorlist").show();
             }
             else {
-                $j("#div_pvtag").hide();
-                $j("#div_pvlist").show();
+                $("#div_pvtag").hide();
+                $("#div_pvlist").show();
                 var res = fispvseq.replace(/ &amp;/g,"&");
-                $j("#spn_pv").text(res);
-                $j("#spnprefvendorlist").hide();
+                $("#spn_pv").text(res);
+                $("#spnprefvendorlist").hide();
             }
-            var FeasibilityId = $j("#FeasibilityId").val();
+            var FeasibilityId = $("#FeasibilityId").val();
 
             if (FeasibilityId == 0) {
-                $j("#divSaveBtn").show();
+                $("#divSaveBtn").show();
             } else {
-                $j("#divUpdateBtn").show();
+                $("#divUpdateBtn").show();
             }
 
-            var section = $j("#hdnSection").val();
-            $j("#Section").val(section);
-            var feasToolingRequirement = $j("#FeasibilityToolingRequirement").val();
+            var section = $("#hdnSection").val();
+            $("#Section").val(section);
+            var feasToolingRequirement = $("#FeasibilityToolingRequirement").val();
 
             if (feasToolingRequirement.trim() == 'Insert') {
                 document.getElementById('Insert').checked = true;
-                $j('#Insert').click();
+                $('#Insert').click();
             }
             else if (feasToolingRequirement.trim() == 'Die Block') {
 
                 document.getElementById('DieBlock').checked = true;
-                $j('#DieBlock').click();
+                $('#DieBlock').click();
             } else { }
 
             //getOperationInvovled();
@@ -1037,7 +1038,7 @@
         });
 
         function getOperationInvovled() {
-            var FeasibilityId = $j("#FeasibilityId").val();
+            var FeasibilityId = $("#FeasibilityId").val();
             //$.ajax({
             //    type: "POST",
             //    url: "../Feasibility/GetOperationInvolvedByFeasId",
@@ -1077,7 +1078,7 @@
 
         }
         function getRawMaterialTest() {
-            var FeasibilityId = $j("#FeasibilityId").val();
+            var FeasibilityId = $("#FeasibilityId").val();
             //$.ajax({
             //    type: "POST",
             //    url: "../Feasibility/GetRawMaterialTestByFeasId",
@@ -1110,7 +1111,7 @@
 
         }
         function getRecommendedVendor() {
-            var FeasibilityId = $j("#FeasibilityId").val();
+            var FeasibilityId = $("#FeasibilityId").val();
             var stringArray = @Html.Raw(Json.Encode(@ViewData["recommVendor"]));
 
 
@@ -1144,101 +1145,101 @@
 
         function getDieDescriptionValue() {
             if (document.getElementById('Insert').checked == true) {
-                $j('#fisdiatotal').val(0);
-                $j('.DivTotal').show();
-                $j('#Total').show();
-                $j('#Dia').show();
-                $j('#Length').show();
-                $j('#fisdiavalue').show();
-                $j('#fisdialength').show();
-                $j('#fisdiatotal').show();
-                var dieIns = 'Dia' + $j('#fisdiavalue').val() + ' Len' + $j('#fisdialength').val();
-                var diavalue = $j('#fisdiavalue').val();
-                var dialength = $j('#fisdialength').show();
-                $j('#DieDescription').val(dieIns);
-                var diavalue = $j('#fisdiavalue').val();
-                var dialength = $j('#fisdialength').val();
-                $j('#DieDescription').val(dieIns);
+                $('#fisdiatotal').val(0);
+                $('.DivTotal').show();
+                $('#Total').show();
+                $('#Dia').show();
+                $('#Length').show();
+                $('#fisdiavalue').show();
+                $('#fisdialength').show();
+                $('#fisdiatotal').show();
+                var dieIns = 'Dia' + $('#fisdiavalue').val() + ' Len' + $('#fisdialength').val();
+                var diavalue = $('#fisdiavalue').val();
+                var dialength = $('#fisdialength').show();
+                $('#DieDescription').val(dieIns);
+                var diavalue = $('#fisdiavalue').val();
+                var dialength = $('#fisdialength').val();
+                $('#DieDescription').val(dieIns);
                 var apiUrl = '@System.Configuration.ConfigurationManager.AppSettings["FisCalcualtion"]';
                 // 7850 * Math.pow(10 ,-6);
                 //(7850 * 10 ^-9) = 0.00785
                 var Total = (3.14 / 4) * (diavalue * diavalue) * (dialength) * (apiUrl);
 
-                $j('#fisdiatotal').text((Total).toFixed(2));
+                $('#fisdiatotal').text((Total).toFixed(2));
             }
             else if (document.getElementById('DieBlock').checked == true) {
-                $j('#fisdiatotal').val(0);
-                $j('.DivTotal').show();
-                $j('#Total').show();
-                $j('#DieLength').show();
-                $j('#Width').show();
-                $j('#Height').show();
-                $j('#fisdiablockwidth').show();
-                $j('#fisdiablockheight').show();
-                $j('#fisdiablocklength').show();
-                $j('#fisdiatotal').show();
+                $('#fisdiatotal').val(0);
+                $('.DivTotal').show();
+                $('#Total').show();
+                $('#DieLength').show();
+                $('#Width').show();
+                $('#Height').show();
+                $('#fisdiablockwidth').show();
+                $('#fisdiablockheight').show();
+                $('#fisdiablocklength').show();
+                $('#fisdiatotal').show();
                 var dieIns = 'Len' + $j('#fisdiablocklength').val() + ' Wid' + $j('#fisdiablockwidth').val() + ' Ht' + $j('#fisdiablockheight').val();
-                $j('#DieDescription').val(dieIns);
+                $('#DieDescription').val(dieIns);
 
                 var apiUrl = '@System.Configuration.ConfigurationManager.AppSettings["FisCalcualtion"]';
                 // 7850 * Math.pow(10 ,-6);
                 //(7850 * 10 ^-6) = 0.00785
 
-                var Total = (($j('#fisdiablocklength').val() * $j('#fisdiablockwidth').val()) * ($j('#fisdiablockheight').val()) * (apiUrl));
+                var Total = (($('#fisdiablocklength').val() * $('#fisdiablockwidth').val()) * ($('#fisdiablockheight').val()) * (apiUrl));
 
-                $j('#fisdiatotal').text(Total.toFixed(2));
+                $('#fisdiatotal').text(Total.toFixed(2));
             } else { }
         }
 
 
         </script>
         <script>
-            $j('#Insert').click(function () {
-                $j('#Dia').show();
-                $j('#Length').show();
-                $j('#fisdiavalue').show();
-                $j('#fisdialength').show();
-                $j('#fisdiatotal').show();
-                $j('.DivInsert').show();
-                $j('.DivTotal').show();
-                $j('#Total').show();
-                $j('.DivDieBlock').hide();
+            $('#Insert').click(function () {
+                $('#Dia').show();
+                $('#Length').show();
+                $('#fisdiavalue').show();
+                $('#fisdialength').show();
+                $('#fisdiatotal').show();
+                $('.DivInsert').show();
+                $('.DivTotal').show();
+                $('#Total').show();
+                $('.DivDieBlock').hide();
                 var dieIns = 'Dia' + $j('#fisdiavalue').val() + ' Len' + $j('#fisdialength').val();
-                $j('#DieDescription').val(dieIns);
-                $j('#DieLength').hide();
-                $j('#Width').hide();
-                $j('#Height').hide();
-                $j('#fisdiablockwidth').val(0);
-                $j('#fisdiablockheight').val(0);
-                $j('#fisdiablocklength').val(0);
-                $j('#fisdiablockwidth').hide();
-                $j('#fisdiablockheight').hide();
-                $j('#fisdiablocklength').hide();
+                $('#DieDescription').val(dieIns);
+                $('#DieLength').hide();
+                $('#Width').hide();
+                $('#Height').hide();
+                $('#fisdiablockwidth').val(0);
+                $('#fisdiablockheight').val(0);
+                $('#fisdiablocklength').val(0);
+                $('#fisdiablockwidth').hide();
+                $('#fisdiablockheight').hide();
+                $('#fisdiablocklength').hide();
                 getDieDescriptionValue();
             });
-            $j('#DieBlock').click(function () {
-                $j('.DivInsert').hide();
-                $j('#Dia').hide();
-                $j('#Length').hide();
-                $j('#fisdiavalue').val(0);
-                $j('#fisdialength').val(0);
-                $j('#fisdiavalue').hide();
-                $j('#fisdialength').hide();
-                $j('#Total').show();
-                $j('#DieLength').show();
-                $j('#Width').show();
-                $j('#Height').show();
-                $j('#fisdiablockwidth').show();
-                $j('#fisdiablockheight').show();
-                $j('#fisdiablocklength').show();
-                $j('#fisdiatotal').show();
-                $j('.DivDieBlock').show();
+            $('#DieBlock').click(function () {
+                $('.DivInsert').hide();
+                $('#Dia').hide();
+                $('#Length').hide();
+                $('#fisdiavalue').val(0);
+                $('#fisdialength').val(0);
+                $('#fisdiavalue').hide();
+                $('#fisdialength').hide();
+                $('#Total').show();
+                $('#DieLength').show();
+                $('#Width').show();
+                $('#Height').show();
+                $('#fisdiablockwidth').show();
+                $('#fisdiablockheight').show();
+                $('#fisdiablocklength').show();
+                $('#fisdiatotal').show();
+                $('.DivDieBlock').show();
                 // $j('#Length').show();
                 //$j('#fisdiavalue').show();
                 //$j('#fisdialength').show();
-                $j('.DivTotal').show();
-                var dieIns = 'Len' + $j('#fisdiablocklength').val() + ' Wid' + $j('#fisdiablockwidth').val() + ' Ht' + $j('#fisdiablockheight').val();
-                $j('#DieDescription').val(dieIns);
+                $('.DivTotal').show();
+                var dieIns = 'Len' + $('#fisdiablocklength').val() + ' Wid' + $('#fisdiablockwidth').val() + ' Ht' + $('#fisdiablockheight').val();
+                $('#DieDescription').val(dieIns);
                 getDieDescriptionValue();
             });
         </script>
@@ -1261,7 +1262,7 @@
 
             var unsaved = false;
 
-            $j(":input").change(function () { //trigers change in all input fields including text type
+            $(":input").change(function () { //trigers change in all input fields including text type
                 unsaved = true;
             });
 

@@ -11,112 +11,54 @@
     @Html.ValidationSummary(true)
 
 
-    <fieldset>
-        <header class="blue accent-3 relative">
-            <div class="container-fluid text-white">
-                @*<div class="row p-t-b-10 ">
-                    <div class="col">
-                        <h4>
-                            <i class="icon-database"></i>
-                            Workorder
-                        </h4>
-                    </div>
-                </div>*@
-                <div class="row justify-content-between">
-                    <ul class="nav nav-material nav-material-white responsive-tab" id="v-pills-tab" role="tablist">
-                        <li>
-                            <a class="nav-link active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all"><i class="icon icon-home2"></i>Material List For Approval</a>
-                        </li>
-                        @*<li>
-                                <a class="nav-link" id="v-pills-buyers-tab" data-toggle="pill" href="#v-pills-buyers" role="tab" aria-controls="v-pills-buyers"><i class="icon icon-face"></i> Buyers</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" id="v-pills-sellers-tab" data-toggle="pill" href="#v-pills-sellers" role="tab" aria-controls="v-pills-sellers"><i class="icon  icon-local_shipping"></i> Sellers</a>
-                            </li>*@
-                        @*<li class="float-right">
-                                <a class="nav-link" href='@Url.Action("NewCustomer", "Customer")'><i class="icon icon-plus-circle"></i> Add New Customer</a>
-                            </li>*@
-                    </ul>
-                </div>
-            </div>
+    <div class="paddingLeft15 paddingTop15">
 
-        </header>
-        <!-- PAGE TITLE -->
         <div class="container-fluid animatedParent animateOnce">
             <div class="tab-content my-3" id="v-pills-tabContent">
                 <div class="tab-pane animated fadeInUpShort show active" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
-                    <div class="row my-3">
-                        <div class="col-md-12">
-                            <div class="card r-0 shadow">
-                                <div class="">
-                                    <form action="">
 
+                    <div class="col-md-12">  
+                        <div class="row"> 
+                            <div class="panel panel-default">  
+                                <div class="panel-body">
+                                   
+                                        <table class="table table-striped table-hover" id="tbl_AllEditCustomer" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th style="display:none;">#</th>
+                                                    <th>Workorder No</th>
+                                                    <th>Material</th>
+                                                   
+                                                    <th>TYPE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var data in Model)
+                                                {
+                                                    var WorkorderNo = data.WorkorderNo.ToString() == "undefined" ? "NA" : data.WorkorderNo;
+                                                    var PartName = (data.PartName.ToString() == "undefined" || data.PartName.ToString() == "") ? "NA" : data.PartName;
+                                                    var PartNo = (data.PartNo.ToString() == "undefined" || data.PartNo.ToString() == "") ? "NA" : data.PartNo;
+                                                    var RawMaterial = (data.RawMaterial.ToString() == "undefined" || data.RawMaterial.ToString() == "") ? "NA" : data.RawMaterial;
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <!-- START DEFAULT DATATABLE -->
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <div class="">
-                                                            <table class="table table-striped table-hover" id="tbl_AllEditCustomer" cellspacing="0">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th style="display:none;">#</th>
-                                                                        <th>Workorder No</th>
-                                                                        <th>Material</th>
-                                                                        @*<th>Part Name</th>
-                                                                        <th>Part No</th>*@
-                                                                        @*<th>VENDOR NAME</th>
-                                                                        <th>EMAIL</th>
-                                                                        <th>MOBILE</th>
-                                                                        <th>CONTACT PERSON</th>
-                                                                        <th>VALID DATE</th>*@
-                                                                        <th>TYPE</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    @foreach (var data in Model)
-                                                                    {
-                                                                        var WorkorderNo = data.WorkorderNo.ToString() == "undefined"?"NA": data.WorkorderNo;
-                                                                        var PartName = (data.PartName.ToString() == "undefined" || data.PartName.ToString() == "") ? "NA" : data.PartName;
-                                                                        var PartNo = (data.PartNo.ToString() == "undefined" || data.PartNo.ToString() == "") ? "NA" : data.PartNo;
-                                                                        var RawMaterial = (data.RawMaterial.ToString() == "undefined" || data.RawMaterial.ToString() == "") ? "NA" : data.RawMaterial;
-
-                                                                        <tr class="mosurhandsymbol">
-                                                                            <td style="display:none;">@data.RfqID</td>
-                                                                            <td>@WorkorderNo</td>
-                                                                            <td>@RawMaterial</td>
-                                                                            @*<td>@PartName</td>
-                                                                            <td>@PartNo</td>*@
-                                                                            @*<td>@data.vendor_name</td>
-                                                                            <td>@data.email</td>
-                                                                            <td>@data.vendor_mobile</td>
-                                                                            <td>@data.contact_person</td>
-                                                                            <td>@data.valid_date.Date.ToString("dd-MMM-yyyy")</td>*@
-                                                                            <td>@data.Type</td>
-
-                                                                        </tr>
-                                                                    }
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                                                <tr class="mosurhandsymbol">
+                                                    <td style="display:none;">@data.RfqID</td>
+                                                    <td>@WorkorderNo</td>
+                                                    <td>@RawMaterial</td>
+                                                    <td>@data.Type</td>
+                                                </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                   
                                 </div>
                             </div>
                         </div>
                     </div>
+                     
                 </div>
             </div>
-        </div>
-
-    </fieldset>
+        </div> 
+    </div> 
 
     <style>
         .mosurhandsymbol {
@@ -137,20 +79,20 @@
 
     <script>
 
-    $j('a.editVaccin').fancybox({
-        'width': '70%',
-        'height': '350',
-        'autoScale': false,
-        'transitionIn': 'none',
-        'transitionOut': 'none',
-        'type': 'iframe',
-        'overflow': 'auto',
-        afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
-            parent.location.reload(true);
-        }
-        //'modal': true
-        //'href': '/Common/Lead/GetEnquiry?Id=' + id()
-    });
+        $j('a.editVaccin').fancybox({
+            'width': '70%',
+            'height': '350',
+            'autoScale': false,
+            'transitionIn': 'none',
+            'transitionOut': 'none',
+            'type': 'iframe',
+            'overflow': 'auto',
+            afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
+                parent.location.reload(true);
+            }
+            //'modal': true
+            //'href': '/Common/Lead/GetEnquiry?Id=' + id()
+        });
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -160,7 +102,7 @@
                 "info": false
             });
             $('tr').click(function () {
-               
+
                 var currentRow = $(this).closest("tr");
                 var id = currentRow.find("td:eq(0)").text();
                 id = id.trim();

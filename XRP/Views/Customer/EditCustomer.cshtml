@@ -1,13 +1,11 @@
 ﻿@model XRP.Models.ssmtbl_CustomerModel
 @{
-              
-
-                ViewBag.Title = "EditCustomer";
-                ViewBag.Active = "Master";
-                Layout = "~/Views/Shared/_DesignLayout.cshtml";
+           
+    ViewBag.Title = "EditCustomer";
+    ViewBag.Active = "Master";
+    Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
-@*<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />*@
-
+ 
 @using (Html.BeginForm("EditCustomer", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
@@ -33,47 +31,51 @@
             <div class="container-fluid my-3">
                 <div class="d-flex row">
                     <div class="col-md-7">
-                        <div class="card mb-3 shadow no-b r-0">
+                        <div class="card shadow no-b r-0">
                              
                             <div class="card-body">
                                 
                                 <form class="needs-validation" novalidate>
-                                    <h6>Customer Details</h6>
-                                    <div class="form-row">
-                                        <div class="col-md-6 mb-3">
-                                            @Html.LabelFor(model => model.Name, new { @class = "" })
-                                            @Html.TextBoxFor(model => model.Name, null, new { @class = "form-control r-0 light s-12 required", @id = "txt_VendName", @oninput = "javascript:capitalize(this.id, this.value);", })
-                                            @Html.ValidationMessageFor(model => model.Name, null, new { @class = "alert-danger" })
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            @Html.LabelFor(model => model.Telephone_No, new { @class = "" })
-                                            @Html.TextBoxFor(model => model.Telephone_No, null, new { @class = "form-control r-0 light s-12", @id = "txt_phone", @onkeypress = "javascript:return isNumberKey (event)" })
-                                            @Html.ValidationMessageFor(model => model.Telephone_No, null, new { @class = "alert-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6 mb-3">
-                                            @Html.LabelFor(model => model.GSTNo, new { @class = "" })
-                                            @Html.TextBoxFor(model => model.GSTNo, null, new { @class = "form-control r-0 light s-12", @id = "txt_gst", @maxlength = "15", @oninput = "javascript:capitalize(this.id, this.value);", @onkeypress = "return IsAlphaNumeric(event);" })
-                                            @Html.ValidationMessageFor(model => model.GSTNo, null, new { @class = "alert-danger" })
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            @Html.LabelFor(model => model.PANNo, new { @class = "" })
-                                            @Html.TextBoxFor(model => model.PANNo, null, new { @class = "form-control r-0 light s-12", @id = "txt_pan", @maxlength = "10", @oninput = "javascript:capitalize(this.id, this.value);", @onkeypress = "return IsAlphaNumeric(event);" })
-                                            @Html.ValidationMessageFor(model => model.PANNo, null, new { @class = "alert-danger" })
-                                        </div>
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">Customer Details</div>
+                                        <div class="ibox-content">
+                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    @Html.LabelFor(model => model.Name, new { @class = "" })
+                                                    @Html.TextBoxFor(model => model.Name, null, new { @class = "form-control required", @id = "txt_VendName", @oninput = "javascript:capitalize(this.id, this.value);", })
+                                                    @Html.ValidationMessageFor(model => model.Name, null, new { @class = "alert-danger" })
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.LabelFor(model => model.Telephone_No, new { @class = "" })
+                                                    @Html.TextBoxFor(model => model.Telephone_No, null, new { @class = "form-control ", @id = "txt_phone", @onkeypress = "javascript:return isNumberKey (event)" })
+                                                    @Html.ValidationMessageFor(model => model.Telephone_No, null, new { @class = "alert-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    @Html.LabelFor(model => model.GSTNo, new { @class = "" })
+                                                    @Html.TextBoxFor(model => model.GSTNo, null, new { @class = "form-control", @id = "txt_gst", @maxlength = "15", @oninput = "javascript:capitalize(this.id, this.value);", @onkeypress = "return IsAlphaNumeric(event);" })
+                                                    @Html.ValidationMessageFor(model => model.GSTNo, null, new { @class = "alert-danger" })
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.LabelFor(model => model.PANNo, new { @class = "" })
+                                                    @Html.TextBoxFor(model => model.PANNo, null, new { @class = "form-control", @id = "txt_pan", @maxlength = "10", @oninput = "javascript:capitalize(this.id, this.value);", @onkeypress = "return IsAlphaNumeric(event);" })
+                                                    @Html.ValidationMessageFor(model => model.PANNo, null, new { @class = "alert-danger" })
+                                                </div>
 
 
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-12 mb-3">
-                                            @Html.LabelFor(model => model.Remarks, new { @class = "" })
-                                            @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control r-0 light s-12", @id = "txt_remark" })
-                                            @Html.ValidationMessageFor(model => model.Remarks, null, new { @class = "alert-danger" })
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    @Html.LabelFor(model => model.Remarks, new { @class = "" })
+                                                    @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control", @id = "txt_remark" })
+                                                    @Html.ValidationMessageFor(model => model.Remarks, null, new { @class = "alert-danger" })
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                 
-                                </form>
+                                            </div>
+                                        </form>
                             </div>
                         </div>
                       
@@ -82,93 +84,86 @@
                                 <div class="d-flex justify-content-between">
 
                                     <div class="align-self-center">
-                                        <ul class="nav nav-pills mb-3" role="tablist" id="myTab">
+                                        <ul class="nav nav-pills" role="tablist" id="myTab">
                                             <li class="nav-item">
-                                                <a class="nav-link active show" id="w4-tab2" data-toggle="tab" href="#w4-tab2" role="tab" aria-controls="tab2" aria-selected="false">Address</a>
+                                                <a class="nav-link " id="w4--tab2" data-toggle="tab" href="#w4-tab2" role="tab" aria-controls="tab2" aria-selected="false">Address</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="w4-tab1" data-toggle="tab" href="#w4-tab1" role="tab" aria-controls="tab1" aria-expanded="true" aria-selected="true">Contact Details</a>
-                                            </li>
+                                                <a class="nav-link active show" id="w4--tab1" data-toggle="tab" href="#w4-tab1" role="tab" aria-controls="tab1" aria-expanded="true" aria-selected="true">Contact Details</a>
+                                            </li> 
+                                            
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body no-p">
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="w4-tab1" role="tabpanel" aria-labelledby="w4-tab1">
+                                    <div class="tab-pane show active" id="w4-tab1" role="tabpanel" aria-labelledby="w4-tab1">
                                         <div class="card-body">
                                             <div class="ibox">
                                                 <div class="ibox-content">
-                                                    <div class="row">
-                                                        <div class="form-row">
-                                                            <div class="col-md-6 mb-3">
+                                                     
+                                                        <div class="row">
+                                                            <div class="col-md-6">
                                                                 @Html.LabelFor(model => model.Contact_Person, new { @class = "" })
-                                                                @Html.TextBoxFor(model => model.Contact_Person, null, new { @class = "form-control r-0 light s-12", @id = "txt_cperson" })
+                                                                @Html.TextBoxFor(model => model.Contact_Person, null, new { @class = "form-control", @id = "txt_cperson" })
                                                                 @Html.ValidationMessageFor(model => model.Contact_Person, null, new { @class = "alert-danger" })
                                                             </div>
-                                                            <div class="col-md-6 mb-3">
+                                                            <div class="col-md-6">
                                                                 @Html.LabelFor(model => model.Email_ID, new { @class = "" })
-                                                                @Html.TextBoxFor(model => model.Email_ID, null, new { @class = "form-control r-0 light s-12", @id = "txt_email" })
+                                                                @Html.TextBoxFor(model => model.Email_ID, null, new { @class = "form-control", @id = "txt_email" })
                                                                 @Html.ValidationMessageFor(model => model.Email_ID, null, new { @class = "alert-danger" })
                                                             </div>
                                                         </div>
-                                                        <div class="form-row">
-                                                            <div class="col-md-6 mb-3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
                                                                 @Html.LabelFor(model => model.Mobile_No, new { @class = "" })
-                                                                @Html.TextBoxFor(model => model.Mobile_No, null, new { @class = "form-control r-0 light s-12", @id = "txt_mob", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "10" })
+                                                                @Html.TextBoxFor(model => model.Mobile_No, null, new { @class = "form-control", @id = "txt_mob", @onkeypress = "javascript:return isNumberKey (event)", @maxlength = "10" })
                                                                 @Html.ValidationMessageFor(model => model.Mobile_No, null, new { @class = "alert-danger" })
                                                             </div>
-                                                            <div class="custom-control custom-checkbox mb-3" align="right">
+                                                            <div class="col-md-6" style="padding-top:30px;">
                                                                 <input type="checkbox" class="custom-control-input" id="chk_defaultcontact" required="">
                                                                 <label class="custom-control-label" for="chk_defaultcontact">Primary</label>
                                                             </div>
                                                         </div>
-                                                        <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbldataaddcp();"><i class="icon-add"><font face="roboto">Add</font></i></button></div>
+                                                        <div align="right"><button class="btn btn-primary" type="button" onclick="tbldataaddcp();">Add</button></div>
 
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane show active" id="w4-tab2" role="tabpanel" aria-labelledby="w4-tab2">
-                                        <div class="card-body" style="padding-top:15px;">
+                                    <div class="tab-pane" id="w4-tab2" role="tabpanel" aria-labelledby="w4-tab2">
+                                        
                                             <div class="ibox">
                                                 <div class="ibox-content">
-                                                    <div class="row">
-                                                        <div class="form-row">
-                                                            <div class="col-md-12 mb-3">
+                                                    
+                                                        <div class="row">
+                                                            <div class="col-md-12">
                                                                 @Html.LabelFor(model => model.Address, new { @class = "" })
-                                                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control r-0 light s-12", @id = "txt_address" })
+                                                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", @id = "txt_address" })
                                                                 @Html.ValidationMessageFor(model => model.Address, null, new { @class = "alert-danger" })
                                                             </div>
                                                         </div>
-                                                        <div class="form-row">
-                                                            <div class="col-md-6 mb-3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
                                                                 @Html.LabelFor(model => model.PlaceofSupply, new { @class = "" })
                                                                 @Html.DropDownListFor(model => model.PlaceofSupply, ViewData["StateCodeDrpDwn"] as IEnumerable<SelectListItem>
-                                                ,
-                                                XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", @id = "drppos" })
+                                                    ,
+                                                    XRP.Global.DropDownSelection.DropDownSelect, new { @class = ".chzn-select form-control r-0 light s-12", @id = "drppos" })
                                                                 @Html.ValidationMessageFor(model => model.PlaceofSupply, null, new { @class = "alert-danger" })
                                                             </div>
 
-                                                            <div class="custom-control custom-checkbox mb-3" align="right">
-
+                                                            <div class="custom-control custom-checkbox" align="right"> 
                                                                 <input type="checkbox" class="custom-control-input" id="chk_defaultaddress" required="">
                                                                 <label class="custom-control-label" for="chk_defaultaddress">Primary</label>
-
-
                                                             </div>
-                                                        </div>
-
-
-                                                        <div align="right"><button class="btn btn-primary btn-sm" type="button" onclick="tbladdaddress()"><i class="icon-add"><font face="roboto">Add</font></i></button></div>
-
-                                                    </div>
+                                                        </div> 
+                                                        <div align="right"><button class="btn btn-primary" type="button" onclick="tbladdaddress()"> Add </button></div>
+                                                     
                                                 </div>
-                                            </div>
-                                        </div>
-
+                                            </div> 
                                     </div>
                                 </div>
                             </div>
@@ -176,19 +171,11 @@
                     </div>
 
                     <div class="col-md-5">
-                        <div class="card mb-3 shadow no-b r-0">
-                            <div class="card-header white">
-                                <div class="form-row mt-1">
-                                    <div class="form-group col-10 m-0" valign="top">
-                                        <i class="icon-address-book-o Address blue-text"> </i> Address
-                                    </div>
+                        <div class="row">
 
-                                </div>
-                            </div>
-                            <div class="card-body pt-0  slimScroll" data-height="300" style="overflow:auto; width:auto;height:300px;background-color:white;">
-
+                            <div class="card-body pt-0  slimScroll" data-height="260" style="overflow:auto; width:auto;height:300px;background-color:white;">
+                                <strong>Address</strong>
                                 <table class="table border-bottom" id="tbl_addresslist" style="width:100%">
-
 
                                     <tbody id="tbltbody_addresslist" class="mosurhandsymbol"></tbody>
                                 </table>
@@ -196,25 +183,17 @@
                             </div>
                         </div>
 
-                        <div class="card mb-3 shadow no-b r-0">
-                            <div class="card-header white">
-                                <div class="form-row mt-1">
-                                    <div class="form-group col-10 m-0" valign="top">
-                                        <i class="icon-clipboard-edit blue-text"></i> Contacts
-                                    </div>
+                        <div class="row" style="padding-top:20px;">
 
-                                </div>
-                            </div>
                             <div class="card-body pt-0  slimScroll" data-height="278" style="overflow: hidden; width: auto; height: 278px;background-color:white;">
-
+                                <strong>Contacts</strong>
                                 <table id="tbl_insertdatacp" class="table border-bottom">
 
                                     <tbody id="tbltbody_insertdatacp" class="mosurhandsymbol"></tbody>
                                 </table>
 
                             </div>
-                        </div>
-
+                        </div> 
 
                     </div>
                 </div>
@@ -224,7 +203,7 @@
 
         <div class="control-sidebar-bg shadow white fixed"></div>
         <div class="card-body" align="right">
-            <button type="button" value="Save" class="btn btn-primary btn-default btn-sm" id="btn_Save" onclick="SaveCustomerDetails();"><i class="icon-save mr-2"></i>Save</button>
+            <button type="button" value="Save" class="btn btn-primary" id="btn_Save" onclick="SaveCustomerDetails();">Save</button>
 
 
         </div>
@@ -238,11 +217,7 @@
             <tbody id="tbodytempadd"></tbody>
         </table>
         </div>
-        <style>
-            .mosurhandsymbol {
-                cursor: pointer;
-            }
-        </style>
+       
         <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
         <script src="~/Scripts/jquery-1.10.2.min.js"></script>
         <script src="~/Content/Validations/JqueryUi.js"></script>
@@ -725,7 +700,8 @@
         }
         function finalinsert() {
         }
-        function checkcondition() {
+            function checkcondition() {
+                debugger;
             var hdn = ($("#hdn_custname").val()).trim();
             var txt = ($("#txt_VendName").val()).trim();
 
@@ -809,7 +785,7 @@
                                   contentType: "application/json;charset=utf-8",
                                   dataType: "json",
                                   success: function (update) {
-
+                                      debugger;
                                       insertcpinsidedb(id);
                                       insertmultiaddress(id);
 
@@ -925,7 +901,8 @@
             });
 
         }
-        function SaveCustomerDetails() {
+            function SaveCustomerDetails() {
+                debugger;
             unsaved = false;
             checkcondition();
 

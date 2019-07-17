@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 
-@*<link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" />*@
+ <link href="~/Content/Validations/jquery-ui.css" rel="stylesheet" /> 
 
 @using (Html.BeginForm("NewPurchaseOrder", "PurchaseOrder", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -545,18 +545,14 @@
     <script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Content/Validations/JqueryUi.js"></script>
+
     <script>
         var $j = jQuery.noConflict(true);
     </script>
     <script type="text/javascript">
         $j(document).ready(function() {
 
-            //$j('#POQty_Open').val('False');
-            //$("input").change(function(){
-            //    var chkcon= $j('#hdn_saqcu').val();
-
-
-            //});
+            
 
             var url=window.location.href;
             var isNew= (url.split("?")[1]).split("=")[1];

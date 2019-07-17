@@ -537,7 +537,8 @@
 
         // Sharad
         <script>
-                                                                                function submitQuotation() {
+            function submitQuotation() {
+                debugger;
                                                                                     var tcflag = "";
                                                                                     $('[name="chk_termcondition"]').each(function () {
                                                                                         if ($(this).prop('checked') == true) {
@@ -852,7 +853,7 @@
                                                                                     var chknew = document.getElementById("chk_NewQuotation").value;
                                                                                     if (chknew == "true") {
                                                                                         //if (document.getElementById("Save").value == "Save") {
-
+                                                                                        debugger;
                                                                                         $.ajax
                                                                                                ({
                                                                                                    type: "POST",
